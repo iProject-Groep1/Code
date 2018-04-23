@@ -9,53 +9,106 @@
 
 
 <body>
-<h1 class="uk-heading-line uk-text-center">EenmaalAndermaal</h1>
 
 <nav class="uk-navbar">
 
-    <ul class="uk-navbar-nav">
-        <li><a href="#offcanvas-1" data-uk-offcanvas=""><i class="uk-icon-justify uk-icon-bars uk-icon-large"></i></a>
+    <a class="uk-navbar-brand uk-hidden-small" href="">EenmaalAndermaal</a>
+
+    <ul class="uk-navbar-nav uk-hidden-small">
+
+        <li class="uk-parent" data-uk-dropdown="">
+            <a href="">Home</a>
         </li>
-        <div id="offcanvas-1" class="uk-offcanvas" aria-hidden="true">
-            <div class="uk-offcanvas-bar" mode="push">
-                <div class="uk-panel">Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div>
 
-                <div class="uk-panel">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <li class="uk-active"><a href="">Home</a></li>
-        <li><a href="">Categorien</a></li>
-        <li><a href="">Contact</a></li>
-        <li><a href="">Plaats advertentie</a></li>
-        <li><a href="">Login</a></li>
+        <li class="uk-parent" data-uk-dropdown="">
+            <a href="">Rubrieken</a>
 
-
-        <li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
-            <a href="">Parent</a>
-
-            <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true"
-                 style="top: 40px; left: 0px;" tabindex="">
+            <div class="uk-dropdown uk-dropdown-navbar">
                 <ul class="uk-nav uk-nav-navbar">
+                    <li class="uk-nav-header">Alle rubrieken</li>
                     <li><a href="#">Item</a></li>
-                    <li><a href="#">Another item</a></li>
-                    <li class="uk-nav-header">Header</li>
                     <li><a href="#">Item</a></li>
-                    <li><a href="#">Another item</a></li>
                     <li class="uk-nav-divider"></li>
                     <li><a href="#">Separated item</a></li>
+                    <li class="uk-parent">
+                        <a href="#">Parent</a>
+                        <ul class="uk-nav-sub">
+                            <li><a href="#">Sub item</a>
+                                <ul>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
+
+
         </li>
+
+        <li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
+            <a href="">Login</a>
+        </li>
+
+        <li class="uk-parent" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
+            <a href="">Contact</a>
+            <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom" aria-hidden="true" tabindex="" style="top: 40px; left: 0px;">
+                <div class="uk-panel">Lorem ipsum dolor sit amet, consectetur <a href="#">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+            </div>
+        </li>
+
     </ul>
 
+    <a href="#" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
+
 </nav>
+
+<nav class="uk-navbar uk-navbar2">
+
+    <ul class="uk-navbar-nav uk-navbar-nav2 uk-hidden-small">
+
+        <li>
+            <a href="">Alle Rubrieken</a>
+
+        <li>
+            <a href="">Huis en tuin</a>
+        </li>
+
+        <li>
+            <a href="">Auto's</a>
+        </li>
+
+        <li>
+            <a href="">Elektronica</a>
+        </li>
+
+        <li>
+            <a href="">Boeken</a>
+        </li>
+
+        <li>
+            <a href="">Meubels</a>
+        </li>
+
+        <li>
+            <a href="">Brommers</a>
+        </li>
+
+        <li>
+            <a href="">Huisdieren</a>
+        </li>
+
+        <li>
+            <a href="">Vrije tijd</a>
+        </li>
+
+    </ul>
+
+    <a href="#" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas="{target:'#offcanvas-1'}"></a>
+
+</nav>
+
 
 <div class="uk-block uk-block-muted">
 
