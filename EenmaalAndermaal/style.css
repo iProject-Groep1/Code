@@ -1,16 +1,19 @@
 /* CSS Document */
 
 body {
-	background-color: e5e7ec;
+	background-color: #e5e7ec;
 }
 
 
-nav {
-	color: #5484A4;
-
+.uk-navbar {
+	background: #5484A4;
 }
 
-nav a {
-	color: white;
+.uk-navbar-nav>li>a {
+	color: #FFFFFF;
 }
+
+/*.uk-navbar-nav>li>a:hover {*/
+	/*background: #BADAF0;*/
+/*}*/
 

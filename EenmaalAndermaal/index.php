@@ -1,7 +1,7 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="UIkit/css/uikit.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="UIkit/js/jquery.js"></script>
     <script src="UIkit/js/uikit.min.js"></script>
 </head>
