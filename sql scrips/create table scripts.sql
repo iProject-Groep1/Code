@@ -20,5 +20,7 @@ verkoper				varchar (20)	not null,						-- aangepast van char 10 Ook aanpassen g
 koper					varchar (20)	null,							-- aangepast van char 10 Ook aanpassen gebruiker table
 looptijdeindeDag		date			not null,						-- datetime format is aangepast naar dd/mm/yyyy
 looptijdeindeTijdstip	datetime		not null,
-veilinggesloten			bit				not null,						-- aangepast van een char 3.
+veilinggesloten			bit				not null						-- aangepast van een char 3.
+
+constraint voorwerpKey primary key (voorwerpnummer)
 );
