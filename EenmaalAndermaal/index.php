@@ -1,5 +1,8 @@
+<!doctype html>
+<html lang="nl">
 <head>
     <title></title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="UIkit/css/uikit.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="UIkit/js/jquery.js"></script>
