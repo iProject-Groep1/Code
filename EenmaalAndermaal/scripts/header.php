@@ -13,7 +13,7 @@
 
 <body>
 
-<nav class="uk-navbar ">
+<nav class="uk-navbar uk-navbar1">
 
     <a class="uk-navbar-brand uk-hidden-small" href="">EenmaalAndermaal</a>
 
@@ -74,7 +74,7 @@
         <li>
             <a href="">Alle Rubrieken</a>
 
-        <li>
+        </li><li>
             <a href="">Huis en tuin</a>
         </li>
 
