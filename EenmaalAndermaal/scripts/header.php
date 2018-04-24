@@ -17,7 +17,7 @@
 
     <a class="uk-navbar-brand uk-hidden-small" href="">EenmaalAndermaal</a>
 
-    <ul class="uk-navbar-nav uk-hidden-small uk-grid-divider ">
+    <ul class="uk-navbar-nav uk-navbar-nav1 uk-hidden-small uk-grid-divider ">
 
         <li class="uk-parent" data-uk-dropdown="">
             <a href="">Home</a>
