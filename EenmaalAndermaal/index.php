@@ -2,6 +2,7 @@
 require_once('scripts/header.php');
 ?>
 
+<body>
 
 <div class="uk-block uk-block-muted">
     <div class="uk-container">
