@@ -1,5 +1,6 @@
 <?php
 //rubriekenboom
+//TESTEN
 function getCategoryOverview($databasehandler)
 {
     $previousCategoryNumber = 0;

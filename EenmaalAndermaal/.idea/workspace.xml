@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42df41c6-203f-4c6f-ab15-493ed759ab99" name="Default" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="b443c1bb-1290-4a76-bd34-50dd236070eb" name="Default" comment="" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,17 +23,17 @@
       <file leaf-file-name="categoriesFunctions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/categoriesFunctions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="34">
+              <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
               <folding>
-                <marker date="1524562739463" expanded="true" signature="351:410" ph="SELECT rubri... Rubriek" />
-                <marker date="1524562739463" expanded="true" signature="351:433" ph="SELECT rubri... Rubriek" />
-                <marker date="1524562739463" expanded="true" signature="778:825" ph="SELECT COUNT... Rubriek" />
-                <marker date="1524562739463" expanded="true" signature="778:854" ph="SELECT COUNT... Rubriek" />
-                <marker date="1524562739463" expanded="true" signature="778:2244" ph="SELECT COUNT... Rubriek" />
-                <marker date="1524562739463" expanded="true" signature="970:1035" ph="SELECT rubri... Rubriek" />
-                <marker date="1524562739463" expanded="true" signature="1524:1571" ph="SELECT COUNT... Rubriek" />
-                <marker date="1524562739463" expanded="true" signature="1742:1807" ph="SELECT rubri... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="360:419" ph="SELECT rubri... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="360:442" ph="SELECT rubri... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="787:834" ph="SELECT COUNT... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="787:863" ph="SELECT COUNT... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="787:2253" ph="SELECT COUNT... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="979:1044" ph="SELECT rubri... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="1533:1580" ph="SELECT COUNT... Rubriek" />
+                <marker date="1524562933319" expanded="true" signature="1751:1816" ph="SELECT rubri... Rubriek" />
               </folding>
             </state>
           </provider>
@@ -54,12 +53,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -96,9 +89,6 @@
       <pane id="Scope" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -118,18 +108,10 @@
     <configuration />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="42df41c6-203f-4c6f-ab15-493ed759ab99" name="Default" comment="" />
-      <created>1524559190995</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1524559190995</updated>
-      <workItem from="1524559193487" duration="3588000" />
-    </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3588000" />
+    <option name="totallyTimeSpent" value="11000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -155,16 +137,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -178,17 +152,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/categoriesFunctions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        <state relative-caret-position="34">
+          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
           <folding>
-            <marker date="1524562739463" expanded="true" signature="351:410" ph="SELECT rubri... Rubriek" />
-            <marker date="1524562739463" expanded="true" signature="351:433" ph="SELECT rubri... Rubriek" />
-            <marker date="1524562739463" expanded="true" signature="778:825" ph="SELECT COUNT... Rubriek" />
-            <marker date="1524562739463" expanded="true" signature="778:854" ph="SELECT COUNT... Rubriek" />
-            <marker date="1524562739463" expanded="true" signature="778:2244" ph="SELECT COUNT... Rubriek" />
-            <marker date="1524562739463" expanded="true" signature="970:1035" ph="SELECT rubri... Rubriek" />
-            <marker date="1524562739463" expanded="true" signature="1524:1571" ph="SELECT COUNT... Rubriek" />
-            <marker date="1524562739463" expanded="true" signature="1742:1807" ph="SELECT rubri... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="360:419" ph="SELECT rubri... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="360:442" ph="SELECT rubri... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="787:834" ph="SELECT COUNT... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="787:863" ph="SELECT COUNT... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="787:2253" ph="SELECT COUNT... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="979:1044" ph="SELECT rubri... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="1533:1580" ph="SELECT COUNT... Rubriek" />
+            <marker date="1524562933319" expanded="true" signature="1751:1816" ph="SELECT rubri... Rubriek" />
           </folding>
         </state>
       </provider>
