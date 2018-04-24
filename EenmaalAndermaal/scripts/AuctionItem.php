@@ -7,7 +7,7 @@ function createItem()
     <div class="uk-card-header" >
         <div class="uk-grid-small uk-flex-middle" uk - grid >
             <div class="uk-width-expand" >
-                <h3 class="uk-card-title uk-margin-remove-bottom" > Title</h3 >
+                <h3> Product 1 </h3>
                 <p class="uk-text-meta uk-margin-remove-top" >
                 <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: 2018-05-01T13:04:01+00:00">
     <div>

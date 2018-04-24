@@ -32,8 +32,34 @@ body {
 	font-size: 30px;
 }
 
+.uk-grid-small {
+	flex-wrap: nowrap;
+}
+
+.uk-logo {
+	color: #FFFFFF;
+}
+
+.uk-button-default {
+	color: #FFFFFF;
+}
+
+
 .uk-navbar-brand:hover{
 	color: #111111;
 }
+
+
+
+
+/* MEDIA QUERY'S -> RESPONSIVE DESIGN */
+
+@media (min-width: 640px){
+	.uk-countdown-number, .uk-countdown-separator{
+		font-size: 3em;
+	}
+}
+
+
 
 
