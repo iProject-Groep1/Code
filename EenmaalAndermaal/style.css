@@ -4,13 +4,13 @@ body {
 	background-color: #e5e7ec;
 }
 
-.uk-navbar-nav>li>a {
-	color: #FFFFFF;
+
+.uk-navbar {
+	background: #5484A4;
 }
 
-.uk-navbar1 {
-	background: #5484A4;
-	padding: 25px 10px;
+.uk-navbar-nav>li>a {
+	color: #FFFFFF;
 }
 
 .uk-navbar2 {
@@ -18,14 +18,8 @@ body {
 	color: #000000;
 }
 
-.uk-navbar-nav1>li>a { /*nieuw toegevoegd 24-4-2018 12.00*/
-	width: 120px;
-	text-align: center;
-}
-
 .uk-navbar-nav2>li>a {
 	color: #000000;
-	padding: 0 52px; /* aangepast */
 }
 
 .uk-block {
@@ -38,8 +32,34 @@ body {
 	font-size: 30px;
 }
 
+.uk-grid-small {
+	flex-wrap: nowrap;
+}
+
+.uk-logo {
+	color: #FFFFFF;
+}
+
+.uk-button-default {
+	color: #FFFFFF;
+}
+
+
 .uk-navbar-brand:hover{
 	color: #111111;
 }
+
+
+
+
+/* MEDIA QUERY'S -> RESPONSIVE DESIGN */
+
+@media (min-width: 640px){
+	.uk-countdown-number, .uk-countdown-separator{
+		font-size: 3em;
+	}
+}
+
+
 
 
