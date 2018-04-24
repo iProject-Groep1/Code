@@ -2,6 +2,7 @@
 //rubriekenboom
 function getCategoryOverview($databasehandler)
 {
+    $alphabet = range('A', 'Z');
     $categoryOverview = "";
     $mainCategoriesData = $databasehandler->query("SELECT rubrieknummer, rubrieknaam  FROM Rubriek r WHERE Rubriek IS NULL");
     while ($mainCategoryRow = $mainCategoriesData->fetch()) {
@@ -28,4 +29,16 @@ function getHomepageCategoryOverview($databasehandler, $overviewSize)
     }
     return $homepageCategoryOverview;
 }
+
+function getAlphabetList(){
+    $alphabet = range('A', 'Z');
+    $alphabetList = '<ul class="uk-pagination">';
+    foreach($alphabet as $letter){
+        $alphabetList .= '<li><a href="">'.$letter.'</a></li>';
+    }
+    $alphabetList .= '</ul>';
+    return $alphabetList;
+}
 ?>
+
+

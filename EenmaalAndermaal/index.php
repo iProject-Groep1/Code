@@ -1,18 +1,10 @@
-<!doctype html>
-<html lang="nl">
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="UIkit/css/uikit.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="UIkit/js/jquery.js"></script>
-    <script src="UIkit/js/uikit.min.js"></script>
-</head>
-
-
+<?php
+require_once('scripts/header.php');
+?>
 
 <body>
 
+<<<<<<< HEAD
 <nav class="uk-navbar uk-navbar1">
 
     <a class="uk-navbar-brand uk-hidden-small" href="">EenmaalAndermaal</a>
@@ -130,10 +122,13 @@
 </nav>
 
 
+=======
+>>>>>>> a3875895a8088e485e3380e74cee95d73ec6a67c
 <div class="uk-block uk-block-muted">
     <div class="uk-container">
         <h3>Laatste kans</h3>
 
+<<<<<<< HEAD
         <ul class="uk-grid uk-grid-width-1-4">
             <?php for($i = 0; $i <= 3; $i++){ ?>
                 <a class="uk-thumbnail uk-overlay-hover" href="#">
@@ -145,6 +140,26 @@
                 </a>
             <?php } ?>
         </ul>
+=======
+        <a class="uk-thumbnail uk-overlay-hover" href="#">
+            <figure class="uk-overlay">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjExMCIgdmlld0JveD0iMCAwIDMwMCAxMTAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzMwMHgxMTAvYXV0bwpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNS4yLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnMvPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTEwIiBmaWxsPSIjRUVFRUVFIi8+PGc+PHRleHQgeD0iMTExLjQwNjI1IiB5PSI2MS42NjU2MjUwMDAwMDAwMDYiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTVwdCI+MzAweDExMDwvdGV4dD48L2c+PC9zdmc+"
+                     alt="300x110" data-src="holder.js/300x110/auto" data-holder-rendered="true">
+                <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">Bieden
+                </div>
+            </figure>
+            <div class="uk-thumbnail-caption">item</div>
+        </a>
+        <a class="uk-thumbnail uk-overlay-hover" href="#">
+            <figure class="uk-overlay">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjExMCIgdmlld0JveD0iMCAwIDMwMCAxMTAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzMwMHgxMTAvYXV0bwpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNS4yLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnMvPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTEwIiBmaWxsPSIjRUVFRUVFIi8+PGc+PHRleHQgeD0iMTExLjQwNjI1IiB5PSI2MS42NjU2MjUwMDAwMDAwMDYiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTVwdCI+MzAweDExMDwvdGV4dD48L2c+PC9zdmc+"
+                     alt="300x110" data-src="holder.js/300x110/auto" data-holder-rendered="true">
+                <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">Bieden
+                </div>
+            </figure>
+            <div class="uk-thumbnail-caption">item</div>
+        </a>
+>>>>>>> a3875895a8088e485e3380e74cee95d73ec6a67c
 
     </div>
 </div>
@@ -159,22 +174,32 @@
 
         <a class="uk-thumbnail uk-overlay-hover" href="#">
             <figure class="uk-overlay">
-                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjExMCIgdmlld0JveD0iMCAwIDMwMCAxMTAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzMwMHgxMTAvYXV0bwpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNS4yLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnMvPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTEwIiBmaWxsPSIjRUVFRUVFIi8+PGc+PHRleHQgeD0iMTExLjQwNjI1IiB5PSI2MS42NjU2MjUwMDAwMDAwMDYiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTVwdCI+MzAweDExMDwvdGV4dD48L2c+PC9zdmc+" alt="300x110" data-src="holder.js/300x110/auto" data-holder-rendered="true">
-                <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">Bieden</div>
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjExMCIgdmlld0JveD0iMCAwIDMwMCAxMTAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzMwMHgxMTAvYXV0bwpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNS4yLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnMvPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTEwIiBmaWxsPSIjRUVFRUVFIi8+PGc+PHRleHQgeD0iMTExLjQwNjI1IiB5PSI2MS42NjU2MjUwMDAwMDAwMDYiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTVwdCI+MzAweDExMDwvdGV4dD48L2c+PC9zdmc+"
+                     alt="300x110" data-src="holder.js/300x110/auto" data-holder-rendered="true">
+                <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">Bieden
+                </div>
             </figure>
             <div class="uk-thumbnail-caption">item</div>
         </a>
         <a class="uk-thumbnail uk-overlay-hover" href="#">
             <figure class="uk-overlay">
-                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjExMCIgdmlld0JveD0iMCAwIDMwMCAxMTAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzMwMHgxMTAvYXV0bwpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNS4yLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnMvPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTEwIiBmaWxsPSIjRUVFRUVFIi8+PGc+PHRleHQgeD0iMTExLjQwNjI1IiB5PSI2MS42NjU2MjUwMDAwMDAwMDYiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTVwdCI+MzAweDExMDwvdGV4dD48L2c+PC9zdmc+" alt="300x110" data-src="holder.js/300x110/auto" data-holder-rendered="true">
-                <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">Bieden</div>
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjExMCIgdmlld0JveD0iMCAwIDMwMCAxMTAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzMwMHgxMTAvYXV0bwpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNS4yLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnMvPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTEwIiBmaWxsPSIjRUVFRUVFIi8+PGc+PHRleHQgeD0iMTExLjQwNjI1IiB5PSI2MS42NjU2MjUwMDAwMDAwMDYiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTVwdCI+MzAweDExMDwvdGV4dD48L2c+PC9zdmc+"
+                     alt="300x110" data-src="holder.js/300x110/auto" data-holder-rendered="true">
+                <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">Bieden
+                </div>
             </figure>
             <div class="uk-thumbnail-caption">item</div>
         </a>
 
+    </div>
 </div>
 
 
+<<<<<<< HEAD
+=======
+<br>
+
+>>>>>>> a3875895a8088e485e3380e74cee95d73ec6a67c
 
 
 </body>
