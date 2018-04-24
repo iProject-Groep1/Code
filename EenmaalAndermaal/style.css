@@ -4,13 +4,13 @@ body {
 	background-color: #e5e7ec;
 }
 
-
-.uk-navbar {
-	background: #5484A4;
-}
-
 .uk-navbar-nav>li>a {
 	color: #FFFFFF;
+}
+
+.uk-navbar1 {
+	background: #5484A4;
+	padding: 25px 10px;
 }
 
 .uk-navbar2 {
