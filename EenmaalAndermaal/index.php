@@ -11,7 +11,7 @@ require_once('scripts/header.php');
 
     <ul class="uk-navbar-nav uk-hidden-small uk-grid-divider ">
 
-        <li class="uk-parent" data-uk-dropdown="">
+        <li class="uk-parent" data-uk-dropdown=""> 
             <a href="">Home</a>
         </li>
 
