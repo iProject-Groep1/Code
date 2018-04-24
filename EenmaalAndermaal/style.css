@@ -22,16 +22,18 @@ body {
 	color: #000000;
 }
 
+.uk-block {
+	background: #FFFFFF;
+}
 
 
 .uk-navbar-brand{
 	color: #FFFFFF;
-	font-size: 25px;
+	font-size: 30px;
 }
 
 .uk-navbar-brand:hover{
 	color: #111111;
-	font-size: 25px;
 }
 
 
