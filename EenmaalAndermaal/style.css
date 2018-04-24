@@ -56,9 +56,12 @@ body {
 }
 
 
-
 .uk-navbar-brand:hover{
 	color: #111111;
+}
+
+.uk-grid-small-changes {
+	margin: 20px 0 0 20px
 }
 
 
