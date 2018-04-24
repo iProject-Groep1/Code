@@ -4,6 +4,9 @@ body {
 	background-color: #e5e7ec;
 }
 
+.align-center {
+	text-align: center;
+}
 
 .uk-navbar {
 	background: #5484A4;
@@ -26,6 +29,10 @@ body {
 	background: #FFFFFF;
 }
 
+.uk-button-default2 {
+	border: 1px solid #000000;
+	color: #000000;
+}
 
 .uk-navbar-brand{
 	color: #FFFFFF;
@@ -44,6 +51,11 @@ body {
 	color: #FFFFFF;
 }
 
+.uk-navbar-dropdown {
+	margin-top: 15px;
+}
+
+
 
 .uk-navbar-brand:hover{
 	color: #111111;
@@ -56,7 +68,7 @@ body {
 
 @media (min-width: 640px){
 	.uk-countdown-number, .uk-countdown-separator{
-		font-size: 3em;
+		font-size: 2em;
 	}
 }
 
