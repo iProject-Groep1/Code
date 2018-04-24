@@ -34,7 +34,7 @@ CONSTRAINT BestandKey PRIMARY KEY(filenaam)
 
 CREATE TABLE Rubriek (
 	Rubrieknummer			numeric(3)		NOT NULL,						-- aangepast van integer(3)
-	Rubrieknaam				varchar(24)		NOT NULL,						-- aangepast van char(24)
+	Rubrieknaam				varchar(50)		NOT NULL,						-- aangepast van char(24)
 	Rubriek					numeric(3)		NOT NULL,						-- aangepast van integer(3)
 	Volgnr					numeric(2)		NOT NULL,						-- aangepast van integer(2)
 		
