@@ -57,6 +57,20 @@ require_once('scripts/header.php');
 
 <br>
 
+<div class="uk-grid-small uk-child-width-auto uk-margin" uk-grid uk-countdown="date: 2018-05-01T09:59:13+00:00">
+    <div>
+        <div class="uk-countdown-number uk-countdown-days"></div>
+    </div>
+    <div>
+        <div class="uk-countdown-number uk-countdown-hours"></div>
+    </div>
+    <div>
+        <div class="uk-countdown-number uk-countdown-minutes"></div>
+    </div>
+    <div>
+        <div class="uk-countdown-number uk-countdown-seconds"></div>
+    </div>
+</div>
 
 
 
