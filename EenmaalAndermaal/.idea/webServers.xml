@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="f49ce7da-530e-4f3f-be30-53dabf335b42" name="localhost" url="http://localhost/php/EenmaalAndermaal">
+      <webServer id="0b5f8fbe-07d5-45e1-92be-2af6534f0a50" name="localhost" url="http://localhost/php/EenmaalAndermaal">
         <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\php\EenmaalAndermaal" accessType="MOUNT" />
       </webServer>
     </option>
