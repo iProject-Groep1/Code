@@ -1,5 +1,7 @@
-DROP TABLE Voorwerp
-SET DATEFORMAT dmy;
+drop table VoorwerpInRubriek
+drop table Rubriek
+drop table Bestand
+drop table Voorwerp
 
 CREATE TABLE Voorwerp (
 	Voorwerpnummer			numeric (10)	not null,
@@ -20,30 +22,25 @@ CREATE TABLE Voorwerp (
 	LooptijdeindeDag		date			not null,						-- datetime format is aangepast naar dd/mm/yyyy
 	LooptijdeindeTijdstip	time			not null,						-- time format ipv datetime
 	Veilinggesloten			bit				not null,						-- aangepast van een char 3.
-
-
 constraint voorwerpKey primary key (Voorwerpnummer)
 );
 
 CREATE TABLE Bestand (
 	Filenaam				varchar(50)		NOT NULL,						-- aangepast van char(13)
 	Voorwerp				numeric(10)		NOT NULL,
-
 CONSTRAINT BestandKey PRIMARY KEY(filenaam)
 );
 
 CREATE TABLE Rubriek (
-	Rubrieknummer			numeric(3)		NOT NULL,						-- aangepast van integer(3)
-	Rubrieknaam				varchar(24)		NOT NULL,						-- aangepast van char(24)
-	Rubriek					numeric(3)		NOT NULL,						-- aangepast van integer(3)
-	Volgnr					numeric(2)		NOT NULL,						-- aangepast van integer(2)
-		
+	Rubrieknummer			numeric(8)		NOT NULL,						-- aangepast van integer(3)
+	Rubrieknaam				varchar(50)		NOT NULL,						-- aangepast van char(24)
+	Parent					numeric(8)		,						-- aangepast van integer(3)
+	Volgnr					numeric(8)		NOT NULL,						-- aangepast van integer(2)	
 CONSTRAINT RubriekKey PRIMARY KEY(rubrieknummer)
 );
 
 CREATE TABLE VoorwerpInRubriek (
 Voorwerp					NUMERIC (10)	not null,
 Rubriek_op_laagste_Niveau	numeric (3)		not null						-- aangepast van int naar numeric 
-
 CONSTRAINT VoorwerpInRubriekKey PRIMARY KEY (Voorwerp,Rubriek_op_laagste_Niveau)
 );
