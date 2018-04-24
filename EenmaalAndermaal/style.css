@@ -18,8 +18,14 @@ body {
 	color: #000000;
 }
 
+.uk-navbar-nav1>li>a { /*nieuw toegevoegd 24-4-2018 12.00*/
+	width: 120px;
+	text-align: center;
+}
+
 .uk-navbar-nav2>li>a {
 	color: #000000;
+	padding: 0 52px; /* aangepast */
 }
 
 .uk-block {
