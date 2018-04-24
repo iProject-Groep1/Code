@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f13a4270-d34a-4f92-be88-dab07a6695db" name="localhost" url="http://localhost/php/EenmaalAndermaal">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\php\EenmaalAndermaal" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
