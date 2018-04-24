@@ -1,6 +1,7 @@
 --testpopulatie
+DROP TABLE Rubriek
 
-INSERT RUBRIEK VALUES	(1, 'Auto ''s, Boten en Caravans', -1, 1),				--hoofdrubrieken
+INSERT RUBRIEK VALUES	(1, 'Auto ''s, boten en caravans', -1, 1),				--hoofdrubrieken
 						(2, 'Kleren', -1, 2),
 						(3, 'Muziek', -1, 3),
 						(4, 'Computers', -1, 4),
