@@ -6,8 +6,7 @@ include('scripts/AuctionItem.php');
 
 <body>
 
-<div class="uk-grid uk-align-center">
-    <ul class=" uk-display-inline">
+<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin" >
 
         <?php
 
@@ -20,7 +19,6 @@ include('scripts/AuctionItem.php');
 
         ?>
 
-    </ul>
 </div>
 
 
