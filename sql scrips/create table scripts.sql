@@ -1,17 +1,18 @@
 
 
 drop table if exists VoorwerpInRubriek
-drop table if exists Rubriek
 drop table if exists Bestand
-drop table if exists Voorwerp
 drop table if exists Bod 
+drop table if exists Voorwerp
+drop table if exists Rubriek
+
 
 go 
 
 CREATE TABLE Voorwerp (
 	Voorwerpnummer			numeric (10)	not null,
-	Title					varchar (30)	not null,						-- aangepast van char 18 naar 
-	Beschrijving			varchar (255)	not null,						-- aangepast van char 22
+	Title					varchar (50)	not null,						-- aangepast van char 18 naar 
+	Beschrijving			varchar (512)	not null,						-- aangepast van char 22
 	Startprijs				numeric (8,2)	not null,						-- char 5 
 	Betalingswijzen			varchar (20)	not null,						-- char 9
 	Betalingsinstructie		varchar (128)	null	,						-- char 23
@@ -61,7 +62,7 @@ CREATE TABLE Bod (
 	BodDag				DATE				NOT NULL,				--veranderd van char(10)
 	BodTijdstip			TIME				NOT NULL,				--veranderd van char(8)
 
-CONSTRAINT BodKey PRIMARY KEY(Voorwerp)
+CONSTRAINT BodKey PRIMARY KEY(Voorwerp,Bodbedrag)
 );
 
 
@@ -86,22 +87,22 @@ ADD Constraint FK_Voorwerp_VoorwerpNummer FOREIGN KEY (voorwerp) REFERENCES Voor
 
 
 
+/*
 
-
-/*go
+go
 Alter table   Bestand 
-delete		Constraint FK_Bestant_VoorwerpnummerKey 
+drop		Constraint FK_Bestant_VoorwerpnummerKey 
 go
 
 Alter table  Rubriek
-delete		Constraint FK_Parent_Rubrieknummer 
+drop		Constraint FK_Parent_Rubrieknummer 
 go
 
 Alter table  VoorwerpInRubriek
-delete		Constraint FK_VoorwerpInRubriek ,
+drop		Constraint FK_VoorwerpInRubriek ,
 			Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer ;
 go
 
 Alter table   Bod
-delete		Constraint FK_Voorwerp_VoorwerpNummer FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer);
+drop		Constraint FK_Voorwerp_VoorwerpNummer ;
 go */
