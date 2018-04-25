@@ -19,7 +19,7 @@ function getCategoryOverview($databasehandler)
     $subCategoryLevel2Query = "SELECT TOP(10) SubrubriekNiveau2Nr = s2.Rubrieknummer, SubrubriekNiveau2Naam = s2.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent  WHERE s2.Parent =";
     $subCategoryLevel3CountQuery = "SELECT TOP(10) COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
     $subCategoryLevel3Query = "SELECT TOP(10) SubrubriekNiveau3Nr = s3.Rubrieknummer, SubrubriekNiveau3Naam = s3.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
-    $categoryOverview .= '<div uk-grid>';
+    $categoryOverview .= '<div class="uk-section">';
     foreach ($alphabet as $letter) {
         $categoryOverview .= '<div id="'.$letter.'">';
         $mainCategoriesData = $databasehandler->query($mainCategoryQuery.$letter."%'");
