@@ -5,6 +5,11 @@ body {
 	background-color: #e5e7ec;
 }
 
+h3 {
+	margin: 0 0 0 0;
+}
+
+
 .align-center {
 	text-align: center;
 }
@@ -18,7 +23,7 @@ body {
 }
 
 .uk-navbar2 {
-	background: #E4E4E4;
+	background: #FFFFFF;
 	color: #000000;
 }
 
@@ -52,6 +57,15 @@ body {
 	color: #FFFFFF;
 }
 
+.uk-color-white {
+	color: #FFFFFF;
+}
+
+.copyright-margin {
+	margin: 0 0 0 800px;
+}
+
+
 .uk-navbar-dropdown {
 	margin-top: 15px;
 }
@@ -70,6 +84,14 @@ body {
 	margin: 5px 5px;
 }
 
+.uk-nav-changes{
+	margin-top: -15px;
+}
+
+.uk-margin {
+	margin-bottom: 0px;
+}
+
 .uk-card-header {
 	padding: 20px 0px;
 }
@@ -78,11 +100,34 @@ body {
 	margin-top: 10px;
 }
 
+.uk-navbar-toggle{
+	color: #FFFFFF;
+}
+
 
 
 
 
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
+
+@media (min-width: 1090px){
+	.responsive-mobile {
+		display: none;
+	}
+	.responsive-laptop {
+		display: flex;
+	}
+}
+
+@media (max-width: 1090px){
+	.responsive-mobile {
+		display: flex;
+	}
+
+	.responsive-laptop {
+		display: none;
+	}
+}
 
 @media (min-width: 640px){
 	.uk-countdown-number, .uk-countdown-separator{
