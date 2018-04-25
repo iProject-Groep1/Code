@@ -1,5 +1,10 @@
 set dateformat dmy
 
+	delete from Bestand
+	delete from Bod
+	delete from Voorwerp
+	delete from VoorwerpInRubriek
+
 insert into Voorwerp
 values	(150, 'Dikke Bank','Mooie leren elegante bank',100.00, 'Ideal', 'geef mij je geld', 'elst', 'Nederland', 5, '26-04-2018', '12:00:00',50,'stuur maar op', 'Karel de Groot','' , '29-04-2018', '12:00:00', 0),
 		(151, 'Mooie Spiegel','goede spiegel ',50.00,'Creditcard','dag na veiling betalen', 'Nijmegen','Nederland',4,'24-04-2018','16:00:01',5,'Hij gaat met de bood mee','Michil de Haan','','29-04-2018','16:00:01',0 ),
