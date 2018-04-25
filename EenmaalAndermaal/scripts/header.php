@@ -12,7 +12,7 @@
 
 <body>
 
-
+<div class="uk-responsive-width uk-responsive-height">
 <nav class=" responsive-mobile uk-navbar uk-navbar1 uk-margin" uk-navbar="dropbar: true">
     <div class="uk-flex-center">
         <a href="#" class="uk-navbar-item uk-navbar1 uk-logo">
@@ -139,4 +139,4 @@
         </ul>
     </div>
 </nav>
-
+</div>
