@@ -1,9 +1,8 @@
 <?php
-
-function createItem($productName)
+function createItem($productName, $timeOfEnding)
 {
     $echo = '
-    <div class="uk-flex-center uk-card uk-card-default uk-display-inline-block">
+    <div class="uk-flex-center uk-card uk-card-default uk-display-inline-block uk-grid-changes">
     <div class="uk-card-header" >
         <div class="uk-grid-small uk-flex-middle" uk - grid >
             <div class="align-center">
@@ -16,25 +15,25 @@ function createItem($productName)
     </div >
     <div class="uk-card-footer" >
     <p class="uk-text-meta uk-margin-remove-top" >
-                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: 2018-05-01T13:04:01+00:00">
+                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: '. $timeOfEnding . ' ">
     <div>
-        <div class="uk-countdown-number uk-countdown-days"></div>
-        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Days</div>
+        <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
+        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Days</div>
     </div>
     <div class="uk-countdown-separator">:</div>
     <div>
-        <div class="uk-countdown-number uk-countdown-hours"></div>
-        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Hours</div>
+        <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>
+        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Hours</div>
     </div>
     <div class="uk-countdown-separator">:</div>
     <div>
-        <div class="uk-countdown-number uk-countdown-minutes"></div>
-        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutes</div>
+        <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>
+        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Minutes</div>
     </div>
     <div class="uk-countdown-separator">:</div>
     <div>
-        <div class="uk-countdown-number uk-countdown-seconds"></div>
-        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Seconds</div>
+        <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
+        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Seconds</div>
     </div>
 </div>
                 
@@ -42,6 +41,7 @@ function createItem($productName)
         <a href = "#" class="uk-button tm-button-default uk-button-default2 uk-icon" > BIED NU MEE </a >
 </div>
 </div>';
+
 
     echo $echo;
 }

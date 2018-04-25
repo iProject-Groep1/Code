@@ -11,17 +11,17 @@ function getCategoryOverview($databasehandler)
     //TODO: iets.php veranderen naar werkelijke pagina.
     $referenceSite = "iets.php?categoryID=";
     $mainCategoryQuery = "SELECT HoofdrubriekNr = h.Rubrieknummer,	HoofdrubriekNaam = h.Rubrieknaam FROM Rubriek h WHERE h.Parent = -1 AND h.Rubrieknaam LIKE '";
-    $subCategoryCountQuery = "SELECT COUNT(*) FROM	Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer = s.Parent WHERE s.Parent =";
-    $subCategoryQuery = "SELECT	SubrubriekNr=s.Rubrieknummer, SubrubriekNaam=s.Rubrieknaam FROM	Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer = s.Parent WHERE s.Parent = ";
-    $subCategoryLevel1CountQuery = "SELECT COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent WHERE s1.Parent =";
-    $subCategoryLevel1Query = "SELECT SubrubriekNiveau1Nr = s1.Rubrieknummer, SubrubriekNiveau1Naam = s1.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent WHERE s1.Parent =";
-    $subCategoryLevel2CountQuery = "SELECT COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent  WHERE s2.Parent =";
-    $subCategoryLevel2Query = "SELECT SubrubriekNiveau2Nr = s2.Rubrieknummer, SubrubriekNiveau2Naam = s2.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent  WHERE s2.Parent =";
-    $subCategoryLevel3CountQuery = "SELECT COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
-    $subCategoryLevel3Query = "SELECT SubrubriekNiveau3Nr = s3.Rubrieknummer, SubrubriekNiveau3Naam = s3.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
-    $categoryOverview .= '<div class="uk-grid-divider" uk-grid>';
+    $subCategoryCountQuery = "SELECT TOP(10) COUNT(*) FROM	Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer = s.Parent WHERE s.Parent =";
+    $subCategoryQuery = "SELECT TOP(10) SubrubriekNr=s.Rubrieknummer, SubrubriekNaam=s.Rubrieknaam FROM	Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer = s.Parent WHERE s.Parent = ";
+    $subCategoryLevel1CountQuery = "SELECT TOP(10) COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent WHERE s1.Parent =";
+    $subCategoryLevel1Query = "SELECT TOP(10) SubrubriekNiveau1Nr = s1.Rubrieknummer, SubrubriekNiveau1Naam = s1.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent WHERE s1.Parent =";
+    $subCategoryLevel2CountQuery = "SELECT TOP(10) COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent  WHERE s2.Parent =";
+    $subCategoryLevel2Query = "SELECT TOP(10) SubrubriekNiveau2Nr = s2.Rubrieknummer, SubrubriekNiveau2Naam = s2.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent  WHERE s2.Parent =";
+    $subCategoryLevel3CountQuery = "SELECT TOP(10) COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
+    $subCategoryLevel3Query = "SELECT TOP(10) SubrubriekNiveau3Nr = s3.Rubrieknummer, SubrubriekNiveau3Naam = s3.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
+    $categoryOverview .= '<div class="uk-section">';
     foreach ($alphabet as $letter) {
-        $categoryOverview .= '<div><h1>' . $letter . '</h1>';
+        $categoryOverview .= '<div id="'.$letter.'">';
         $mainCategoriesData = $databasehandler->query($mainCategoryQuery.$letter."%'");
         while ($mainCategoryRow = $mainCategoriesData->fetch()) {
             //TODO: UIkit element gebruiken ipv section met class
