@@ -19,24 +19,24 @@ function getCategoryOverview($databasehandler)
     $subCategoryLevel2Query = "SELECT TOP(10) SubrubriekNiveau2Nr = s2.Rubrieknummer, SubrubriekNiveau2Naam = s2.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent  WHERE s2.Parent =";
     $subCategoryLevel3CountQuery = "SELECT TOP(10) COUNT(*) FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
     $subCategoryLevel3Query = "SELECT TOP(10) SubrubriekNiveau3Nr = s3.Rubrieknummer, SubrubriekNiveau3Naam = s3.Rubrieknaam FROM Rubriek h LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent WHERE s3.Parent =";
-    $categoryOverview .= '<div class="uk-section">';
+    $categoryOverview .= '<div uk-grid>';
     foreach ($alphabet as $letter) {
         $categoryOverview .= '<div id="'.$letter.'">';
         $mainCategoriesData = $databasehandler->query($mainCategoryQuery.$letter."%'");
         while ($mainCategoryRow = $mainCategoriesData->fetch()) {
             //TODO: UIkit element gebruiken ipv section met class
-            $categoryOverview .= '<h2>' . $mainCategoryRow['HoofdrubriekNaam'] . '</h2>';
+            $categoryOverview .= '<h3>' . $mainCategoryRow['HoofdrubriekNaam'] . '</h3>';
             $previousCategoryNumber = $mainCategoryRow['HoofdrubriekNr'];
             if ($countSubCategory = $databasehandler->query($subCategoryCountQuery. $previousCategoryNumber)) {
                 if ($countSubCategory->fetchColumn() > 0) {
                     $subCategoryData = $databasehandler->query($subCategoryQuery . $previousCategoryNumber);
-                    $categoryOverview .= '<div class="uk-width-1-2@s"><ul class="uk-nav uk-nav-parent-icon" uk-nav>';
+                    $categoryOverview .= '<ul class="uk-list">';
                     while ($subCategoryRow = $subCategoryData->fetch()) {
-                        $categoryOverview .= '<li class="uk-parent"><a href="'.$referenceSite.' '.$subCategoryRow['SubrubriekNr'] . '">' . $subCategoryRow['SubrubriekNaam'] . '</a>';
+                        $categoryOverview .= '<li><a class="uk-button-default" href="'.$referenceSite.' '.$subCategoryRow['SubrubriekNr'] . '">' . $subCategoryRow['SubrubriekNaam'] . '</a>';
                         $previousCategoryNumber = $subCategoryRow['SubrubriekNr'];
                         if ($countSubCategoryLevel1 = $databasehandler->query($subCategoryLevel1CountQuery.$previousCategoryNumber)) {
                             if ($countSubCategoryLevel1->fetchColumn() > 0) {
-                                $categoryOverview .= '<ul class="uk-nav-sub">';
+                                $categoryOverview .= '<div uk-dropdown><ul class="uk-list uk-nav uk-dropdown-nav">';
                                 $subCategoryLevel1Data = $databasehandler->query($subCategoryLevel1Query. $previousCategoryNumber);
                                 while ($subCategoryLevel1Row = $subCategoryLevel1Data->fetch()) {
                                     $previousCategoryNumber = $subCategoryLevel1Row['SubrubriekNiveau1Nr'];
@@ -50,7 +50,7 @@ function getCategoryOverview($databasehandler)
                                                 $categoryOverview .= '<li><a href="'.$referenceSite.$subCategoryLevel2Row['SubrubriekNiveau2Nr'].'">'.$subCategoryLevel2Row['SubrubriekNiveau2Naam'].'</a>';
                                                 if($countSubCategoryLevel3 = $databasehandler->query($subCategoryLevel3CountQuery.$previousCategoryNumber)){
                                                     if($countSubCategoryLevel3->fetchColumn() > 0){
-                                                        $categoryOverview .= '<ul>';
+                                                        $categoryOverview .= '<ul class="uk-list">';
                                                         $subCategoryLevel3Data = $databasehandler->query($subCategoryLevel3Query.$previousCategoryNumber);
                                                         while($subCategoryLevel3Row = $subCategoryLevel3Data->fetch()){
                                                             $previousCategoryNumber = $subCategoryLevel3Row['SubrubriekNiveau3Nr'];
@@ -59,7 +59,7 @@ function getCategoryOverview($databasehandler)
                                                         $categoryOverview .= '</ul>';
                                                     }
                                                 }
-                                            $categoryOverview .= '</li>';
+                                            $categoryOverview .= '</div></li>';
                                             }
                                             $categoryOverview .= '</ul>';
                                         }
@@ -72,7 +72,7 @@ function getCategoryOverview($databasehandler)
                         }
                         $categoryOverview .='</li>';
                     }
-                    $categoryOverview .= '</ul></div>';
+                    $categoryOverview .= '</ul>';
                 }
             }
             //TODO: UIkit element gebruiken ipv section met class
