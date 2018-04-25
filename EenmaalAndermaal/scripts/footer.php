@@ -4,7 +4,7 @@
                 <li><a href="">Algemene Voorwaarden</a></li>
                 <li><a href="">Over Eenmaal Andermaal</a></li>
                 <li><a href="">FAQ</a></li>
-            <div class="uk-navbar-right copyright-margin">
+            <div class="uk-navbar-right copyright-margin ">
                 <p class="uk-color-white"> &copy; <?php echo date("Y"); ?> iConcepts. </p>
             </div>
         </ul>

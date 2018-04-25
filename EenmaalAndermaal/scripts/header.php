@@ -13,39 +13,34 @@
 <body>
 
 
+<nav class=" responsive-mobile uk-navbar uk-navbar1 uk-margin" uk-navbar="dropbar: true">
+    <div class="uk-flex-center">
+        <a href="#" class="uk-navbar-item uk-navbar1 uk-logo">
+            <img src="images/auction.png" class="uk-margin-small-right" width="32" height="28">EenmaalAndermaal</a>
+    </div>
+    <div>
+        <ul class="uk-navbar-nav">
+            <li>
+                <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
+                <div class="uk-navbar-dropdown uk-nav-changes">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">Menu</li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Rubrieken</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Algemene Voorwaarden</a></li>
+                        <li><a href="#">Over EenmaalAndermaal</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-<div class="uk-position-relative">
-
-        <nav class=" responsive-mobile uk-navbar uk-navbar1 uk-margin" uk-navbar="dropbar: true">
-            <div class="uk-flex-center">
-                <a href="#" class="uk-navbar-item uk-navbar1 uk-logo">
-                    <img src="images/auction.png" class="uk-margin-small-right" width="32" height="28">EenmaalAndermaal</a>
-            </div>
-            <div>
-                <ul class="uk-navbar-nav">
-                    <li>
-                        <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
-                        <div class="uk-navbar-dropdown uk-nav-changes">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                <li class="uk-nav-header">Menu</li>
-                                <li class="uk-nav-divider"></li>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Rubrieken</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li><a href="#">Algemene Voorwaarden</a></li>
-                                <li><a href="#">Over EenmaalAndermaal</a></li>
-                                <li><a href="#">FAQ</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-        </nav>
-    </nav>
-</div>
+</nav>
 
 
 <nav class=" responsive-laptop uk-navbar uk-navbar1" uk-navbar="">
@@ -98,9 +93,9 @@
 </nav>
 
 
-<nav class="uk-navbar-container uk-navbar uk-navbar2" uk-navbar="">
+<nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
-        <ul class="uk-navbar-nav uk-grid-large uk-navbar-nav2 uk-visible@m">
+        <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
             <li><a href="">Alle Rubrieken</a></li>
             <li><a href="">Huis en tuin</a></li>
             <li>
