@@ -10,8 +10,8 @@ include('scripts/AuctionItem.php');
 
         <?php
 
-        createItem("iPad Pro", "2018-04-25T09:00:00+00:00");
-        createItem("iPad Pro","2018-04-25T10:00:00+00:00");
+        createItem("iPad Pro", "2018-04-25T10:00:00+00:00");
+        createItem("iPad Pro","2018-04-25T11:00:00+00:00");
 //        createItem("iPad Pro", 3);
 //        createItem("iPad Pro", 4);
 //        createItem("iPad Pro", 5);
