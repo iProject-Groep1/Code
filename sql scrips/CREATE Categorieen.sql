@@ -1,4 +1,4 @@
---ALTER TABLE Categorieen NOCHECK CONSTRAINT FK_ParentCategorie 
+	--ALTER TABLE Categorieen NOCHECK CONSTRAINT FK_ParentCategorie 
 --GO
 
 insert into rubriek (Rubrieknummer,Rubrieknaam,Parent,Volgnr) VALUES (-1,'Root',NULL,1)
