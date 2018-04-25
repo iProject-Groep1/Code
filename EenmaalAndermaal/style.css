@@ -4,6 +4,9 @@ body {
 	background-color: #e5e7ec;
 }
 
+.align-center {
+	text-align: center;
+}
 
 .uk-navbar {
 	background: #5484A4;
@@ -26,14 +29,65 @@ body {
 	background: #FFFFFF;
 }
 
+.uk-button-default2 {
+	border: 1px solid #000000;
+	color: #000000;
+}
 
 .uk-navbar-brand{
 	color: #FFFFFF;
 	font-size: 30px;
 }
 
+.uk-grid-small {
+	flex-wrap: nowrap;
+}
+
+.uk-logo {
+	color: #FFFFFF;
+}
+
+.uk-button-default {
+	color: #FFFFFF;
+}
+
+.uk-navbar-dropdown {
+	margin-top: 15px;
+}
+
+
 .uk-navbar-brand:hover{
 	color: #111111;
 }
+
+.uk-grid-small-changes {
+	margin: 20px 0 0 20px
+}
+
+.uk-grid>* {
+	padding: 0 0 0 0;
+	margin: 5px 5px;
+}
+
+.uk-card-header {
+	padding: 20px 20px;
+}
+
+.auctions-reset-margin {
+	margin-top: 10px;
+}
+
+
+
+
+/* MEDIA QUERY'S -> RESPONSIVE DESIGN */
+
+@media (min-width: 640px){
+	.uk-countdown-number, .uk-countdown-separator{
+		font-size: 2em;
+	}
+}
+
+
 
 
