@@ -2,7 +2,7 @@
 function createItem($productName, $timeOfEnding)
 {
     $echo = '
-    <div class="uk-flex-center uk-card uk-card-default uk-display-inline-block">
+    <div class="uk-flex-center uk-card uk-card-default uk-display-inline-block uk-grid-changes">
     <div class="uk-card-header" >
         <div class="uk-grid-small uk-flex-middle" uk - grid >
             <div class="align-center">

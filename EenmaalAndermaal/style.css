@@ -1,5 +1,6 @@
 /* CSS Document */
 
+
 body {
 	background-color: #e5e7ec;
 }
@@ -64,7 +65,7 @@ body {
 	margin: 20px 0 0 20px
 }
 
-.uk-grid>* {
+.uk-grid-changes {
 	padding: 0 0 0 0;
 	margin: 5px 5px;
 }
