@@ -1,5 +1,6 @@
 /* CSS Document */
 
+
 body {
 	background-color: #e5e7ec;
 }
@@ -64,13 +65,13 @@ body {
 	margin: 20px 0 0 20px
 }
 
-.uk-grid>* {
+.uk-grid-changes {
 	padding: 0 0 0 0;
 	margin: 5px 5px;
 }
 
 .uk-card-header {
-	padding: 20px 20px;
+	padding: 20px 0px;
 }
 
 .auctions-reset-margin {
@@ -80,11 +81,16 @@ body {
 
 
 
+
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
 
 @media (min-width: 640px){
 	.uk-countdown-number, .uk-countdown-separator{
-		font-size: 2em;
+		font-size: 1.5em;
+	}
+
+	.uk-font-size-changes {
+		font-size: 0.8em;
 	}
 }
 
