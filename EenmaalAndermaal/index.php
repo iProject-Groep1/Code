@@ -12,8 +12,8 @@ include('scripts/AuctionItem.php');
 
         createItem("iPad Pro", "2018-04-25T10:00:00+00:00");
         createItem("iPad Pro","2018-04-25T11:00:00+00:00");
-//        createItem("iPad Pro", 3);
-//        createItem("iPad Pro", 4);
+        createItem("iPad Pro", "2018-04-25T12:00:00+00:00");
+        createItem("iPad Pro", "2018-04-25T13:00:00+00:00");
 //        createItem("iPad Pro", 5);
 //        createItem("iPad Pro", 6);
 
