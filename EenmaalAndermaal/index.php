@@ -7,20 +7,23 @@ include('scripts/HomepageFunctions.php');
 
 <body>
 
-<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin" >
+<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
-        <?php
+    <?php
 
-        createItem("iPad Pro", calcEndTime(0, 2, 0, 0));
-        createItem("iPad Pro",calcEndTime(0, 1, 0, 0));
-        createItem("iPad Pro", calcEndTime(0, 5, 0, 0));
-        createItem("iPad Pro", calcEndTime(0, 3, 0, 0));
-//        createItem("iPad Pro", 5);
-//        createItem("iPad Pro", 6);
+    for ($i = 1; $i < 9; $i++) {
+        createItem("iPad Pro", calcNewEndTime(0, $i, 0, 0));
+    }
+    //        createItem("iPad Pro", 5);
+    //        createItem("iPad Pro", 6);
 
-        ?>
+    ?>
 
 </div>
 
+<?php
+require_once('scripts/footer.php');
+?>
 
 </body>
+
