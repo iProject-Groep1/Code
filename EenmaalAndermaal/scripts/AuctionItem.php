@@ -10,12 +10,12 @@ function createItem($productName, $timeOfEnding)
             </div >
         </div >
     </div >
-    <div class="uk-card-body" >
-    <img src="images/ipad.jpg" class="uk-align-center" width="250" height="175">
+    <div class="uk-card-body uk-inline-clip uk-transition-toggle" tabindex="0" >
+        <img src="images/ipad.jpg" class="uk-align-center uk-transition-scale-up uk-transition-opaque" width="250" height="175">
     </div >
     <div class="uk-card-footer" >
     <p class="uk-text-meta uk-margin-remove-top" >
-                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: '. $timeOfEnding . ' ">
+                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
     <div>
         <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
         <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Days</div>

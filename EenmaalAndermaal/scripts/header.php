@@ -96,7 +96,7 @@
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
-            <li><a href="">Alle Rubrieken</a></li>
+            <li><a href="categories.php">Alle Rubrieken</a></li>
             <li><a href="">Huis en tuin</a></li>
             <li>
                 <a href="#" class="" aria-expanded="false">Auto's</a>
