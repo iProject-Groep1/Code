@@ -1,7 +1,12 @@
-drop table VoorwerpInRubriek
-drop table Rubriek
-drop table Bestand
-drop table Voorwerp
+
+
+drop table if exists VoorwerpInRubriek
+drop table if exists Rubriek
+drop table if exists Bestand
+drop table if exists Voorwerp
+drop table if exists Bod 
+
+go 
 
 CREATE TABLE Voorwerp (
 	Voorwerpnummer			numeric (10)	not null,
@@ -22,33 +27,81 @@ CREATE TABLE Voorwerp (
 	LooptijdeindeDag		date			not null,						-- datetime format is aangepast naar dd/mm/yyyy
 	LooptijdeindeTijdstip	time			not null,						-- time format ipv datetime
 	Veilinggesloten			bit				not null,						-- aangepast van een char 3.
-constraint voorwerpKey primary key (Voorwerpnummer)
+
+CONSTRAINT voorwerpKey PRIMARY KEY (Voorwerpnummer)
 );
 
 CREATE TABLE Bestand (
 	Filenaam				varchar(50)		NOT NULL,						-- aangepast van char(13)
 	Voorwerp				numeric(10)		NOT NULL,
+
 CONSTRAINT BestandKey PRIMARY KEY(filenaam)
 );
 
 CREATE TABLE Rubriek (
-<<<<<<< HEAD
-	Rubrieknummer			numeric(3)		NOT NULL,						-- aangepast van integer(3)
-	Rubrieknaam				varchar(50)		NOT NULL,						-- aangepast van char(24)
-	Rubriek					numeric(3)		NOT NULL,						-- aangepast van integer(3)
-	Volgnr					numeric(2)		NOT NULL,						-- aangepast van integer(2)
-		
-=======
 	Rubrieknummer			numeric(8)		NOT NULL,						-- aangepast van integer(3)
 	Rubrieknaam				varchar(50)		NOT NULL,						-- aangepast van char(24)
 	Parent					numeric(8)		,						-- aangepast van integer(3)
 	Volgnr					numeric(8)		NOT NULL,						-- aangepast van integer(2)	
->>>>>>> 991df45ca7cbaf505f79a213552c0d3ee35d103d
+
 CONSTRAINT RubriekKey PRIMARY KEY(rubrieknummer)
 );
 
 CREATE TABLE VoorwerpInRubriek (
 Voorwerp					NUMERIC (10)	not null,
-Rubriek_op_laagste_Niveau	numeric (3)		not null						-- aangepast van int naar numeric 
+Rubriek_op_laagste_Niveau	numeric (8)		not null						-- aangepast van int naar numeric 
+
 CONSTRAINT VoorwerpInRubriekKey PRIMARY KEY (Voorwerp,Rubriek_op_laagste_Niveau)
 );
+
+CREATE TABLE Bod (
+	Voorwerp			NUMERIC(10)			NOT NULL, 
+	Bodbedrag			NUMERIC(8, 2)		NOT NULL,				--veranderd van char(5)
+	Gebruiker			VARCHAR(20)			NOT NULL,				--overal veranderd van char(10)
+	BodDag				DATE				NOT NULL,				--veranderd van char(10)
+	BodTijdstip			TIME				NOT NULL,				--veranderd van char(8)
+
+CONSTRAINT BodKey PRIMARY KEY(Voorwerp)
+);
+
+
+
+go
+Alter table Bestand 
+ADD Constraint FK_Bestant_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer);
+
+go
+Alter table Rubriek
+ADD Constraint FK_Parent_Rubrieknummer FOREIGN KEY (parent) REFERENCES Rubriek(rubrieknummer);
+
+go
+Alter table VoorwerpInRubriek
+ADD Constraint FK_VoorwerpInRubriek FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer),
+	Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer FOREIGN KEY (Rubriek_op_laagste_Niveau) REFERENCES Rubriek (Rubrieknummer);
+go
+Alter table Bod
+ADD Constraint FK_Voorwerp_VoorwerpNummer FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer);
+
+
+
+
+
+
+
+/*go
+Alter table   Bestand 
+delete		Constraint FK_Bestant_VoorwerpnummerKey 
+go
+
+Alter table  Rubriek
+delete		Constraint FK_Parent_Rubrieknummer 
+go
+
+Alter table  VoorwerpInRubriek
+delete		Constraint FK_VoorwerpInRubriek ,
+			Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer ;
+go
+
+Alter table   Bod
+delete		Constraint FK_Voorwerp_VoorwerpNummer FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer);
+go */
