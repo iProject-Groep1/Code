@@ -1,6 +1,5 @@
 <?php
-
-function createItem($productName)
+function createItem($productName, $timeOfEnding)
 {
     $echo = '
     <div class="uk-flex-center uk-card uk-card-default uk-display-inline-block">
@@ -16,7 +15,7 @@ function createItem($productName)
     </div >
     <div class="uk-card-footer" >
     <p class="uk-text-meta uk-margin-remove-top" >
-                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: 2018-05-01T13:04:01+00:00">
+                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: '. $timeOfEnding . ' ">
     <div>
         <div class="uk-countdown-number uk-countdown-days"></div>
         <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Days</div>
@@ -42,6 +41,7 @@ function createItem($productName)
         <a href = "#" class="uk-button tm-button-default uk-button-default2 uk-icon" > BIED NU MEE </a >
 </div>
 </div>';
+
 
     echo $echo;
 }
