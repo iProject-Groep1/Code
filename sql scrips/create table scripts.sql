@@ -90,8 +90,25 @@ CREATE TABLE Bestand (
 	Voorwerp				int					NOT NULL,
 
 CONSTRAINT BestandKey PRIMARY KEY(filenaam),
-Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
+Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer),
+CONSTRAINT CHK_Maximaal_4_Bestanden_Per_Voorwerp CHECK (fnCHK_Maximaal_4_Bestanden_Per_Voorwerp(Voorwerp) = 1)
 )
+
+GO
+CREATE FUNCTION fnCHK_Maximaal_4_Bestanden_Per_Voorwerp(@Voorwerp int)
+RETURNS bit 
+AS
+BEGIN
+IF ((SELECT count(*) FROM Bestand WHERE Voorwerp = @Voorwerp ) <= 4) 
+	RETURN 1
+ELSE 
+	RETURN 0
+
+RETURN 0
+END
+GO
+
+
 
 
 
