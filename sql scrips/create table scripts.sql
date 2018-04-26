@@ -50,7 +50,7 @@ CREATE TABLE Voorwerp (
 	Beschrijving			varchar (2000)									not null,						-- Dit doen we om men voldoende ruimte te geven om een duidelijke omschrijving te kunnen geven 
 	Startprijs				numeric (9,2)	default 1.00					not null,						-- wij willen geen bedragen over de 10.000.000,00
 	Betalingswijze			varchar (25)	default 'Bank/Giro'				not null,						
-	Betalingsinstructie		varchar (128)									null	,						-- char 23
+	Betalingsinstructie		varchar (128)									null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
 	Plaatsnaam				varchar (30)									not null,						-- char 12
 	Land					varchar (50)	default 'Nederland'				not null,						-- char 9
 	Looptijd /*in dagen */	TINYINT 		default 1						not null,
@@ -66,7 +66,9 @@ CONSTRAINT voorwerpKey PRIMARY KEY (Voorwerpnummer),
 Constraint CK_Titel Check ( (len(rtrim(ltrim(titel)))) >1),
 Constraint CK_startprijs Check (startprijs >= 1), -- app B page 6 
 Constraint FK_looptijd  Foreign Key (looptijd) References Looptijd(dagen),
-Constraint FK_Betalingswijzen Foreign Key (Betalingswijze) References Betaalwijze (betaalwijze)
+Constraint FK_Betalingswijze Foreign Key (Betalingswijze) References Betaalwijze (betaalwijze),
+Constraint CK_Plaatsnaam Check ( (len(rtrim(ltrim(Plaatsnaam)))) >1),
+Constraint CK_Beschrijving Check ( (len(rtrim(ltrim(Plaatsnaam)))) >1) 
 );
 
 
@@ -77,9 +79,26 @@ Rubriek_op_laagste_Niveau	numeric (8)		not null						-- aangepast van int naar n
 
 CONSTRAINT VoorwerpInRubriekKey PRIMARY KEY (Voorwerp,Rubriek_op_laagste_Niveau),
 Constraint FK_VoorwerpInRubriek FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer),
-Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer FOREIGN KEY (Rubriek_op_laagste_Niveau) REFERENCES Rubriek (Rubrieknummer)
+Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer FOREIGN KEY (Rubriek_op_laagste_Niveau) REFERENCES Rubriek (Rubrieknummer),
+CONSTRAINT CHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp CHECK (fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp(Voorwerp) = 1)
 );
 go
+
+GO
+CREATE FUNCTION fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp(@Voorwerp int)
+RETURNS bit 
+AS
+BEGIN
+IF ((SELECT count(*) FROM VoorwerpInRubriek WHERE Voorwerp = @Voorwerp ) <= 2) 
+	RETURN 1
+ELSE 
+	RETURN 0
+
+RETURN 0
+END
+GO
+
+
 
 
 CREATE TABLE Bod (
