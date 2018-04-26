@@ -1,3 +1,5 @@
+select Current_timestamp
+
 
 go
 drop table if exists VoorwerpInRubriek
@@ -18,6 +20,14 @@ Create table Betaalwijze	 (
 betaalwijze varchar (25) not null,
 
 constraint PK_Betaalwijze  Primary key (betaalwijze)
+)
+go
+
+
+create table Looptijd(
+dagen tinyint not null,
+
+Constraint PK_dagen Primary Key (dagen)
 )
 go
 
@@ -55,7 +65,7 @@ CREATE TABLE Voorwerp (
 CONSTRAINT voorwerpKey PRIMARY KEY (Voorwerpnummer),
 Constraint CK_Titel Check ( (len(rtrim(ltrim(titel)))) >1),
 Constraint CK_startprijs Check (startprijs >= 1), -- app B page 6 
-Constraint CK_looptijd  check (Looptijd in (1,3,5,7,10)),
+Constraint FK_looptijd  Foreign Key (looptijd) References Looptijd(dagen),
 Constraint FK_Betalingswijzen Foreign Key (Betalingswijze) References Betaalwijze (betaalwijze)
 );
 
@@ -76,8 +86,8 @@ CREATE TABLE Bod (
 	Voorwerp			int					NOT NULL, 
 	Bodbedrag			NUMERIC(8, 2)		NOT NULL,				--veranderd van char(5)
 	Gebruiker			VARCHAR(20)			NOT NULL,				--overal veranderd van char(10)
-	BodDag				DATE				NOT NULL,				--veranderd van char(10)
-	BodTijdstip			TIME				NOT NULL,				--veranderd van char(8)
+	Bodtijd				DATEtime	default Current_timestamp		NOT NULL,				--veranderd van char(10)
+
 
 CONSTRAINT BodKey PRIMARY KEY(Voorwerp,Bodbedrag),
 Constraint FK_Voorwerp_VoorwerpNummer FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer)
@@ -92,8 +102,6 @@ CREATE TABLE Bestand (
 CONSTRAINT BestandKey PRIMARY KEY(filenaam),
 Constraint FK_Bestant_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
 )
-
-
 
 
 
