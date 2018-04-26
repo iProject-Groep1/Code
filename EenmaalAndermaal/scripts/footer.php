@@ -1,4 +1,4 @@
-<div class="uk-responsive-height uk-responsive-width responsive-laptop">
+<div class="responsive-laptop uk-navbar uk-navbar1" uk-navbar=""">
     <nav class=" uk-navbar uk-navbar1 " uk-navbar="">
         <div class="uk-navbar-blue uk-navbar-center">
             <ul class="uk-navbar-nav uk-navbar-nav1 uk-visible@m">
