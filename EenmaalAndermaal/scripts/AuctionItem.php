@@ -1,7 +1,7 @@
 <?php
 include('database-connect.php');
 
-function createItem($dbh, $productName, $timeOfEnding)
+function createItemScript($productName, $timeOfEnding, $image)
 {
 
     $echo = '
@@ -14,7 +14,7 @@ function createItem($dbh, $productName, $timeOfEnding)
         </div >
     </div >
     <div class="uk-card-body uk-inline-clip uk-transition-toggle" tabindex="0" >
-        <img src="images/ipad.jpg" class="uk-align-center uk-transition-scale-up uk-transition-opaque" width="250" height="175">
+        <img src="images/productImages/'. $image .'" class="uk-align-center uk-transition-scale-up uk-transition-opaque" width="250" height="175">
     </div >
     <div class="uk-card-footer" >
     <p class="uk-text-meta uk-margin-remove-top" >

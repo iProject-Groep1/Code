@@ -11,11 +11,34 @@ include('scripts/database-connect.php')
 <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
     <?php
+    $AllItems = checkNumbers($dbh);
+    print_r($AllItems);
 
-    createItem($dbh, "iPad Pro", makeTimeSyntax($dbh, calcAuctionTime($dbh, 6)));
-    createItem($dbh, "iPad Pro", makeTimeSyntax($dbh, calcAuctionTime($dbh, 6)));
-    createItem($dbh, "iPad Pro", makeTimeSyntax($dbh, calcAuctionTime($dbh, 6)));
-    createItem($dbh, "iPad Pro", makeTimeSyntax($dbh, calcAuctionTime($dbh, 6)));
+    function checkNumbers($dbh)
+    {
+        $results = "";
+        try {
+            $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
+
+            while ($row = $stmt->fetch()) {
+                createItem($dbh, $row['Voorwerpnummer']);
+                echo "<br>";
+
+            }
+
+            return $results;
+
+        } catch (PDOException $e) {
+            echo "Fout" . $e->getMessage();
+        }
+    }
+
+
+    //    foreach($AllItems as $item) {
+    //        echo $item;
+    //        createItem($dbh, $item);
+    //        echo "<br>";
+    //    }
 
     ?>
 
