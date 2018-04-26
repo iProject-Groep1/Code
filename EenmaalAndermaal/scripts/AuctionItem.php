@@ -1,6 +1,9 @@
 <?php
-function createItem($productName, $timeOfEnding)
+include('database-connect.php');
+
+function createItem($dbh, $productName, $timeOfEnding)
 {
+
     $echo = '
     <div class="uk-flex-center uk-card uk-card-default uk-display-inline-block uk-grid-changes">
     <div class="uk-card-header" >
