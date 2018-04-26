@@ -90,7 +90,7 @@ CREATE TABLE Bestand (
 	Voorwerp				int					NOT NULL,
 
 CONSTRAINT BestandKey PRIMARY KEY(filenaam),
-Constraint FK_Bestant_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
+Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
 )
 
 
