@@ -53,7 +53,7 @@ CREATE TABLE Voorwerp (
 	Betalingsinstructie		varchar (128)									null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
 	Plaatsnaam				varchar (30)									not null,						-- char 12
 	Land					varchar (50)	default 'Nederland'				not null,						-- char 9
-	Looptijd /*in dagen */	TINYINT 		default 1						not null,
+	Looptijd /*in dagen */	TINYINT 		default 7						not null,
 	looptijdbeginmoment		datetime		default Current_timestamp		not null,						-- dit zorgt er voor dat de tijd start wanneer het record is ge insert
 	LooptijdEindmoment		as  dateadd (day,looptijd,looptijdbeginmoment)			,
 	Verzendkosten			numeric (6,2)									null	,						-- char 5
