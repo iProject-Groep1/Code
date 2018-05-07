@@ -47,6 +47,32 @@ function calcAuctionTime($dbh, $id)
 
 }
 
+function checkNumbers($dbh)
+{
+    $results = "";
+    try {
+        $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL AND v.Veilinggesloten = 0"); /* prepared statement */
+
+        while ($row = $stmt->fetch()) {
+            createItem($dbh, $row['Voorwerpnummer']);
+            echo "<br>";
+
+        }
+
+        return $results;
+
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
+}
+
+
+//    foreach($AllItems as $item) {
+//        echo $item;
+//        createItem($dbh, $item);
+//        echo "<br>";
+//    }
+
 
 function getAuctionTitel($dbh, $id)
 {
@@ -97,7 +123,6 @@ function getAuctionFilename($dbh, $id)
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
-
 }
 
 

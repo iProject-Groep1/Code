@@ -6,14 +6,14 @@ include('scripts/database-connect.php')
 ?>
 
 
-
 <body>
 
-<div class="uk-grid  uk-flex uk-flex-center auctions-reset-margin">
+<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
     <?php
     $AllItems = checkNumbers($dbh);
     print_r($AllItems);
+<<<<<<< HEAD
 
     function checkNumbers($dbh)
     {
@@ -37,6 +37,8 @@ include('scripts/database-connect.php')
         }
     }
 
+=======
+>>>>>>> f3ae3d85f5f4316730a4106cc04f37df85e1b70e
     ?>
 
 </div>
