@@ -50,7 +50,7 @@
     <div class="uk-navbar-right uk-navbar-blue">
         <ul class="uk-navbar-nav uk-navbar-nav1 uk-visible@m">
             <li><a href="">Home</a></li>
-            <li><a href="categories.php">Rubrieken</a></li>
+            <li><a href="categoryOverview.php">Rubrieken</a></li>
             <li><a href="">Login</a></li>
             <li><a href="">Contact</a></li>
         </ul>
@@ -64,15 +64,15 @@
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
-            <li><a href="categories.php">Alle Rubrieken</a></li>
-            <li><a href="">Verzamelen</a></li>
-            <li><a href="">Auto's, motoren en boten</a></li>
-            <li><a href="">Computers</a></li>
-            <li><a href="">Huis en tuin</a></li>
-            <li><a href="">Baby</a></li>
-            <li><a href="">Consumentenelektronica</a></li>
-            <li><a href="">Gezondheid en verzorging</a></li>
-            <li><a href="">Kunst, antiek en design</a></li>
+            <li><a href="categoryOverview.php">Alle Rubrieken</a></li>
+            <li><a href="category.php?categoryID=1">Verzamelen</a></li>
+            <li><a href="category.php?categoryID=9800">Auto's, motoren en boten</a></li>
+            <li><a href="category.php?categoryID=160">Computers</a></li>
+            <li><a href="category.php?categoryID=11700">Huis en tuin</a></li>
+            <li><a href="category.php?categoryID=12081">Baby</a></li>
+            <li><a href="category.php?categoryID=293">Consumentenelektronica</a></li>
+            <li><a href="category.php?categoryID=12155">Gezondheid en verzorging</a></li>
+            <li><a href="category.php?categoryID=353">Kunst, antiek en design</a></li>
         </ul>
     </div>
 </nav>
