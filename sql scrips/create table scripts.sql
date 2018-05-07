@@ -1,5 +1,3 @@
-select Current_timestamp
-
 
 go
 drop table if exists VoorwerpInRubriek
@@ -13,6 +11,8 @@ go
 drop table if exists Rubriek
 go
 drop table if exists Betaalwijze
+go 
+drop table if exists Looptijd
 
 
 go 
@@ -45,7 +45,7 @@ Constraint FK_Parent_Rubrieknummer FOREIGN KEY (parent) REFERENCES Rubriek(rubri
 
 go
 CREATE TABLE Voorwerp (
-	Voorwerpnummer			int identity									not null,						-- een voorwerp word automatisch een nummer toegewezen door de database app C
+	Voorwerpnummer			int												not null,						-- een voorwerp word automatisch een nummer toegewezen door de database app C
 	Titel					varchar (50)									not null,						-- Dit doen we om het overzicht op de site te houden 
 	Beschrijving			varchar (2000)									not null,						-- Dit doen we om men voldoende ruimte te geven om een duidelijke omschrijving te kunnen geven 
 	Startprijs				numeric (9,2)	default 1.00					not null,						-- wij willen geen bedragen over de 10.000.000,00
@@ -119,25 +119,8 @@ CREATE TABLE Bestand (
 	Voorwerp				int					NOT NULL,
 
 CONSTRAINT BestandKey PRIMARY KEY(filenaam),
-Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer),
-CONSTRAINT CHK_Maximaal_4_Bestanden_Per_Voorwerp CHECK (fnCHK_Maximaal_4_Bestanden_Per_Voorwerp(Voorwerp) = 1)
+Constraint FK_Bestant_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
 )
-
-GO
-CREATE FUNCTION fnCHK_Maximaal_4_Bestanden_Per_Voorwerp(@Voorwerp int)
-RETURNS bit 
-AS
-BEGIN
-IF ((SELECT count(*) FROM Bestand WHERE Voorwerp = @Voorwerp ) <= 4) 
-	RETURN 1
-ELSE 
-	RETURN 0
-
-RETURN 0
-END
-GO
-
-
 
 
 
