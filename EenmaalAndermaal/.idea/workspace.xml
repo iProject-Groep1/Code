@@ -34,6 +34,10 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/header.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="119">
+              <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+=======
             <state relative-caret-position="85">
               <caret line="5" column="72" lean-forward="false" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
 >>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
@@ -75,6 +79,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-819">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> b2695099236aba4cee860921eca1ecaadfcab6b2
               <folding />
             </state>
           </provider>
@@ -202,12 +207,19 @@
       <workItem from="1525676564664" duration="729000" />
 =======
       <updated>1525622063278</updated>
+<<<<<<< HEAD
+      <workItem from="1525622064420" duration="366000" />
+=======
       <workItem from="1525622064420" duration="32000" />
 >>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
+>>>>>>> b2695099236aba4cee860921eca1ecaadfcab6b2
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="366000" />
+=======
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="1870000" />
   </component>
@@ -218,6 +230,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
 =======
     <option name="totallyTimeSpent" value="32000" />
+>>>>>>> b2695099236aba4cee860921eca1ecaadfcab6b2
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="92" width="1046" height="1047" extended-state="0" />
@@ -314,8 +327,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="72" lean-forward="false" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
+        <state relative-caret-position="119">
+          <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
           <folding />
         </state>
       </provider>
