@@ -1,31 +1,6 @@
 <?php
 include('database-connect.php');
 
-//                                            <p class="uk-text-meta uk-margin-remove-top" >
-//                                                 <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
-//                                                      <div>
-//                                                          <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
-//                                                              <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Days</div>
-//                                                      </div>
-//                                                      <div class="uk-countdown-separator">:</div>
-//                                                           <div>
-//                                                              <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>
-//                                                              <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Hours</div>
-//                                                           </div>
-//                                                           <div class="uk-countdown-separator">:</div>
-//                                                               <div>
-//                                                                   <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>
-//                                                                   <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Minutes</div>
-//                                                               </div>
-//                                                               <div class="uk-countdown-separator">:</div>
-//                                                                      <div>
-//                                                                <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
-//                                                                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Seconds</div>
-//                                                      </div>
-//                                                 </div>
-//
-//                                            </p >
-
 
 function createItemScript($productName, $timeOfEnding, $image)
 {
@@ -36,8 +11,27 @@ function createItemScript($productName, $timeOfEnding, $image)
         <div class="uk-inline">
             <img src="images/productImages/'. $image .'" style="width:350px;height:250px;" alt="Image">
             <div class="uk-overlay uk-overlay-primary uk-position-bottom">
-                <h3>' . $productName . '</h3>
-                                            <p>Lorem ipsum dolor sit amet.</p>
+                <h3 class="uk-text-center">' . $productName . '</h3>
+                <p class="uk-text-meta uk-margin-remove-top uk-flex-right" >
+                                                 <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
+                                                      <div>
+                                                          <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
+                                                      </div>
+                                                      <div class="uk-countdown-separator">:</div>
+                                                           <div>
+                                                              <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>
+                                                           </div>
+                                                           <div class="uk-countdown-separator">:</div>
+                                                               <div>
+                                                                   <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>
+                                                               </div>
+                                                               <div class="uk-countdown-separator">:</div>
+                                                                      <div>
+                                                                <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
+                                                      </div>
+                                                 </div>
+
+                                            </p >
             </div>
         </div>
 

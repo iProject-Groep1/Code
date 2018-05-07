@@ -13,6 +13,29 @@ include('scripts/database-connect.php')
     <?php
     $AllItems = checkNumbers($dbh);
     print_r($AllItems);
+
+    function checkNumbers($dbh)
+    {
+        $results = "";
+        echo '
+                <div class="uk-child-width-1-4@m uk-grid" uk-grid>';
+
+        try {
+            $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
+
+            while ($row = $stmt->fetch()) {
+                createItem($dbh, $row['Voorwerpnummer']);
+                echo "<br>";
+
+            }
+            echo '</div>';
+            return $results;
+
+        } catch (PDOException $e) {
+            echo "Fout" . $e->getMessage();
+        }
+    }
+
     ?>
 
 </div>
