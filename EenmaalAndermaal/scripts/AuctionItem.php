@@ -2,7 +2,7 @@
 include('database-connect.php');
 
 
-function createItemScript($productName, $timeOfEnding, $image)
+function createItemScript($productName, $timeOfEnding, $image, $hoogstebod)
 {
 
     $echo = '
@@ -12,7 +12,8 @@ function createItemScript($productName, $timeOfEnding, $image)
             <img src="images/productImages/'. $image .'" style="width:350px;height:250px;" alt="Image">
             <div class="uk-overlay uk-overlay-primary uk-position-bottom">
                 <h3 class="uk-text-center">' . $productName . '</h3>
-                <p class="uk-text-meta uk-margin-remove-top uk-flex-right" >
+                <div class="uk-text-left uk-align-left uk-display-inline"> € '. $hoogstebod . '</div>
+                <div class=" uk-align-right uk-display-inline-block">
                                                  <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                                                       <div>
                                                           <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
@@ -31,7 +32,7 @@ function createItemScript($productName, $timeOfEnding, $image)
                                                       </div>
                                                  </div>
 
-                                            </p >
+                                            </div>
             </div>
         </div>
 

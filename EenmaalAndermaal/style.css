@@ -116,16 +116,14 @@ h3 {
 	color: #FFFFFF;
 }
 
-.uk-button {
-	text-transform: none;
-	/** TODO: important wegwerken **/
-	color: black !important;
+.uk-timer-changes {
+padding-left: 200px;
 }
 
-.uk-parent a {
-	/** TODO: important wegwerken **/
-	color: black !important;
+.uk-countdown-number, .uk-countdown-separator {
+	line-height: 35px;
 }
+
 
 
 
