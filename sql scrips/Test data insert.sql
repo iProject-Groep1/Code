@@ -82,8 +82,8 @@ values	('LerenBank.jpg',1),
 		('kussen.jpg',1),
 		('350194099.jpg',2),
 		('rubberboot.jpg',3),
-		('bed',4),
-		('laptop',6),
+		('bed.jpg',4),
+		('laptop.jpg',6),
 		('15138796091767.jpg', 7), 
 		('9200000052699679.jpg', 8), 
 		('2385908236.jpg', 8), 
@@ -109,22 +109,21 @@ values	('LerenBank.jpg',1),
 		('img_0003_medium__1.jpg', 13);
 
 
-INSERT INTO Bod VALUES
-	(1, 255.00, 'ZwibberZwabber', '25-4-2018 21:57:13'), 
-	(1, 280.00, 'IkBiedMeerDanJij', '26-4-2018 15:26:21'), 
-	(1, 300.50, 'RandomUser123', '27-4-2018 09:32:26'), 
-	(2, 20.70, 'IkWilKoffieNu', '22-4-2018 16:21:13'), 
-	(2, 80.00, 'Slash2point0', '26-4-2018 09:13:22'), 
-	(2, 84.50, 'ArnoldDeVeiler', '28-4-2018 14:20:18'), 
-	(3, 90.00, 'Slash2point0', '30-4-2018 17:54:09'), 
-	(3, 95.00, 'ArnoldDeVeiler', '30-4-2018 18:43:11'), 
-	(3, 100.00, 'Slash2point0', '1-5-2018 10:18:14'), 
-	(3, 110.00, 'ThisIsMineNow', '1-5-2018 23:30:53'), 
-	(4, 50.00, 'xxUltraGamerxx', '23-4-2018 10:02:55'),
-	(5, 310.00, 'denneh5', '25-04-2018 13:01:42'),
-	(5, 333.00, 'woetroe',  '26-04-2018 06:33:21'), 
-	(7, 51.00, 'valliebeer', '01-05-2018 12:42:13'),
-	(8, 26.00, 'ibuystuff23', '05-05-2018 14:32:21'),
-	(9, 360.00, 'ibuystuff23', '21-05-2018 16:48:21'),
-	(9, 380.00, 'ibuymorestuff23', '22-05-2018 22:01:44'),
-	(10, 4000.00, 'ikhouvanauto''s2', '06-05-2018 23:59:33');
+INSERT INTO Bod VALUES	(1, 255.00, 'ZwibberZwabber',	'25-4-2018 21:57:13.0')
+INSERT INTO Bod VALUES	(1, 280.00, 'IkBiedMeerDanJij', '26-4-2018 15:26:21.0') 
+INSERT INTO Bod VALUES	(1, 300.50, 'RandomUser123',	'27-4-2018 09:32:26.0') 
+INSERT INTO Bod VALUES	(2, 20.70, 'IkWilKoffieNu',		'22-4-2018 16:21:13.0') 
+INSERT INTO Bod VALUES	(2, 80.00, 'Slash2point0',		'26-4-2018 09:13:22.0') 
+INSERT INTO Bod VALUES	(2, 84.50, 'ArnoldDeVeiler',	'28-4-2018 14:20:18.0') 
+INSERT INTO Bod VALUES	(3, 90.00, 'Slash2point0',		'30-4-2018 17:54:09.0') 
+INSERT INTO Bod VALUES	(3, 95.00, 'ArnoldDeVeiler',	'30-4-2018 18:43:11.0') 
+INSERT INTO Bod VALUES	(3, 100.00, 'Slash2point0',		'1-5-2018 10:18:14.0') 
+INSERT INTO Bod VALUES	(3, 110.00, 'ThisIsMineNow',	'1-5-2018 23:30:53.0') 
+INSERT INTO Bod VALUES	(4, 50.00, 'xxUltraGamerxx',	'23-4-2018 10:02:55.0')
+INSERT INTO Bod VALUES	(6, 310.00, 'denneh5',			'25-04-2018 13:01:42.0')
+INSERT INTO Bod VALUES	(6, 333.00, 'woetroe',			'26-04-2018 06:33:21.0') 
+INSERT INTO Bod VALUES	(7, 51.00, 'valliebeer',		'01-05-2018 12:42:13.0')
+INSERT INTO Bod VALUES	(8, 26.00, 'ibuystuff23',		'05-05-2018 14:32:21.0')
+INSERT INTO Bod VALUES	(9, 360.00, 'ibuystuff23',		'21-05-2018 16:48:21.0')
+INSERT INTO Bod VALUES	(9, 380.00, 'ibuymorestuff23',	'22-05-2018 22:01:44.0')
+INSERT INTO Bod VALUES	(10, 4000.00, 'ikhouvanautos2', '06-05-2018 23:59:33.0')
