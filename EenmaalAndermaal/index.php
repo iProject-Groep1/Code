@@ -8,7 +8,7 @@ include('scripts/database-connect.php')
 
 <body>
 
-<div class="uk-grid  uk-flex uk-flex-center auctions-reset-margin">
+<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
     <?php
     $AllItems = checkNumbers($dbh);

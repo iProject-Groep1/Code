@@ -1,16 +1,49 @@
 <?php
 include('database-connect.php');
 
+//                                            <p class="uk-text-meta uk-margin-remove-top" >
+//                                                 <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
+//                                                      <div>
+//                                                          <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
+//                                                              <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Days</div>
+//                                                      </div>
+//                                                      <div class="uk-countdown-separator">:</div>
+//                                                           <div>
+//                                                              <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>
+//                                                              <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Hours</div>
+//                                                           </div>
+//                                                           <div class="uk-countdown-separator">:</div>
+//                                                               <div>
+//                                                                   <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>
+//                                                                   <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Minutes</div>
+//                                                               </div>
+//                                                               <div class="uk-countdown-separator">:</div>
+//                                                                      <div>
+//                                                                <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
+//                                                                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Seconds</div>
+//                                                      </div>
+//                                                 </div>
+//
+//                                            </p >
+
+
 function createItemScript($productName, $timeOfEnding, $image)
 {
 
     $echo = '
-    <div class="uk-grid">
-    <div class="uk-width-medium-1-4">
-    <img class="uk-thumbnail uk-thumbnail-medium" src="images/productImages/' . $image . '" alt="" style="width:300px;height:300px;">
-    </div>
-    </div> ';
+    <div>
 
+        <div class="uk-inline">
+            <img src="images/productImages/'. $image .'" style="width:350px;height:250px;" alt="Image">
+            <div class="uk-overlay uk-overlay-primary uk-position-bottom">
+                <h3>' . $productName . '</h3>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+
+</div>
+
+                            ';
 
     echo $echo;
 }
@@ -32,30 +65,30 @@ function createItemScript($productName, $timeOfEnding, $image)
 <!--//        <img src="images/productImages/'. $image .'" class="uk-align-center uk-transition-scale-up uk-transition-opaque" width="250" height="175">-->
 <!--//    </div >-->
 <!--//    <div class="uk-card-footer" >-->
-<!--//    <p class="uk-text-meta uk-margin-remove-top" >-->
-<!--//                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">-->
-<!--//    <div>-->
-<!--//        <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>-->
-<!--//        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Days</div>-->
-<!--//    </div>-->
-<!--//    <div class="uk-countdown-separator">:</div>-->
-<!--//    <div>-->
-<!--//        <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>-->
-<!--//        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Hours</div>-->
-<!--//    </div>-->
-<!--//    <div class="uk-countdown-separator">:</div>-->
-<!--//    <div>-->
-<!--//        <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>-->
-<!--//        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Minutes</div>-->
-<!--//    </div>-->
-<!--//    <div class="uk-countdown-separator">:</div>-->
-<!--//    <div>-->
-<!--//        <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>-->
-<!--//        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Seconds</div>-->
-<!--//    </div>-->
-<!--//</div>-->
-<!--//                -->
-<!--//</p >-->
+<!--    <p class="uk-text-meta uk-margin-remove-top" >-->
+<!--                <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">-->
+<!--    <div>-->
+<!--        <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>-->
+<!--        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Days</div>-->
+<!--    </div>-->
+<!--    <div class="uk-countdown-separator">:</div>-->
+<!--    <div>-->
+<!--        <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>-->
+<!--        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Hours</div>-->
+<!--    </div>-->
+<!--    <div class="uk-countdown-separator">:</div>-->
+<!--    <div>-->
+<!--        <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>-->
+<!--        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Minutes</div>-->
+<!--    </div>-->
+<!--    <div class="uk-countdown-separator">:</div>-->
+<!--    <div>-->
+<!--        <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>-->
+<!--        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-font-size-changes">Seconds</div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--                -->
+<!--</p >-->
 <!--//        <a href = "#" class="uk-button tm-button-default uk-button-default2 uk-icon" > BIED NU MEE </a >-->
 <!--//</div>-->
 <!--//</div>';-->
