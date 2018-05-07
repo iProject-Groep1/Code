@@ -29,7 +29,7 @@ include('scripts/database-connect.php')
                 echo "<br>";
 
             }
-            echo '</div> </ul> </div>';
+            echo '</div>';
             return $results;
 
         } catch (PDOException $e) {
