@@ -8,7 +8,7 @@ include('scripts/database-connect.php')
 
 <body>
 
-<div class="uk-grid  uk-flex uk-flex-center auctions-reset-margin">
+<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
     <?php
     $AllItems = checkNumbers($dbh);
@@ -17,6 +17,9 @@ include('scripts/database-connect.php')
     function checkNumbers($dbh)
     {
         $results = "";
+        echo '
+                <div class="uk-child-width-1-4@m uk-grid" uk-grid>';
+
         try {
             $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
 
@@ -25,20 +28,13 @@ include('scripts/database-connect.php')
                 echo "<br>";
 
             }
-
+            echo '</div>';
             return $results;
 
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
         }
     }
-
-
-    //    foreach($AllItems as $item) {
-    //        echo $item;
-    //        createItem($dbh, $item);
-    //        echo "<br>";
-    //    }
 
     ?>
 

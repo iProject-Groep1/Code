@@ -48,6 +48,7 @@ function calcAuctionTime($dbh, $id)
 }
 
 
+
 function getAuctionTitel($dbh, $id)
 {
     try {
@@ -97,7 +98,6 @@ function getAuctionFilename($dbh, $id)
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
-
 }
 
 
