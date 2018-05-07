@@ -1,77 +1,46 @@
 <?php
 
-//$timerStarted = false;
-
-//function calcNewEndTime($days, $hours, $minutes, $seconds)
-//{
-////    global $timerStarted;
-//    $timerStarted = false;
-//
-//    $daysModify = $days;
-//    $hoursModify = $hours + 2;
-//    $minutesModify = $minutes;
-//    $secondsModify = $seconds;
-//
-//    if(!$timerStarted) {
-//
-//        $tijd = new DateTime(gmdate("Y-m-d\TH:i:s\Z"));
-//        $tijd->modify(
-//            '+' . $daysModify . 'days' .
-//            '+' . $hoursModify . 'hours' .
-//            '+' . $minutesModify . 'minutes' .
-//            '+' . $secondsModify . 'seconds');
-//        $timerStarted = true;
-//        return $tijd->format("Y-m-d H:i:s");
-//
-//    }
-//
-//    // Als de veilingt tijd (afgelopen) == de tijd op dit moment, oftewel als de timer op 0 staat. DAN
-//    if (calcEndTime($daysModify, $hoursModify, $minutesModify, $secondsModify) == gmdate("Y-m-d\TH:i:s\Z") && $timerStarted) {
-//        $timerStarted = false;
-//    }
-//}
-//
-//
-//function calcEndTime($days, $hours, $minutes, $seconds)
-//{
-//    $daysModify = $days;
-//    $hoursModify = $hours + 2;
-//    $minutesModify = $minutes;
-//    $secondsModify = $seconds;
-//
-//    $tijd = new DateTime(gmdate("Y-m-d\TH:i:s\Z"));
-//    $tijd->modify(
-//        '+' . $daysModify . 'days' .
-//        '+' . $hoursModify . 'hours' .
-//        '+' . $minutesModify . 'minutes' .
-//        '+' . $secondsModify . 'seconds');
-//    return $tijd->format("Y-m-d H:i:s");
-//
-//}
-
 require_once('database-connect.php');
 
 
-function makeTimeSyntax ($dbh, $calcTime ) {
+//function checkAuctionStatus($dbh, $id)
+//{
+//    try {
+//        $stmt = $dbh->prepare("SELECT Veilinggesloten FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
+//        $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
+//        $stmt->execute(); /* stuurt alles naar de server */
+//        $results = $stmt->fetch(PDO::FETCH_ASSOC); /* fetcht de data, hij haalt de gevraagde data op niet 0,1,2etc. maar title, duration etc.*/
+//
+//        $results = implode(",", $results);
+//        return $results;
+//    } catch (PDOException $e) {
+//        echo "Fout" . $e->getMessage();
+//    }
+//
+//}
 
-    $time = implode(",", $calcTime);
-    return $time;
-}
 
-
-function calcAuctionTime($dbh, $id){
+function calcAuctionTime($dbh, $id)
+{
 
     try {
-        if (strlen($id) < 1) {
-            return false;
-        }
 
         $stmt = $dbh->prepare("SELECT LooptijdEindMoment FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
         $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
-        $results = $stmt->fetch(PDO::FETCH_ASSOC); /* fetcht de data, hij haalt de gevraagde data op niet 0,1,2etc. maar title, duration etc.*/
+        while ($results = $stmt->fetch()) {
+            $row = $results['LooptijdEindMoment'];
+        }
+        return $row;
 
-        return $results;
+//        $a = array_map('strval', $results);
+//
+//        if (count($results) == 0) {
+//            $id = $id++;
+//        } else {
+//            $results = implode(",", $results);
+//            return $results;
+//        }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
@@ -79,25 +48,80 @@ function calcAuctionTime($dbh, $id){
 }
 
 
-function checkAuctionStatus($dbh, $id){
-
+function getAuctionTitel($dbh, $id)
+{
     try {
-        if (strlen($id) < 1) {
-            return false;
-        }
-
-        $stmt = $dbh->prepare("SELECT Veilinggesloten FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
+        $stmt = $dbh->prepare("SELECT Titel FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
         $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
-        $results = $stmt->fetch(PDO::FETCH_ASSOC); /* fetcht de data, hij haalt de gevraagde data op niet 0,1,2etc. maar title, duration etc.*/
+//        $results = $stmt->fetch(PDO::FETCH_ASSOC); /* fetcht de data, hij haalt de gevraagde data op niet 0,1,2etc. maar title, duration etc.*/
+        while ($results = $stmt->fetch()) {
+            $row = $results['Titel'];
+        }
+        return $row;
 
-        return $results;
+//        $a = array_map('strval', $results);
+
+//        if (count($results) == 0) {
+//            $id = $id++;
+//        } else {
+//            $results = implode(",", $results);
+//            return $results;
+//        }
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
+}
+
+
+function getAuctionFilename($dbh, $id)
+{
+    try {
+        $stmt = $dbh->prepare("SELECT Filenaam FROM Voorwerp v, Bestand b WHERE v.Voorwerpnummer = b.Voorwerp AND v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
+        $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
+        $stmt->execute(); /* stuurt alles naar de server */
+//        $results = $stmt->fetch(PDO::FETCH_ASSOC); /* fetcht de data, hij haalt de gevraagde data op niet 0,1,2etc. maar title, duration etc.*/
+        while ($results = $stmt->fetch()) {
+            $row = $results['Filenaam'];
+        }
+        return $row;
+
+//        $a = array_map('strval', $results);
+
+//        if (count($results) == 0) {
+//            $id = $id++;
+//        } else {
+//            $results = implode(",", $results);
+//            return $results;
+//        }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
 
 }
 
+
+//function checkNumbers($dbh) {
+//    $results = "";
+//    try {
+//        $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
+//
+//        while($row = $stmt->fetch()){
+//            $results .=  '<h3>'.$row['Voorwerpnummer'].'</h3><img src="" ';
+//        }
+//
+//        return $results;
+//
+//    } catch (PDOException $e) {
+//        echo "Fout" . $e->getMessage();
+//    }
+//}
+
+
+function createItem($dbh, $id)
+{
+    createItemScript(getAuctionTitel($dbh, $id), calcAuctionTime($dbh, $id), getAuctionFilename($dbh, $id));
+}
 
 
 

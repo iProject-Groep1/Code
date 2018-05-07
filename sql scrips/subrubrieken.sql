@@ -79,7 +79,7 @@ LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent
 LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent
 LEFT JOIN Rubriek s4 on s3.Rubrieknummer = s4.Parent
 
-WHERE h.Parent = -1 AND h.Rubrieknaam LIKE 'a%'
+WHERE h.Parent = -1 --AND h.Rubrieknaam LIKE 'a%'
 ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrieknaam, s2.Volgnr, s2.Rubrieknaam, s3.Volgnr, s3.Rubrieknaam, s4.Volgnr, s4.Rubrieknaam
 
 
