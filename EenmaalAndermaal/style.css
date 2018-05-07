@@ -116,6 +116,13 @@ h3 {
 	color: #FFFFFF;
 }
 
+.uk-timer-changes {
+padding-left: 200px;
+}
+
+.uk-countdown-number, .uk-countdown-separator {
+	line-height: 35px;
+}
 
 
 
