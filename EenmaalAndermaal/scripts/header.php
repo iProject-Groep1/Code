@@ -15,7 +15,7 @@
 
 <nav class=" responsive-mobile uk-navbar uk-navbar1 uk-margin" uk-navbar="dropbar: true">
     <div class="uk-flex-center">
-        <a href="#" class="uk-navbar-item uk-navbar1 uk-logo">
+        <a href="index.php" class="uk-navbar-item uk-navbar1 uk-logo">
             <img src="images/auction.png" class="uk-margin-small-right" width="32" height="28">EenmaalAndermaal</a>
     </div>
     <div>
