@@ -45,6 +45,18 @@ h3 {
 	font-size: 30px;
 }
 
+.uk-overlay-primary {
+	background: rgba(34,34,34,.65);
+}
+
+.uk-grid-small>* {
+	padding-left: 0;
+}
+
+.uk-overlay {
+	padding: 10px 10px;
+}
+
 .uk-grid-small {
 	flex-wrap: nowrap;
 }
