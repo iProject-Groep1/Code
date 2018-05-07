@@ -41,29 +41,30 @@ WHERE h.Parent = -1 --AND h.Rubrieknaam LIKE 'a%'
 ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrieknaam, s2.Volgnr, s2.Rubrieknaam, s3.Volgnr, s3.Rubrieknaam, s4.Volgnr, s4.Rubrieknaam";
 
 
-    $categoryOverview .= '<div class="uk-flex">';
+    $categoryOverview .= '<div class="uk-flex" uk-grid>';
 
     $data = $databasehandler->query($query);
     while ($row = $data->fetch()) {
         if ($previousMainCategoryNumber != $row['HoofdrubriekNr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 1);
             $previousCategoryKind = 1;
-            $categoryOverview .= '<div class="uk-flex"><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a><ul class="uk-nav-default uk-nav-parent-icon" uk-nav>';
+            $categoryOverview .= '<div class="uk-flex uk-flex-column"><h6><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a></h6><ul class="uk-nav-default uk-nav-parent-icon" uk-nav uk-grid>';
         }
         if ($previousSubCategoryNumber != $row['SubrubriekNr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 2);
             $previousCategoryKind = 2;
-            $categoryOverview .= '<li class="uk-parent"><a href="' . $referenceSite . $row['SubrubriekNr'] . '">' . $row['SubrubriekNaam'] . 'SUB</a><ul class="uk-nav-sub">';
+            $categoryOverview .= '<li class="uk-parent"><a href="' . $referenceSite . $row['SubrubriekNr'] . '">' . $row['SubrubriekNaam'] . '</a><ul class="uk-nav-sub">';
         }
         if ($previousSubCategoryLevel1Number != $row['SubrubriekNiveau1Nr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 3);
+            if($previousCategoryKind)
             $previousCategoryKind = 3;
-            $categoryOverview .= '<li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNiveau1Nr'] . '">' . $row['SubrubriekNiveau1Naam'] . 'SUBNIVEAU1</a></li><div uk-dropdown>';
+            $categoryOverview .= '<li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNiveau1Nr'] . '">' . $row['SubrubriekNiveau1Naam'] . '</a></li><div uk-dropdown>';
         }
         if ($previousSubCategoryLevel2Number != $row['SubrubriekNiveau2Nr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 4);
             $previousCategoryKind = 4;
-            $categoryOverview .= '<li><a href="' . $referenceSite . $row['SubrubriekNiveau2Nr'] . '">' . $row['SubrubriekNiveau2Naam'] . 'SUBNIVEAU2</a></li>';
+            $categoryOverview .= '<li><a href="' . $referenceSite . $row['SubrubriekNiveau2Nr'] . '">' . $row['SubrubriekNiveau2Naam'] . '</a></li>';
         }
 
         $previousMainCategoryNumber = $row['HoofdrubriekNr'];

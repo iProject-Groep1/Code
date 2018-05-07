@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46a32b23-dbf2-4bc9-9df1-79848c18c5aa" name="Default" comment="" />
+    <list default="true" id="b1bd84d0-fd3e-4fbc-9633-9d641ffccb84" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,6 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="categoriesFunctions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/categoriesFunctions.php">
@@ -28,6 +29,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <leaf>
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="72" lean-forward="false" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
+>>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
               <folding />
             </state>
           </provider>
@@ -85,16 +94,31 @@
       </file>
     </leaf>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/scripts/header.php" />
+      </list>
+    </option>
+  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="974" />
+=======
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="57" />
+    <option name="y" value="92" />
+    <option name="width" value="1046" />
+>>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -112,6 +136,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -128,7 +156,10 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
       <pane id="Scratches" />
     </panes>
   </component>
@@ -136,7 +167,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sande\OneDrive\Documents\ICT\IPROJECT\Github\Code\EenmaalAndermaal\scripts" />
     </key>
   </component>
@@ -160,18 +191,24 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="46a32b23-dbf2-4bc9-9df1-79848c18c5aa" name="Default" comment="" />
-      <created>1524672578528</created>
+      <changelist id="b1bd84d0-fd3e-4fbc-9633-9d641ffccb84" name="Default" comment="" />
+      <created>1525622063278</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1524672578528</updated>
       <workItem from="1524672579646" duration="524000" />
       <workItem from="1525119938815" duration="617000" />
       <workItem from="1525676564664" duration="729000" />
+=======
+      <updated>1525622063278</updated>
+      <workItem from="1525622064420" duration="32000" />
+>>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="1870000" />
   </component>
   <component name="ToolWindowManager">
@@ -179,6 +216,15 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <option name="totallyTimeSpent" value="32000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="57" y="92" width="1046" height="1047" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24951456" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -210,10 +256,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/categoriesFunctions.php">
+    <entry file="file://$PROJECT_DIR$/categories.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
           <folding>
             <marker date="1525110681992" expanded="true" signature="77:6512" ph="{...}" />
           </folding>
@@ -259,13 +306,16 @@
           <folding>
             <marker date="1525110681992" expanded="true" signature="77:6512" ph="{...}" />
           </folding>
+=======
+          <folding />
+>>>>>>> c4730654d97374ee1a34769fccf468bd8f23d1b3
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/categories.php">
+    <entry file="file://$PROJECT_DIR$/scripts/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="72" lean-forward="false" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
           <folding />
         </state>
       </provider>
