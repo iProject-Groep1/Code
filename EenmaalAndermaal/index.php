@@ -13,7 +13,6 @@ include('scripts/database-connect.php')
     <?php
     $AllItems = checkNumbers($dbh);
     print_r($AllItems);
-<<<<<<< HEAD
 
     function checkNumbers($dbh)
     {
@@ -37,8 +36,6 @@ include('scripts/database-connect.php')
         }
     }
 
-=======
->>>>>>> f3ae3d85f5f4316730a4106cc04f37df85e1b70e
     ?>
 
 </div>
