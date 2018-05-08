@@ -9,10 +9,10 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod)
     <div class="uk-auction-margin">
 
         <div class="uk-inline uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
-            <img src="images/productImages/' . $image . '" style="width:325px;height:250px;" alt="Image">
+            <img src="images/productImages/' . $image . '" style="width:325px;height:250px;background-size: cover;    background-repeat: no-repeat;  background-position: 50% 50%; " alt="Image">
             <div class="uk-overlay uk-overlay-primary uk-position-bottom">
                 <h3 class="uk-text-center uk-display-inline">' . $productName . '</h3>
-                
+
                 <button class="uk-button uk-button-danger uk-align-right">Bied nu</button>
                 <br>
                 <div class="uk-align-left uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</div>
