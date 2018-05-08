@@ -4,7 +4,7 @@
 function getCategoryOverview($databasehandler)
 
 {
-    set_time_limit(300);
+    set_time_limit(30);
     $previousMainCategoryNumber = 0;
     $previousSubCategoryNumber = 0;
     $previousSubCategoryLevel1Number = 0;
@@ -14,7 +14,6 @@ function getCategoryOverview($databasehandler)
     $previousCategoryKind = 0; //houdt bij welk soort de vorige geplaatse category is: 1 voor hoofd, 2 voor sub, 3 voor subniveau1, 4 voor subniveau2, 5 voor subniveau3, 6 voor subniveau4
     $alphabet = range('A', 'Z');
     $categoryOverview = "";
-//TODO: iets.php veranderen naar werkelijke pagina.
     $referenceSite = "category.php?categoryID=";
     $query = "SELECT
 HoofdrubriekNr=h.Rubrieknummer,
@@ -169,10 +168,9 @@ function getClosingTags($previousCategoryKind, $currentCategoryKind)
     return $closingTags;
 }
 
-function getHomepageCategoryOverview($databasehandler, $overviewSize)
+/* function getHomepageCategoryOverview($databasehandler, $overviewSize)
 {
     $homepageCategoryOverview = "";
-    //TODO: Voorwerp_in_Rubriek aanpassen?
     $mainCategoriesData = $databasehandler->query("SELECT TOP" . $overviewSize . " rubrieknummer, rubrieknaam  FROM Rubriek r WHERE rubrieknummer IN (SELECT count(*), rubrieknummer FROM Voorwerp_in_Rubriek GROUP BY rubrieknummers ORDER BY count(*)))");
     while ($mainCategoryRow = $mainCategoriesData->fetch()) {
         $homepageCategoryOverview .= '<a href="iets.php?categoryID=' . $mainCategoryRow['rubrieknummer'] . '">' . $mainCategoryRow['rubrieknaam'] . '</a>';
@@ -190,7 +188,7 @@ function getAlphabetList()
     $alphabetList .= '</ul>';
     return $alphabetList;
 }
-
+*/
 ?>
 
 

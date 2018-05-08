@@ -100,9 +100,6 @@ h3 {
 	margin: 5px 5px;
 }
 
-.uk-nav-changes{
-	margin-top: -15px;
-}
 
 .uk-margin {
 	margin-bottom: 0px;
@@ -198,5 +195,6 @@ li .uk-button{
 }
 
 
-
-
+.testen{
+	style="width:325px;height:250px;background-size: cover;    background-repeat: no-repeat;  background-position: 50% 50%;
+}

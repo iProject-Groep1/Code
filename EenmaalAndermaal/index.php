@@ -17,8 +17,6 @@ include('scripts/database-connect.php')
 
     <?php
 
-    /* Dit is de functie die random auctions laat zien
-    checkNumbers($dbh); */
 
     getPopularItems($dbh);
 
@@ -34,16 +32,7 @@ include('scripts/database-connect.php')
 <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
     <?php
-
-    /* Dit is de functie die random auctions laat zien
-    checkNumbers($dbh); */
-
-
-    getPopularItems($dbh);
-
     getHighItems($dbh);
-
-
     ?>
 
     </div></p></div>
