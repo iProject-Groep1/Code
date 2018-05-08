@@ -8,6 +8,10 @@ include('scripts/database-connect.php')
 
 <body>
 
+<?php
+
+?>
+
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
     <h3 class="uk-display-block uk-align-center uk-text-center">Populairste veilingen</h3>
     <p>

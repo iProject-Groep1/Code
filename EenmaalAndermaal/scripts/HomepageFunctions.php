@@ -42,6 +42,23 @@ function checkNumbers($dbh)
     }
 }
 
+function getServerTime($dbh)
+{
+    try {
+        $stmt = $dbh->prepare("SELECT DISTINCT CURRENT_TIMESTAMP as Tijd FROM Voorwerp"); /* prepared statement */
+        $stmt->execute(); /* stuurt alles naar de server */
+        while ($results = $stmt->fetch()) {
+            $row = $results['Tijd'];
+        }
+        $row->modify('+10 minutes');
+        echo $row->format('Y-m-d') . "\n";
+
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
+}
+
+
 
 function calcAuctionTime($dbh, $id)
 {
@@ -116,7 +133,7 @@ function getAuctionFilename($dbh, $id)
 
 function createItem($dbh, $id)
 {
-    createItemScript(getAuctionTitel($dbh, $id), calcAuctionTime($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
+    createItemScript(getAuctionTitel($dbh, $id), calcAuctionTime($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id), $dbh);
 
 }
 
