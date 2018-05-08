@@ -8,7 +8,12 @@ include('scripts/database-connect.php')
 
 <body>
 
-<h3 class="uk-display-block uk-align-center uk-text-center"> Populairste veilingen </h3><br>
+<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
+    <div class="uk-card-badge uk-label">Eenmaal Andermaal</div>
+    <h3 class="uk-display-block uk-align-center uk-text-center">Populairste veilingen</h3>
+    <p>
+
+
 <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
     <?php
@@ -16,12 +21,30 @@ include('scripts/database-connect.php')
     /* Dit is de functie die random auctions laat zien
     checkNumbers($dbh); */
 
-    getpopularitem($dbh);
+    getPopularItem($dbh);
 
     ?>
 
-</div><br>
-        <hr class="uk-margin-large">
+</div></p></div>
+
+
+<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
+    <div class="uk-card-badge uk-label">Eenmaal Andermaal</div>
+    <h3 class="uk-display-block uk-align-center uk-text-center">Duurste veilingen</h3>
+    <p>
+
+<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
+
+    <?php
+
+    /* Dit is de functie die random auctions laat zien
+    checkNumbers($dbh); */
+
+    getHightItem($dbh);
+
+    ?>
+
+    </div></p></div>
 
 
 <?php

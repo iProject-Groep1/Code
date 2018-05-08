@@ -4,12 +4,13 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogstebod)
 {
 
     $echo = '
-    <div>
+    <div class="uk-auction-margin">
 
         <div class="uk-inline uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
             <img src="images/productImages/'. $image .'" style="width:325px;height:250px;" alt="Image">
             <div class="uk-overlay uk-overlay-primary uk-position-bottom">
                 <h3 class="uk-text-center uk-display-inline">' . $productName . '</h3>
+                
                 <button class="uk-button uk-button-danger uk-align-right">Bied nu</button>
                 <br>
                 <div class="uk-align-left uk-display-inline uk-countdown-number"> € '. $hoogstebod . '</div>
