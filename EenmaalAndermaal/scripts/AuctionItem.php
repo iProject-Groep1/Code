@@ -1,6 +1,4 @@
 <?php
-include('database-connect.php');
-
 
 function createItemScript($productName, $timeOfEnding, $image, $hoogstebod)
 {
