@@ -13,29 +13,31 @@ include('scripts/database-connect.php')
     <p>
 
 
-<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
+    <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
-    <?php
+        <?php
 
 
-    getPopularItems($dbh);
+        getPopularItems($dbh);
 
-    ?>
+        ?>
 
-</div></p></div>
+    </div>
+    </p></div>
 
 
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
     <h3 class="uk-display-block uk-align-center uk-text-center">Duurste veilingen</h3>
     <p>
 
-<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
+    <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
-    <?php
-    getHighItems($dbh);
-    ?>
+        <?php
+        getHighItems($dbh);
+        ?>
 
-    </div></p></div>
+    </div>
+    </p></div>
 
 
 <?php
