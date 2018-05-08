@@ -133,12 +133,7 @@ function getAuctionFilename($dbh, $id)
 
 function createItem($dbh, $id)
 {
-<<<<<<< HEAD
-    createItemScript(getAuctionTitel($dbh, $id), calcAuctionTime($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id), $dbh);
-=======
     createItemScript(getAuctionTitel($dbh, $id), getAuctionEnd($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
->>>>>>> dd6f1788de5324aea5b5942fc6e41ff2ab8f3354
-
 }
 
 
@@ -148,7 +143,7 @@ function getPopularItems($dbh)
 {
 
     try {
-        $stmt = $dbh->prepare("select top 4 voorwerp, count(voorwerp) as aantal   from BOD  group by voorwerp order by aantal desc"); /* prepared statement */
+        $stmt = $dbh->prepare("select top 4 voorwerp, count(voorwerp) as aantal   from  BOD b join  voorwerp v on v.voorwerpnummer = b.voorwerp where datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10   group by voorwerp order by aantal desc"); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
             createItem($dbh, $results['voorwerp']);
@@ -162,7 +157,7 @@ function getPopularItems($dbh)
 function getHighItems($dbh)
 {
     try {
-        $stmt = $dbh->prepare("SELECT top 8 voorwerp , max(Bodbedrag) as prijs from BOD group by voorwerp order by prijs desc"); /* prepared statement */
+        $stmt = $dbh->prepare("SELECT top 8 voorwerp , max(Bodbedrag) as prijs from  BOD b join  voorwerp v on v.voorwerpnummer = b.voorwerp  where datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10 group by voorwerp order by prijs desc"); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
             createItem($dbh, $results['voorwerp']);
