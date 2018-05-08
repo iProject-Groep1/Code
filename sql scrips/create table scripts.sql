@@ -33,10 +33,10 @@ go
 
 
 CREATE TABLE Rubriek (
-	Rubrieknummer			numeric(8)		NOT NULL,						-- aangepast van integer(3)
-	Rubrieknaam				varchar(50)		NOT NULL,						-- aangepast van char(24)
+	Rubrieknummer			numeric(8)		NOT NULL,				-- aangepast van integer(3)
+	Rubrieknaam				varchar(50)		NOT NULL,				-- aangepast van char(24)
 	Parent					numeric(8)		,						-- aangepast van integer(3)
-	Volgnr					numeric(8)		NOT NULL,						-- aangepast van integer(2)	
+	Volgnr					numeric(8)		NOT NULL,				-- aangepast van integer(2)	
 
 CONSTRAINT RubriekKey PRIMARY KEY(rubrieknummer),
 Constraint FK_Parent_Rubrieknummer FOREIGN KEY (parent) REFERENCES Rubriek(rubrieknummer)
@@ -53,8 +53,8 @@ CREATE TABLE Voorwerp (
 	Betalingsinstructie		varchar (128)									null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
 	Plaatsnaam				varchar (30)									not null,						-- char 12
 	Land					varchar (50)	default 'Nederland'				not null,						-- char 9
-	Looptijd /*in dagen */	TINYINT 		default 1						not null,
-	looptijdbeginmoment		datetime			default Current_timestamp	not null,							-- dit zorgt er voor dat de tijd start wanneer het record is ge insert
+	Looptijd /*in dagen */	TINYINT 		default 7						not null,
+	looptijdbeginmoment		datetime		default Current_timestamp		not null,						-- dit zorgt er voor dat de tijd start wanneer het record is ge insert
 	LooptijdEindmoment		as  dateadd (day,looptijd,looptijdbeginmoment)			,
 	Verzendkosten			numeric (6,2)									null	,						-- char 5
 	Verzendinstructies		varchar (128)									null	,						-- char 27
@@ -80,7 +80,8 @@ Rubriek_op_laagste_Niveau	numeric (8)		not null						-- aangepast van int naar n
 CONSTRAINT VoorwerpInRubriekKey PRIMARY KEY (Voorwerp,Rubriek_op_laagste_Niveau),
 Constraint FK_VoorwerpInRubriek FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer),
 Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer FOREIGN KEY (Rubriek_op_laagste_Niveau) REFERENCES Rubriek (Rubrieknummer),
-CONSTRAINT CHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp CHECK (fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp(Voorwerp) = 1)
+CONSTRAINT CK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp CHECK (fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp(Voorwerp) = 1), 
+Constraint CK_Geen_Subrubrieken CHECK (Rubriek_op_laagste_Niveau not in (SELECT Parent FROM Rubriek)
 );
 go
 
