@@ -55,7 +55,7 @@
             <li><a href="">Contact</a></li>
         </ul>
         <div class="uk-navbar-item uk-visible@m uk-navbar1">
-            <a href="#" class="uk-button uk-button-default tm-button-default uk-icon">Register now</a>
+            <a href="#" class="uk-button uk-button-danger tm-button-default uk-icon">Register now</a>
         </div>
     </div>
 </nav>
