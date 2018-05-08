@@ -138,7 +138,7 @@ function getPopularItems($dbh)
     }
 }
 
-function getHightItem($dbh)
+function getHighItems($dbh)
 {
     try {
         $stmt = $dbh->prepare("SELECT top 8 voorwerp , max(Bodbedrag) as prijs from BOD group by voorwerp order by prijs desc"); /* prepared statement */

@@ -41,7 +41,7 @@ include('scripts/database-connect.php')
 
     getPopularItems($dbh);
 
-    getHightItem($dbh);
+    getHighItems($dbh);
 
 
     ?>
