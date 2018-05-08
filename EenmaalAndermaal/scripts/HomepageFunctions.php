@@ -43,7 +43,7 @@ function checkNumbers($dbh)
 }
 
 
-function calcAuctionTime($dbh, $id)
+function getAuctionEnd($dbh, $id)
 {
 
     try {
@@ -116,12 +116,12 @@ function getAuctionFilename($dbh, $id)
 
 function createItem($dbh, $id)
 {
-    createItemScript(getAuctionTitel($dbh, $id), calcAuctionTime($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
+    createItemScript(getAuctionTitel($dbh, $id), getAuctionEnd($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
 
 }
 
 
-function getpopularitem($dbh)
+function getPopularItems($dbh)
 {
 
     try {
