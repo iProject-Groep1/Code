@@ -121,11 +121,9 @@ function createItem($dbh, $id)
 }
 
 
-<<<<<<< HEAD
+
 function getPopularItems($dbh)
-=======
-function getPopularItem($dbh)
->>>>>>> a179deab9ddabead3e01ea026548eebc1dd428d0
+
 {
 
     try {

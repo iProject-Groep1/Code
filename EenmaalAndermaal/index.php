@@ -38,11 +38,11 @@ include('scripts/database-connect.php')
     /* Dit is de functie die random auctions laat zien
     checkNumbers($dbh); */
 
-<<<<<<< HEAD
+
     getPopularItems($dbh);
-=======
+
     getHightItem($dbh);
->>>>>>> a179deab9ddabead3e01ea026548eebc1dd428d0
+
 
     ?>
 
