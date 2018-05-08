@@ -9,7 +9,6 @@ include('scripts/database-connect.php')
 <body>
 
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
-    <div class="uk-card-badge uk-label">Eenmaal Andermaal</div>
     <h3 class="uk-display-block uk-align-center uk-text-center">Populairste veilingen</h3>
     <p>
 
@@ -29,7 +28,6 @@ include('scripts/database-connect.php')
 
 
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
-    <div class="uk-card-badge uk-label">Eenmaal Andermaal</div>
     <h3 class="uk-display-block uk-align-center uk-text-center">Duurste veilingen</h3>
     <p>
 
