@@ -26,8 +26,8 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-nav-header">Menu</li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Rubrieken</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="categoryOverview.php">Rubrieken</a></li>
                         <li><a href="#">Login</a></li>
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
@@ -44,12 +44,12 @@
 
 <nav class=" responsive-laptop uk-navbar uk-navbar1" uk-navbar="">
     <div class="uk-navbar-left">
-        <a href="#" class="uk-navbar-item uk-navbar1 uk-logo">
+        <a href="index.php" class="uk-navbar-item uk-navbar1 uk-logo">
             <img src="images/auction.png" class="uk-margin-small-right" width="32" height="28">EenmaalAndermaal</a>
     </div>
     <div class="uk-navbar-right uk-navbar-blue">
         <ul class="uk-navbar-nav uk-navbar-nav1 uk-visible@m">
-            <li><a href="">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="categoryOverview.php">Rubrieken</a></li>
             <li><a href="">Login</a></li>
             <li><a href="">Contact</a></li>

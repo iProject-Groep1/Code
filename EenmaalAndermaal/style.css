@@ -124,6 +124,16 @@ padding-left: 200px;
 	line-height: 35px;
 }
 
+li .uk-button{
+	/** TODO: !important wegwerken **/
+	text-transform: none;
+	color: black !important;
+}
+
+.uk-parent a {
+	/** TODO: important wegwerken **/
+	color: black !important;
+}
 
 
 
