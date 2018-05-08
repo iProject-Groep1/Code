@@ -60,7 +60,7 @@ function getServerTime($dbh)
 
 
 
-function calcAuctionTime($dbh, $id)
+function getAuctionEnd($dbh, $id)
 {
 
     try {
@@ -133,12 +133,18 @@ function getAuctionFilename($dbh, $id)
 
 function createItem($dbh, $id)
 {
+<<<<<<< HEAD
     createItemScript(getAuctionTitel($dbh, $id), calcAuctionTime($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id), $dbh);
+=======
+    createItemScript(getAuctionTitel($dbh, $id), getAuctionEnd($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
+>>>>>>> dd6f1788de5324aea5b5942fc6e41ff2ab8f3354
 
 }
 
 
-function getPopularItem($dbh)
+
+function getPopularItems($dbh)
+
 {
 
     try {
@@ -153,7 +159,7 @@ function getPopularItem($dbh)
     }
 }
 
-function getHightItem($dbh)
+function getHighItems($dbh)
 {
     try {
         $stmt = $dbh->prepare("SELECT top 8 voorwerp , max(Bodbedrag) as prijs from BOD group by voorwerp order by prijs desc"); /* prepared statement */

@@ -1,7 +1,11 @@
 <?php
 
+<<<<<<< HEAD
 
 function createItemScript($productName, $timeOfEnding, $image, $hoogstebod, $dbh)
+=======
+function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod)
+>>>>>>> dd6f1788de5324aea5b5942fc6e41ff2ab8f3354
 {
 
     $echo = '
@@ -14,7 +18,11 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogstebod, $dbh
                 
                 <button class="uk-button uk-button-danger uk-align-right">Bied nu</button>
                 <br>
+<<<<<<< HEAD
                 <div class="uk-align-left uk-display-inline uk-countdown-number"> € ' . $hoogstebod . '</div>
+=======
+                <div class="uk-align-left uk-display-inline uk-countdown-number"> € '. $hoogsteBod . '</div>
+>>>>>>> dd6f1788de5324aea5b5942fc6e41ff2ab8f3354
                 <div class=" uk-align-right uk-display-inline-block">
                                                  <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                                                       <div>
