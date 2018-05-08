@@ -20,6 +20,29 @@ require_once('database-connect.php');
 //}
 
 
+function checkNumbers($dbh)
+{
+    $results = "";
+    echo '
+                <div class="uk-child-width-1-4@m uk-grid" uk-grid>';
+
+    try {
+        $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
+
+        while ($row = $stmt->fetch()) {
+            createItem($dbh, $row['Voorwerpnummer']);
+            echo "<br>";
+
+        }
+        echo '</div>';
+        return $results;
+
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
+}
+
+
 function calcAuctionTime($dbh, $id)
 {
 
@@ -94,6 +117,23 @@ function getAuctionFilename($dbh, $id)
 function createItem($dbh, $id)
 {
     createItemScript(getAuctionTitel($dbh, $id), calcAuctionTime($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
+
+}
+
+
+function getpopularitem($dbh)
+{
+
+    try {
+        $stmt = $dbh->prepare("select top 4 voorwerp, count(voorwerp) as aantal   from BOD  group by voorwerp order by aantal desc"); /* prepared statement */
+        $stmt->execute(); /* stuurt alles naar de server */
+        while ($results = $stmt->fetch()) {
+            createItem($dbh, $results['voorwerp']);
+        }
+        return;
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
 }
 
 

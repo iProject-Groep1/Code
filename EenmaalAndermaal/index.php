@@ -8,37 +8,20 @@ include('scripts/database-connect.php')
 
 <body>
 
+<h3 class="uk-display-block uk-align-center uk-text-center"> Populairste veilingen </h3><br>
 <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
     <?php
-    $AllItems = checkNumbers($dbh);
-    print_r($AllItems);
 
-    function checkNumbers($dbh)
-    {
-        $results = "";
-        echo '
-                <div class="uk-child-width-1-4@m uk-grid" uk-grid>';
+    /* Dit is de functie die random auctions laat zien
+    checkNumbers($dbh); */
 
-        try {
-            $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
-
-            while ($row = $stmt->fetch()) {
-                createItem($dbh, $row['Voorwerpnummer']);
-                echo "<br>";
-
-            }
-            echo '</div>';
-            return $results;
-
-        } catch (PDOException $e) {
-            echo "Fout" . $e->getMessage();
-        }
-    }
+    getpopularitem($dbh);
 
     ?>
 
-</div>
+</div><br>
+        <hr class="uk-margin-large">
 
 
 <?php

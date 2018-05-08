@@ -8,11 +8,13 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogstebod)
     $echo = '
     <div>
 
-        <div class="uk-inline">
-            <img src="images/productImages/'. $image .'" style="width:350px;height:250px;" alt="Image">
+        <div class="uk-inline uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
+            <img src="images/productImages/'. $image .'" style="width:325px;height:250px;" alt="Image">
             <div class="uk-overlay uk-overlay-primary uk-position-bottom">
-                <h3 class="uk-text-center">' . $productName . '</h3>
-                <div class="uk-text-left uk-align-left uk-display-inline"> € '. $hoogstebod . '</div>
+                <h3 class="uk-text-center uk-display-inline">' . $productName . '</h3>
+                <button class="uk-button uk-button-danger uk-align-right">Bied nu</button>
+                <br>
+                <div class="uk-align-left uk-display-inline uk-countdown-number"> € '. $hoogstebod . '</div>
                 <div class=" uk-align-right uk-display-inline-block">
                                                  <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                                                       <div>
