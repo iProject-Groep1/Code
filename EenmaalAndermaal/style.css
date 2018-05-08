@@ -18,6 +18,10 @@ h3 {
 	background: #5484A4;
 }
 
+.uk-grid>* {
+	padding-left: 20px;
+}
+
 .uk-navbar-nav>li>a {
 	color: #FFFFFF;
 }
@@ -137,6 +141,18 @@ li .uk-button{
 	color: black !important;
 }
 
+.uk-align-right{
+	margin-left:0;
+}
+
+.uk-button{
+	padding: 0 20px;
+}
+
+.uk-auction-margin{
+	margin: 10px 0px;
+}
+
 .uk-parent a {
 	/** TODO: important wegwerken **/
 	color: black !important;
@@ -172,6 +188,12 @@ li .uk-button{
 
 	.uk-font-size-changes {
 		font-size: 0.8em;
+	}
+}
+
+@media (min-width: 1200px) {
+	.uk-align-right{
+		margin-left: 0;
 	}
 }
 

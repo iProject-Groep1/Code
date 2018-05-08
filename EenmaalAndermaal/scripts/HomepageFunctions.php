@@ -121,11 +121,29 @@ function createItem($dbh, $id)
 }
 
 
+<<<<<<< HEAD
 function getPopularItems($dbh)
+=======
+function getPopularItem($dbh)
+>>>>>>> a179deab9ddabead3e01ea026548eebc1dd428d0
 {
 
     try {
         $stmt = $dbh->prepare("select top 4 voorwerp, count(voorwerp) as aantal   from BOD  group by voorwerp order by aantal desc"); /* prepared statement */
+        $stmt->execute(); /* stuurt alles naar de server */
+        while ($results = $stmt->fetch()) {
+            createItem($dbh, $results['voorwerp']);
+        }
+        return;
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
+}
+
+function getHightItem($dbh)
+{
+    try {
+        $stmt = $dbh->prepare("SELECT top 8 voorwerp , max(Bodbedrag) as prijs from BOD group by voorwerp order by prijs desc"); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
             createItem($dbh, $results['voorwerp']);
