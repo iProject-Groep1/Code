@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58c4b303-7091-4129-84aa-454e8d265d8a" name="Default" comment="" />
+    <list default="true" id="40266fa2-3a5c-43b3-b180-976403606c15" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,71 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-              <folding>
-                <element signature="e#466#543#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuctionItem.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/AuctionItem.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
-              <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
-              <folding>
-                <marker date="1525772032443" expanded="true" signature="108:2484" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="134:2484" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="225:2476" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="291:316" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="509:2461" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="509:2476" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="799:2442" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="948:2390" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="1008:1200" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="1363:1565" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="1737:1950" ph="..." />
-                <marker date="1525772032443" expanded="true" signature="2133:2334" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomepageFunctions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/HomepageFunctions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="155" column="0" lean-forward="true" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-              <folding>
-                <marker date="1525772418127" expanded="true" signature="890:962" ph="SELECT Voorw... Voorwerp" />
-                <marker date="1525772418127" expanded="true" signature="1332:1414" ph="SELECT Loopt... Voorwerp" />
-                <marker date="1525772418127" expanded="true" signature="1888:1963" ph="SELECT MAX(B... Bod" />
-                <marker date="1525772418127" expanded="true" signature="2424:2493" ph="SELECT Titel... Voorwerp" />
-                <marker date="1525772418127" expanded="true" signature="2957:3074" ph="SELECT Filen... Voorwerp" />
-                <marker date="1525772418127" expanded="true" signature="3854:3953" ph="select top 4... BOD" />
-                <marker date="1525772418127" expanded="true" signature="4316:4410" ph="SELECT top 8... BOD" />
-                <marker date="1525772418127" expanded="true" signature="4405:4410" ph="select top 4... BOD" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/scripts/AuctionItem.php" />
-        <option value="$PROJECT_DIR$/scripts/HomepageFunctions.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-      </list>
-    </option>
+    <leaf />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -82,8 +18,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds">
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -103,6 +39,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,13 +57,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -147,38 +82,37 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="58c4b303-7091-4129-84aa-454e8d265d8a" name="Default" comment="" />
-      <created>1525767022755</created>
+      <changelist id="40266fa2-3a5c-43b3-b180-976403606c15" name="Default" comment="" />
+      <created>1525776120200</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1525767022755</updated>
-      <workItem from="1525767025484" duration="5967000" />
+      <updated>1525776120200</updated>
+      <workItem from="1525776122627" duration="58000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5967000" />
+    <option name="totallyTimeSpent" value="58000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="1" />
     <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -196,49 +130,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/scripts/AuctionItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
-          <folding>
-            <marker date="1525772032443" expanded="true" signature="108:2484" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="134:2484" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="225:2476" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="291:316" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="509:2461" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="509:2476" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="799:2442" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="948:2390" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="1008:1200" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="1363:1565" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="1737:1950" ph="..." />
-            <marker date="1525772032443" expanded="true" signature="2133:2334" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/HomepageFunctions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="155" column="0" lean-forward="true" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-          <folding>
-            <marker date="1525772418127" expanded="true" signature="890:962" ph="SELECT Voorw... Voorwerp" />
-            <marker date="1525772418127" expanded="true" signature="1332:1414" ph="SELECT Loopt... Voorwerp" />
-            <marker date="1525772418127" expanded="true" signature="1888:1963" ph="SELECT MAX(B... Bod" />
-            <marker date="1525772418127" expanded="true" signature="2424:2493" ph="SELECT Titel... Voorwerp" />
-            <marker date="1525772418127" expanded="true" signature="2957:3074" ph="SELECT Filen... Voorwerp" />
-            <marker date="1525772418127" expanded="true" signature="3854:3953" ph="select top 4... BOD" />
-            <marker date="1525772418127" expanded="true" signature="4316:4410" ph="SELECT top 8... BOD" />
-            <marker date="1525772418127" expanded="true" signature="4405:4410" ph="select top 4... BOD" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="e#466#543#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
