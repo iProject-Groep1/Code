@@ -6,5 +6,7 @@ require_once('scripts/categoryOverviewFunctions.php');
 //echo getAlphabetList();
 echo getCategoryOverview($dbh);
 
+
+
 require_once('scripts/footer.php');
 ?>

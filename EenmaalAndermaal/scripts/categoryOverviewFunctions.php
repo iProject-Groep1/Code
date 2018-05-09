@@ -71,7 +71,7 @@ function getCategoryOverview($databasehandler)
     }
 
 
-    $categoryOverview .= '</ul></div>';
+    $categoryOverview .= '</div></div></div>';
     return $categoryOverview;
 }
 
