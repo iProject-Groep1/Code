@@ -55,7 +55,7 @@ ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrie
         if ($previousSubCategoryLevel1Number != $row['SubrubriekNiveau1Nr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 3);
             $previousCategoryKind = 3;
-            $categoryOverview .= '<li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNiveau1Nr'] . '">' . $row['SubrubriekNiveau1Naam'] . '</a></li><div uk-dropdown><ul class="uk-list">';
+            $categoryOverview .= '<li><a class="uk-button uk-button-default uk-display-inline-block" href="' . $referenceSite . $row['SubrubriekNiveau1Nr'] . '">' . $row['SubrubriekNiveau1Naam'] . '</a></li><div uk-dropdown><ul class="uk-list">';
         }
         if ($previousSubCategoryLevel2Number != $row['SubrubriekNiveau2Nr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 4);
