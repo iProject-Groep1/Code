@@ -8,3 +8,6 @@ echo getCategoryOverview($dbh);
 ?>
 
 
+<?php
+require_once('scripts/footer.php');
+?>
