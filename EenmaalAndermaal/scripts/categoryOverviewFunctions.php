@@ -39,18 +39,18 @@ LEFT JOIN Rubriek s4 on s3.Rubrieknummer = s4.Parent
 WHERE h.Parent = -1 --AND h.Rubrieknaam LIKE '%a' 
 ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrieknaam, s2.Volgnr, s2.Rubrieknaam, s3.Volgnr, s3.Rubrieknaam, s4.Volgnr, s4.Rubrieknaam";
 
-    $categoryOverview .= '<div class="uk-flex" uk-grid>';
+    $categoryOverview .= '<div class="uk-flex " uk-grid>';
     $data = $databasehandler->query($query);
     while ($row = $data->fetch()) {
         if ($previousMainCategoryNumber != $row['HoofdrubriekNr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 1);
             $previousCategoryKind = 1;
-            $categoryOverview .= '<div class="uk-flex uk-flex-column uk-margin-medium-left"><h4><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a></h4><ul class="uk-nav-default uk-nav-parent-icon" uk-nav uk-grid>';
+            $categoryOverview .= '<div class="uk-flex uk-flex-column uk-margin-medium-left uk-card auctions-reset-margin uk-card-default uk-card-body "><h4 class="categories-reset-padding"><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a></h4><ul class="uk-nav-default uk-nav-parent-icon" uk-nav uk-grid>';
         }
         if ($previousSubCategoryNumber != $row['SubrubriekNr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 2);
             $previousCategoryKind = 2;
-            $categoryOverview .= '<li class="uk-parent"><a href="#">' . $row['SubrubriekNaam'] . '<ul class="uk-nav-sub"><li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNr'] . '">Ga naar categorie</a></li>';
+            $categoryOverview .= '<li class="uk-parent uk-display-inline-block"><a href="#">' . $row['SubrubriekNaam'] . '<ul class="uk-nav-sub"><li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNr'] . '">Ga naar categorie</a></li>';
         }
         if ($previousSubCategoryLevel1Number != $row['SubrubriekNiveau1Nr']) {
             $categoryOverview .= getClosingTags($previousCategoryKind, 3);
