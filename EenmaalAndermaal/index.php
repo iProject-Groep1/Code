@@ -1,7 +1,7 @@
 <?php
 require_once('scripts/header.php');
-include('scripts/AuctionItem.php');
-include('scripts/HomepageFunctions.php');
+include('scripts/auction-item.php');
+include('scripts/homepage-functions.php');
 include('scripts/database-connect.php')
 ?>
 
