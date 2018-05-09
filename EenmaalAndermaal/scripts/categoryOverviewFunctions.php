@@ -48,7 +48,7 @@ function getCategoryOverview($databasehandler)
         if ($previousSubCategoryNumber != $row['SubrubriekNr']) { //check of er een nieuwe subrubriek is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
             $categoryOverview .= getClosingTags($previousCategoryKind, 2); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 2;
-            $categoryOverview .= '<li class="uk-parent"><a href="#">' . $row['SubrubriekNaam'] . '<ul class="uk-nav-sub"><li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNr'] . '">Ga naar categorie</a></li>';
+            $categoryOverview .= '<li class="uk-parent"><a href="#">' . $row['SubrubriekNaam'] . '<ul class="uk-nav-sub uk-flex uk-flex-wrap uk-flex-wrap-between" uk-grid><li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNr'] . '">Ga naar categorie</a></li>';
         }
         if ($previousSubCategoryLevel1Number != $row['SubrubriekNiveau1Nr']) { //check of er een nieuwe subrubriek niveau 1 is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
             $categoryOverview .= getClosingTags($previousCategoryKind, 3); //bepaal welke HTML elements afgesloten moeten worden.
