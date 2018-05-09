@@ -14,10 +14,10 @@
       <file leaf-file-name="categoryOverviewFunctions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/categoryOverviewFunctions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="100" column="66" lean-forward="true" selection-start-line="100" selection-start-column="66" selection-end-line="100" selection-end-column="66" />
+            <state relative-caret-position="268">
+              <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
               <folding>
-                <marker date="1525860515599" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
+                <marker date="1525861547386" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
               </folding>
             </state>
           </provider>
@@ -38,8 +38,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/scripts/categoryOverviewFunctions.php" />
         <option value="$PROJECT_DIR$/style.css" />
+        <option value="$PROJECT_DIR$/scripts/categoryOverviewFunctions.php" />
       </list>
     </option>
   </component>
@@ -120,16 +120,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1525859012671</updated>
-      <workItem from="1525859015147" duration="2094000" />
+      <workItem from="1525859015147" duration="2533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2094000" />
+    <option name="totallyTimeSpent" value="2533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -181,10 +180,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/categoryOverviewFunctions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="100" column="66" lean-forward="true" selection-start-line="100" selection-start-column="66" selection-end-line="100" selection-end-column="66" />
+        <state relative-caret-position="268">
+          <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
           <folding>
-            <marker date="1525860515599" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
+            <marker date="1525861547386" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
           </folding>
         </state>
       </provider>

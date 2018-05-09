@@ -43,6 +43,7 @@ function getCategoryOverview($databasehandler)
         if ($previousMainCategoryNumber != $row['HoofdrubriekNr']) { //check of er een nieuwe hoofdrubriek is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
             $categoryOverview .= getClosingTags($previousCategoryKind, 1); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 1;
+            //TODO: responsive margin links en rechts
             $categoryOverview .= '<div class="uk-flex uk-flex-column uk-margin-medium-left uk-card auctions-reset-margin uk-card-default uk-card-body "><h4 class="categories-reset-padding"><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a></h4><ul class="uk-nav-default uk-nav-parent-icon" uk-nav uk-grid>';
         }
         if ($previousSubCategoryNumber != $row['SubrubriekNr']) { //check of er een nieuwe subrubriek is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
