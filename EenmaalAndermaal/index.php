@@ -16,10 +16,7 @@ include('scripts/database-connect.php')
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
 
         <?php
-
-
         getPopularItems($dbh);
-
         ?>
 
     </div>

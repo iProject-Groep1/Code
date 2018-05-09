@@ -138,6 +138,8 @@ li .uk-button{
 	/** TODO: !important wegwerken **/
 	text-transform: none;
 	color: black !important;
+	background-color: white;
+	border: 1px solid lightgrey;
 }
 
 .uk-align-right{
@@ -155,8 +157,9 @@ li .uk-button{
 .uk-parent a {
 	/** TODO: important wegwerken **/
 	color: black !important;
+	padding-left: 10px;
+	padding-right: 10px;
 }
-
 
 
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
