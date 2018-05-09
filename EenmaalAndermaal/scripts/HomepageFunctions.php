@@ -19,13 +19,12 @@ require_once('database-connect.php');
 //
 //}
 
-
+// Deze functie haalt alle voorwerpID's uit de database. Deze id's worden vervolgens in de functie gestopt waardoor alle foutieve id's geskipt worden.
 function checkNumbers($dbh)
 {
     $results = "";
     echo '
                 <div class="uk-child-width-1-4@m uk-grid" uk-grid>';
-
     try {
         $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
 
@@ -42,6 +41,9 @@ function checkNumbers($dbh)
     }
 }
 
+
+//Deze functie vraagt de tijd van de database op. Deze tijd modified hij met +10 minuten.
+// Deze functie is echter nu nog niet nodig, maar voor latere doeleinde is dit handig.
 function getServerTime($dbh)
 {
     try {
@@ -59,10 +61,9 @@ function getServerTime($dbh)
 }
 
 
-
+//Deze functie vraagt het LooptijdEindmoment op uit de database. Door deze waarde kan de timer goed functioneren aangezien de timer weet wanneer hij klaar moet zijn
 function getAuctionEnd($dbh, $id)
 {
-
     try {
 
         $stmt = $dbh->prepare("SELECT LooptijdEindMoment FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
@@ -79,7 +80,7 @@ function getAuctionEnd($dbh, $id)
 
 }
 
-
+//Deze functie pakt het hoogste bod van ieder product. Deze informatie haalt hij uit de database
 function getHighestBid($dbh, $id)
 {
     try {
@@ -97,6 +98,7 @@ function getHighestBid($dbh, $id)
 }
 
 
+//Deze functie pakt de Titel van de veiling (gekoppeld aan het ID dat meegegeven wordt).
 function getAuctionTitel($dbh, $id)
 {
     try {
@@ -113,6 +115,7 @@ function getAuctionTitel($dbh, $id)
 }
 
 
+// Deze functie vraagt de filename van het plaatje van de auction op. Deze wordt opgehaald uit de database.
 function getAuctionFilename($dbh, $id)
 {
     try {
@@ -130,18 +133,16 @@ function getAuctionFilename($dbh, $id)
     }
 }
 
-
+//Deze functie doet eigenlijk niks. Deze functie is in het leven geroepen om een rustigere/mooiere functie te hebben voor het bouwen van de veilingen.
 function createItem($dbh, $id)
 {
     createItemScript(getAuctionTitel($dbh, $id), getAuctionEnd($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
 }
 
 
-
+//Deze functie haalt de top 4 populaire items uit de database. Deze top 4 is gebasseerd op de veilingen met de meeste boden (aflopend)
 function getPopularItems($dbh)
-
 {
-
     try {
         $stmt = $dbh->prepare("select top 4 voorwerp, count(voorwerp) as aantal   from  BOD b join  voorwerp v on v.voorwerpnummer = b.voorwerp where datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10   group by voorwerp order by aantal desc"); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
@@ -154,6 +155,8 @@ function getPopularItems($dbh)
     }
 }
 
+
+//Deze functie haalt de top 8 duurste veilingen uit de database. Deze 8 worden vervolgens d.m.v. de createItem(); functie.
 function getHighItems($dbh)
 {
     try {

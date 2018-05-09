@@ -10,12 +10,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="categoryOverviewFunctions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/categoryOverviewFunctions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1796">
+              <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+=======
     <leaf>
       <file leaf-file-name="categoryOverviewFunctions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/categoryOverviewFunctions.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="268">
               <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+=======
+            <state relative-caret-position="1700">
+              <caret line="100" column="66" lean-forward="true" selection-start-line="100" selection-start-column="66" selection-end-line="100" selection-end-column="66" />
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
+>>>>>>> ac690189630197b989302f1b6e8a105ab83fd1dc
               <folding>
                 <marker date="1525861547386" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
               </folding>
@@ -23,6 +37,48 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding>
+                <element signature="n#div#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#p#0;n#div#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#body#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuctionItem.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/AuctionItem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <folding>
+                <marker date="1525861235686" expanded="true" signature="136:2045" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="257:281" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="282:502" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="385:483" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="414:470" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="577:2014" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="961:1995" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="1081:1967" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="1111:1243" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="1341:1474" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="1572:1707" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="1805:1940" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="2016:2029" ph="..." />
+                <marker date="1525861235686" expanded="true" signature="2016:2045" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+=======
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
       <file leaf-file-name="categoryOverview.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/categoryOverview.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -33,13 +89,52 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="HomepageFunctions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/HomepageFunctions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+              <folding>
+                <marker date="1525861235674" expanded="true" signature="1039:1111" ph="SELECT Voorw... Voorwerp" />
+                <marker date="1525861235674" expanded="true" signature="1651:1706" ph="SELECT DISTI... Voorwerp" />
+                <marker date="1525861235674" expanded="true" signature="2292:2374" ph="SELECT Loopt... Voorwerp" />
+                <marker date="1525861235674" expanded="true" signature="2944:3019" ph="SELECT MAX(B... Bod" />
+                <marker date="1525861235674" expanded="true" signature="3569:3638" ph="SELECT Titel... Voorwerp" />
+                <marker date="1525861235674" expanded="true" signature="4210:4327" ph="SELECT Filen... Voorwerp" />
+                <marker date="1525861235674" expanded="true" signature="5388:5608" ph="select top 4... BOD" />
+                <marker date="1525861235674" expanded="true" signature="6095:6310" ph="SELECT top 8... BOD" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/scripts/categoryOverviewFunctions.php" />
+=======
+        <option value="$PROJECT_DIR$/scripts/categoryOverviewFunctions.php" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/categoryOverview.php" />
+        <option value="$PROJECT_DIR$/scripts/HomepageFunctions.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/scripts/test.html" />
+        <option value="$PROJECT_DIR$/scripts/AuctionItem.php" />
+=======
+        <option value="$PROJECT_DIR$/style.css" />
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
+>>>>>>> ac690189630197b989302f1b6e8a105ab83fd1dc
       </list>
     </option>
   </component>
@@ -93,7 +188,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+=======
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -119,13 +218,31 @@
       <created>1525859012671</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1525856522604</updated>
+      <workItem from="1525856525149" duration="1943000" />
+      <workItem from="1525858580872" duration="1786000" />
+=======
       <updated>1525859012671</updated>
+<<<<<<< HEAD
       <workItem from="1525859015147" duration="2533000" />
+=======
+      <workItem from="1525859015147" duration="2094000" />
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
+>>>>>>> ac690189630197b989302f1b6e8a105ab83fd1dc
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="2533000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="3729000" />
+=======
+    <option name="totallyTimeSpent" value="2094000" />
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
+>>>>>>> ac690189630197b989302f1b6e8a105ab83fd1dc
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -158,32 +275,118 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/categoryOverview.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="189">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/categoryOverview.php">
+      <provider selected="true" editor-type-id="text-editor">
+=======
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/scripts/categoryOverviewFunctions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1796">
+          <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+          <folding>
+            <marker date="1525858615105" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#div#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#body#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="6" />
+=======
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="162" column="0" lean-forward="false" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/categoryOverviewFunctions.php">
+    <entry file="file://$PROJECT_DIR$/scripts/HomepageFunctions.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="268">
           <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
           <folding>
             <marker date="1525861547386" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="714">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding>
+            <marker date="1525861235674" expanded="true" signature="1039:1111" ph="SELECT Voorw... Voorwerp" />
+            <marker date="1525861235674" expanded="true" signature="1651:1706" ph="SELECT DISTI... Voorwerp" />
+            <marker date="1525861235674" expanded="true" signature="2292:2374" ph="SELECT Loopt... Voorwerp" />
+            <marker date="1525861235674" expanded="true" signature="2944:3019" ph="SELECT MAX(B... Bod" />
+            <marker date="1525861235674" expanded="true" signature="3569:3638" ph="SELECT Titel... Voorwerp" />
+            <marker date="1525861235674" expanded="true" signature="4210:4327" ph="SELECT Filen... Voorwerp" />
+            <marker date="1525861235674" expanded="true" signature="5388:5608" ph="select top 4... BOD" />
+            <marker date="1525861235674" expanded="true" signature="6095:6310" ph="SELECT top 8... BOD" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/AuctionItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding>
+            <marker date="1525861235686" expanded="true" signature="136:2045" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="257:281" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="282:502" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="385:483" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="414:470" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="577:2014" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="961:1995" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="1081:1967" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="1111:1243" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="1341:1474" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="1572:1707" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="1805:1940" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="2016:2029" ph="..." />
+            <marker date="1525861235686" expanded="true" signature="2016:2045" ph="..." />
+=======
+        <state relative-caret-position="1700">
+          <caret line="100" column="66" lean-forward="true" selection-start-line="100" selection-start-column="66" selection-end-line="100" selection-end-column="66" />
+          <folding>
+            <marker date="1525860515599" expanded="true" signature="812:2057" ph="SELECT Hoofd... Rubriek" />
+>>>>>>> 36c6c04b0b1878427da2048232c964032f5b3f2f
+>>>>>>> ac690189630197b989302f1b6e8a105ab83fd1dc
           </folding>
         </state>
       </provider>
