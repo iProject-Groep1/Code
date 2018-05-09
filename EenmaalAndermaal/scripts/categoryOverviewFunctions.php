@@ -1,10 +1,10 @@
 <?php
-//rubriekenboom
-//TESTEN
-function getCategoryOverview($databasehandler)
 
+//bouwt html structuur voor de rubriekenboompagina
+function getCategoryOverview($databasehandler)
 {
     set_time_limit(30);
+    //variabelen om bij te houden wat het vorige rubrieknummer is.
     $previousMainCategoryNumber = 0;
     $previousSubCategoryNumber = 0;
     $previousSubCategoryLevel1Number = 0;
@@ -12,57 +12,56 @@ function getCategoryOverview($databasehandler)
     $previousSubCategoryLevel3Number = 0;
     $previousSubCategoryLevel4Number = 0;
     $previousCategoryKind = 0; //houdt bij welk soort de vorige geplaatse category is: 1 voor hoofd, 2 voor sub, 3 voor subniveau1, 4 voor subniveau2, 5 voor subniveau3, 6 voor subniveau4
-    $alphabet = range('A', 'Z');
+    //$alphabet = range('A', 'Z');
     $categoryOverview = "";
-    $referenceSite = "category.php?categoryID=";
+    $referenceSite = "category.php?categoryID="; //url voor rubriekpagina, waar elke rubriek naar toe linkt
     $query = "SELECT
-HoofdrubriekNr=h.Rubrieknummer,
-HoofdrubriekNaam=h.Rubrieknaam,
-SubrubriekNr=s.Rubrieknummer,
-SubrubriekNaam=s.Rubrieknaam,
-SubrubriekNiveau1Nr=s1.Rubrieknummer,
-SubrubriekNiveau1Naam=s1.Rubrieknaam,
-SubrubriekNiveau2Nr=s2.Rubrieknummer,
-SubrubriekNiveau2Naam=s2.Rubrieknaam,
-SubrubriekNiveau3Nr=s3.Rubrieknummer,
-SubrubriekNiveau3Naam=s3.Rubrieknaam,
-SubrubriekNiveau4Nr=s4.Rubrieknummer,
-SubrubriekNiveau4Naam=s4.Rubrieknaam
-
-FROM Rubriek h
-LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent
-LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent
-LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent
-LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent
-LEFT JOIN Rubriek s4 on s3.Rubrieknummer = s4.Parent
-
-WHERE h.Parent = -1 --AND h.Rubrieknaam LIKE '%a' 
-ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrieknaam, s2.Volgnr, s2.Rubrieknaam, s3.Volgnr, s3.Rubrieknaam, s4.Volgnr, s4.Rubrieknaam";
+                HoofdrubriekNr=h.Rubrieknummer,
+                HoofdrubriekNaam=h.Rubrieknaam,
+                SubrubriekNr=s.Rubrieknummer,
+                SubrubriekNaam=s.Rubrieknaam,
+                SubrubriekNiveau1Nr=s1.Rubrieknummer,
+                SubrubriekNiveau1Naam=s1.Rubrieknaam,
+                SubrubriekNiveau2Nr=s2.Rubrieknummer,
+                SubrubriekNiveau2Naam=s2.Rubrieknaam,
+                SubrubriekNiveau3Nr=s3.Rubrieknummer,
+                SubrubriekNiveau3Naam=s3.Rubrieknaam,
+                SubrubriekNiveau4Nr=s4.Rubrieknummer,
+                SubrubriekNiveau4Naam=s4.Rubrieknaam
+                FROM Rubriek h
+                LEFT JOIN Rubriek s on h.Rubrieknummer=s.Parent
+                LEFT JOIN Rubriek s1 on s.Rubrieknummer = s1.Parent
+                LEFT JOIN Rubriek s2 on s1.Rubrieknummer = s2.Parent
+                LEFT JOIN Rubriek s3 on s2.Rubrieknummer = s3.Parent
+                LEFT JOIN Rubriek s4 on s3.Rubrieknummer = s4.Parent
+                WHERE h.Parent = -1 --AND h.Rubrieknaam LIKE '%a' 
+                ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrieknaam, s2.Volgnr, s2.Rubrieknaam, s3.Volgnr, s3.Rubrieknaam, s4.Volgnr, s4.Rubrieknaam"; //query om alle rubrieken en subrubrieken etc. op te halen
 
     $categoryOverview .= '<div class="uk-flex" uk-grid>';
     $data = $databasehandler->query($query);
-    while ($row = $data->fetch()) {
-        if ($previousMainCategoryNumber != $row['HoofdrubriekNr']) {
-            $categoryOverview .= getClosingTags($previousCategoryKind, 1);
+    while ($row = $data->fetch()) { //loopt elke row van de resultaten door
+        if ($previousMainCategoryNumber != $row['HoofdrubriekNr']) { //check of er een nieuwe hoofdrubriek is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
+            $categoryOverview .= getClosingTags($previousCategoryKind, 1); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 1;
             $categoryOverview .= '<div class="uk-flex uk-flex-column uk-margin-medium-left"><h4><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a></h4><ul class="uk-nav-default uk-nav-parent-icon" uk-nav uk-grid>';
         }
-        if ($previousSubCategoryNumber != $row['SubrubriekNr']) {
-            $categoryOverview .= getClosingTags($previousCategoryKind, 2);
+        if ($previousSubCategoryNumber != $row['SubrubriekNr']) { //check of er een nieuwe subrubriek is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
+            $categoryOverview .= getClosingTags($previousCategoryKind, 2); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 2;
             $categoryOverview .= '<li class="uk-parent"><a href="#">' . $row['SubrubriekNaam'] . '<ul class="uk-nav-sub"><li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNr'] . '">Ga naar categorie</a></li>';
         }
-        if ($previousSubCategoryLevel1Number != $row['SubrubriekNiveau1Nr']) {
-            $categoryOverview .= getClosingTags($previousCategoryKind, 3);
+        if ($previousSubCategoryLevel1Number != $row['SubrubriekNiveau1Nr']) { //check of er een nieuwe subrubriek niveau 1 is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
+            $categoryOverview .= getClosingTags($previousCategoryKind, 3); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 3;
             $categoryOverview .= '<li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNiveau1Nr'] . '">' . $row['SubrubriekNiveau1Naam'] . '</a></li><div uk-dropdown><ul class="uk-list">';
         }
-        if ($previousSubCategoryLevel2Number != $row['SubrubriekNiveau2Nr']) {
-            $categoryOverview .= getClosingTags($previousCategoryKind, 4);
+        if ($previousSubCategoryLevel2Number != $row['SubrubriekNiveau2Nr']) { //check of er een nieuwe subrubriek niveau 2 is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
+            $categoryOverview .= getClosingTags($previousCategoryKind, 4); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 4;
             $categoryOverview .= '<li><a href="' . $referenceSite . $row['SubrubriekNiveau2Nr'] . '">' . $row['SubrubriekNiveau2Naam'] . '</a></li>';
         }
 
+        //zet alle previousCategoryNumbers op de huidige rubrieknummers voor de volgende while loop.
         $previousMainCategoryNumber = $row['HoofdrubriekNr'];
         $previousSubCategoryNumber = $row['SubrubriekNr'];
         $previousSubCategoryLevel1Number = $row['SubrubriekNiveau1Nr'];
@@ -72,10 +71,11 @@ ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrie
     }
 
 
-    $categoryOverview .= '</div>';
+    $categoryOverview .= '</ul></div>';
     return $categoryOverview;
 }
 
+//bepaalt welke HTML tags afgesloten moeten worden
 function getClosingTags($previousCategoryKind, $currentCategoryKind)
 {
     $closingTags = "";
