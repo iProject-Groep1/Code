@@ -1,4 +1,5 @@
 <?php
+include('database-connect.php');
 
 
 /* ALLE INLOG PAGINA FUNCTIES */
@@ -9,25 +10,10 @@ if(isset($_POST["submit"])) {
 }
 
 
-function emailMessage(){
-
-    $email = $_POST['email'];
-
-    if (isset($_POST['email']) && !empty($_POST['email'])) {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $msg = 'The email you have entered is invalid, please try again.';
-        } else {
-            $msg = 'Your account has been made, <br /> please verify it by clicking the activation link that has been send to your email.';
-            $hash = md5(rand(0, 1000));
-
-            createMessage($email, $hash);
-        }
-    }
-}
-
 function emailReg($dbh)
 {
     $email = $_POST['email'];
+    $isGeactiveerd = 0;
 
     if (isset($_POST['email']) && !empty($_POST['email'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -35,18 +21,15 @@ function emailReg($dbh)
         } else {
             $msg = 'Your account has been made, <br /> please verify it by clicking the activation link that has been send to your email.';
             $hash = md5(rand(0, 1000));
-
             createMessage($email, $hash);
 
             try {
-                $sql = "INSERT INTO Verification(email, hash) VALUES(?,?)"; /* prepared statement */
+                $sql = "INSERT INTO Verificatie(email, hash, isGeactiveerd) VALUES(?,?,?)"; /* prepared statement */
                 $query = $dbh->prepare($sql);
-                $query->execute(array($email, $hash));
-
+                $query->execute(array($email, $hash, $isGeactiveerd));
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
             }
-
         }
         header('verification.php');
         echo $msg;
@@ -64,8 +47,8 @@ Thanks for signing up!
 Your account has been created, you can login after you have activated your account by pressing the url below.
  
 ------------------------
-Username: ' . $email . '
-Password: ' . $hash . '
+Email: ' . $email . '
+Verification Code: ' . $hash . '
 ------------------------
  
 Please click this link to activate your account:
