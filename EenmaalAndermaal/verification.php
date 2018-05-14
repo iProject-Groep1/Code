@@ -64,24 +64,16 @@ echo'
         Get_country($dbh);
         echo' </select>
     </div>
+    geboortedag
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Input">
+        <div class="uk-inline">
+            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+            <input class="uk-input" type="text" placeholder="wachtwoord">
+        </div>
     </div>
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Input">
-    </div>
+    vraag
+    antwoord text
+    
     <div class="uk-margin">
         <input class="uk-input" type="text" placeholder="Input">
     </div>
