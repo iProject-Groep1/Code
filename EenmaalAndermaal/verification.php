@@ -68,7 +68,7 @@ echo'
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="text" placeholder="wachtwoord">
+            <input class="uk-input" type="password" placeholder="wachtwoord">
         </div>
     </div>
     vraag
