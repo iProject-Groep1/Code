@@ -24,7 +24,7 @@ if ($match > 0){
 
     $dbh->query("UPDATE Verificatie SET isGeactiveerd='1' WHERE email='" . $email . "' AND hash='" . $hash . "'");
 } else {
-    echo "Er ging iets mis";
+
 }
 
 }

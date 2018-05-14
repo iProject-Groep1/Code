@@ -52,8 +52,7 @@ function getServerTime($dbh)
         while ($results = $stmt->fetch()) {
             $row = $results['Tijd'];
         }
-        $row->modify('+10 minutes');
-        echo $row->format('Y-m-d') . "\n";
+        return $row;
 
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
