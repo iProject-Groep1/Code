@@ -77,11 +77,9 @@ if(isset($_POST['username'])){
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
-<<<<<<< HEAD
                     <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 0 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="text" name="username" id="usernameField" placeholder="Gebruikersnaam" value="<?php if(isset($_POST['username'])){echo $_POST['username'];} ?>" required>
-=======
-                    <input class="uk-input" type="text" placeholder="Gebruikersnaam" required>
->>>>>>> b4fd9b3e13bd10451a6c6ba7189264c80e1e004c
+
+
                 </div>
             </div>
 
@@ -89,11 +87,8 @@ if(isset($_POST['username'])){
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-<<<<<<< HEAD
                     <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 1 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="text" name="password" id="passwordField" placeholder="Wachtwoord" required>
-=======
-                    <input class="uk-input" type="password" placeholder="Wachtwoord" required>
->>>>>>> b4fd9b3e13bd10451a6c6ba7189264c80e1e004c
+
                 </div>
             </div>
 
@@ -108,10 +103,8 @@ if(isset($_POST['username'])){
 
             <hr class="uk-divider-icon">
 
-<<<<<<< HEAD
-=======
+
             <!-- TODO: href veranderen naar registreer pagina -->
->>>>>>> b4fd9b3e13bd10451a6c6ba7189264c80e1e004c
             <p class="uk-text-center">Heeft u nog geen account? <a href="registration.php">Registreer</a> eenvoudig.</p>
 
 

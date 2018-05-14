@@ -44,11 +44,7 @@ echo '
                         <li class="uk-nav-divider"></li>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="category-overview.php">Rubrieken</a></li>
-<<<<<<< HEAD
-                        <li><a href="login.php">Login</a></li>
-=======
-                        <li><a href="../login.php"> LoginLogout () </a></li>
->>>>>>> b4fd9b3e13bd10451a6c6ba7189264c80e1e004c
+                        <li><a href="login.php">'.LoginLogout().'</a></li>
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#">Algemene Voorwaarden</a></li>
@@ -71,19 +67,11 @@ echo '
         <ul class="uk-navbar-nav uk-navbar-nav1 uk-visible@m">
             <li><a href="index.php">Home</a></li>
             <li><a href="category-overview.php">Rubrieken</a></li>
-<<<<<<< HEAD
             <li><a href="login.php">Login</a></li>
             <li><a href="">Contact</a></li>
         </ul>
         <div class="uk-navbar-item uk-visible@m uk-navbar1">
             <a href="registration.php" class="uk-button uk-button-danger tm-button-default uk-icon">Register now</a>
-=======
-            <li><a href="../login.php">Login</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-        <div class="uk-navbar-item uk-visible@m uk-navbar1">
-            <a href="../registration.php" class="uk-button uk-button-danger tm-button-default uk-icon">Register now</a>
->>>>>>> b4fd9b3e13bd10451a6c6ba7189264c80e1e004c
         </div>
     </div>
 </nav>

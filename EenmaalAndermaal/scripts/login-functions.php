@@ -1,9 +1,7 @@
 <?php
 include('database-connect.php');
 
-<<<<<<< HEAD
-function loginCheck(){
-=======
+
 function login($dbh)
 {
     //hashing van het wachtwoord moet nog
@@ -52,8 +50,6 @@ function timeLogged () {
     // 7 days; 24 hours; 60 mins; 60 secs
     return date('d-m-Y  G:i', $time);
 
-}
->>>>>>> b4fd9b3e13bd10451a6c6ba7189264c80e1e004c
 
 }
 
