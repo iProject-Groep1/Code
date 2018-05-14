@@ -3,7 +3,6 @@
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
 include('scripts/country');
-
 include('scripts/database-connect.php');
 
 
