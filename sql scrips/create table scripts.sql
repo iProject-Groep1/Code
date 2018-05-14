@@ -14,11 +14,11 @@ drop table if exists Betaalwijze
 go 
 drop table if exists Looptijd
 go
+drop table if exists Vraag
+go
 drop table if exists Gebruiker
 go
 drop table if exists Gebruikerstelefoon
-go
-drop table if exists Vraag
 go
 drop table if exists Verificatie
 go
@@ -124,9 +124,6 @@ go
 
 
 
-
-
-
 CREATE TABLE Bod (
 	voorwerp			int					NOT NULL, 
 	bodbedrag			NUMERIC(8, 2)		NOT NULL,				--veranderd van char(5)
@@ -152,7 +149,7 @@ Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwe
 CREATE TABLE Vraag (
 	
 	vraagnummer			INTEGER				NOT NULL, 
-	vraagtekst			VARCHAR(30)			NOT NULL, --aangepast van char(21)
+	vraagtekst			VARCHAR(100)		NOT NULL, --aangepast van char(21)
 	
 	CONSTRAINT Vraagkey PRIMARY KEY(vraagnummer)
 
