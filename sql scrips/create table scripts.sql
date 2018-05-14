@@ -21,7 +21,9 @@ go
 drop table if exists Vraag
 go
 drop table if exists Verificatie
-
+go
+drop table if exists Land
+go
 
 go 
 Create table Betaalwijze	 (
@@ -156,6 +158,10 @@ CREATE TABLE Vraag (
 
 )
 
+CREATE TABLE Land (
+	land				VARCHAR(40)			NOT NULL  --aangepast van char(9)
+
+)
 
 CREATE TABLE Gebruiker (
 
@@ -176,7 +182,8 @@ CREATE TABLE Gebruiker (
 
 	CONSTRAINT Gebruikerkey PRIMARY KEY(gebruikersnaam),
 	CONSTRAINT FK_Gebruiker_Vraagnummerkey	FOREIGN KEY (vraag) REFERENCES Vraag(vraagnummer),
-	CONSTRAINT CK_Wachtwoord_Lengte CHECK(len(rtrim(ltrim(wachtwoord))) >= 7) 
+	CONSTRAINT CK_Wachtwoord_Lengte CHECK(len(rtrim(ltrim(wachtwoord))) >= 7),
+	CONSTRAINT CK_Land CHECK(land in (SELECT land FROM Land)) 
 )
 
 CREATE TABLE Gebruikerstelefoon (
@@ -198,4 +205,5 @@ CREATE TABLE Verificatie
 	CONSTRAINT PK_Verificatie PRIMARY KEY (email),
 
 )
+
 
