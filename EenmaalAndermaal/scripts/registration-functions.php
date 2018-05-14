@@ -69,7 +69,7 @@ Password: ' . $hash . '
 ------------------------
  
 Please click this link to activate your account:
-http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
+http://iproject1.icasites.nl/verification.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
 
 
     $headers = 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
