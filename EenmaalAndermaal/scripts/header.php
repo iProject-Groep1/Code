@@ -44,7 +44,7 @@ echo '
                         <li class="uk-nav-divider"></li>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="category-overview.php">Rubrieken</a></li>
-                        <li><a href="login.php">'.LoginLogout().'</a></li>
+                        <li><a href="'.LoginLogout().'.php">'.LoginLogout().'</a></li>
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#">Algemene Voorwaarden</a></li>
