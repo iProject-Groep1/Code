@@ -2,7 +2,7 @@
 
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
-include('scripts/country');
+include('scripts/country.php');
 include('scripts/database-connect.php');
 
 activateAccount($dbh);
@@ -22,25 +22,24 @@ while ($row = $search->fetch()) {
 }
 
 if ($match > 0){
-    echo "Account is geactiveerd";
+
     $dbh->query("UPDATE Verificatie SET isGeactiveerd='1' WHERE email='" . $email . "' AND hash='" . $hash . "'");
 } else {
     echo "Er ging iets mis";
 }
 
-};
+}
 
 echo'
 <body>
 <form>
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-margin-auto uk-margin-top uk-margin-bottom">
+      <h3 class="uk-card-title uk-text-center uk-margin-bottom">Registreren bij EenmaalAndermaal</h3>
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder='. $hash .'>
-    </div>
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder= '. $email .'>
-    </div>
-    <div class="uk-margin">
+    <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: user"></span>
         <input class="uk-input" type="text" placeholder="gebruikersnaam">
+        </div>
     </div>
     <div class="uk-margin">
         <input class="uk-input" type="text" placeholder="voornaam">
@@ -62,8 +61,7 @@ echo'
     </div>
     <div class="uk-margin">
         <select class="uk-select">
-            <?PHP Get_country($dbh) ?>
-        </select>
+         </select>
     </div>
     <div class="uk-margin">
         <input class="uk-input" type="text" placeholder="Input">
@@ -87,7 +85,8 @@ echo'
         <input class="uk-input" type="text" placeholder="Input">
     </div>
 
-
+    </div>
 </form>
 </body>
 ';
+require_once('scripts/footer.php');

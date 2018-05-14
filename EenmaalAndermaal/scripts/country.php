@@ -1,24 +1,20 @@
 <<?php
-include('scripts/database-connect.php')
+include('database-connect.php');
 
 function Get_country($dbh){
-
+$return = '';
   try {
-      $stmt = $dbh->query(""); /* prepared statement */
+      $stmt = $dbh->prepare("select * from land"); /* prepared statement */
+      $stmt->execute(); /* stuurt alles naar de server */
 
-      while ($row = $stmt->fetch_assoc()){
-      echo "<option value=\" . $row['land'] . </option>";
+      while ($row = $stmt->fetch()){
+      $return .= "<option value= . $row["land"] . </option>";
        }
-
       }
-
-
-
    catch (PDOException $e) {
       echo "Fout" . $e->getMessage();
   }
-}
-
-
+  echo $return;
+};
 
  ?>
