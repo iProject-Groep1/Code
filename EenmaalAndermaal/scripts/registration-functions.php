@@ -13,6 +13,7 @@ if(isset($_POST["submit"])) {
 function emailReg($dbh)
 {
     $email = $_POST['email'];
+    $isGeactiveerd = 0;
 
     if (isset($_POST['email']) && !empty($_POST['email'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -23,9 +24,9 @@ function emailReg($dbh)
             createMessage($email, $hash);
 
             try {
-                $sql = "INSERT INTO Verificatie(email, hash) VALUES(?,?)"; /* prepared statement */
+                $sql = "INSERT INTO Verificatie(email, hash, isGeactiveerd) VALUES(?,?,?)"; /* prepared statement */
                 $query = $dbh->prepare($sql);
-                $query->execute(array($email, $hash));
+                $query->execute(array($email, $hash, $isGeactiveerd));
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
             }
