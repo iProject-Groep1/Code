@@ -22,7 +22,7 @@ include('scripts/header.php')
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                    <input class="uk-input" type="text" placeholder="Wachtwoord">
+                    <input class="uk-input" type="password" placeholder="Wachtwoord">
                 </div>
             </div>
 
