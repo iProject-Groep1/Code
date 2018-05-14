@@ -9,7 +9,7 @@ $return = '';
       $stmt->execute(); /* stuurt alles naar de server */
 
       while ($row = $stmt->fetch()){
-      $return .= '<option value= ' . $row['land']  . '</option>';
+      $return .= '<option value="'. $row['land'] .'"> '.$row['land'].'</option>';
        }
 
       }
