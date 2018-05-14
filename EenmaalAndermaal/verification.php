@@ -25,7 +25,7 @@ if ($match > 0){
 
     $dbh->query("UPDATE Verificatie SET isGeactiveerd='1' WHERE email='" . $email . "' AND hash='" . $hash . "'");
 } else {
-    echo "Er ging iets mis";
+
 }
 
 }
@@ -76,6 +76,7 @@ echo'
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+<<<<<<< HEAD
             <input class="uk-input" type="text" placeholder="Wachtwoord bevestigen">
         </div>
     </div>
@@ -86,6 +87,9 @@ echo'
         echo' </select>
         <div class="uk-margin">
             <input class="uk-input" type="text" placeholder="Antwoord">
+=======
+            <input class="uk-input" type="password" placeholder="wachtwoord">
+>>>>>>> eecdb471298df84e9544f90a8ba1ef63f03df4a4
         </div>
     </div>
     <div class="uk-margin">
