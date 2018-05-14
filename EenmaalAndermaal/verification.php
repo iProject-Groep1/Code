@@ -60,7 +60,9 @@ echo'
     </div>
     <div class="uk-margin">
         <select class="uk-select">
-         </select>
+        ';
+        Get_country($dbh);
+        echo' </select>
     </div>
     <div class="uk-margin">
         <input class="uk-input" type="text" placeholder="Input">
