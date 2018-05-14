@@ -14,39 +14,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
  */
 
 
-if (isset($_POST['username'])) {
-    if (empty(trim($_POST['username'])) || empty(trim($_POST['password']))) {
-        if(empty(trim($_POST['username'])) && !empty(trim($_POST['password']))) {
-            header('Location: login.php?notify=0');
-        } else if(!empty(trim($_POST['username'])) && empty(trim($_POST['password']))){
-            header('Location: login.php?notify=1');
-        } else{
-            header('Location: login.php?notify=2');
-        }
-        die();
-    } else {
-        require_once('scripts/database-connect.php');
-        $data = $dbh->query("SELECT wachtwoord FROM Gebruiker WHERE gebruikersnaam = '$_POST[username]'");
-        $row = $data->fetch();
-        if (!password_verify($_POST['password'], $row['wachtwoord'])) {
-            header('Location: login.php?notify=3');
-            die();
 
-        } else {
-            $_SESSION['username'] = $_POST['username'];
-            header($_SESSION['lastVisited']);
-            die();
-        }
-
-
-    }
-}
-
-if(isset($_POST['username'])){
-    echo 'HALLO';
-} else {
-    echo 'dino';
-}
 
 ?>
 
@@ -72,12 +40,12 @@ if(isset($_POST['username'])){
         }
         ?>
 
-        <form method="POST" action="login.php">
+        <form method="POST" action="scripts/login-check.php">
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
-                    <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 0 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="text" name="username" id="usernameField" placeholder="Gebruikersnaam" value="<?php if(isset($_POST['username'])){echo $_POST['username'];} ?>" required>
+                    <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 0 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="text" name="username" id="usernameField" placeholder="Gebruikersnaam" value="<?php if(isset($_POST['username'])){echo $_GET['username'];} ?>" required>
 
 
                 </div>
@@ -94,7 +62,7 @@ if(isset($_POST['username'])){
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
-                    <input class="uk-input uk-button-primary" type="submit" id="loginSubmit" value="Inloggen">
+                    <input class="uk-input uk-button-primary" type="submit" name = "submit "id="loginSubmit" value="Inloggen">
                 </div>
             </div>
 

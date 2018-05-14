@@ -14,6 +14,11 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="87">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+=======
             <state relative-caret-position="0">
               <caret line="31" column="51" lean-forward="false" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
               <folding />
@@ -48,10 +53,20 @@
                 <marker date="1526300038119" expanded="true" signature="2871:3692" ph="..." />
                 <marker date="1526300038119" expanded="true" signature="2949:3681" ph="..." />
               </folding>
+>>>>>>> af7c6bf9fa3b2727a41d6472a8efc7675d997a79
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="login-check.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/login-check.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+              <folding>
+                <marker date="1526301355026" expanded="true" signature="635:709" ph="SELECT wacht... Gebruiker" />
+=======
       <file leaf-file-name="bid-functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/bid-functions.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -144,6 +159,7 @@
                 <marker date="1526051653983" expanded="true" signature="1341:1474" ph="..." />
                 <marker date="1526051653983" expanded="true" signature="1572:1707" ph="..." />
                 <marker date="1526051653983" expanded="true" signature="1805:1940" ph="..." />
+>>>>>>> af7c6bf9fa3b2727a41d6472a8efc7675d997a79
               </folding>
             </state>
           </provider>
@@ -155,10 +171,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/scripts/login-functions.php" />
-        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/scripts/header.php" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/login-afhandeling.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/scripts/login-check.php" />
+=======
         <option value="$PROJECT_DIR$/scripts/bid-functions.php" />
         <option value="$PROJECT_DIR$/scripts/country.php" />
+>>>>>>> af7c6bf9fa3b2727a41d6472a8efc7675d997a79
       </list>
     </option>
   </component>
@@ -239,16 +260,38 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526299171779</updated>
+<<<<<<< HEAD
+      <workItem from="1526299176409" duration="2464000" />
+=======
       <workItem from="1526299176409" duration="558000" />
+<<<<<<< HEAD
       <workItem from="1526300043961" duration="2386000" />
+=======
+      <workItem from="1526300043961" duration="1740000" />
+>>>>>>> af7c6bf9fa3b2727a41d6472a8efc7675d997a79
+>>>>>>> 45edf7e436f951dcc8df9a2fc87aca540f236f2e
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="2947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="2467000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+=======
+    <option name="totallyTimeSpent" value="2301000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+>>>>>>> af7c6bf9fa3b2727a41d6472a8efc7675d997a79
+>>>>>>> 45edf7e436f951dcc8df9a2fc87aca540f236f2e
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15677084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -307,6 +350,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+=======
         <state relative-caret-position="651">
           <caret line="31" column="51" lean-forward="false" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
           <folding />
@@ -339,6 +387,7 @@
             <marker date="1526300038119" expanded="true" signature="2871:3692" ph="..." />
             <marker date="1526300038119" expanded="true" signature="2949:3681" ph="..." />
           </folding>
+>>>>>>> af7c6bf9fa3b2727a41d6472a8efc7675d997a79
         </state>
       </provider>
     </entry>
@@ -366,6 +415,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/scripts/header.php">
+=======
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -404,6 +456,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/homepage-functions.php">
+>>>>>>> af7c6bf9fa3b2727a41d6472a8efc7675d997a79
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="97" selection-end-column="1" />
@@ -503,6 +556,32 @@
             <marker date="1526301302117" expanded="true" signature="2456:2532" ph="..." />
             <marker date="1526301302117" expanded="true" signature="2560:2636" ph="..." />
             <marker date="1526301302117" expanded="true" signature="2664:2740" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login-afhandeling.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/login-check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <marker date="1526301355026" expanded="true" signature="635:709" ph="SELECT wacht... Gebruiker" />
           </folding>
         </state>
       </provider>
