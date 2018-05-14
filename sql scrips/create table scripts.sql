@@ -150,7 +150,7 @@ Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwe
 CREATE TABLE Vraag (
 	
 	vraagnummer			INTEGER				NOT NULL, 
-	vraagtekst			VARCHAR(30)			NOT NULL, 
+	vraagtekst			VARCHAR(30)			NOT NULL, --aangepast van char(21)
 	
 	CONSTRAINT Vraagkey PRIMARY KEY(vraagnummer)
 
@@ -159,31 +159,31 @@ CREATE TABLE Vraag (
 
 CREATE TABLE Gebruiker (
 
-	gebruikersnaam		VARCHAR(20)			NOT NULL, 
-	voornaam			VARCHAR(15)			NOT NULL, 
-	achternaam			VARCHAR(20)			NOT NULL,	
-	adresregel1			VARCHAR(30)			NOT NULL, 
-	adresregel2			VARCHAR(10)					, 	
-	postcode			VARCHAR(7)			NOT NULL, 
-	plaatsnaam			VARCHAR(30)			NOT NULL, 
-	land				VARCHAR(30)			NOT NULL, 
-	geboortedag			DATE				NOT NULL, 
-	mail_adres VARCHAR(320) NOT NULL, -- 64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
-	wachtwoord			VARCHAR(20)			NOT NULL, 
+	gebruikersnaam		VARCHAR(20)			NOT NULL, --aangepast van char(10)
+	voornaam			VARCHAR(15)			NOT NULL, --van char(5)
+	achternaam			VARCHAR(20)			NOT NULL, --van char(8)
+	adresregel1			VARCHAR(30)			NOT NULL, --van char(15)
+	adresregel2			VARCHAR(30)					, 	
+	postcode			VARCHAR(7)			NOT NULL, --van char(7)
+	plaatsnaam			VARCHAR(30)			NOT NULL, --van char(12)
+	land				VARCHAR(30)			NOT NULL, --van char(9)
+	geboortedag			DATE				NOT NULL, --van char(10)
+	mail_adres			VARCHAR(320)		NOT NULL, --64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
+	wachtwoord			VARCHAR(20)			NOT NULL, --van char(9)
 	vraag				INTEGER				NOT NULL,
-	antwoordtekst		VARCHAR(20)			NOT NULL, 
-	verkoper			BIT		DEFAULT 0	NOT NULL,
+	antwoordtekst		VARCHAR(20)			NOT NULL, --van char(6)
+	verkoper			BIT		DEFAULT 0	NOT NULL, --van char(3)
 
 	CONSTRAINT Gebruikerkey PRIMARY KEY(gebruikersnaam),
-	CONSTRAINT FK_Gebruiker_Vraagnummerkey	FOREIGN KEY (vraag) REFERENCES Vraag(vraagnummer)
-
+	CONSTRAINT FK_Gebruiker_Vraagnummerkey	FOREIGN KEY (vraag) REFERENCES Vraag(vraagnummer),
+	CONSTRAINT CK_Wachtwoord_Lengte CHECK(len(rtrim(ltrim(wachtwoord))) >= 7) 
 )
 
 CREATE TABLE Gebruikerstelefoon (
 
 	volgnr				INTEGER				NOT NULL, 
-	gebruiker			VARCHAR(20)			NOT NULL, 
-	telefoon			VARCHAR(20)			NOT NULL,
+	gebruiker			VARCHAR(20)			NOT NULL,	--aangepast van char(10)
+	telefoon			VARCHAR(20)			NOT NULL,	--verplicht veld bij het registreren, aangepast van char(11)
 	
 	CONSTRAINT Gebruikerstelefoonkey PRIMARY KEY(volgnr, gebruiker),
 	CONSTRAINT FK_Gebruikerstelefoon_Gebruikersnaamkey FOREIGN KEY (gebruiker) REFERENCES Gebruiker(gebruikersnaam)
@@ -193,9 +193,9 @@ CREATE TABLE Gebruikerstelefoon (
 CREATE TABLE Verificatie
 (
 	email				VARCHAR(320)		NOT NULL, -- 64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
-	hash				VARCHAR(32)			NOT NULL, -- 32 tekens omdat de functie in php dit genereerd.
+	hash				VARCHAR(32)			NOT NULL, -- 32 tekens omdat de functie in php dit genereert.
 
-	CONSTRAINT PK_Verification PRIMARY KEY (email),
-	CONSTRAINT CHK_Verification CHECK ((len(rtrim(ltrim(email)))) = 32)
+	CONSTRAINT PK_Verificatie PRIMARY KEY (email),
+	CONSTRAINT CHK_Verificatie CHECK ((len(rtrim(ltrim(email)))) = 32)
 
 )
