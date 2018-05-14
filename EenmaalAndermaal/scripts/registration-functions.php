@@ -5,7 +5,7 @@
 /* Deze 2 if statements zorgen ervoor dat er gecheckt wordt of er gesubmit is.
  Indien een van de 2 forms ingevuld is start hij een functie. */
 if(isset($_POST["submit"])) {
-    emailMessage();
+    emailReg($dbh);
 }
 
 
@@ -48,6 +48,7 @@ function emailReg($dbh)
             }
 
         }
+        header('verification.php');
         echo $msg;
     }
 }
@@ -68,7 +69,8 @@ Password: ' . $hash . '
 ------------------------
  
 Please click this link to activate your account:
-http://www.iproject1.icasites.nl/verify.php'; // Our message above including the link
+http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
+
 
     $headers = 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
     mail($to, $subject, $message, $headers); // Send our email

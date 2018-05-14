@@ -21,11 +21,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="724">
+              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -34,8 +34,8 @@
       <file leaf-file-name="registration.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/registration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="0">
+              <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
               <folding>
                 <marker date="1526291269957" expanded="true" signature="187:1127" ph="..." />
                 <marker date="1526291269957" expanded="true" signature="214:1121" ph="..." />
@@ -61,11 +61,27 @@
       <file leaf-file-name="registration-functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="756">
+              <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
               <folding>
-                <marker date="1526289899215" expanded="true" signature="1291:1340" ph="INSERT INTO Verification... " />
-                <marker date="1526289899215" expanded="true" signature="2383:2424" ph="SELECT hash users" />
+                <marker date="1526292687011" expanded="true" signature="1291:1340" ph="INSERT INTO Verification... " />
+                <marker date="1526292687011" expanded="true" signature="2446:2487" ph="SELECT hash users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="verification.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/verification.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+              <folding>
+                <marker date="1526292732280" expanded="true" signature="243:314" ph="SELECT email... Verificatie" />
+                <marker date="1526292732280" expanded="true" signature="243:322" ph="SELECT email... Verificatie" />
+                <marker date="1526292732280" expanded="true" signature="243:323" ph="SELECT email... Verificatie" />
+                <marker date="1526292732280" expanded="true" signature="243:324" ph="SELECT email... Verificatie" />
+                <marker date="1526292732280" expanded="true" signature="243:326" ph="SELECT email... Verificatie" />
               </folding>
             </state>
           </provider>
@@ -114,10 +130,11 @@
       <list>
         <option value="$PROJECT_DIR$/scripts/registratie-functions.php" />
         <option value="$PROJECT_DIR$/scripts/hoi.html" />
-        <option value="$PROJECT_DIR$/scripts/registration-functions.php" />
         <option value="$PROJECT_DIR$/scripts/login-functions.php" />
         <option value="$PROJECT_DIR$/registration.php" />
         <option value="$PROJECT_DIR$/scripts/header.php" />
+        <option value="$PROJECT_DIR$/scripts/registration-functions.php" />
+        <option value="$PROJECT_DIR$/verification.php" />
       </list>
     </option>
   </component>
@@ -128,7 +145,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="276" />
     <option name="y" value="-14" />
     <option name="width" value="974" />
@@ -199,15 +216,15 @@
       <option name="presentableId" value="Default" />
       <updated>1525862127325</updated>
       <workItem from="1525862129727" duration="910000" />
-      <workItem from="1526284567894" duration="6248000" />
+      <workItem from="1526284567894" duration="7311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7158000" />
+    <option name="totallyTimeSpent" value="8221000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -315,21 +332,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
+    <entry file="file://$PROJECT_DIR$/scripts/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <marker date="1526289899215" expanded="true" signature="1291:1340" ph="INSERT INTO Verification... " />
-            <marker date="1526289899215" expanded="true" signature="2383:2424" ph="SELECT hash users" />
-          </folding>
+        <state relative-caret-position="724">
+          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/registration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding>
             <marker date="1526291269957" expanded="true" signature="187:1127" ph="..." />
             <marker date="1526291269957" expanded="true" signature="214:1121" ph="..." />
@@ -341,11 +355,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/header.php">
+    <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="756">
+          <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+          <folding>
+            <marker date="1526292687011" expanded="true" signature="1291:1340" ph="INSERT INTO Verification... " />
+            <marker date="1526292687011" expanded="true" signature="2446:2487" ph="SELECT hash users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/verification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <folding>
+            <marker date="1526292732280" expanded="true" signature="243:314" ph="SELECT email... Verificatie" />
+            <marker date="1526292732280" expanded="true" signature="243:322" ph="SELECT email... Verificatie" />
+            <marker date="1526292732280" expanded="true" signature="243:323" ph="SELECT email... Verificatie" />
+            <marker date="1526292732280" expanded="true" signature="243:324" ph="SELECT email... Verificatie" />
+            <marker date="1526292732280" expanded="true" signature="243:326" ph="SELECT email... Verificatie" />
+          </folding>
         </state>
       </provider>
     </entry>
