@@ -33,6 +33,15 @@ constraint PK_Betaalwijze  Primary key (betaalwijze)
 )
 go
 
+CREATE TABLE Verificatie
+(
+	email				VARCHAR(320)		NOT NULL, -- 64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
+	hash				VARCHAR(32)			NOT NULL, -- 32 tekens omdat de functie in php dit genereert.
+	isGeactiveerd		BIT					NOT NULL  
+
+	CONSTRAINT PK_Verificatie PRIMARY KEY (email),
+
+)
 
 create table Looptijd(
 dagen tinyint not null,
@@ -156,8 +165,9 @@ CREATE TABLE Vraag (
 )
 
 CREATE TABLE Land (
-	land				VARCHAR(40)			NOT NULL  --aangepast van char(9)
+	land				VARCHAR(40)			NOT NULL,  --aangepast van char(9)
 
+	CONSTRAINT LandKey PRIMARY KEY(land)
 )
 
 CREATE TABLE Gebruiker (
@@ -195,14 +205,6 @@ CREATE TABLE Gebruikerstelefoon (
 
 )
 
-CREATE TABLE Verificatie
-(
-	email				VARCHAR(320)		NOT NULL, -- 64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
-	hash				VARCHAR(32)			NOT NULL, -- 32 tekens omdat de functie in php dit genereert.
-	isGeactiveerd		BIT					NOT NULL  
 
-	CONSTRAINT PK_Verificatie PRIMARY KEY (email),
-
-)
 
 

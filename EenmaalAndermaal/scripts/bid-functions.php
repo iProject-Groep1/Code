@@ -1,5 +1,5 @@
 <?php
-
+include('homepage-functions.php');
 
 function calcMinBid($dbh, $id){
     $minBod = 0;
@@ -23,8 +23,42 @@ function calcMinBid($dbh, $id){
     } else if(getHighestBid($dbh, $id) > 5000) {
         $minBod = getHighestBid($dbh, $id) + $increment4;
     }
-
     return $minBod;
+}
+
+
+function setMinBid ($dbh, $id, $voorwerp){
+    $bodbedrag = calcMinBid($dbh, $id);
+    $gebruiker = $_SESSION['username'];
+    $bodtijd = getServerTime($dbh);
+
+    try {
+        $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
+        $query = $dbh->prepare($sql);
+        $query->execute(array($voorwerp, $bodbedrag, $gebruiker, $bodtijd));
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
+}
+
+
+function setOwnBid ($dbh, $id, $bod, $voorwerp){
+    $bodbedrag = $bod;
+    $gebruiker = $_SESSION['username'];
+    $bodtijd = getServerTime($dbh);
+
+    if($bodbedrag > setMinBid ($dbh, $id, $voorwerp)){
+        try {
+            $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?,?,?,?)"; /* prepared statement */
+            $query = $dbh->prepare($sql);
+            $query->execute(array($voorwerp, $bodbedrag, $gebruiker, $bodtijd));
+        } catch (PDOException $e) {
+            echo "Fout" . $e->getMessage();
+        }
+    } else {
+        echo "Het bedrag is te weinig! Vul een groter bedrag in.";
+    }
+
 }
 
 

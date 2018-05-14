@@ -2,14 +2,16 @@
 include('database-connect.php');
 
 
-function Get_country($dbh){
+function Get_question($dbh){
 $return = '';
   try {
-      $stmt = $dbh->prepare("select land from land"); /* prepared statement */
+      $stmt = $dbh->prepare("select [vraagnummer], [vraagtekst] from Vraag"); /* prepared statement */
       $stmt->execute(); /* stuurt alles naar de server */
 
       while ($row = $stmt->fetch()){
-      $return .= '<option value="'. $row['land'] .'"> '.$row['land'].'</option>';
+
+        $return .= '<option value="'. $row ['vraagnummer'] .'"> '.$row['vraagtekst'].'</option>';
+        
        }
 
       }

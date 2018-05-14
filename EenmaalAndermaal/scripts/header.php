@@ -1,7 +1,9 @@
 <?php
 session_start();
 
+
 $header = '
+
 <!DOCTYPE HTML>
 <html lang="nl">
 <head>
@@ -39,6 +41,7 @@ if (isset($_SESSION['username'])) {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
 $header .= '
+
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#">Algemene Voorwaarden</a></li>
