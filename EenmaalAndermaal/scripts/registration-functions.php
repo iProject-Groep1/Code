@@ -99,14 +99,6 @@ function verifyEmail($hash, $dbh){
 }
 
 
-function timeLogged () {
-
-    $time = time();
-    // 7 days; 24 hours; 60 mins; 60 secs
-    return date('d-m-Y  G:i', $time);
-
-}
-
 
 
 ?>
