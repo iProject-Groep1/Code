@@ -3,27 +3,30 @@ require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 
 
-
 echo '
-<ul class="uk-switcher uk-margin uk-position-center">
-    <li class="uk-active">
-        <div class="uk-tile uk-tile-muted">
+  <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-margin-auto uk-margin-xlarge-top uk-margin-xlarge-bottom">
+    <h3 class="uk-card-title uk-text-center uk-margin-bottom">Registreren bij EenmaalAndermaal</h3>
+
             <form action="scripts/registration-functions.php" method="post">
 
+
+                      <input class="uk-input" type="text" placeholder="Email" name="email">
+
                 <div class="uk-margin">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon uk-icon" uk-icon="icon: user"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"> <circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle> <path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span>
-                        <input class="uk-input" type="text" placeholder="Email" name="email">
+                    <div class="uk-inline uk-width-1-1">
+
+                        <input  class="uk-input uk-button-primary" "id="loginSubmit"  type="submit" value="Submit" name="submit">
+
                     </div>
                 </div>
 
-                <input class="uk-button uk-button-default uk-align-center" type="submit" value="Submit" name="submit">
+            </form>
+            </div>
+            </div>
+</div>
 
-            </form></div></li>
-</ul>
-                        
 ';
-
+require_once('scripts/footer.php');
 
 //<div class="uk-margin">
 //                    <div class="uk-inline">
