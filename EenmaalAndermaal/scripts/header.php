@@ -3,7 +3,7 @@ session_start();
 
 function LoginLogout ()
 {
-    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true ) {
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
         return 'Logout';
     } else {
         return 'Login';
@@ -44,7 +44,7 @@ echo '
                         <li class="uk-nav-divider"></li>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="category-overview.php">Rubrieken</a></li>
-                        <li><a href="login.php">'.LoginLogout().'</a></li>
+                        <li><a href="'.LoginLogout().'.php">'.LoginLogout().'</a></li>
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#">Algemene Voorwaarden</a></li>
