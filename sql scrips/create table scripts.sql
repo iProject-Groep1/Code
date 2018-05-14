@@ -168,8 +168,8 @@ CREATE TABLE Gebruiker (
 	adresregel1			VARCHAR(30)			NOT NULL, --van char(15)
 	adresregel2			VARCHAR(30)					, 	
 	postcode			VARCHAR(7)			NOT NULL, --van char(7)
-	plaatsnaam			VARCHAR(30)			NOT NULL, --van char(12)
-	land				VARCHAR(30)			NOT NULL, --van char(9)
+	plaatsnaam			VARCHAR(40)			NOT NULL, --van char(12)
+	land				VARCHAR(40)			NOT NULL, --van char(9)
 	geboortedag			DATE				NOT NULL, --van char(10)
 	mail_adres			VARCHAR(320)		NOT NULL, --64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
 	wachtwoord			VARCHAR(20)			NOT NULL, --van char(9)
@@ -198,6 +198,7 @@ CREATE TABLE Verificatie
 (
 	email				VARCHAR(320)		NOT NULL, -- 64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
 	hash				VARCHAR(32)			NOT NULL, -- 32 tekens omdat de functie in php dit genereert.
+	isGeactiveerd		BIT					NOT NULL  
 
 	CONSTRAINT PK_Verificatie PRIMARY KEY (email),
 
