@@ -21,7 +21,9 @@ go
 drop table if exists Vraag
 go
 drop table if exists Verificatie
-
+go
+drop table if exists Land
+go
 
 go 
 Create table Betaalwijze	 (
@@ -58,7 +60,7 @@ CREATE TABLE Voorwerp (
 	beschrijving			varchar (2000)									not null,						-- Dit doen we om men voldoende ruimte te geven om een duidelijke omschrijving te kunnen geven 
 	startprijs				numeric (9,2)	default 1.00					not null,						-- wij willen geen bedragen over de 10.000.000,00
 	betalingswijze			varchar (25)	default 'Bank/Giro'				not null,						
-	betalingsinstructie		varchar (128)									null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
+	betalingsinstructie		varchar (128)	default 'Geen'					null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
 	plaatsnaam				varchar (30)									not null,						-- char 12
 	land					varchar (50)	default 'Nederland'				not null,						-- char 9
 	looptijd /*in dagen */	TINYINT 		default 7						not null,
@@ -156,6 +158,10 @@ CREATE TABLE Vraag (
 
 )
 
+CREATE TABLE Land (
+	land				VARCHAR(40)			NOT NULL  --aangepast van char(9)
+
+)
 
 CREATE TABLE Gebruiker (
 
@@ -176,7 +182,8 @@ CREATE TABLE Gebruiker (
 
 	CONSTRAINT Gebruikerkey PRIMARY KEY(gebruikersnaam),
 	CONSTRAINT FK_Gebruiker_Vraagnummerkey	FOREIGN KEY (vraag) REFERENCES Vraag(vraagnummer),
-	CONSTRAINT CK_Wachtwoord_Lengte CHECK(len(rtrim(ltrim(wachtwoord))) >= 7) 
+	CONSTRAINT CK_Wachtwoord_Lengte CHECK(len(rtrim(ltrim(wachtwoord))) >= 7),
+	CONSTRAINT CK_Land CHECK(land in (SELECT land FROM Land)) 
 )
 
 CREATE TABLE Gebruikerstelefoon (
@@ -198,4 +205,5 @@ CREATE TABLE Verificatie
 	CONSTRAINT PK_Verificatie PRIMARY KEY (email),
 
 )
+
 
