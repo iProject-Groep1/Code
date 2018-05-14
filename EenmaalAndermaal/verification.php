@@ -1,23 +1,26 @@
 <?php
+<<<<<<< HEAD
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
 include('scripts/country');
+=======
+include('scripts/database-connect.php');
+>>>>>>> 94eba6e60b6502fd9f684aebef2952dcf7074398
 
-if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
-    // Verify data
-    $email = $_GET['email']; // Set email variable
-    $hash = $_GET['hash']; // Set hash variable
-}
+activateAccount($dbh);
 
-$search = ("SELECT email, hash FROM Verificatie WHERE email='".$email."' AND hash='".$hash."'");
-$match  = mssql_num_rows($search);
+function activateAccount($dbh)
+{
+$match = 0;
+    if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
+        // Verify data
+        $email = $_GET['email']; // Set email variable
+        $hash = $_GET['hash']; // Set hash variable
+    }
 
-if($match > 0){
-    echo "Account geactiveerd";
-}else{
-    echo "invalid url or account has already been activated.";
-}
+    $search = $dbh->query("SELECT email, hash FROM Verificatie WHERE email='" . $email . "' AND hash='" . $hash . "'");
 
+<<<<<<< HEAD
 echo $match;
 
 
@@ -81,3 +84,17 @@ echo $match;
 
   </form>
 </body>
+=======
+    while ($row = $search->fetch()) {
+        $match ++;
+    }
+
+    if ($match > 0) {
+        header('index.php');
+        echo "Account geactiveerd";
+
+    } else {
+        echo "invalid url or account has already been activated.";
+    }
+}
+>>>>>>> 94eba6e60b6502fd9f684aebef2952dcf7074398
