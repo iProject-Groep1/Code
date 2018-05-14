@@ -34,10 +34,10 @@ echo'
 <body>
 <form>
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder= ". $hash .">
+        <input class="uk-input" type="text" placeholder='. $hash .'>
     </div>
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder= ". $email .">
+        <input class="uk-input" type="text" placeholder= '. $email .'>
     </div>
     <div class="uk-margin">
         <input class="uk-input" type="text" placeholder="gebruikersnaam">
