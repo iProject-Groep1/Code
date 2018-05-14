@@ -28,7 +28,7 @@ if ($match > 0){
     echo "Er ging iets mis";
 }
 
-}
+};
 
 echo'<body>
 <form>
