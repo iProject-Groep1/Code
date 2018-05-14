@@ -1,6 +1,6 @@
 <?php
 include('database-connect.php');
-Get_country($dbh);
+
 
 function Get_country($dbh){
 $return = '';
