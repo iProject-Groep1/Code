@@ -15,4 +15,5 @@ if($match > 0){
     echo "invalid url or account has already been activated.";
 }
 
+
 echo $match;
