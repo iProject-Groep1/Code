@@ -60,7 +60,7 @@ CREATE TABLE Voorwerp (
 	beschrijving			varchar (2000)									not null,						-- Dit doen we om men voldoende ruimte te geven om een duidelijke omschrijving te kunnen geven 
 	startprijs				numeric (9,2)	default 1.00					not null,						-- wij willen geen bedragen over de 10.000.000,00
 	betalingswijze			varchar (25)	default 'Bank/Giro'				not null,						
-	betalingsinstructie		varchar (128)									null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
+	betalingsinstructie		varchar (128)	default 'Geen'					null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
 	plaatsnaam				varchar (30)									not null,						-- char 12
 	land					varchar (50)	default 'Nederland'				not null,						-- char 9
 	looptijd /*in dagen */	TINYINT 		default 7						not null,
