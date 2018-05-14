@@ -4,7 +4,7 @@ set dateformat dmy
 	delete from Bod
 	delete from Voorwerp
 	delete from Betaalwijze
-	delete from Looptijd
+	--delete from Looptijd
 	set dateformat dmy
 
 	INSERT INTO Betaalwijze VALUES
@@ -55,7 +55,7 @@ insert into Voorwerp ([Voorwerpnummer] , [Titel], [Beschrijving], [Startprijs], 
 	insert into VoorwerpInRubriek values	(13,32901);
 	insert into VoorwerpInRubriek values	(14,87485);
 	insert into VoorwerpInRubriek values	(15,85346);
-	insert into VoorwerpInRubriek values	(16,25960);
+	insert into VoorwerpInRubriek values	(16,22148);
 	insert into VoorwerpInRubriek values	(17,18185);
 	insert into VoorwerpInRubriek values	(17,23610);
 

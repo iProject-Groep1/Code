@@ -13,6 +13,14 @@ go
 drop table if exists Betaalwijze
 go 
 drop table if exists Looptijd
+go
+drop table if exists Gebruiker
+go
+drop table if exists Gebruikerstelefoon
+go
+drop table if exists Vraag
+go
+drop table if exists Verificatie
 
 
 go 
@@ -33,10 +41,10 @@ go
 
 
 CREATE TABLE Rubriek (
-	Rubrieknummer			numeric(8)		NOT NULL,				-- aangepast van integer(3)
-	Rubrieknaam				varchar(50)		NOT NULL,				-- aangepast van char(24)
-	Parent					numeric(8)		,						-- aangepast van integer(3)
-	Volgnr					numeric(8)		NOT NULL,				-- aangepast van integer(2)	
+	rubrieknummer			numeric(8)		NOT NULL,				-- aangepast van integer(3)
+	rubrieknaam				varchar(50)		NOT NULL,				-- aangepast van char(24)
+	parent					numeric(8)		,						-- aangepast van integer(3)
+	volgnr					numeric(8)		NOT NULL,				-- aangepast van integer(2)	
 
 CONSTRAINT RubriekKey PRIMARY KEY(rubrieknummer),
 Constraint FK_Parent_Rubrieknummer FOREIGN KEY (parent) REFERENCES Rubriek(rubrieknummer)
@@ -45,22 +53,22 @@ Constraint FK_Parent_Rubrieknummer FOREIGN KEY (parent) REFERENCES Rubriek(rubri
 
 go
 CREATE TABLE Voorwerp (
-	Voorwerpnummer			int												not null,						-- een voorwerp word automatisch een nummer toegewezen door de database app C
-	Titel					varchar (50)									not null,						-- Dit doen we om het overzicht op de site te houden 
-	Beschrijving			varchar (2000)									not null,						-- Dit doen we om men voldoende ruimte te geven om een duidelijke omschrijving te kunnen geven 
-	Startprijs				numeric (9,2)	default 1.00					not null,						-- wij willen geen bedragen over de 10.000.000,00
-	Betalingswijze			varchar (25)	default 'Bank/Giro'				not null,						
-	Betalingsinstructie		varchar (128)									null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
-	Plaatsnaam				varchar (30)									not null,						-- char 12
-	Land					varchar (50)	default 'Nederland'				not null,						-- char 9
-	Looptijd /*in dagen */	TINYINT 		default 7						not null,
+	voorwerpnummer			int												not null,						-- een voorwerp word automatisch een nummer toegewezen door de database app C
+	titel					varchar (50)									not null,						-- Dit doen we om het overzicht op de site te houden 
+	beschrijving			varchar (2000)									not null,						-- Dit doen we om men voldoende ruimte te geven om een duidelijke omschrijving te kunnen geven 
+	startprijs				numeric (9,2)	default 1.00					not null,						-- wij willen geen bedragen over de 10.000.000,00
+	betalingswijze			varchar (25)	default 'Bank/Giro'				not null,						
+	betalingsinstructie		varchar (128)									null	,						-- char 23 --> langste plaatsnaam Nederland 28 karakters (Westerhaar-Vriezenveensewijk)
+	plaatsnaam				varchar (30)									not null,						-- char 12
+	land					varchar (50)	default 'Nederland'				not null,						-- char 9
+	looptijd /*in dagen */	TINYINT 		default 7						not null,
 	looptijdbeginmoment		datetime		default Current_timestamp		not null,						-- dit zorgt er voor dat de tijd start wanneer het record is ge insert
-	LooptijdEindmoment		as  dateadd (day,looptijd,looptijdbeginmoment)			,
-	Verzendkosten			numeric (6,2)									null	,						-- char 5
-	Verzendinstructies		varchar (128)									null	,						-- char 27
-	Verkoper				varchar (20)									not null,						-- 
-	Koper					varchar (20)	default 'Onbekent'				null	,						-- aangepast van char 10 Ook aanpassen gebruiker table
-	Veilinggesloten			bit												not null,						-- aangepast van een char 3.
+	looptijdEindmoment		as  dateadd (day,looptijd,looptijdbeginmoment)			,
+	verzendkosten			numeric (6,2)									null	,						-- char 5
+	verzendinstructies		varchar (128)									null	,						-- char 27
+	verkoper				varchar (20)									not null,						-- 
+	koper					varchar (20)	default 'Onbekend'				null	,						-- aangepast van char 10 Ook aanpassen gebruiker table
+	veilinggesloten			bit												not null,						-- aangepast van een char 3.
 
 CONSTRAINT voorwerpKey PRIMARY KEY (Voorwerpnummer),
 Constraint CK_Titel Check ( (len(rtrim(ltrim(titel)))) >1),
@@ -71,21 +79,8 @@ Constraint CK_Plaatsnaam Check ( (len(rtrim(ltrim(Plaatsnaam)))) >1),
 Constraint CK_Beschrijving Check ( (len(rtrim(ltrim(Plaatsnaam)))) >1) 
 );
 
-
-
-CREATE TABLE VoorwerpInRubriek (
-Voorwerp					int				not null,
-Rubriek_op_laagste_Niveau	numeric (8)		not null						-- aangepast van int naar numeric 
-
-CONSTRAINT VoorwerpInRubriekKey PRIMARY KEY (Voorwerp,Rubriek_op_laagste_Niveau),
-Constraint FK_VoorwerpInRubriek FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer),
-Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer FOREIGN KEY (Rubriek_op_laagste_Niveau) REFERENCES Rubriek (Rubrieknummer),
-CONSTRAINT CK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp CHECK (fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp(Voorwerp) = 1), 
-Constraint CK_Geen_Subrubrieken CHECK (Rubriek_op_laagste_Niveau not in (SELECT Parent FROM Rubriek)
-);
+DROP FUNCTION IF EXISTS fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp
 go
-
-GO
 CREATE FUNCTION fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp(@Voorwerp int)
 RETURNS bit 
 AS
@@ -99,14 +94,42 @@ RETURN 0
 END
 GO
 
+DROP FUNCTION IF EXISTS dbo.fnCHK_Geen_Subrubrieken
+go
+CREATE FUNCTION dbo.fnCHK_Geen_Subrubrieken(@rubriek int)
+RETURNS BIT
+AS
+BEGIN
+IF (@rubriek in (SELECT Parent FROM Rubriek))
+	RETURN 1
+ELSE
+	RETURN 0
+RETURN 0
+END
+GO
+
+CREATE TABLE VoorwerpInRubriek (
+voorwerp					int				not null,
+rubriek_op_laagste_Niveau	numeric (8)		not null						-- aangepast van int naar numeric 
+
+CONSTRAINT VoorwerpInRubriekKey PRIMARY KEY (Voorwerp,Rubriek_op_laagste_Niveau),
+Constraint FK_VoorwerpInRubriek FOREIGN KEY (voorwerp) REFERENCES Voorwerp(Voorwerpnummer),
+Constraint FK_RubriekOpLaagsteNiveu_RubriekNummer FOREIGN KEY (Rubriek_op_laagste_Niveau) REFERENCES Rubriek (Rubrieknummer),
+CONSTRAINT CK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp CHECK (dbo.fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp(Voorwerp) = 1), 
+Constraint CK_Geen_Subrubrieken CHECK (dbo.fnCHK_Geen_Subrubrieken(rubriek_op_laagste_niveau) = 0)
+);
+go
+
+
+
 
 
 
 CREATE TABLE Bod (
-	Voorwerp			int					NOT NULL, 
-	Bodbedrag			NUMERIC(8, 2)		NOT NULL,				--veranderd van char(5)
-	Gebruiker			VARCHAR(20)			NOT NULL,				--overal veranderd van char(10)
-	Bodtijd				DATEtime	default Current_timestamp		NOT NULL,				--veranderd van char(10)
+	voorwerp			int					NOT NULL, 
+	bodbedrag			NUMERIC(8, 2)		NOT NULL,				--veranderd van char(5)
+	gebruiker			VARCHAR(20)			NOT NULL,				--overal veranderd van char(10)
+	bodtijd				DATEtime	default Current_timestamp		NOT NULL,				--veranderd van char(10)
 
 
 CONSTRAINT BodKey PRIMARY KEY(Voorwerp,Bodbedrag),
@@ -116,12 +139,63 @@ go
 
 
 CREATE TABLE Bestand (
-	Filenaam				varchar(50)			NOT NULL,						-- aangepast van char(13)
-	Voorwerp				int					NOT NULL,
+	filenaam				varchar(50)			NOT NULL,						-- aangepast van char(13)
+	voorwerp				int					NOT NULL,
 
 CONSTRAINT BestandKey PRIMARY KEY(filenaam),
-Constraint FK_Bestant_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
+Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
 )
 
 
+CREATE TABLE Vraag (
+	
+	vraagnummer			INTEGER				NOT NULL, 
+	vraagtekst			VARCHAR(30)			NOT NULL, 
+	
+	CONSTRAINT Vraagkey PRIMARY KEY(vraagnummer)
 
+)
+
+
+CREATE TABLE Gebruiker (
+
+	gebruikersnaam		VARCHAR(20)			NOT NULL, 
+	voornaam			VARCHAR(15)			NOT NULL, 
+	achternaam			VARCHAR(20)			NOT NULL,	
+	adresregel1			VARCHAR(30)			NOT NULL, 
+	adresregel2			VARCHAR(10)					, 	
+	postcode			VARCHAR(7)			NOT NULL, 
+	plaatsnaam			VARCHAR(30)			NOT NULL, 
+	land				VARCHAR(30)			NOT NULL, 
+	geboortedag			DATE				NOT NULL, 
+	mail_adres VARCHAR(320) NOT NULL, -- 64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
+	wachtwoord			VARCHAR(20)			NOT NULL, 
+	vraag				INTEGER				NOT NULL,
+	antwoordtekst		VARCHAR(20)			NOT NULL, 
+	verkoper			BIT		DEFAULT 0	NOT NULL,
+
+	CONSTRAINT Gebruikerkey PRIMARY KEY(gebruikersnaam),
+	CONSTRAINT FK_Gebruiker_Vraagnummerkey	FOREIGN KEY (vraag) REFERENCES Vraag(vraagnummer)
+
+)
+
+CREATE TABLE Gebruikerstelefoon (
+
+	volgnr				INTEGER				NOT NULL, 
+	gebruiker			VARCHAR(20)			NOT NULL, 
+	telefoon			VARCHAR(20)			NOT NULL,
+	
+	CONSTRAINT Gebruikerstelefoonkey PRIMARY KEY(volgnr, gebruiker),
+	CONSTRAINT FK_Gebruikerstelefoon_Gebruikersnaamkey FOREIGN KEY (gebruiker) REFERENCES Gebruiker(gebruikersnaam)
+
+)
+
+CREATE TABLE Verificatie
+(
+	email				VARCHAR(320)		NOT NULL, -- 64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
+	hash				VARCHAR(32)			NOT NULL, -- 32 tekens omdat de functie in php dit genereerd.
+
+	CONSTRAINT PK_Verification PRIMARY KEY (email),
+	CONSTRAINT CHK_Verification CHECK ((len(rtrim(ltrim(email)))) = 32)
+
+)
