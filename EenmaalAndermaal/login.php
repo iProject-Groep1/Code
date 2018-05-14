@@ -14,7 +14,7 @@ include('scripts/header.php')
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
-                    <input class="uk-input" type="text" placeholder="Gebruikersnaam">
+                    <input class="uk-input" type="text" placeholder="Gebruikersnaam" required>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@ include('scripts/header.php')
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                    <input class="uk-input" type="text" placeholder="Wachtwoord">
+                    <input class="uk-input" type="password" placeholder="Wachtwoord" required>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@ include('scripts/header.php')
             <hr class="uk-divider-icon">
 
             <!-- TODO: href veranderen naar registreer pagina -->
-            <p class="uk-text-center">Heeft u nog geen account? <a href="#">Registreer</a> eenvoudig.</p>
+            <p class="uk-text-center">Heeft u nog geen account? <a href="registration.php">Registreer</a> eenvoudig.</p>
 
 
 

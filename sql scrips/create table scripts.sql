@@ -196,6 +196,6 @@ CREATE TABLE Verificatie
 	hash				VARCHAR(32)			NOT NULL, -- 32 tekens omdat de functie in php dit genereert.
 
 	CONSTRAINT PK_Verificatie PRIMARY KEY (email),
-	CONSTRAINT CHK_Verificatie CHECK ((len(rtrim(ltrim(email)))) = 32)
 
 )
+

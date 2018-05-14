@@ -1,7 +1,7 @@
 <?php
 require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
-include('scripts/database-connect.php');
+
 
 
 echo '
