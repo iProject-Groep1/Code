@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="UIkit/css/uikit.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="UIkit/js/uikit-icons.js"></script>
     <script src="UIkit/js/uikit.min.js"></script>
+    <script src="UIkit/js/uikit-icons.js"></script>
 </head>
 
 
@@ -60,7 +60,6 @@
     </div>
 </nav>
 
-1
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
