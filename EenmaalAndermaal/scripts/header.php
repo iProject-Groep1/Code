@@ -28,7 +28,7 @@
                         <li class="uk-nav-divider"></li>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="category-overview.php">Rubrieken</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="login.php">Login</a></li>
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#">Algemene Voorwaarden</a></li>
@@ -51,19 +51,15 @@
         <ul class="uk-navbar-nav uk-navbar-nav1 uk-visible@m">
             <li><a href="index.php">Home</a></li>
             <li><a href="category-overview.php">Rubrieken</a></li>
-            <li><a href="registration.php">Login</a></li>
+            <li><a href="login.php">Login</a></li>
             <li><a href="">Contact</a></li>
         </ul>
         <div class="uk-navbar-item uk-visible@m uk-navbar1">
-            <a href="#" class="uk-button uk-button-danger tm-button-default uk-icon">Register now</a>
+            <a href="registration.php" class="uk-button uk-button-danger tm-button-default uk-icon">Register now</a>
         </div>
     </div>
 </nav>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5530fa519e39de94a33f6a53f0474c9ddd93ad55
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">

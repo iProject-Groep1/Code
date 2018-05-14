@@ -1,5 +1,7 @@
 <?php
 
+function loginCheck(){
 
+}
 
 ?>
