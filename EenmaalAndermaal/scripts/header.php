@@ -60,10 +60,6 @@
     </div>
 </nav>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5530fa519e39de94a33f6a53f0474c9ddd93ad55
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
