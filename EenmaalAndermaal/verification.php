@@ -1,11 +1,11 @@
 <?php
-<<<<<<< HEAD
+
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
 include('scripts/country');
-=======
+
 include('scripts/database-connect.php');
->>>>>>> 94eba6e60b6502fd9f684aebef2952dcf7074398
+
 
 activateAccount($dbh);
 
@@ -20,7 +20,7 @@ $match = 0;
 
     $search = $dbh->query("SELECT email, hash FROM Verificatie WHERE email='" . $email . "' AND hash='" . $hash . "'");
 
-<<<<<<< HEAD
+
 echo $match;
 
 
@@ -84,17 +84,3 @@ echo $match;
 
   </form>
 </body>
-=======
-    while ($row = $search->fetch()) {
-        $match ++;
-    }
-
-    if ($match > 0) {
-        header('index.php');
-        echo "Account geactiveerd";
-
-    } else {
-        echo "invalid url or account has already been activated.";
-    }
-}
->>>>>>> 94eba6e60b6502fd9f684aebef2952dcf7074398
