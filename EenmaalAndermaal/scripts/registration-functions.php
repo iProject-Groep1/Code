@@ -44,8 +44,10 @@ function createMessage($email, $hash)
     $subject = 'Registratie | Verificatie EenmaalAndermaal'; // Give the email a subject
     $message = '
  <!DOCTYPE HTML>
- <html>
- <head></head>
+ <html lang="nl">
+ <head>
+ <meta charset="UTF-8">
+</head>
 <body>
 <h1>Bedankt voor het registreren!</h1>
 <div>
@@ -54,12 +56,8 @@ function createMessage($email, $hash)
  </div>
 
 <div>
-<p>Uw account is gemaakt met het volgende e-mail adres:</p>
-<p>' . $email . '</p>
-</div>
-<div>
-<p>Uw verificatie code is:</p>
-<p>' . $hash . '</p>
+<p>Uw account is gemaakt met het volgende e-mail adres: ' . $email . '</p>
+<p>Uw verificatie code is: ' . $hash . '</p>
 </div>
 
 
@@ -67,8 +65,9 @@ function createMessage($email, $hash)
 </html>
 '; // Our message above including the link
 
-
-    $headers = 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
     mail($to, $subject, $message, $headers); // Send our email
 }
 
@@ -110,14 +109,23 @@ function verifyEmail($hash, $dbh)
     }
 }
 
+<<<<<<< HEAD
 if (isset($_post['done'])){
   echo 'lala';
   registerUser($dbh);
+=======
+if (isset($_post['done'])) {
+    register($dbh);
+>>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
 }
 function registerUser($dbh)
 {
+<<<<<<< HEAD
   echo 'deze shit werkt wel';
     if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
+=======
+    if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
+>>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
         echo 'Wachtwoord komt niet overeen';
         return;
     }
@@ -134,6 +142,7 @@ function registerUser($dbh)
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+<<<<<<< HEAD
     if (isset($_GET['email']) && !empty($_GET['email'])){
     $email = ($_GET['email']);
     };
@@ -141,7 +150,14 @@ function registerUser($dbh)
     $antwoord = $_POST['Antwoord'];
 
   echo 'deze shit werkt wel';
+=======
+    if (isset($_GET['email']) && !empty($_GET['email'])) {
+        $email = ($_GET['email']);
+        $vraag = $_POST['vraag'];
+        $antwoord = $_POST['Antwoord'];
+>>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
 
+    };
 
 
     try {
@@ -157,7 +173,7 @@ function registerUser($dbh)
         }
 
 
-      /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
+        /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
 
 
 
@@ -166,9 +182,13 @@ function registerUser($dbh)
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = dbconnect()->prepare($sql);
 
+<<<<<<< HEAD
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
 
         echo 'deze shit werkt';
+=======
+        $query->execute(array($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $country, $birth, $email, $passwordhash, $vraag, $antwoord, 0));
+>>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
 
 
     } catch (PDOException $e) {
@@ -178,7 +198,7 @@ function registerUser($dbh)
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
 }
 
-function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode, $Plaatsnaam ,$antwoord)
+function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord)
 {
     trim($firstname);
     trim($lastname);
@@ -191,7 +211,6 @@ function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAd
     htmlspecialchars($Postcode);
     htmlspecialchars($Plaatsnaam);
     htmlspecialchars($antwoord);
-
 
 
     try {
@@ -221,11 +240,10 @@ function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAd
             exit ('Velden zijn hetzelfde');
 
         }
+    } catch
+    (PDOException $e) {
+        echo "Fout" . $e->getMessage();
     }
-    catch
-        (PDOException $e) {
-            echo "Fout" . $e->getMessage();
-        }
 
 }
 
