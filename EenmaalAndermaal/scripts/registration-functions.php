@@ -109,23 +109,18 @@ function verifyEmail($hash, $dbh)
     }
 }
 
-<<<<<<< HEAD
+
 if (isset($_post['done'])){
   echo 'lala';
   registerUser($dbh);
-=======
-if (isset($_post['done'])) {
-    register($dbh);
->>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
 }
+
 function registerUser($dbh)
 {
-<<<<<<< HEAD
+
   echo 'deze shit werkt wel';
-    if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
-=======
+
     if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
->>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
         echo 'Wachtwoord komt niet overeen';
         return;
     }
@@ -142,7 +137,7 @@ function registerUser($dbh)
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-<<<<<<< HEAD
+
     if (isset($_GET['email']) && !empty($_GET['email'])){
     $email = ($_GET['email']);
     };
@@ -150,14 +145,7 @@ function registerUser($dbh)
     $antwoord = $_POST['Antwoord'];
 
   echo 'deze shit werkt wel';
-=======
-    if (isset($_GET['email']) && !empty($_GET['email'])) {
-        $email = ($_GET['email']);
-        $vraag = $_POST['vraag'];
-        $antwoord = $_POST['Antwoord'];
->>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
 
-    };
 
 
     try {
@@ -178,17 +166,14 @@ function registerUser($dbh)
 
 
 
-        $sql = "insert into Gebruiker (gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag,mail_adres, wachtwoord, vraag, antwoordtekst, verkoper)
+        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = dbconnect()->prepare($sql);
 
-<<<<<<< HEAD
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
 
         echo 'deze shit werkt';
-=======
-        $query->execute(array($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $country, $birth, $email, $passwordhash, $vraag, $antwoord, 0));
->>>>>>> 87007ca89966085c639fc68ecd86e6865de0f4ee
+
 
 
     } catch (PDOException $e) {

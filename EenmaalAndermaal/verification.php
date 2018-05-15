@@ -64,7 +64,8 @@ if ($match > 0){
         <select class="uk-select" name="Land">
   <?php
         Get_country($dbh);
-      ?> </select>
+      ?>
+        </select>
     </div>
 
     <div class="uk-margin">
@@ -84,20 +85,20 @@ if ($match > 0){
             <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord">
         </div>
     </div>
+
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-
-
             <input class="uk-input" type="password" placeholder="Wachtwoord bevestigen">
-
         </div>
     </div>
+
     <div class="uk-margin">
         <select class="uk-select" name="vraag">
         <?php
         Get_question($dbh);
-        ?> </select>
+        ?>
+      </select>
         <div class="uk-margin">
 
             <input class="uk-input" type="text" placeholder="Antwoord" name="Antwoord">
