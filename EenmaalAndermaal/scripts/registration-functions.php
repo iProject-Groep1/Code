@@ -6,7 +6,7 @@ include('database-connect.php');
 /* ALLE INLOG PAGINA FUNCTIES */
 /* Deze 2 if statements zorgen ervoor dat er gecheckt wordt of er gesubmit is.
  Indien een van de 2 forms ingevuld is start hij een functie. */
-if(isset($_POST["submit"])) {
+if (isset($_POST["submit"])) {
     emailReg($dbh);
 }
 
@@ -41,19 +41,31 @@ function emailReg($dbh)
 function createMessage($email, $hash)
 {
     $to = $email; // Send email to our user
-    $subject = 'Signup | Verification'; // Give the email a subject
+    $subject = 'Registratie | Verificatie EenmaalAndermaal'; // Give the email a subject
     $message = '
+ <!DOCTYPE HTML>
+ <html>
+ <head></head>
+<body>
+<h1>Bedankt voor het registreren!</h1>
+<div>
+<p>Je account is gemaakt, nadat je gegevens hebt ingevuld kan je inloggen op <a href="http://iproject1.icasites.nl/login.php">EenmaalAndermaal</a></p>
+<p>Klik op <a href="http://iproject1.icasites.nl/verification.php?email=' . $email . '&hash=' . $hash . '">deze link</a> om je gegevens in te vullen.</p>
+ </div>
 
-Thanks for signing up!
-Your account has been created, you can login after you have activated your account by pressing the url below.
+<div> 
+<p>Uw account is gemaakt met het volgende e-mail adres:</p>
+<p>' . $email . '</p>
+</div>
+<div>
+<p>Uw verificatie code is:</p>
+<p>' . $hash . '</p>
+</div>
 
-------------------------
-Email: ' . $email . '
-Verification Code: ' . $hash . '
-------------------------
 
-Please click this link to activate your account:
-http://iproject1.icasites.nl/verification.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
+</body>
+</html>
+'; // Our message above including the link
 
 
     $headers = 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
@@ -61,11 +73,11 @@ http://iproject1.icasites.nl/verification.php?email='.$email.'&hash='.$hash.''; 
 }
 
 
-
-function verifyEmail($hash, $dbh){
+function verifyEmail($hash, $dbh)
+{
 
     try {
-        $sql = $dbh() ->prepare("SELECT hash FROM users WHERE hash = :hash");
+        $sql = $dbh()->prepare("SELECT hash FROM users WHERE hash = :hash");
         if ($sql == false) {
             echo 'Failed to prepare statement';
         }
@@ -103,7 +115,10 @@ if (isset($_post['done'])){
 }
 function register($dbh)
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3c07b0b712aca66cfd86e79482ffffaf5a72c96
     if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
         echo 'Wachtwoord komt niet overeen';
         return;
@@ -114,20 +129,19 @@ function register($dbh)
     $lastname = $_POST['Achternaam'];
     $EersteAdres = $_POST['EersteAdres'];
     $TweedeAdres = $_POST['TweedeAdres'];
-    $Postcode = $_post['Postcode'];
-    $Plaatsnaam = $_Post['Plaatsnaam'];
+    $Postcode = $_POST['Postcode'];
+    $Plaatsnaam = $_POST['Plaatsnaam'];
     $country = $_POST['Land'];
     $birth = $_POST['Datum'];
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-    if (isset($_GET['email']) && !empty($_GET['email']){
+    if (isset($_GET['email']) && !empty($_GET['email'])){
     $email = ($_GET['email']);
-    $vraag = $_post['vraag'];
-    $antwoord = $_post['Antwoord'];
+    $vraag = $_POST['vraag'];
+    $antwoord = $_POST['Antwoord'];
 
   };
-
 
 
 
@@ -143,12 +157,17 @@ function register($dbh)
 
         }
 
+<<<<<<< HEAD
       /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
+=======
+        sanitizing_input($firstname, $lastname, $username, $email);
+>>>>>>> d3c07b0b712aca66cfd86e79482ffffaf5a72c96
 
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = dbconnect()->prepare($sql);
+
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash,$vraag,$antwoord,0 ));
 
 
@@ -210,8 +229,5 @@ function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAd
         }
 
 }
-
-
-
 
 ?>
