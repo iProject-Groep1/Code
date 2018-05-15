@@ -32,7 +32,7 @@ if ($match > 0){
 ?>
 
 <body>
-<form action="scripts/registration-functions.php" method="post" >
+<form action="scripts/newUser.php" method="post" >
     <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-margin-auto uk-margin-top uk-margin-bottom">
       <h3 class="uk-card-title uk-text-center uk-margin-bottom">Registreren bij EenmaalAndermaal</h3>
 
@@ -64,7 +64,8 @@ if ($match > 0){
         <select class="uk-select" name="Land">
   <?php
         Get_country($dbh);
-      ?> </select>
+      ?>
+        </select>
     </div>
 
     <div class="uk-margin">
@@ -81,26 +82,23 @@ if ($match > 0){
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="text" placeholder="Wachtwoord" name="Wachtwoord">
+            <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord">
         </div>
     </div>
+
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-
-
-            <input class="uk-input" type="text" placeholder="Wachtwoord bevestigen" name="Wachtwoord herhaal">
-
-
-            <input class="uk-input" type="text" placeholder="Wachtwoord bevestigen">
-
+            <input class="uk-input" type="password" placeholder="Wachtwoord bevestigen">
         </div>
     </div>
+
     <div class="uk-margin">
         <select class="uk-select" name="vraag">
         <?php
         Get_question($dbh);
-        ?> </select>
+        ?>
+      </select>
         <div class="uk-margin">
 
             <input class="uk-input" type="text" placeholder="Antwoord" name="Antwoord">
@@ -121,11 +119,3 @@ if ($match > 0){
 <?php
 require_once('scripts/footer.php');
 ?>
-/* ga verder met date veld doe dit in php !!!!!!!!!!!!!!!!!
-
-
-
-
-
-
-/
