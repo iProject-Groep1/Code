@@ -182,7 +182,7 @@ CREATE TABLE Gebruiker (
 	land				VARCHAR(40)			NOT NULL, --van char(9)
 	geboortedag			DATE				NOT NULL, --van char(10)
 	mail_adres			VARCHAR(320)		NOT NULL, --64 characters for the "local part" (username), 1 character for the @ symbol & 255 characters for the domain name.
-	wachtwoord			VARCHAR(255)			NOT NULL, --van char(9)
+	wachtwoord			VARCHAR(256)			NOT NULL, --van char(9)
 	vraag				INTEGER				NOT NULL,
 	antwoordtekst		VARCHAR(20)			NOT NULL, --van char(6)
 	verkoper			BIT		DEFAULT 0	NOT NULL, --van char(3)

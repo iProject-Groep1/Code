@@ -63,7 +63,8 @@ echo'
     </div>
 
     <div class="uk-margin">
-        <select class="uk-select" name="Land">
+        <select class="uk-select" name="Land" >
+          <option value="Nederland"></option>
   <?php
         Get_country($dbh);
       ?>

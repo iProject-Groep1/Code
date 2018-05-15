@@ -1,19 +1,20 @@
 <?php
+include('database-connect.php');
 
 if (isset($_POST['submit'])){
-  echo 'lala';
+
   registerUser($dbh);
 }
 
 function registerUser($dbh)
 {
 
-  echo 'deze shit werkt wel';
-
     if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
         echo 'Wachtwoord komt niet overeen';
         return;
     }
+
+    $vraag = 0;
 
     //Alle variabelen van de Form
     $firstname = $_POST['Voornaam'];
@@ -26,16 +27,12 @@ function registerUser($dbh)
     $birth = $_POST['Datum'];
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
-    $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+  $passwordhash = password_hash($password, PASSWORD_DEFAULT);
     $vraag = $_POST['vraag'];
     $antwoord = $_POST['Antwoord'];
     if (isset($_GET['email']) && !empty($_GET['email'])){
     $email = ($_GET['email']);
     };
-
-
-
-
 
 
     try {
@@ -50,15 +47,10 @@ function registerUser($dbh)
 
         /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
 
-
-
-
-        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
-        values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
+        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
+        values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
         $query = $dbh->prepare($sql);
-        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
-
-
+        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord));
 
 
 
@@ -66,7 +58,7 @@ function registerUser($dbh)
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
-    header("Location: login.php");
+    header("Location: ../login.php");
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
 }
 
