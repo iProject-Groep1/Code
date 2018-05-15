@@ -53,7 +53,7 @@ function createMessage($email, $hash)
 <p>Klik op <a href="http://iproject1.icasites.nl/verification.php?email=' . $email . '&hash=' . $hash . '">deze link</a> om je gegevens in te vullen.</p>
  </div>
 
-<div> 
+<div>
 <p>Uw account is gemaakt met het volgende e-mail adres:</p>
 <p>' . $email . '</p>
 </div>
@@ -115,10 +115,6 @@ if (isset($_post['done'])){
 }
 function register($dbh)
 {
-<<<<<<< HEAD
-
-=======
->>>>>>> d3c07b0b712aca66cfd86e79482ffffaf5a72c96
     if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
         echo 'Wachtwoord komt niet overeen';
         return;
@@ -157,11 +153,10 @@ function register($dbh)
 
         }
 
-<<<<<<< HEAD
+
       /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
-=======
+
         sanitizing_input($firstname, $lastname, $username, $email);
->>>>>>> d3c07b0b712aca66cfd86e79482ffffaf5a72c96
 
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
