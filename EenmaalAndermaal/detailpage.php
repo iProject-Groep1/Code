@@ -5,6 +5,7 @@ include('scripts/detailpagina-functions.php');
 include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
+require_once('scripts/product-info-function.php');
 
 placeItem($dbh, 1);
 
@@ -81,7 +82,9 @@ function placeItem($dbh, $id)
 
 
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
-
+        ';
+        echo getProductInfo($dbh);
+        echo '*/
 
     </div>
     </p></div>
