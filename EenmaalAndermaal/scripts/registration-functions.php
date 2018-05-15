@@ -43,6 +43,7 @@ function createMessage($email, $hash)
     $to = $email; // Send email to our user
     $subject = 'Registratie | Verificatie EenmaalAndermaal'; // Give the email a subject
     $message = '
+<<<<<<< HEAD
  <!DOCTYPE HTML>
  <html>
  <head></head>
@@ -66,6 +67,19 @@ function createMessage($email, $hash)
 </body>
 </html>
 '; // Our message above including the link
+=======
+
+Thanks for signing up!
+Your account has been created, you can login after you have activated your account by pressing the url below.
+
+------------------------
+Email: ' . $email . '
+Verification Code: ' . $hash . '
+------------------------
+
+Please click this link to activate your account:
+http://iproject1.icasites.nl/verification.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
+>>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09
 
 
     $headers = 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
@@ -110,24 +124,40 @@ function verifyEmail($hash, $dbh)
     }
 }
 
-
+if (isset($_post['done'])){
+  register($dbh);
+}
 function register($dbh)
 {
 
+<<<<<<< HEAD
     if ($_POST['wachtwoord'] != $_POST['wachtwoord herhaal']) {
+=======
+    if ($_POST['wachtwoord'] != $_POST['Wachtwoord bevestigen']){
+>>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09
         echo 'Wachtwoord komt niet overeen';
         return;
     }
 
     //Alle variabelen van de Form
-    $firstname = $_POST['voornaam'];
-    $lastname = $_POST['achternaam'];
-    $country = $_POST['land'];
-    $birth = $_POST['datum'];
-    $username = $_POST['gebruikersnaam'];
-    $password = $_POST['wachtwoord'];
+    $firstname = $_POST['Voornaam'];
+    $lastname = $_POST['Achternaam'];
+    $EersteAdres = $_POST['EersteAdres'];
+    $TweedeAdres = $_POST['TweedeAdres'];
+    $Postcode = $_post['Postcode'];
+    $Plaatsnaam = $_Post['Plaatsnaam'];
+    $country = $_POST['Land'];
+    $birth = $_POST['Datum'];
+    $username = $_POST['Gebruikersnaam'];
+    $password = $_POST['Wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-    $email = ($_POST['email']);
+    if (isset($_GET['email']) && !empty($_GET['email']){
+    $email = ($_GET['email']);
+    $vraag = $_post['vraag'];
+    $antwoord = $_post['Antwoord'];
+
+  };
+
 
 
     try {
@@ -145,9 +175,15 @@ function register($dbh)
         sanitizing_input($firstname, $lastname, $username, $email);
 
 
-        $sql = "insert into Users (firstname, lastname, country, birth, username, password, email) values (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
+        values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = dbconnect()->prepare($sql);
+<<<<<<< HEAD
         $query->execute(array($firstname, $lastname, $country, $birth, $username, $passwordhash, $email));
+=======
+        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash,$vraag,$antwoord,0 ));
+
+>>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09
 
 
     } catch (PDOException $e) {
@@ -157,5 +193,56 @@ function register($dbh)
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
 }
 
+function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode, $Plaatsnaam ,$antwoord)
+{
+    trim($firstname);
+    trim($lastname);
+    ucfirst($firstname);
+    ucfirst($lastname);
+    htmlspecialchars($firstname);
+    htmlspecialchars($lastname);
+
+
+    try {
+
+        $sql = "SELECT username FROM Users WHERE username = :username";
+        $sql = dbconnect()->prepare($sql);
+        $sql->bindParam(':username', $username);
+        $sql->execute();
+        $username = $sql->fetch(PDO::FETCH_ASSOC);
+
+        if ($sql->rowCount() != 0) {
+            header("Location: login.php");
+            $_SESSION['messages'][] = 'Deze username is helaas al in gebruik';
+            exit ('Velden zijn hetzelfde');
+        }
+
+
+        $sql = "SELECT email FROM Users WHERE email = :email";
+        $sql = dbconnect()->prepare($sql);
+        $sql->bindParam(':email', $email);
+        $sql->execute();
+        $email = $sql->fetch(PDO::FETCH_ASSOC);
+
+        if ($sql->rowCount() != 0) {
+            header("Location: login.php");
+            $_SESSION['messages'][] = 'Deze email is helaas al in gebruik';
+            exit ('Velden zijn hetzelfde');
+
+        }
+    }
+    catch
+        (PDOException $e) {
+            echo "Fout" . $e->getMessage();
+        }
+
+}
+
+<<<<<<< HEAD
+?>
+=======
+
+
 
 ?>
+>>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09
