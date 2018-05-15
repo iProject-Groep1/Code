@@ -37,19 +37,19 @@ function getCategoryOverview($databasehandler)
                 WHERE h.Parent = -1 --AND h.Rubrieknaam LIKE '%a' 
                 ORDER BY h.Volgnr, h.Rubrieknaam, s.Volgnr, s.Rubrieknaam,  s1.Volgnr, s1.Rubrieknaam, s2.Volgnr, s2.Rubrieknaam, s3.Volgnr, s3.Rubrieknaam, s4.Volgnr, s4.Rubrieknaam"; //query om alle rubrieken en subrubrieken etc. op te halen
 
-    $categoryOverview .= '<div class="uk-flex " uk-grid>';
+    $categoryOverview .= '<div class="uk-margin-small-left uk-margin-small-right">';
     $data = $databasehandler->query($query);
     while ($row = $data->fetch()) { //loopt elke row van de resultaten door
         if ($previousMainCategoryNumber != $row['HoofdrubriekNr']) { //check of er een nieuwe hoofdrubriek is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
             $categoryOverview .= getClosingTags($previousCategoryKind, 1); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 1;
             //TODO: responsive margin links en rechts
-            $categoryOverview .= '<div class="uk-flex uk-flex-column uk-margin-medium-left uk-card auctions-reset-margin uk-card-default uk-card-body "><h4 class="categories-reset-padding"><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a></h4><ul class="uk-nav-default uk-nav-parent-icon" uk-nav uk-grid>';
+            $categoryOverview .= '<div class="uk-card auctions-reset-margin uk-card-default uk-card-body "><h4 class="categories-reset-padding"><a href="' . $referenceSite . $row['HoofdrubriekNr'] . '">' . $row['HoofdrubriekNaam'] . '</a></h4><ul class="uk-nav-default uk-nav-parent-icon uk-child-width-1-5@l uk-child-width-1-3@m uk-child-width-1-2@s" uk-nav uk-grid>';
         }
         if ($previousSubCategoryNumber != $row['SubrubriekNr']) { //check of er een nieuwe subrubriek is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
             $categoryOverview .= getClosingTags($previousCategoryKind, 2); //bepaal welke HTML elements afgesloten moeten worden.
             $previousCategoryKind = 2;
-            $categoryOverview .= '<li class="uk-parent"><a href="#">' . $row['SubrubriekNaam'] . '<ul class="uk-nav-sub uk-flex uk-flex-wrap uk-flex-wrap-between" uk-grid><li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNr'] . '">Ga naar categorie</a></li>';
+            $categoryOverview .= '<li class="uk-parent"><a href="#">' . $row['SubrubriekNaam'] . '<ul class="uk-nav-sub uk-flex uk-flex-column"><li><a class="uk-button uk-button-default" href="' . $referenceSite . $row['SubrubriekNr'] . '">Ga naar categorie</a></li>';
         }
         if ($previousSubCategoryLevel1Number != $row['SubrubriekNiveau1Nr']) { //check of er een nieuwe subrubriek niveau 1 is, in dat geval wordt HTML toegevoegd aan $categoryOverview.
             $categoryOverview .= getClosingTags($previousCategoryKind, 3); //bepaal welke HTML elements afgesloten moeten worden.
