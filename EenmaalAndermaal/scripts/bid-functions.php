@@ -26,21 +26,6 @@ function calcMinBid($dbh, $id){
 }
 
 
-function setMinBid ($dbh, $id, $voorwerp){
-    $bodbedrag = calcMinBid($dbh, $id);
-    $gebruiker = $_SESSION['username'];
-    $bodtijd = getServerTime($dbh);
-
-    try {
-        $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
-        $query = $dbh->prepare($sql);
-        $query->execute(array($voorwerp, $bodbedrag, $gebruiker, $bodtijd));
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
-}
-
-
 function setOwnBid ($dbh, $id, $bod, $voorwerp){
     $bodbedrag = $bod;
     $gebruiker = $_SESSION['username'];
