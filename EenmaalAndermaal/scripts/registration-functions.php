@@ -43,7 +43,6 @@ function createMessage($email, $hash)
     $to = $email; // Send email to our user
     $subject = 'Registratie | Verificatie EenmaalAndermaal'; // Give the email a subject
     $message = '
-<<<<<<< HEAD
  <!DOCTYPE HTML>
  <html>
  <head></head>
@@ -67,19 +66,6 @@ function createMessage($email, $hash)
 </body>
 </html>
 '; // Our message above including the link
-=======
-
-Thanks for signing up!
-Your account has been created, you can login after you have activated your account by pressing the url below.
-
-------------------------
-Email: ' . $email . '
-Verification Code: ' . $hash . '
-------------------------
-
-Please click this link to activate your account:
-http://iproject1.icasites.nl/verification.php?email='.$email.'&hash='.$hash.''; // Our message above including the link
->>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09
 
 
     $headers = 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
@@ -129,12 +115,7 @@ if (isset($_post['done'])){
 }
 function register($dbh)
 {
-
-<<<<<<< HEAD
-    if ($_POST['wachtwoord'] != $_POST['wachtwoord herhaal']) {
-=======
-    if ($_POST['wachtwoord'] != $_POST['Wachtwoord bevestigen']){
->>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09
+    if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
         echo 'Wachtwoord komt niet overeen';
         return;
     }
@@ -144,17 +125,17 @@ function register($dbh)
     $lastname = $_POST['Achternaam'];
     $EersteAdres = $_POST['EersteAdres'];
     $TweedeAdres = $_POST['TweedeAdres'];
-    $Postcode = $_post['Postcode'];
-    $Plaatsnaam = $_Post['Plaatsnaam'];
+    $Postcode = $_POST['Postcode'];
+    $Plaatsnaam = $_POST['Plaatsnaam'];
     $country = $_POST['Land'];
     $birth = $_POST['Datum'];
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-    if (isset($_GET['email']) && !empty($_GET['email']){
+    if (isset($_GET['email']) && !empty($_GET['email'])){
     $email = ($_GET['email']);
-    $vraag = $_post['vraag'];
-    $antwoord = $_post['Antwoord'];
+    $vraag = $_POST['vraag'];
+    $antwoord = $_POST['Antwoord'];
 
   };
 
@@ -178,12 +159,9 @@ function register($dbh)
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = dbconnect()->prepare($sql);
-<<<<<<< HEAD
-        $query->execute(array($firstname, $lastname, $country, $birth, $username, $passwordhash, $email));
-=======
+
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash,$vraag,$antwoord,0 ));
 
->>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09
 
 
     } catch (PDOException $e) {
@@ -238,11 +216,4 @@ function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAd
 
 }
 
-<<<<<<< HEAD
 ?>
-=======
-
-
-
-?>
->>>>>>> c40bf79add771b46464439e7707a24a6ed9a7a09

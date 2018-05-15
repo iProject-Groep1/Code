@@ -10,27 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="registration-functions.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
-              <folding>
-                <marker date="1526383140223" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-                <marker date="1526383140223" expanded="true" signature="1451:1996" ph="..." />
-                <marker date="1526383140223" expanded="true" signature="1451:2011" ph="..." />
-                <marker date="1526383140223" expanded="true" signature="1518:1831" ph="..." />
-                <marker date="1526383140223" expanded="true" signature="1838:1928" ph="..." />
-                <marker date="1526383140223" expanded="true" signature="1934:1993" ph="..." />
-                <marker date="1526383140223" expanded="true" signature="2285:2326" ph="SELECT hash users" />
-                <marker date="1526383140223" expanded="true" signature="4212:4323" ph="insert into Users... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -115,18 +95,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526382435650</updated>
-      <workItem from="1526382438840" duration="696000" />
+      <workItem from="1526382438840" duration="981000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="696000" />
+    <option name="totallyTimeSpent" value="981000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -159,17 +138,19 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
+        <state relative-caret-position="510">
+          <caret line="169" column="34" lean-forward="true" selection-start-line="169" selection-start-column="34" selection-end-line="169" selection-end-column="34" />
           <folding>
-            <marker date="1526383140223" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-            <marker date="1526383140223" expanded="true" signature="1451:1996" ph="..." />
-            <marker date="1526383140223" expanded="true" signature="1451:2011" ph="..." />
-            <marker date="1526383140223" expanded="true" signature="1518:1831" ph="..." />
-            <marker date="1526383140223" expanded="true" signature="1838:1928" ph="..." />
-            <marker date="1526383140223" expanded="true" signature="1934:1993" ph="..." />
-            <marker date="1526383140223" expanded="true" signature="2285:2326" ph="SELECT hash users" />
-            <marker date="1526383140223" expanded="true" signature="4212:4323" ph="insert into Users... " />
+            <marker date="1526383389757" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+            <marker date="1526383389757" expanded="true" signature="1451:2011" ph="..." />
+            <marker date="1526383389757" expanded="true" signature="1473:2003" ph="..." />
+            <marker date="1526383389757" expanded="true" signature="1518:1831" ph="..." />
+            <marker date="1526383389757" expanded="true" signature="1838:1928" ph="..." />
+            <marker date="1526383389757" expanded="true" signature="1934:1993" ph="..." />
+            <marker date="1526383389757" expanded="true" signature="2285:2326" ph="SELECT hash users" />
+            <marker date="1526383389757" expanded="true" signature="4550:4812" ph="insert into Gebruiker... " />
+            <marker date="1526383389757" expanded="true" signature="5544:5597" ph="SELECT usern... Users" />
+            <marker date="1526383389757" expanded="true" signature="6000:6044" ph="SELECT email... Users" />
           </folding>
         </state>
       </provider>
