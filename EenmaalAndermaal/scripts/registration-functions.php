@@ -111,10 +111,12 @@ function verifyEmail($hash, $dbh)
 }
 
 if (isset($_post['done'])){
-  register($dbh);
+  echo 'lala';
+  registerUser($dbh);
 }
-function register($dbh)
+function registerUser($dbh)
 {
+  echo 'deze shit werkt wel';
     if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
         echo 'Wachtwoord komt niet overeen';
         return;
@@ -134,10 +136,11 @@ function register($dbh)
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
     if (isset($_GET['email']) && !empty($_GET['email'])){
     $email = ($_GET['email']);
+    };
     $vraag = $_POST['vraag'];
     $antwoord = $_POST['Antwoord'];
 
-  };
+  echo 'deze shit werkt wel';
 
 
 
@@ -156,15 +159,16 @@ function register($dbh)
 
       /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
 
-        sanitizing_input($firstname, $lastname, $username, $email);
 
 
-        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
+
+        $sql = "insert into Gebruiker (gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag,mail_adres, wachtwoord, vraag, antwoordtekst, verkoper)
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = dbconnect()->prepare($sql);
 
-        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash,$vraag,$antwoord,0 ));
+        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
 
+        echo 'deze shit werkt';
 
 
     } catch (PDOException $e) {

@@ -81,7 +81,7 @@ if ($match > 0){
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="text" placeholder="Wachtwoord" name="Wachtwoord">
+            <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord">
         </div>
     </div>
     <div class="uk-margin">
@@ -89,10 +89,7 @@ if ($match > 0){
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
 
 
-            <input class="uk-input" type="text" placeholder="Wachtwoord bevestigen" name="Wachtwoord herhaal">
-
-
-            <input class="uk-input" type="text" placeholder="Wachtwoord bevestigen">
+            <input class="uk-input" type="password" placeholder="Wachtwoord bevestigen">
 
         </div>
     </div>
@@ -121,11 +118,3 @@ if ($match > 0){
 <?php
 require_once('scripts/footer.php');
 ?>
-/* ga verder met date veld doe dit in php !!!!!!!!!!!!!!!!!
-
-
-
-
-
-
-/
