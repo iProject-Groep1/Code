@@ -29,13 +29,15 @@ if ($match > 0){
 }
 
 }
-?>
+$email = $_GET['email'];
 
+echo'
 <body>
-<form action="scripts/newUser.php" method="post" >
+<form action="scripts/newUser.php?email='.$email.'" method="post" >
     <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-margin-auto uk-margin-top uk-margin-bottom">
       <h3 class="uk-card-title uk-text-center uk-margin-bottom">Registreren bij EenmaalAndermaal</h3>
-
+';
+?>
     <div class="uk-margin">
         <input class="uk-input" type="text" placeholder="Voornaam" name="Voornaam">
     </div>
@@ -89,7 +91,7 @@ if ($match > 0){
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="password" placeholder="Wachtwoord bevestigen">
+            <input class="uk-input" type="password" placeholder="Wachtwoord_bevestigen">
         </div>
     </div>
 
@@ -108,7 +110,7 @@ if ($match > 0){
 
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
-            <input class="uk-input uk-button-primary" type="submit" name = "done" id="loginSubmit" value="versturen">
+            <input class="uk-input uk-button-primary" type="submit" name = "submit"  value="versturen">
         </div>
     </div>
 
