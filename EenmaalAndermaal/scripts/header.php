@@ -36,7 +36,7 @@ $header = '
                         <li><a href="category-overview.php">Rubrieken</a></li>';
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="scripts/logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
@@ -67,7 +67,7 @@ $header .= '
 
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="scripts/logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
