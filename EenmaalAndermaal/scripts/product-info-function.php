@@ -28,4 +28,4 @@ function getProductInfo($databasehandler){
         return $productInformatie;
     }
 }
-
+ 
