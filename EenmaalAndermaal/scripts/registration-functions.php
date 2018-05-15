@@ -44,8 +44,10 @@ function createMessage($email, $hash)
     $subject = 'Registratie | Verificatie EenmaalAndermaal'; // Give the email a subject
     $message = '
  <!DOCTYPE HTML>
- <html>
- <head></head>
+ <html lang="nl">
+ <head>
+ <meta charset="UTF-8">
+</head>
 <body>
 <h1>Bedankt voor het registreren!</h1>
 <div>
@@ -54,12 +56,8 @@ function createMessage($email, $hash)
  </div>
 
 <div>
-<p>Uw account is gemaakt met het volgende e-mail adres:</p>
-<p>' . $email . '</p>
-</div>
-<div>
-<p>Uw verificatie code is:</p>
-<p>' . $hash . '</p>
+<p>Uw account is gemaakt met het volgende e-mail adres: ' . $email . '</p>
+<p>Uw verificatie code is: ' . $hash . '</p>
 </div>
 
 
@@ -111,12 +109,12 @@ function verifyEmail($hash, $dbh)
     }
 }
 
-if (isset($_post['done'])){
-  register($dbh);
+if (isset($_post['done'])) {
+    register($dbh);
 }
 function register($dbh)
 {
-    if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
+    if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
         echo 'Wachtwoord komt niet overeen';
         return;
     }
@@ -133,13 +131,12 @@ function register($dbh)
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-    if (isset($_GET['email']) && !empty($_GET['email'])){
-    $email = ($_GET['email']);
-    $vraag = $_POST['vraag'];
-    $antwoord = $_POST['Antwoord'];
+    if (isset($_GET['email']) && !empty($_GET['email'])) {
+        $email = ($_GET['email']);
+        $vraag = $_POST['vraag'];
+        $antwoord = $_POST['Antwoord'];
 
-  };
-
+    };
 
 
     try {
@@ -155,7 +152,7 @@ function register($dbh)
         }
 
 
-      /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
+        /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
 
         sanitizing_input($firstname, $lastname, $username, $email);
 
@@ -164,8 +161,7 @@ function register($dbh)
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = dbconnect()->prepare($sql);
 
-        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash,$vraag,$antwoord,0 ));
-
+        $query->execute(array($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $country, $birth, $email, $passwordhash, $vraag, $antwoord, 0));
 
 
     } catch (PDOException $e) {
@@ -175,7 +171,7 @@ function register($dbh)
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
 }
 
-function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode, $Plaatsnaam ,$antwoord)
+function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord)
 {
     trim($firstname);
     trim($lastname);
@@ -188,7 +184,6 @@ function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAd
     htmlspecialchars($Postcode);
     htmlspecialchars($Plaatsnaam);
     htmlspecialchars($antwoord);
-
 
 
     try {
@@ -218,11 +213,10 @@ function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAd
             exit ('Velden zijn hetzelfde');
 
         }
+    } catch
+    (PDOException $e) {
+        echo "Fout" . $e->getMessage();
     }
-    catch
-        (PDOException $e) {
-            echo "Fout" . $e->getMessage();
-        }
 
 }
 
