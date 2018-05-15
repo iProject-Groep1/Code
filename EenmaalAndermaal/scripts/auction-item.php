@@ -9,7 +9,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id)
     
         <div class="uk-inline uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
             <div style="width:325px;height:250px">
-            <a href=scripts/detailpage.php?id=' . $id . '>
+            <a href="detailpage.php?id=' . $id . '">
                 <img class="uk-flex-center uk-align-center" src="images/productImages/' . $image . '"
                      style="background-image: url(images/productImages/' . $image . ');" alt="Image"></a>
             </div>

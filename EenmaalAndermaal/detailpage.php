@@ -6,7 +6,9 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
-placeItem($dbh, 3);
+$id = $_GET['id'];
+echo $id;
+placeItem($dbh, $id);
 
 function placeItem($dbh, $id)
 {
