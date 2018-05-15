@@ -53,7 +53,7 @@ function registerUser($dbh)
 
 
 
-        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
+        $sql = "insert into Gebruiker (gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, wachtwoord, vraag, antwoordtekst, verkoper)
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
         $query = $dbh->prepare($sql);
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
