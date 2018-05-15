@@ -6,15 +6,16 @@ include('homepage-functions.php');
 
 
 
-if (isset($_GET['id']) && !empty($_GET['id'])) {
+if (isset($_GET['id']) && !empty($_GET['id']) && isset($_GET['bedrag']) && !empty($_GET['bedrag'])) {
     // Verify data
-    $id = $_GET['id']; // Set email variable
-    setMinBid($dbh, $id);
+    $id = $_GET['id']; // Set id variable
+    $bedrag = $_GET['bedrag']; //Set bedrag variable
+    setMinBid($dbh, $id, $bedrag);
 }
 
 
-function setMinBid ($dbh, $id){
-    $bodbedrag = calcMinBid($dbh, $id);
+function setMinBid ($dbh, $id, $bedrag){
+    $bodbedrag = $bedrag;
     $gebruiker = "test user";
 //    $gebruiker = $_SESSION['username'];
     $bodtijd = getServerTime($dbh);

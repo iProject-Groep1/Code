@@ -31,7 +31,7 @@ function setOwnBid ($dbh, $id, $bod, $voorwerp){
     $gebruiker = $_SESSION['username'];
     $bodtijd = getServerTime($dbh);
 
-    if($bodbedrag > setMinBid ($dbh, $id, $voorwerp)){
+    if($bodbedrag > setMinBid ($dbh, $id)){
         try {
             $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?,?,?,?)"; /* prepared statement */
             $query = $dbh->prepare($sql);
