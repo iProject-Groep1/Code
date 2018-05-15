@@ -39,6 +39,14 @@ h3 {
 	background: #FFFFFF;
 }
 
+.uk-margin-detail{
+	padding-left: 40px
+}
+
+.uk-margin-detail-right{
+	padding-right: 40px
+}
+
 .uk-button-default2 {
 	border: 1px solid #000000;
 	color: #000000;

@@ -79,23 +79,6 @@ function getAuctionEnd($dbh, $id)
 
 }
 
-//Deze functie pakt het hoogste bod van ieder product. Deze informatie haalt hij uit de database
-function getHighestBid($dbh, $id)
-{
-    try {
-        $stmt = $dbh->prepare("SELECT MAX(Bodbedrag) as Hoogstebod FROM Bod b WHERE b.Voorwerp = :Voorwerp"); /* prepared statement */
-        $stmt->bindValue(":Voorwerp", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
-        $stmt->execute(); /* stuurt alles naar de server */
-        while ($results = $stmt->fetch()) {
-            $row = $results['Hoogstebod'];
-        }
-        return $row;
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
-
-}
-
 
 //Deze functie pakt de Titel van de veiling (gekoppeld aan het ID dat meegegeven wordt).
 function getAuctionTitel($dbh, $id)
