@@ -11,25 +11,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="registration-functions.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
+      <file leaf-file-name="registration.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/registration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding>
-                <marker date="1526384261511" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-                <marker date="1526384261511" expanded="true" signature="1461:1874" ph="..." />
-                <marker date="1526384261511" expanded="true" signature="1461:2018" ph="..." />
-                <marker date="1526384261511" expanded="true" signature="1469:1501" ph="..." />
-                <marker date="1526384261511" expanded="true" signature="1508:1874" ph="..." />
-                <marker date="1526384261511" expanded="true" signature="1553:1866" ph="..." />
-                <marker date="1526384261511" expanded="true" signature="1873:1874" ph="..." />
-                <marker date="1526384261511" expanded="true" signature="1950:2000" ph="..." />
-                <marker date="1526384261511" expanded="true" signature="2402:2443" ph="SELECT hash users" />
-                <marker date="1526384261511" expanded="true" signature="4762:5024" ph="insert into Gebruiker... " />
-                <marker date="1526384261511" expanded="true" signature="5939:5992" ph="SELECT usern... Users" />
-                <marker date="1526384261511" expanded="true" signature="6395:6439" ph="SELECT email... Users" />
-              </folding>
+            <state relative-caret-position="483">
+              <caret line="34" column="49" lean-forward="false" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -40,6 +27,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/scripts/registration-functions.php" />
+        <option value="$PROJECT_DIR$/registration.php" />
       </list>
     </option>
   </component>
@@ -83,6 +71,11 @@
             <path>
               <item name="EenmaalAndermaal" type="b2602c69:ProjectViewProjectNode" />
               <item name="EenmaalAndermaal" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="images" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="EenmaalAndermaal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EenmaalAndermaal" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -93,6 +86,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sande\OneDrive\Documents\ICT\IPROJECT\Github\Code\EenmaalAndermaal\images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -119,12 +117,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526382435650</updated>
-      <workItem from="1526382438840" duration="1953000" />
+      <workItem from="1526382438840" duration="3369000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1953000" />
+    <option name="totallyTimeSpent" value="3369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -192,8 +190,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <marker date="1526384261511" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
             <marker date="1526384261511" expanded="true" signature="1461:1874" ph="..." />
@@ -208,6 +206,14 @@
             <marker date="1526384261511" expanded="true" signature="5939:5992" ph="SELECT usern... Users" />
             <marker date="1526384261511" expanded="true" signature="6395:6439" ph="SELECT email... Users" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="34" column="49" lean-forward="false" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
