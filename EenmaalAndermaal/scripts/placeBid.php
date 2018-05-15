@@ -13,8 +13,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 function setMinBid ($dbh, $id){
     $bodbedrag = calcMinBid($dbh, $id);
-//    $gebruiker = "Gekke henkie";
-    $gebruiker = $_SESSION['username'];
+    $gebruiker = "test user";
+//    $gebruiker = $_SESSION['username'];
     $bodtijd = getServerTime($dbh);
 
     try {

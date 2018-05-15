@@ -8,7 +8,6 @@ include('scripts/bid-functions.php');
 require_once('scripts/product-info-function.php');
 
 $id = $_GET['id'];
-echo $id;
 placeItem($dbh, $id);
 
 function placeItem($dbh, $id)
@@ -32,7 +31,7 @@ function placeItem($dbh, $id)
 <div class="uk-grid uk-padding-resize" data-uk-grid-margin="">
 
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
-        <img class="uk-margin-detail " 
+        <img class="uk-margin-detail uk-nice-uitlijnen " 
              src="images/productImages/' . $image . '"
              alt="" uk-cover>
     </div>

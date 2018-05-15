@@ -7,7 +7,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id)
     $echo = '
     <div class="uk-auction-margin">
     
-        <div class="uk-inline uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
+        <div class=" uk-inline uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
             <div style="width:325px;height:250px">
             <a href="detailpage.php?id=' . $id . '">
                 <img class="uk-flex-center uk-align-center" src="images/productImages/' . $image . '"
