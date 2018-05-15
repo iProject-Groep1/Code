@@ -8,23 +8,24 @@
 <body>
 
 <?php
+
 session_start();
-if (isset($_SERVER['HTTP_REFERER'])) {
-    $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
+echo "Als je niet automatisch doorgestuurd wordt, klik dan op " ?><a href='index.php'>deze link</a><?php ;
+
+if(isset($_SESSION['username'])){
+    session_unset();
+    if(isset($_SERVER['HTTP_REFERER'])) {
+        $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
+    }
+
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+        session_destroy();
+    }
+}
+else{
+    header('Location: index.php');
 }
 
-session_unset();
-echo "Als je niet automatisch doorgestuurd wordt, klik dan op " ?><a href='http://example.com'>deze link</a><?php ; ?>
-
-<?php
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
-    session_destroy();
-}
 ?>
-    <script type="text/javascript">
-        window.location.href ='<?php echo($_GET['lastVisited']); ?>'
-    </script>
-<?php echo($_GET['lastVisited']);
-echo $_SERVER['HTTP_REFERER']?>
 </body>
 </html>
