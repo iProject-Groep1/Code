@@ -53,13 +53,13 @@ function registerUser($dbh)
 
 
 
-        $sql = "insert into Gebruiker (gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, wachtwoord, vraag, antwoordtekst, verkoper)
-        values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO gebruiker(gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, wachtwoord, vraag, antwoordtekst, verkoper)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = $dbh->prepare($sql);
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
 
 
-
+echo "done, ik ben geimport in de database";
 
 
 
