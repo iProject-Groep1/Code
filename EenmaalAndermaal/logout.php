@@ -9,12 +9,13 @@
 
 <?php
 session_start();
+$lastVisited = "index.php";
 if (isset($_SERVER['HTTP_REFERER'])) {
-    $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
+    $lastVisited = $_SERVER['HTTP_REFERER'];
 }
 
 session_unset();
-echo "Als je niet automatisch doorgestuurd wordt, klik dan op " ?><a href='http://example.com'>deze link</a><?php ; ?>
+echo "Als je niet automatisch doorgestuurd wordt, klik dan op " ?><a href="'.$lastVisited.'">deze link</a><?php ; ?>
 
 <?php
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
