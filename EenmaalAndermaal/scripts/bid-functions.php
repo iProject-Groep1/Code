@@ -1,5 +1,4 @@
 <?php
-include('homepage-functions.php');
 
 function calcMinBid($dbh, $id){
     $minBod = 0;
