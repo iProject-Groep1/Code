@@ -1,19 +1,9 @@
 <?php
 session_start();
 
-function LoginLogout ()
-{
-    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
-        return 'Logout';
-    } else {
-        return 'Login';
-    }
-}
 
+$header = '
 
-
-
-echo '
 <!DOCTYPE HTML>
 <html lang="nl">
 <head>
@@ -43,8 +33,15 @@ echo '
                         <li class="uk-nav-header">Menu</li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="category-overview.php">Rubrieken</a></li>
-                        <li><a href="'.LoginLogout().'.php">'.LoginLogout().'</a></li>
+                        <li><a href="category-overview.php">Rubrieken</a></li>';
+//check of ingelogd is
+if (isset($_SESSION['username'])) {
+    $header .= '<li><a href="scripts/logout.php">Uitloggen</a></li>';
+} else {
+    $header .= '<li><a href="login.php">Inloggen</a></li>';
+}
+$header .= '
+
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#">Algemene Voorwaarden</a></li>
@@ -66,8 +63,15 @@ echo '
     <div class="uk-navbar-right uk-navbar-blue">
         <ul class="uk-navbar-nav uk-navbar-nav1 uk-visible@m">
             <li><a href="index.php">Home</a></li>
-            <li><a href="category-overview.php">Rubrieken</a></li>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="category-overview.php">Rubrieken</a></li>';
+
+//check of ingelogd is
+if (isset($_SESSION['username'])) {
+    $header .= '<li><a href="scripts/logout.php">Uitloggen</a></li>';
+} else {
+    $header .= '<li><a href="login.php">Inloggen</a></li>';
+}
+$header .= '
             <li><a href="">Contact</a></li>
         </ul>
         <div class="uk-navbar-item uk-visible@m uk-navbar1">
@@ -93,5 +97,5 @@ echo '
 </nav>
 ';
 
-
+echo $header;
 ?>

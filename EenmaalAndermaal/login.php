@@ -2,8 +2,13 @@
 //login pagina
 include('scripts/header.php');
 
-session_start();
-if(isset($_SERVER['HTTP_REFERER'])) {
+//als je al ingelogd bent en op deze pagina komt wordt je doorgestuurt naar homepagina.
+if(isset($_SESSION['username'])){
+    header('Location: index.php');
+}
+
+
+if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
     $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
 }
 /** notify
@@ -12,8 +17,6 @@ if(isset($_SERVER['HTTP_REFERER'])) {
  * 2 = allebei niet.
  * 3 = combinatie gebruikersnaam/wachtwoord bestaat niet
  */
-
-
 
 
 ?>
@@ -45,7 +48,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
-                    <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 0 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="text" name="username" id="usernameField" placeholder="Gebruikersnaam" value="<?php if(isset($_POST['username'])){echo $_GET['username'];} ?>" required>
+                    <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 0 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="text" name="username" id="usernameField" placeholder="Gebruikersnaam" value="<?php if(isset($_GET['username'])){echo $_GET['username'];} ?>" required>
 
 
                 </div>
@@ -55,7 +58,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                    <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 1 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="text" name="password" id="passwordField" placeholder="Wachtwoord" required>
+                    <input class="uk-input <?php if(isset($_GET['notify'])){if($_GET['notify'] == 1 || $_GET['notify'] ==2){echo "uk-form-danger";}}?>" type="password" name="password" id="passwordField" placeholder="Wachtwoord" required>
 
                 </div>
             </div>
