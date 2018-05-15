@@ -32,7 +32,7 @@ if ($match > 0){
 ?>
 
 <body>
-<form action="scripts/registration-functions.php" method="post" >
+<form action="scripts/newUser.php" method="post" >
     <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-margin-auto uk-margin-top uk-margin-bottom">
       <h3 class="uk-card-title uk-text-center uk-margin-bottom">Registreren bij EenmaalAndermaal</h3>
 
