@@ -102,22 +102,21 @@ function verifyEmail($hash, $dbh){
 function register($dbh)
 {
 
-    if ($_POST['password'] != $_POST['password_repeat']){
+    if ($_POST['wachtwoord'] != $_POST['wachtwoord herhaal']){
         echo 'Wachtwoord komt niet overeen';
         return;
     }
 
     //Alle variabelen van de Form
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $country = $_POST['country'];
-    $birth = $_POST['birth'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $firstname = $_POST['voornaam'];
+    $lastname = $_POST['achternaam'];
+    $country = $_POST['land'];
+    $birth = $_POST['datum'];
+    $username = $_POST['gebruikersnaam'];
+    $password = $_POST['wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
     $email = ($_POST['email']);
-    $bankaccount = ($_POST['bankaccount']);
-    $subscription = ($_POST['subscription']);
+
 
 
     try {
@@ -135,9 +134,9 @@ function register($dbh)
         sanitizing_input($firstname, $lastname, $username,  $email);
 
 
-        $sql = "insert into Users (firstname, lastname, country, birth, username, password, email, bankaccount, subscription) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "insert into Users (firstname, lastname, country, birth, username, password, email) values (?, ?, ?, ?, ?, ?, ?)";
         $query = dbconnect()->prepare($sql);
-        $query->execute(array($firstname, $lastname, $country, $birth, $username, $passwordhash, $email, $bankaccount, $subscription));
+        $query->execute(array($firstname, $lastname, $country, $birth, $username, $passwordhash, $email));
 
 
 

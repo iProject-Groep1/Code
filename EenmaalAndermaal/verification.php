@@ -77,7 +77,12 @@ echo'
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <input class="uk-input" type="text" placeholder="Wachtwoord bevestigen" name="Wachtwoord herhaal">
+=======
+
+            <input class="uk-input" type="text" placeholder="Wachtwoord bevestigen">
+>>>>>>> 0cf4fbd4d4df87d11660842c366b6ae1b2df82aa
         </div>
     </div>
     <div class="uk-margin">
@@ -86,7 +91,14 @@ echo'
         Get_question($dbh);
         echo' </select>
         <div class="uk-margin">
+<<<<<<< HEAD
             <input class="uk-input" type="text" placeholder="Antwoord" name="Antwoord">
+=======
+            <input class="uk-input" type="text" placeholder="Antwoord">
+
+            <input class="uk-input" type="password" placeholder="wachtwoord">
+
+>>>>>>> 0cf4fbd4d4df87d11660842c366b6ae1b2df82aa
         </div>
     </div>
     <div class="uk-margin">
