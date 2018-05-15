@@ -118,7 +118,7 @@ function getAuctionFilename($dbh, $id)
 //Deze functie doet eigenlijk niks. Deze functie is in het leven geroepen om een rustigere/mooiere functie te hebben voor het bouwen van de veilingen.
 function createItem($dbh, $id)
 {
-    createItemScript(getAuctionTitel($dbh, $id), getAuctionEnd($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id));
+    createItemScript(getAuctionTitel($dbh, $id), getAuctionEnd($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id), $id);
 }
 
 

@@ -1,5 +1,6 @@
 <?php
-if (isset($_post['done'])){
+
+if (isset($_POST['submit'])){
   echo 'lala';
   registerUser($dbh);
 }
@@ -26,27 +27,24 @@ function registerUser($dbh)
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-
+    $vraag = $_POST['vraag'];
+    $antwoord = $_POST['Antwoord'];
     if (isset($_GET['email']) && !empty($_GET['email'])){
     $email = ($_GET['email']);
     };
-    $vraag = $_POST['vraag'];
-    $antwoord = $_POST['Antwoord'];
 
-  echo 'deze shit werkt wel';
+
+
 
 
 
     try {
-
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+          if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
             echo("$email is a valid email address");
         } else {
-            header("Location: login.php");
+        /*    header("Location: login.php");*/
             $_SESSION['messages'][] = 'Dit email adress is niet correct. Vul een valide email is a.u.b .';
             exit ('Velden zijn hetzelfde');
-
         }
 
 
@@ -55,13 +53,13 @@ function registerUser($dbh)
 
 
 
-        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
-        values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)";
-        $query = dbconnect()->prepare($sql);
-
+        $sql = "INSERT INTO gebruiker(gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, wachtwoord, vraag, antwoordtekst, verkoper)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $query = $dbh->prepare($sql);
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
 
-        echo 'deze shit werkt';
+
+echo "done, ik ben geimport in de database";
 
 
 
