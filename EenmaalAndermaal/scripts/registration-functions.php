@@ -67,8 +67,9 @@ function createMessage($email, $hash)
 </html>
 '; // Our message above including the link
 
-
-    $headers = 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
     mail($to, $subject, $message, $headers); // Send our email
 }
 
