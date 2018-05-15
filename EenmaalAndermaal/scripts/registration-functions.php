@@ -104,7 +104,7 @@ if (isset($_post['done'])){
 function register($dbh)
 {
 
-    if ($_POST['wachtwoord'] != $_POST['Wachtwoord bevestigen']){
+    if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']){
         echo 'Wachtwoord komt niet overeen';
         return;
     }
@@ -143,7 +143,7 @@ function register($dbh)
 
         }
 
-        sanitizing_input($firstname, $lastname, $username,  $email);
+      /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
 
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst], [verkoper])
@@ -168,6 +168,12 @@ function sanitizing_input($username,$firstname, $lastname,$EersteAdres,$TweedeAd
     ucfirst($lastname);
     htmlspecialchars($firstname);
     htmlspecialchars($lastname);
+    htmlspecialchars($EersteAdres);
+    htmlspecialchars($TweedeAdres);
+    htmlspecialchars($Postcode);
+    htmlspecialchars($Plaatsnaam);
+    htmlspecialchars($antwoord);
+
 
 
     try {
