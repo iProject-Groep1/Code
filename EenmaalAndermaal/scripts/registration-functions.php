@@ -99,6 +99,61 @@ function verifyEmail($hash, $dbh){
 }
 
 
+function register($dbh)
+{
+
+    if ($_POST['wachtwoord'] != $_POST['wachtwoord herhaal']){
+        echo 'Wachtwoord komt niet overeen';
+        return;
+    }
+
+    //Alle variabelen van de Form
+    $firstname = $_POST['voornaam'];
+    $lastname = $_POST['achternaam'];
+    $country = $_POST['land'];
+    $birth = $_POST['datum'];
+    $username = $_POST['gebruikersnaam'];
+    $password = $_POST['wachtwoord'];
+    $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+    $email = ($_POST['email']);
+
+
+
+    try {
+
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            echo("$email is a valid email address");
+        } else {
+            header("Location: login.php");
+            $_SESSION['messages'][] = 'Dit email adress is niet correct. Vul een valide email is a.u.b .';
+            exit ('Velden zijn hetzelfde');
+
+        }
+
+        sanitizing_input($firstname, $lastname, $username,  $email);
+
+
+        $sql = "insert into Users (firstname, lastname, country, birth, username, password, email) values (?, ?, ?, ?, ?, ?, ?)";
+        $query = dbconnect()->prepare($sql);
+        $query->execute(array($firstname, $lastname, $country, $birth, $username, $passwordhash, $email));
+
+
+
+
+
+
+
+
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
+    header("Location: login.php");
+    $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
+}
+
+
+
 
 
 ?>
