@@ -22,7 +22,6 @@ if ($Login == false) {
         $id = $_GET['id']; // Set email variable
         setMinBid($dbh, $id);
     }
-
 }
 
 function setMinBid($dbh, $id)

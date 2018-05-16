@@ -30,15 +30,22 @@ function setMinBid($dbh, $id, $bedrag)
     $bodbedrag = $bedrag;
     $gebruiker = $_SESSION['username'];
     $bodtijd = getServerTime($dbh);
+    $minBod = calcMinBid($dbh, $id);
 
-    try {
-        $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
-        $query = $dbh->prepare($sql);
-        $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
-        echo "bod is geplaatst";
+    if($bedrag > calcMinBid($dbh, $id)) {
+        try {
+            $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
+            $query = $dbh->prepare($sql);
+            $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
+            header('Location:../detailpage.php?id=' . $id . '');
+        } catch (PDOException $e) {
+            echo "Fout" . $e->getMessage();
+        }
+    } else {
+        $_SESSION['bodMelding'] = '
+<script>UIkit.notification({message: \'Het bod moet minimaal '. $minBod .' zijn\', status: \'danger\'})</script>
+';
         header('Location:../detailpage.php?id=' . $id . '');
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
     }
 
 }

@@ -10,6 +10,12 @@ include('scripts/bid-functions.php');
 $id = $_GET['id'];
 placeItem($dbh, $id);
 
+if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])){
+    echo $_SESSION['bodMelding'];
+    $_SESSION['bodMelding'] = "";
+    session_unset();
+}
+
 
 function placeItem($dbh, $id)
 {
