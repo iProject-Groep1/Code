@@ -36,7 +36,7 @@ function placeItem($dbh, $id)
              alt="" uk-cover>
     </div>
 
-    <div class="uk-card uk-card-default uk-width-1-2@m uk-margin-detail-right">
+    <div class="uk-card uk-card-default uk-width-1-2@m uk-margin-detail-right no-shadow">
         <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-text-center uk-align-center">
@@ -63,13 +63,13 @@ function placeItem($dbh, $id)
                 </div>
             </div>
         </div>
-        <div class="uk-card-body scroll">
+        <div class="uk-card-body scroll grey">
             <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>-->
             ';
             echo getBids($dbh);
             echo '
         </div>
-        <div class="uk-card-footer">
+        <div class="uk-card-footer grey">
          <div class="uk-width-1-4@s uk-align-left">
          <form action="scripts/placeBidDirect.php" method="get">
          <input class="uk-input" type="text" name="id"value="'. $id .'"hidden>
