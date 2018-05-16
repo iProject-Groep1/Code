@@ -27,7 +27,7 @@ include('scripts/homepage-functions.php');
     </div>
 
     <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-flex uk-flex-column">
-        <h3 class="uk-card-title uk-text-center uk-margin-bottom">2. Kijk in je inbox en klik op de link.</h3>
+        <h3 class="uk-card-title uk-text-center uk-margin-bottom">2. Kijk in je inbox en klik op de link. Vergeet niet in je spam folder te kijken!</h3>
 
         <div class="uk-align-center ">
             <img width="auto" height="400"
