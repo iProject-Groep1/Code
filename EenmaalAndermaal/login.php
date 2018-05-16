@@ -6,7 +6,7 @@ include('scripts/header.php');
 if(isset($_SESSION['username'])){
     header('Location: index.php');
 }
-if(isset($_SESSION['regMelding'])) {
+if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
     echo $_SESSION['regMelding'];
     session_destroy();
 }
