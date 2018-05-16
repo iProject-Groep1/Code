@@ -2,10 +2,9 @@
 include('database-connect.php');
 
 if (isset($_POST['submit'])){
-<<<<<<< HEAD
 
-=======
->>>>>>> 3fe28fb51bcddb8601078cffe72e1e01fb31b29a
+
+
   registerUser($dbh);
 }
 
@@ -56,25 +55,21 @@ function registerUser($dbh)
         $query = $dbh->prepare($sql);
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord));
 
-<<<<<<< HEAD
 
-=======
         $_SESSION['regMelding'] = '
     <script>UIkit.notification({message: \'Bedankt voor de registratie '. $username . '!\', status: \'danger\'})</script>
     ';
->>>>>>> 3fe28fb51bcddb8601078cffe72e1e01fb31b29a
-
 
 
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
-<<<<<<< HEAD
+
     header("Location: ../login.php");
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
-=======
+
     header("Location: login.php");
->>>>>>> 3fe28fb51bcddb8601078cffe72e1e01fb31b29a
+
 }
 
 function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord)
