@@ -8,6 +8,7 @@ if(isset($_SESSION['username'])){
 }
 if(isset($_SESSION['regMelding'])) {
     echo $_SESSION['regMelding'];
+    session_destroy();
 }
 
 
