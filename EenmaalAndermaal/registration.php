@@ -9,6 +9,9 @@ if(isset($_SESSION['emailMelding'])) {
 if(isset($_SESSION['regMelding'])) {
     echo $_SESSION['regMelding'];
 }
+if(isset($_SESSION['regSucceedMelding'])) {
+    echo $_SESSION['regSucceedMelding'];
+}
 ?>
 
 <div class="uk-flex uk-flex-around uk-margin-xlarge-top uk-margin-xlarge-bottom uk-margin-auto" uk-grid>
