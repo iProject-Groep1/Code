@@ -46,7 +46,7 @@ function login($dbh)
    Dit gebeurd op iedere pagina opnieuw zodat hij weet ofdat de user nog in de session zit.*/
 function CheckLogin ()
 {
-    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true ) {
+    if (isset($_SESSION['username'])) {
         return true;
     } else {
         return false;

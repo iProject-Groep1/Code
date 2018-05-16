@@ -2,9 +2,6 @@
 include('database-connect.php');
 
 if (isset($_POST['submit'])){
-
-
-
   registerUser($dbh);
 }
 
@@ -29,7 +26,7 @@ function registerUser($dbh)
     $birth = $_POST['Datum'];
     $username = $_POST['Gebruikersnaam'];
     $password = $_POST['Wachtwoord'];
-  $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+    $passwordhash = password_hash($password, PASSWORD_DEFAULT);
     $vraag = $_POST['vraag'];
     $antwoord = $_POST['Antwoord'];
     if (isset($_GET['email']) && !empty($_GET['email'])){

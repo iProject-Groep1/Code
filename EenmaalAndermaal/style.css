@@ -2,7 +2,7 @@
 
 
 body {
-	background-color: #e5e7ec;
+	background-color: #FFFFFF;/*#e5e7ec*/
 }
 
 h3 {
@@ -27,7 +27,7 @@ h3 {
 }
 
 .uk-navbar2 {
-	background: #FFFFFF;
+	background: #e5e7ec;/*#FFFFFF*/
 	color: #000000;
 }
 
@@ -224,6 +224,14 @@ li .uk-button{
 	overflow-y: scroll;
 }
 
+.grey{
+	background-color: #e5e7ec;
+}
+
 .uk-card-header{
 	background-color: #5484A4;
+}
+
+.uk-card-body, .no-shadow{
+	box-shadow: none;
 }

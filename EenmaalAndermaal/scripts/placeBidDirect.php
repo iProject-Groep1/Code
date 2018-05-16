@@ -14,7 +14,7 @@ if ($Login == false) {
 
     header("Location: ../login.php");
 
-} else if ($Login == true) {
+} else {
 
     if (isset($_GET['id']) && !empty($_GET['id']) && isset($_GET['bedrag']) && !empty($_GET['bedrag'])) {
         // Verify data
@@ -23,22 +23,29 @@ if ($Login == false) {
         setMinBid($dbh, $id, $bedrag);
     }
 
+}
 
-    function setMinBid($dbh, $id, $bedrag)
-    {
-        $bodbedrag = $bedrag;
-        $gebruiker = $_SESSION['username'];
-        $bodtijd = getServerTime($dbh);
+function setMinBid($dbh, $id, $bedrag)
+{
+    $bodbedrag = $bedrag;
+    $gebruiker = $_SESSION['username'];
+    $bodtijd = getServerTime($dbh);
+    $minBod = calcMinBid($dbh, $id);
 
+    if($bedrag > calcMinBid($dbh, $id)) {
         try {
             $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
             $query = $dbh->prepare($sql);
             $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
-            echo "bod is geplaatst";
             header('Location:../detailpage.php?id=' . $id . '');
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
         }
-
+    } else {
+        $_SESSION['bodMelding'] = '
+<script>UIkit.notification({message: \'Het bod moet minimaal '. $minBod .' zijn\', status: \'danger\'})</script>
+';
+        header('Location:../detailpage.php?id=' . $id . '');
     }
+
 }
