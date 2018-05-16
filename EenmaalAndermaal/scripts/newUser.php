@@ -85,12 +85,11 @@ function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $Tweed
     htmlspecialchars($Postcode);
     htmlspecialchars($Plaatsnaam);
     htmlspecialchars($antwoord);
-
-
+ echo 'check';
     try {
 
-        $sql = "SELECT username FROM Users WHERE username = :username";
-        $sql = dbconnect()->prepare($sql);
+        $sql = "SELECT gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = :username";
+        $sql = $dbh->prepare($sql);
         $sql->bindParam(':username', $username);
         $sql->execute();
         $username = $sql->fetch(PDO::FETCH_ASSOC);
@@ -101,9 +100,9 @@ function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $Tweed
             exit ('Velden zijn hetzelfde');
         }
 
-
-        $sql = "SELECT email FROM Users WHERE email = :email";
-        $sql = dbconnect()->prepare($sql);
+echo'geb';
+        $sql = "SELECT email FROM Gebruiker WHERE mail_adres = :email";
+        $sql = $dbh->prepare($sql);
         $sql->bindParam(':email', $email);
         $sql->execute();
         $email = $sql->fetch(PDO::FETCH_ASSOC);
