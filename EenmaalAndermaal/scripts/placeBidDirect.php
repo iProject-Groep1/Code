@@ -23,22 +23,22 @@ if ($Login == false) {
         setMinBid($dbh, $id, $bedrag);
     }
 
+}
 
-    function setMinBid($dbh, $id, $bedrag)
-    {
-        $bodbedrag = $bedrag;
-        $gebruiker = $_SESSION['username'];
-        $bodtijd = getServerTime($dbh);
+function setMinBid($dbh, $id, $bedrag)
+{
+    $bodbedrag = $bedrag;
+    $gebruiker = $_SESSION['username'];
+    $bodtijd = getServerTime($dbh);
 
-        try {
-            $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
-            $query = $dbh->prepare($sql);
-            $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
-            echo "bod is geplaatst";
-            header('Location:../detailpage.php?id=' . $id . '');
-        } catch (PDOException $e) {
-            echo "Fout" . $e->getMessage();
-        }
-
+    try {
+        $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
+        $query = $dbh->prepare($sql);
+        $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
+        echo "bod is geplaatst";
+        header('Location:../detailpage.php?id=' . $id . '');
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
     }
+
 }
