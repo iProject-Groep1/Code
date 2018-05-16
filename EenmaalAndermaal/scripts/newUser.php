@@ -1,7 +1,6 @@
 <?php
 
 if (isset($_POST['submit'])){
-  echo 'lala';
   registerUser($dbh);
 }
 

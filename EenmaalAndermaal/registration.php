@@ -4,13 +4,16 @@ include('scripts/homepage-functions.php');
 
 if(isset($_SESSION['emailMelding'])) {
     echo $_SESSION['emailMelding'];
+    session_destroy();
 }
 
 if(isset($_SESSION['regMelding'])) {
     echo $_SESSION['regMelding'];
+    session_destroy();
 }
 if(isset($_SESSION['regSucceedMelding'])) {
     echo $_SESSION['regSucceedMelding'];
+    session_destroy();
 }
 ?>
 
