@@ -48,7 +48,7 @@ function registerUser($dbh)
 
 
         /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
-
+        sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$Email);
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
@@ -68,11 +68,11 @@ function registerUser($dbh)
     header("Location: ../login.php");
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
 
-    header("Location: login.php");
+    header("Location: ../login.php");
 
 }
 
-function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord)
+function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$Email)
 {
     trim($firstname);
     trim($lastname);
