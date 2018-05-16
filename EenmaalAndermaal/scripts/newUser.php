@@ -10,7 +10,7 @@ function registerUser($dbh)
 
     if ($_POST['Wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
         echo 'Wachtwoord komt niet overeen';
-        return;
+        header('Location:newUser.php');
     }
 
     $vraag = 0;
