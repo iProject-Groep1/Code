@@ -68,12 +68,15 @@ function placeItem($dbh, $id)
         </div>
         <div class="uk-card-footer">
          <div class="uk-width-1-4@s uk-align-left">
-        <input class="uk-input" type="text" placeholder="€">
+         <form action="scripts/placeBidDirect.php" method="get">
+         <input class="uk-input" type="text" name="id"value="'. $id .'"hidden>
+        <input class="uk-input" type="text" placeholder="€'. $minBid .'" name="bedrag">
+        <input class="uk-button uk-button-danger uk-align-left" type="submit" name="submit" value="Bied direct">
+        </form>
     </div>
             <div class="uk-width-1-4@s uk-align-right">
         <input class="uk-input" type="text" value= "€'. $minBid .'" disabled>
     </div><br>
-            <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-left" >Bied direct</a>
             <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right">Bied minimum</a>
         </div>
     </div>

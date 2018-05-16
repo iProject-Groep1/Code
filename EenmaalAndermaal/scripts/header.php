@@ -8,6 +8,8 @@ $header = '
 <html lang="nl">
 <head>
     <title></title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="UIkit/css/uikit.min.css">
@@ -36,7 +38,7 @@ $header = '
                         <li><a href="category-overview.php">Rubrieken</a></li>';
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="scripts/logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
@@ -67,7 +69,7 @@ $header .= '
 
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="scripts/logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }

@@ -6,6 +6,10 @@ include('scripts/header.php');
 if(isset($_SESSION['username'])){
     header('Location: index.php');
 }
+if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
+    echo $_SESSION['regMelding'];
+    session_destroy();
+}
 
 
 if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
@@ -20,7 +24,11 @@ if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
 
 
 ?>
-
+<?php
+if(isset($_SESSION['LogMelding'])) {
+    echo $_SESSION['LogMelding'];
+}
+?>
 
     <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-margin-auto uk-margin-xlarge-top uk-margin-xlarge-bottom">
         <h3 class="uk-card-title uk-text-center uk-margin-bottom">Inloggen bij EenmaalAndermaal</h3>

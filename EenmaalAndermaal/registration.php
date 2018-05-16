@@ -2,6 +2,19 @@
 require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 
+if(isset($_SESSION['emailMelding']) && !empty($_SESSION['emailMelding'])) {
+    echo $_SESSION['emailMelding'];
+    session_destroy();
+}
+
+if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
+    echo $_SESSION['regMelding'];
+    session_destroy();
+}
+if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMeldingMelding'])) {
+    echo $_SESSION['regSucceedMelding'];
+    session_destroy();
+}
 ?>
 
 <div class="uk-flex uk-flex-around uk-margin-xlarge-top uk-margin-xlarge-bottom uk-margin-auto" uk-grid>
@@ -17,7 +30,7 @@ include('scripts/homepage-functions.php');
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
 
-                    <input class="uk-input uk-button-primary" "id="loginSubmit" type="submit" value="Registreer"
+                    <input class="uk-input uk-button-primary" id="loginSubmit" type="submit" value="Registreer"
                     name="submit">
 
                 </div>

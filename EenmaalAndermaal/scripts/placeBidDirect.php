@@ -9,25 +9,24 @@ include('login-functions.php');
 $Login = CheckLogin ();
 if ($Login == false) {
     $_SESSION['LogMelding'] = '
-    <script>UIkit.notification({message: \'Log in first please\', status: \'danger\'})</script>
-    ';
+<script>UIkit.notification({message: \'Log in first please\', status: \'danger\'})</script>
+';
 
     header("Location: ../login.php");
 
-
 } else if ($Login == true) {
 
-
-    if (isset($_GET['id']) && !empty($_GET['id'])) {
+    if (isset($_GET['id']) && !empty($_GET['id']) && isset($_GET['bedrag']) && !empty($_GET['bedrag'])) {
         // Verify data
-        $id = $_GET['id']; // Set email variable
-        setMinBid($dbh, $id);
+        $id = $_GET['id']; // Set id variable
+        $bedrag = $_GET['bedrag']; //Set bedrag variable
+        setMinBid($dbh, $id, $bedrag);
     }
 
 
-    function setMinBid($dbh, $id)
+    function setMinBid($dbh, $id, $bedrag)
     {
-        $bodbedrag = calcMinBid($dbh, $id);
+        $bodbedrag = $bedrag;
         $gebruiker = $_SESSION['username'];
         $bodtijd = getServerTime($dbh);
 
