@@ -93,11 +93,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registration.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="registration.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/registration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -106,16 +116,16 @@
       <file leaf-file-name="registration-functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="38" />
+            <state relative-caret-position="483">
+              <caret line="35" column="41" lean-forward="false" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
               <folding>
-                <marker date="1526461732914" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-                <marker date="1526461732914" expanded="true" signature="1652:2209" ph="..." />
-                <marker date="1526461732914" expanded="true" signature="1660:1692" ph="..." />
-                <marker date="1526461732914" expanded="true" signature="1699:2201" ph="..." />
-                <marker date="1526461732914" expanded="true" signature="1744:2057" ph="..." />
-                <marker date="1526461732914" expanded="true" signature="2064:2191" ph="..." />
-                <marker date="1526461732914" expanded="true" signature="2593:2634" ph="SELECT hash users" />
+                <marker date="1526461874739" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+                <marker date="1526461874739" expanded="true" signature="1710:2267" ph="..." />
+                <marker date="1526461874739" expanded="true" signature="1718:1750" ph="..." />
+                <marker date="1526461874739" expanded="true" signature="1757:2259" ph="..." />
+                <marker date="1526461874739" expanded="true" signature="1802:2115" ph="..." />
+                <marker date="1526461874739" expanded="true" signature="2122:2249" ph="..." />
+                <marker date="1526461874739" expanded="true" signature="2651:2692" ph="SELECT hash users" />
               </folding>
             </state>
           </provider>
@@ -133,7 +143,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="placeBidDirect.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="placeBidDirect.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/placeBidDirect.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
@@ -152,9 +162,9 @@
       <list>
         <option value="$PROJECT_DIR$/scripts/header.php" />
         <option value="$PROJECT_DIR$/scripts/auction-item.php" />
-        <option value="$PROJECT_DIR$/registration.php" />
-        <option value="$PROJECT_DIR$/scripts/registration-functions.php" />
         <option value="$PROJECT_DIR$/scripts/placeBidDirect.php" />
+        <option value="$PROJECT_DIR$/scripts/registration-functions.php" />
+        <option value="$PROJECT_DIR$/registration.php" />
       </list>
     </option>
   </component>
@@ -234,12 +244,12 @@
       <option name="presentableId" value="Default" />
       <updated>1526456016145</updated>
       <workItem from="1526456019308" duration="112000" />
-      <workItem from="1526460925645" duration="803000" />
+      <workItem from="1526460925645" duration="951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="915000" />
+    <option name="totallyTimeSpent" value="1063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -335,6 +345,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/verification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-63">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1526388587785" expanded="true" signature="508:597" ph="SELECT email... Verificatie" />
+            <marker date="1526388587785" expanded="true" signature="688:782" ph="UPDATE Verificatie... " />
+            <marker date="1526388587785" expanded="true" signature="838:1125" ph="..." />
+            <marker date="1526388587785" expanded="true" signature="905:1125" ph="..." />
+            <marker date="1526388587785" expanded="true" signature="1022:1125" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/placeBid.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <marker date="1526460879829" expanded="true" signature="775:848" ph="INSERT INTO Bod... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/placeBidDirect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <marker date="1526461732927" expanded="true" signature="876:949" ph="INSERT INTO Bod... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="35" column="41" lean-forward="false" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+          <folding>
+            <marker date="1526461874739" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+            <marker date="1526461874739" expanded="true" signature="1710:2267" ph="..." />
+            <marker date="1526461874739" expanded="true" signature="1718:1750" ph="..." />
+            <marker date="1526461874739" expanded="true" signature="1757:2259" ph="..." />
+            <marker date="1526461874739" expanded="true" signature="1802:2115" ph="..." />
+            <marker date="1526461874739" expanded="true" signature="2122:2249" ph="..." />
+            <marker date="1526461874739" expanded="true" signature="2651:2692" ph="SELECT hash users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/auction-item.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -358,69 +434,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/verification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1526388587785" expanded="true" signature="508:597" ph="SELECT email... Verificatie" />
-            <marker date="1526388587785" expanded="true" signature="688:782" ph="UPDATE Verificatie... " />
-            <marker date="1526388587785" expanded="true" signature="838:1125" ph="..." />
-            <marker date="1526388587785" expanded="true" signature="905:1125" ph="..." />
-            <marker date="1526388587785" expanded="true" signature="1022:1125" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/registration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="126">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="38" />
-          <folding>
-            <marker date="1526461732914" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-            <marker date="1526461732914" expanded="true" signature="1652:2209" ph="..." />
-            <marker date="1526461732914" expanded="true" signature="1660:1692" ph="..." />
-            <marker date="1526461732914" expanded="true" signature="1699:2201" ph="..." />
-            <marker date="1526461732914" expanded="true" signature="1744:2057" ph="..." />
-            <marker date="1526461732914" expanded="true" signature="2064:2191" ph="..." />
-            <marker date="1526461732914" expanded="true" signature="2593:2634" ph="SELECT hash users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/placeBid.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="37" />
-          <folding>
-            <marker date="1526460879829" expanded="true" signature="775:848" ph="INSERT INTO Bod... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/placeBidDirect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-          <folding>
-            <marker date="1526461732927" expanded="true" signature="876:949" ph="INSERT INTO Bod... " />
-          </folding>
         </state>
       </provider>
     </entry>

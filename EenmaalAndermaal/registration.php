@@ -2,6 +2,9 @@
 require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 
+if(isset($_SESSION['emailMelding'])) {
+    echo $_SESSION['emailMelding'];
+}
 ?>
 
 <div class="uk-flex uk-flex-around uk-margin-xlarge-top uk-margin-xlarge-bottom uk-margin-auto" uk-grid>
