@@ -2,8 +2,18 @@
 require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 
-if(isset($_SESSION['emailMelding'])) {
+if(isset($_SESSION['emailMelding']) && !empty($_SESSION['emailMelding'])) {
     echo $_SESSION['emailMelding'];
+    session_destroy();
+}
+
+if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
+    echo $_SESSION['regMelding'];
+    session_destroy();
+}
+if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMeldingMelding'])) {
+    echo $_SESSION['regSucceedMelding'];
+    session_destroy();
 }
 ?>
 

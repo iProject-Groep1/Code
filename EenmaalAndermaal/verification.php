@@ -39,15 +39,15 @@ echo'
 ';
 ?>
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Voornaam" name="Voornaam">
+        <input class="uk-input" type="text" placeholder="Voornaam" name="Voornaam"required>
     </div>
 
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Achternaam" name="Achternaam">
+        <input class="uk-input" type="text" placeholder="Achternaam" name="Achternaam"required>
     </div>
 
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Eerste adres" name="EersteAdres">
+        <input class="uk-input" type="text" placeholder="Eerste adres" name="EersteAdres"required>
     </div>
 
     <div class="uk-margin">
@@ -55,15 +55,16 @@ echo'
     </div>
 
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Postcode" name="Postcode">
+        <input class="uk-input" type="text" placeholder="Postcode" name="Postcode"required>
     </div>
 
     <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Plaatsnaam" name="Plaatsnaam">
+        <input class="uk-input" type="text" placeholder="Plaatsnaam" name="Plaatsnaam"required>
     </div>
 
     <div class="uk-margin">
-        <select class="uk-select" name="Land">
+        <select class="uk-select" name="Land"required >
+          <option value="Nederland">Nederland</option>
   <?php
         Get_country($dbh);
       ?>
@@ -71,39 +72,39 @@ echo'
     </div>
 
     <div class="uk-margin">
-        <input class="uk-input" type="date" name="Datum">
+        <input class="uk-input" type="date" name="Datum"required>
     </div>
 
     <div class="uk-margin">
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: user"></span>
-        <input class="uk-input" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam">
+        <input class="uk-input" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam"required>
         </div>
     </div>
 
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord">
+            <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord"required>
         </div>
     </div>
 
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="password" placeholder="Wachtwoord_bevestigen">
+            <input class="uk-input" type="password" placeholder="Wachtwoord_bevestigen"required>
         </div>
     </div>
 
     <div class="uk-margin">
-        <select class="uk-select" name="vraag">
+        <select class="uk-select" name="vraag"required>
         <?php
         Get_question($dbh);
         ?>
       </select>
         <div class="uk-margin">
 
-            <input class="uk-input" type="text" placeholder="Antwoord" name="Antwoord">
+            <input class="uk-input" type="text" placeholder="Antwoord" name="Antwoord"required>
 
           </div>
     </div>

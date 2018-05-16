@@ -36,8 +36,11 @@ function emailReg($dbh)
                 header('Location:../registration.php');
             }
         }
-        header('verification.php');
-        echo $msg;
+        $_SESSION['regSucceedMelding'] = '
+    <script>UIkit.notification({message: \'De email is gestuurd naar: '. $email .' \', status: \'danger\'})</script>
+    ';
+        header('../registration.php');
+
     }
 }
 
