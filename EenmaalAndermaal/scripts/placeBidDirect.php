@@ -12,6 +12,8 @@ if ($Login == false) {
 <script>UIkit.notification({message: \'Log in first please\', status: \'danger\'})</script>
 ';
 
+    header("Location: ../login.php");
+
 } else if ($Login == true) {
 
     if (isset($_GET['id']) && !empty($_GET['id']) && isset($_GET['bedrag']) && !empty($_GET['bedrag'])) {
