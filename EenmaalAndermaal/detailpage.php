@@ -10,13 +10,13 @@ include('scripts/bid-functions.php');
 $id = $_GET['id'];
 placeItem($dbh, $id);
 
+
 function placeItem($dbh, $id)
 {
 // TODO: ID moet worden aangepast aan het item.
     $timeOfEnding = getAuctionEnd($dbh, $id);
     $minBid = calcMinBid($dbh, $id);
     $image = getAuctionFilename($dbh, $id);
-
 
     echo '
 <div class="uk-margin-detail">
@@ -40,7 +40,7 @@ function placeItem($dbh, $id)
         <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-text-center uk-align-center">
-                    <div class=" uk-display-inline-block uk-align-center">
+                    <div class=" uk-display-inline-block uk-align-center">     
                     <div class="uk-grid-small  uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                         <div>
                             <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
@@ -93,8 +93,8 @@ function placeItem($dbh, $id)
 
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
         ';
-        echo getProductInfo($dbh);
-        echo '
+    echo getProductInfo($dbh);
+    echo '
 
     </div>
     </p></div>
@@ -111,6 +111,8 @@ function placeItem($dbh, $id)
     </div>
     </p></div>
 ';
+
+
 
 
 }

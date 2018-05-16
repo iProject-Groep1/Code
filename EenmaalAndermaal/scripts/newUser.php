@@ -48,7 +48,7 @@ function registerUser($dbh)
 
 
         /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
-        sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$Email);
+        sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh);
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
@@ -72,7 +72,7 @@ function registerUser($dbh)
 
 }
 
-function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$Email)
+function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh)
 {
     trim($firstname);
     trim($lastname);
@@ -85,31 +85,30 @@ function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $Tweed
     htmlspecialchars($Postcode);
     htmlspecialchars($Plaatsnaam);
     htmlspecialchars($antwoord);
-
-
+ echo 'check';
     try {
 
-        $sql = "SELECT username FROM Users WHERE username = :username";
-        $sql = dbconnect()->prepare($sql);
+        $sql = "SELECT gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = :username";
+        $sql = $dbh->prepare($sql);
         $sql->bindParam(':username', $username);
         $sql->execute();
         $username = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($sql->rowCount() != 0) {
-            header("Location: login.php");
+            header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze username is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
         }
 
-
-        $sql = "SELECT email FROM Users WHERE email = :email";
-        $sql = dbconnect()->prepare($sql);
+echo'geb';
+        $sql = "SELECT email FROM Gebruiker WHERE mail_adres = :email";
+        $sql = $dbh->prepare($sql);
         $sql->bindParam(':email', $email);
         $sql->execute();
         $email = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($sql->rowCount() != 0) {
-            header("Location: login.php");
+            header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze email is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
 
