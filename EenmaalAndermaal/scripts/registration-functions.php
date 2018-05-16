@@ -30,10 +30,17 @@ function emailReg($dbh)
                 $query->execute(array($email, $hash, $isGeactiveerd));
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
+                $_SESSION['emailMelding'] = '
+                <script>UIkit.notification({message: \'Deze email heeft al een code ontvangen.\', status: \'danger\'})</script>
+                ';
+                header('Location:../registration.php');
             }
         }
-        header('verification.php');
-        echo $msg;
+        $_SESSION['regSucceedMelding'] = '
+    <script>UIkit.notification({message: \'De email is gestuurd naar: '. $email .' \', status: \'danger\'})</script>
+    ';
+        header('../registration.php');
+
     }
 }
 
@@ -108,7 +115,6 @@ function verifyEmail($hash, $dbh)
         return false;
     }
 }
-
 
 
 ?>

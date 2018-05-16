@@ -26,3 +26,38 @@ function getRelevantItems($dbh, $voorwerp) {
         setRelevantItems($dbh, $results['rubriek_op_laagste_Niveau']);
     }
 }
+
+function getBids($databasehandler)
+{
+    $bid = "";
+    $objectNumber = $_GET['id'];
+    $query = "SELECT bodbedrag, gebruiker
+              FROM dbo.Bod
+              WHERE voorwerp = $objectNumber
+              ORDER BY bodbedrag DESC";
+    $data = $databasehandler->query($query);
+    while ($row = $data->fetch()) {
+        $bid .= '<div class="uk-grid"><div class="uk-width-1-2">'. $row['bodbedrag'] .'</div><div class="uk-width-1-2">'. $row['gebruiker'] . '</div></div>';
+    }
+    return $bid;
+}
+
+function getProductInfo($databasehandler){
+    $objectNumber = $_GET['id'];
+    $productInformation = '';
+
+    $query = "SELECT titel, beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
+              FROM dbo.Voorwerp
+              WHERE voorwerpnummer = $objectNumber";
+    $data = $databasehandler->query($query);
+    while ($row = $data->fetch()) { //loopt elke row van de resultaten door
+        $productInformation .= '<div class="uk-grid uk-grid-large"><div class="uk-width-2-3"><h4 class="h4-no-bottom">Productbeschrijving </h4><p>'. $row['beschrijving'] .'</p></div>';
+        $productInformation .= '<div class="uk-width-1-3"><h4 class="h4-no-bottom">Betalingswijze</h4><p>'. $row['betalingswijze'] .'</p>';
+        $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>'. $row['betalingsinstructie'] .'</p>';
+        $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>'. $row['plaatsnaam'] .', '. $row['land'] .'</p>';
+        $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>'. $row['verzendkosten'] .'</p>';
+        $productInformation .= '<h4 class="h4-no-bottom">Verzendingstructies</h4><p>'. $row['verzendinstructies'] .'</p>';
+        $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>'. $row['verkoper'] .'</p></div></div>';
+    }
+    return $productInformation;
+}

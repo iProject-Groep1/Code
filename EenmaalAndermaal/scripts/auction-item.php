@@ -16,7 +16,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id)
             <div class="uk-overlay uk-overlay-primary uk-position-bottom">
                 <h3 class="uk-text-center uk-display-inline">' . $productName . '</h3>
     
-                <button class="uk-button uk-button-danger uk-align-right">Bied nu</button>
+                <button class="uk-button uk-button-danger uk-align-right">Bekijk nu</button>
                 <br>
                 <div class="uk-align-left uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</div>
                 <div class=" uk-align-right uk-display-inline-block">

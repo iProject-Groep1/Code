@@ -5,10 +5,17 @@ include('scripts/detailpagina-functions.php');
 include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
-require_once('scripts/product-info-function.php');
+
 
 $id = $_GET['id'];
 placeItem($dbh, $id);
+
+if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])){
+    echo $_SESSION['bodMelding'];
+    $_SESSION['bodMelding'] = "";
+    session_unset();
+}
+
 
 function placeItem($dbh, $id)
 {
@@ -16,7 +23,6 @@ function placeItem($dbh, $id)
     $timeOfEnding = getAuctionEnd($dbh, $id);
     $minBid = calcMinBid($dbh, $id);
     $image = getAuctionFilename($dbh, $id);
-
 
     echo '
 <div class="uk-margin-detail">
@@ -36,11 +42,11 @@ function placeItem($dbh, $id)
              alt="" uk-cover>
     </div>
 
-    <div class="uk-card uk-card-default uk-width-1-2@m uk-margin-detail-right">
+    <div class="uk-card uk-card-default uk-width-1-2@m uk-margin-detail-right no-shadow">
         <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-text-center uk-align-center">
-                    <div class=" uk-display-inline-block uk-align-center">
+                    <div class=" uk-display-inline-block uk-align-center">     
                     <div class="uk-grid-small  uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                         <div>
                             <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
@@ -63,13 +69,16 @@ function placeItem($dbh, $id)
                 </div>
             </div>
         </div>
-        <div class="uk-card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        <div class="uk-card-body scroll grey">
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>-->
+            ';
+            echo getBids($dbh);
+            echo '
         </div>
-        <div class="uk-card-footer">
+        <div class="uk-card-footer grey">
          <div class="uk-width-1-4@s uk-align-left">
          <form action="scripts/placeBidDirect.php" method="get">
-         <input class="uk-input" type="text" name="id"value="'. $id .'"hidden>
+         <input class="uk-input" type="text" name="id" value="'. $id .'"hidden>
         <input class="uk-input" type="text" placeholder="€'. $minBid .'" name="bedrag">
         <input class="uk-button uk-button-danger uk-align-left" type="submit" name="submit" value="Bied direct">
         </form>
@@ -83,15 +92,15 @@ function placeItem($dbh, $id)
 
 </div>
 
-<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
+<div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw">
     <h3 class="uk-display-block uk-align-center uk-text-center">Product Informatie</h3>
     <p>
 
 
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
         ';
-        echo getProductInfo($dbh);
-        echo '
+    echo getProductInfo($dbh);
+    echo '
 
     </div>
     </p></div>
@@ -110,8 +119,9 @@ function placeItem($dbh, $id)
 ';
 
 
-}
 
+
+}
 
 require_once('scripts/footer.php');
 ?>

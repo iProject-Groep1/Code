@@ -1,19 +1,19 @@
 <?php
+include('database-connect.php');
 
 if (isset($_POST['submit'])){
-  echo 'lala';
   registerUser($dbh);
 }
 
 function registerUser($dbh)
 {
 
-  echo 'deze shit werkt wel';
-
     if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
         echo 'Wachtwoord komt niet overeen';
         return;
     }
+
+    $vraag = 0;
 
     //Alle variabelen van de Form
     $firstname = $_POST['Voornaam'];
@@ -34,10 +34,6 @@ function registerUser($dbh)
     };
 
 
-
-
-
-
     try {
           if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
             echo("$email is a valid email address");
@@ -49,28 +45,31 @@ function registerUser($dbh)
 
 
         /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
+        sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh);
 
-
-
-
-        $sql = "INSERT INTO gebruiker(gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, wachtwoord, vraag, antwoordtekst, verkoper)
-        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
+        values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
         $query = $dbh->prepare($sql);
-        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
+        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord));
 
 
-echo "done, ik ben geimport in de database";
-
+        $_SESSION['regMelding'] = '
+    <script>UIkit.notification({message: \'Bedankt voor de registratie '. $username . '!\', status: \'danger\'})</script>
+    ';
 
 
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
-    header("Location: login.php");
+
+    header("Location: ../login.php");
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
+
+    header("Location: ../login.php");
+
 }
 
-function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord)
+function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh)
 {
     trim($firstname);
     trim($lastname);
@@ -83,31 +82,30 @@ function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $Tweed
     htmlspecialchars($Postcode);
     htmlspecialchars($Plaatsnaam);
     htmlspecialchars($antwoord);
-
-
+ echo 'check';
     try {
 
-        $sql = "SELECT username FROM Users WHERE username = :username";
-        $sql = dbconnect()->prepare($sql);
+        $sql = "SELECT gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = :username";
+        $sql = $dbh->prepare($sql);
         $sql->bindParam(':username', $username);
         $sql->execute();
         $username = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($sql->rowCount() != 0) {
-            header("Location: login.php");
+            header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze username is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
         }
 
-
-        $sql = "SELECT email FROM Users WHERE email = :email";
-        $sql = dbconnect()->prepare($sql);
+echo'geb';
+        $sql = "SELECT email FROM Gebruiker WHERE mail_adres = :email";
+        $sql = $dbh->prepare($sql);
         $sql->bindParam(':email', $email);
         $sql->execute();
         $email = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($sql->rowCount() != 0) {
-            header("Location: login.php");
+            header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze email is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
 
