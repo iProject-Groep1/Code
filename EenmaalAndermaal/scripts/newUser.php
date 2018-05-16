@@ -48,7 +48,7 @@ function registerUser($dbh)
 
 
         /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
-        sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$Email);
+        sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh);
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
@@ -72,7 +72,7 @@ function registerUser($dbh)
 
 }
 
-function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$Email)
+function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh)
 {
     trim($firstname);
     trim($lastname);
