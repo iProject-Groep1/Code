@@ -5,6 +5,10 @@ include('scripts/homepage-functions.php');
 if(isset($_SESSION['emailMelding'])) {
     echo $_SESSION['emailMelding'];
 }
+
+if(isset($_SESSION['regMelding'])) {
+    echo $_SESSION['regMelding'];
+}
 ?>
 
 <div class="uk-flex uk-flex-around uk-margin-xlarge-top uk-margin-xlarge-bottom uk-margin-auto" uk-grid>

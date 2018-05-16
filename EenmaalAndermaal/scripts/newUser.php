@@ -58,8 +58,9 @@ function registerUser($dbh)
         $query = $dbh->prepare($sql);
         $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord, 0 ));
 
-
-echo "done, ik ben geimport in de database";
+        $_SESSION['regMelding'] = '
+    <script>UIkit.notification({message: \'Bedankt voor de registratie '. $username . '!\', status: \'danger\'})</script>
+    ';
 
 
 
@@ -67,7 +68,6 @@ echo "done, ik ben geimport in de database";
         echo "Fout" . $e->getMessage();
     }
     header("Location: login.php");
-    $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
 }
 
 function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord)

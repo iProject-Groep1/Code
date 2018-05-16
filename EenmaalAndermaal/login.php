@@ -6,6 +6,9 @@ include('scripts/header.php');
 if(isset($_SESSION['username'])){
     header('Location: index.php');
 }
+if(isset($_SESSION['regMelding'])) {
+    echo $_SESSION['regMelding'];
+}
 
 
 if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
