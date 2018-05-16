@@ -17,7 +17,7 @@ include('scripts/homepage-functions.php');
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
 
-                    <input class="uk-input uk-button-primary" "id="loginSubmit" type="submit" value="Registreer"
+                    <input class="uk-input uk-button-primary" id="loginSubmit" type="submit" value="Registreer"
                     name="submit">
 
                 </div>

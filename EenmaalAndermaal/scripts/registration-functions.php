@@ -30,6 +30,10 @@ function emailReg($dbh)
                 $query->execute(array($email, $hash, $isGeactiveerd));
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
+                $_SESSION['Meldingen'] = '
+                <script>UIkit.notification({message: \'Deze email heeft al een code ontvangen.\', status: \'danger\'})</script>
+                ';
+
             }
         }
         header('verification.php');
@@ -108,7 +112,6 @@ function verifyEmail($hash, $dbh)
         return false;
     }
 }
-
 
 
 ?>
