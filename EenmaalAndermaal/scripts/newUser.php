@@ -95,7 +95,7 @@ function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $Tweed
         $username = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($sql->rowCount() != 0) {
-            header("Location: login.php");
+            header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze username is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
         }
@@ -108,7 +108,7 @@ echo'geb';
         $email = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($sql->rowCount() != 0) {
-            header("Location: login.php");
+            header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze email is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
 
