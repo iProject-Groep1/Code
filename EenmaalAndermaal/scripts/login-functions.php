@@ -42,6 +42,17 @@ function login($dbh)
     }
 }
 
+/*  Deze functie checkt of je nog in de session bent.
+   Dit gebeurd op iedere pagina opnieuw zodat hij weet ofdat de user nog in de session zit.*/
+function CheckLogin ()
+{
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 
 function timeLogged () {
