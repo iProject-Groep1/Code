@@ -1,0 +1,1 @@
+select  dateadd(month,ABS(CHECKSUM(NEWID()) % 1), dateadd(day,ABS(CHECKSUM(NEWID()) % 28),dateadd(HOUR,ABS(CHECKSUM(NEWID()) % 24),dateadd(minute,ABS(CHECKSUM(NEWID()) % 60),CURRENT_TIMESTAMP))))
