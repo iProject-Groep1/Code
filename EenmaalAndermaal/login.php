@@ -11,6 +11,10 @@ if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
     session_destroy();
 }
 
+if(isset($_SESSION['LogMelding']) && !empty($_SESSION['LogMelding'])) {
+    echo $_SESSION['LogMelding'];
+}
+
 
 if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
     $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
@@ -23,11 +27,7 @@ if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
  */
 
 
-?>
-<?php
-if(isset($_SESSION['LogMelding'])) {
-    echo $_SESSION['LogMelding'];
-}
+
 ?>
 
     <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-margin-auto uk-margin-xlarge-top uk-margin-xlarge-bottom">
