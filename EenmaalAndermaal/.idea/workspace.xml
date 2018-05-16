@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="316" lean-forward="true" selection-start-line="19" selection-start-column="316" selection-end-line="19" selection-end-column="316" />
+              <caret line="19" column="316" lean-forward="false" selection-start-line="19" selection-start-column="316" selection-end-line="19" selection-end-column="316" />
               <folding>
                 <marker date="1526476520311" expanded="true" signature="378:825" ph="select top 4... Voorwerp" />
                 <marker date="1526476520311" expanded="true" signature="441:513" ph="SELECT TOP 1... bestand" />
@@ -32,12 +32,41 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="registration-functions.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <marker date="1526477450790" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+                <marker date="1526477450790" expanded="true" signature="1872:2429" ph="..." />
+                <marker date="1526477450790" expanded="true" signature="1880:1912" ph="..." />
+                <marker date="1526477450790" expanded="true" signature="1919:2421" ph="..." />
+                <marker date="1526477450790" expanded="true" signature="1964:2277" ph="..." />
+                <marker date="1526477450790" expanded="true" signature="2284:2411" ph="..." />
+                <marker date="1526477450790" expanded="true" signature="2813:2854" ph="SELECT hash users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registration.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/scripts/registration-functions.php" />
       </list>
     </option>
   </component>
@@ -77,6 +106,11 @@
               <item name="EenmaalAndermaal" type="b2602c69:ProjectViewProjectNode" />
               <item name="EenmaalAndermaal" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="EenmaalAndermaal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EenmaalAndermaal" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -113,12 +147,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526475440982</updated>
-      <workItem from="1526475443116" duration="1239000" />
+      <workItem from="1526475443116" duration="2340000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1239000" />
+    <option name="totallyTimeSpent" value="2340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -156,10 +190,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/registration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="316" lean-forward="true" selection-start-line="19" selection-start-column="316" selection-end-line="19" selection-end-column="316" />
+          <caret line="19" column="316" lean-forward="false" selection-start-line="19" selection-start-column="316" selection-end-line="19" selection-end-column="316" />
           <folding>
             <marker date="1526476520311" expanded="true" signature="378:825" ph="select top 4... Voorwerp" />
             <marker date="1526476520311" expanded="true" signature="441:513" ph="SELECT TOP 1... bestand" />
@@ -171,6 +213,22 @@
             <marker date="1526476520311" expanded="true" signature="2087:2159" ph="SELECT TOP 1... bestand" />
             <marker date="1526476520311" expanded="true" signature="2582:2837" ph="..." />
             <marker date="1526476520311" expanded="true" signature="2670:2675" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <marker date="1526477450790" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+            <marker date="1526477450790" expanded="true" signature="1872:2429" ph="..." />
+            <marker date="1526477450790" expanded="true" signature="1880:1912" ph="..." />
+            <marker date="1526477450790" expanded="true" signature="1919:2421" ph="..." />
+            <marker date="1526477450790" expanded="true" signature="1964:2277" ph="..." />
+            <marker date="1526477450790" expanded="true" signature="2284:2411" ph="..." />
+            <marker date="1526477450790" expanded="true" signature="2813:2854" ph="SELECT hash users" />
           </folding>
         </state>
       </provider>
