@@ -15,7 +15,7 @@ if ($Login == false) {
     header("Location: ../login.php");
 
 
-} else if ($Login == true) {
+} else {
 
 
     if (isset($_GET['id']) && !empty($_GET['id'])) {
