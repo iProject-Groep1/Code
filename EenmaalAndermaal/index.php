@@ -13,8 +13,9 @@ include('scripts/bid-functions.php');
 //haalt de top 4 populaire items uit de database. Deze top 4 is gebaseerd op de veilingen met de meeste boden (aflopend)
 $queries['Populairste veilingen'] = "select top 4 v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod , CURRENT_TIMESTAMP, count(b.voorwerp) as aantal from Voorwerp v join bod b on v.voorwerpnummer = b.voorwerp where datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10   group by voorwerpnummer, titel, looptijdEindmoment  order by aantal desc";
 //haalt de top 8 duurste veilingen uit de database. Deze 8 worden vervolgens d.m.v. de createItem(); functie.
-$queries['Duurste veilingen'] = "SELECT TOP 8 v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd FROM Voorwerp v join Bod b ON v.voorwerpnummer = b.voorwerp WHERE datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10 GROUP BY Voorwerpnummer, titel, looptijdEindmoment ORDER BY hoogsteBod desc
-";
+$queries['Duurste veilingen'] = "SELECT TOP 8 v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd FROM Voorwerp v join Bod b ON v.voorwerpnummer = b.voorwerp WHERE datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10 GROUP BY Voorwerpnummer, titel, looptijdEindmoment ORDER BY hoogsteBod desc";
+//haalt de  top 5 koopjes uit de database.
+//$queries['Koopjes'] = ""
 
 $attentionSeekers = "";
 foreach($queries as $soort => $query){
