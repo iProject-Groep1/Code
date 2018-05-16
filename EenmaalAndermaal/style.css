@@ -218,3 +218,12 @@ li .uk-button{
 .h4-no-bottom{
 	margin-bottom: -20px;
 }
+
+.scroll{
+	height: 350px;
+	overflow-y: scroll;
+}
+
+.uk-card-header{
+	background-color: #5484A4;
+}

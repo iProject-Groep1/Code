@@ -5,7 +5,7 @@ include('scripts/detailpagina-functions.php');
 include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
-require_once('scripts/product-info-function.php');
+
 
 $id = $_GET['id'];
 placeItem($dbh, $id);
@@ -63,8 +63,11 @@ function placeItem($dbh, $id)
                 </div>
             </div>
         </div>
-        <div class="uk-card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        <div class="uk-card-body scroll">
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>-->
+            ';
+            echo getBids($dbh);
+            echo '
         </div>
         <div class="uk-card-footer">
          <div class="uk-width-1-4@s uk-align-left">
@@ -83,7 +86,7 @@ function placeItem($dbh, $id)
 
 </div>
 
-<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
+<div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw">
     <h3 class="uk-display-block uk-align-center uk-text-center">Product Informatie</h3>
     <p>
 
@@ -113,7 +116,6 @@ function placeItem($dbh, $id)
 
 
 }
-
 
 require_once('scripts/footer.php');
 ?>
