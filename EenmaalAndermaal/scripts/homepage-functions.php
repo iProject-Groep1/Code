@@ -20,26 +20,26 @@ require_once('database-connect.php');
 //}
 
 // Deze functie haalt alle voorwerpID's uit de database. Deze id's worden vervolgens in de functie gestopt waardoor alle foutieve id's geskipt worden.
-function checkNumbers($dbh)
-{
-    $results = "";
-    echo '
-                <div class="uk-child-width-1-4@m uk-grid" uk-grid>';
-    try {
-        $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
-
-        while ($row = $stmt->fetch()) {
-            createItem($dbh, $row['Voorwerpnummer']);
-            echo "<br>";
-
-        }
-        echo '</div>';
-        return $results;
-
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
-}
+//function checkNumbers($dbh)
+//{
+//    $results = "";
+//    echo '
+//                <div class="uk-child-width-1-4@m uk-grid" uk-grid>';
+//    try {
+//        $stmt = $dbh->query("SELECT Voorwerpnummer FROM Voorwerp v WHERE v.Voorwerpnummer IS NOT NULL"); /* prepared statement */
+//
+//        while ($row = $stmt->fetch()) {
+//            createItem($dbh, $row['Voorwerpnummer']);
+//            echo "<br>";
+//
+//        }
+//        echo '</div>';
+//        return $results;
+//
+//    } catch (PDOException $e) {
+//        echo "Fout" . $e->getMessage();
+//    }
+//}
 
 
 //Deze functie vraagt de tijd van de database op. Deze tijd modified hij met +10 minuten.
@@ -81,20 +81,20 @@ function getAuctionEnd($dbh, $id)
 
 
 //Deze functie pakt de Titel van de veiling (gekoppeld aan het ID dat meegegeven wordt).
-function getAuctionTitel($dbh, $id)
-{
-    try {
-        $stmt = $dbh->prepare("SELECT Titel FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
-        $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
-        $stmt->execute(); /* stuurt alles naar de server */
-        while ($results = $stmt->fetch()) {
-            $row = $results['Titel'];
-        }
-        return $row;
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
-}
+//function getAuctionTitel($dbh, $id)
+//{
+//    try {
+//        $stmt = $dbh->prepare("SELECT Titel FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
+//        $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
+//        $stmt->execute(); /* stuurt alles naar de server */
+//        while ($results = $stmt->fetch()) {
+//            $row = $results['Titel'];
+//        }
+//        return $row;
+//    } catch (PDOException $e) {
+//        echo "Fout" . $e->getMessage();
+//    }
+//}
 
 
 // Deze functie vraagt de filename van het plaatje van de auction op. Deze wordt opgehaald uit de database.
@@ -115,42 +115,21 @@ function getAuctionFilename($dbh, $id)
     }
 }
 
-//Deze functie doet eigenlijk niks. Deze functie is in het leven geroepen om een rustigere/mooiere functie te hebben voor het bouwen van de veilingen.
-function createItem($dbh, $id)
-{
-    createItemScript(getAuctionTitel($dbh, $id), getAuctionEnd($dbh, $id), getAuctionFilename($dbh, $id), getHighestBid($dbh, $id), $id);
-}
 
 
-//Deze functie haalt de top 4 populaire items uit de database. Deze top 4 is gebasseerd op de veilingen met de meeste boden (aflopend)
-function getPopularItems($dbh)
+function getHomepageCards($dbh, $query)
 {
+    $itemCards = "";
     try {
-        $stmt = $dbh->prepare("select top 4 voorwerp, count(voorwerp) as aantal   from  BOD b join  voorwerp v on v.voorwerpnummer = b.voorwerp where datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10   group by voorwerp order by aantal desc"); /* prepared statement */
+        $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
-            createItem($dbh, $results['voorwerp']);
+            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $results['hoogsteBod'], $results['voorwerpnummer']);
         }
-        return;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
-}
-
-
-//Deze functie haalt de top 8 duurste veilingen uit de database. Deze 8 worden vervolgens d.m.v. de createItem(); functie.
-function getHighItems($dbh)
-{
-    try {
-        $stmt = $dbh->prepare("SELECT top 8 voorwerp , max(Bodbedrag) as prijs from  BOD b join  voorwerp v on v.voorwerpnummer = b.voorwerp  where datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) > 10 group by voorwerp order by prijs desc"); /* prepared statement */
-        $stmt->execute(); /* stuurt alles naar de server */
-        while ($results = $stmt->fetch()) {
-            createItem($dbh, $results['voorwerp']);
-        }
-        return;
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
+    return $itemCards;
 }
 
 

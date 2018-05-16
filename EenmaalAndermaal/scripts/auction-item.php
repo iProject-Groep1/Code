@@ -4,7 +4,7 @@
 function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id)
 {
 
-    $echo = '
+    $itemCard = '
     <div class="uk-auction-margin">
     
         <div class=" uk-inline uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
@@ -41,12 +41,10 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id)
                 </div>
             </div>
         </div>
-    
     </div>
 
                             ';
-
-    echo $echo;
+    return $itemCard;
 }
 
 
