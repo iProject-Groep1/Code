@@ -8,9 +8,9 @@ if (isset($_POST['submit'])){
 function registerUser($dbh)
 {
 
-    if ($_POST['wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
+    if ($_POST['Wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
         echo 'Wachtwoord komt niet overeen';
-        return;
+        header('Location:newUser.php');
     }
 
     $vraag = 0;
