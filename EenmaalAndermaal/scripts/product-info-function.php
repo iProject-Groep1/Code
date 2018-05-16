@@ -10,7 +10,7 @@ echo getProductInfo($dbh);
 echo '*/
 
 function getProductInfo($databasehandler){
-    $voorwerpnummer = 1; //hier moet iets staan als $_GET['voorwerpnummer']; de 1 is een tijdelijke harde variabele.
+    $voorwerpnummer = $_GET['id'];
 
     $query = "SELECT titel, beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
               FROM dbo.Voorwerp
