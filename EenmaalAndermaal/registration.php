@@ -11,7 +11,7 @@ if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
     echo $_SESSION['regMelding'];
     session_destroy();
 }
-if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMeldingMelding'])) {
+if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMelding'])) {
     echo $_SESSION['regSucceedMelding'];
     session_destroy();
 }
