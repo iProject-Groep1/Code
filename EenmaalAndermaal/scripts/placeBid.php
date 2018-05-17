@@ -9,7 +9,7 @@ include('login-functions.php');
 $Login = CheckLogin ();
 if ($Login == false) {
     $_SESSION['LogMelding'] = '
-    <script>UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om een bod te plaatsen.\', status: \'danger\'})</script>
+    <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om een bod te plaatsen.\', status: \'danger\'})</script>
     ';
 
     header("Location: ../login.php");
@@ -35,7 +35,7 @@ function setMinBid($dbh, $id)
         $query = $dbh->prepare($sql);
         $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
         $_SESSION['bodMelding'] = '
-            <script>UIkit.notification({message: \'<span uk-icon="icon: check"></span> Uw bod van €' . $bodbedrag . ' is geplaatst.\', status: \'success\'})</script>
+            <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: check"></span> Uw bod van €' . $bodbedrag . ' is geplaatst.\', status: \'success\'})</script>
 ';
         header('Location:../detailpage.php?id=' . $id . '');
 
