@@ -11,62 +11,68 @@ function registerUser($dbh)
     if ($_POST['Wachtwoord'] != $_POST['Wachtwoord_bevestigen']) {
         echo 'Wachtwoord komt niet overeen';
         header('Location:newUser.php');
-    }
+    } else {
 
-    $vraag = 0;
+        $vraag = 0;
 
-    //Alle variabelen van de Form
-    $firstname = $_POST['Voornaam'];
-    $lastname = $_POST['Achternaam'];
-    $EersteAdres = $_POST['EersteAdres'];
-    $TweedeAdres = $_POST['TweedeAdres'];
-    $Postcode = $_POST['Postcode'];
-    $Plaatsnaam = $_POST['Plaatsnaam'];
-    $country = $_POST['Land'];
-    $birth = $_POST['Datum'];
-    $username = $_POST['Gebruikersnaam'];
-    $password = $_POST['Wachtwoord'];
-    $passwordhash = password_hash($password, PASSWORD_DEFAULT);
-    $vraag = $_POST['vraag'];
-    $antwoord = $_POST['Antwoord'];
-    if (isset($_GET['email']) && !empty($_GET['email'])){
-    $email = ($_GET['email']);
-    };
-
-
-    try {
-          if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            echo("$email is a valid email address");
-        } else {
-        /*    header("Location: login.php");*/
-            $_SESSION['messages'][] = 'Dit email adress is niet correct. Vul een valide email is a.u.b .';
-            exit ('Velden zijn hetzelfde');
-        }
+        //Alle variabelen van de Form
+        $firstname = $_POST['Voornaam'];
+        $lastname = $_POST['Achternaam'];
+        $EersteAdres = $_POST['EersteAdres'];
+        $TweedeAdres = $_POST['TweedeAdres'];
+        $Postcode = $_POST['Postcode'];
+        $Plaatsnaam = $_POST['Plaatsnaam'];
+        $country = $_POST['Land'];
+        $birth = $_POST['Datum'];
+        $username = $_POST['Gebruikersnaam'];
+        $password = $_POST['Wachtwoord'];
+        $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+        $vraag = $_POST['vraag'];
+        $antwoord = $_POST['Antwoord'];
+        if (isset($_GET['email']) && !empty($_GET['email'])) {
+            $email = ($_GET['email']);
+        };
 
 
-        /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
-        sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh);
+        try {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+                echo("$email is a valid email address");
+            } else {
+                /*    header("Location: login.php");*/
+                $_SESSION['messages'][] = 'Dit email adress is niet correct. Vul een valide email is a.u.b .';
+                exit ('Velden zijn hetzelfde');
+            }
 
-        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
+
+            /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
+            sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord, $email, $dbh);
+
+            $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
-        $query = $dbh->prepare($sql);
-        $query->execute(array($username,$firstname, $lastname,$EersteAdres,$TweedeAdres,$Postcode,$Plaatsnaam, $country, $birth,$email , $passwordhash ,$vraag,$antwoord));
+            $query = $dbh->prepare($sql);
+            $query->execute(array($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $country, $birth, $email, $passwordhash, $vraag, $antwoord));
 
 
-        $_SESSION['regMelding'] = '
-    <script>UIkit.notification({message: \'Bedankt voor de registratie '. $username . '!\', status: \'danger\'})</script>
+            $_SESSION['regMelding'] = '
+    <script>UIkit.notification({message: \'Bedankt voor de registratie ' . $username . '!\', status: \'danger\'})</script>
     ';
 
 
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
+        } catch (PDOException $e) {
+            echo "Fout" . $e->getMessage();
+        }
 
+<<<<<<< HEAD
 
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
+=======
+        header("Location: ../login.php");
+        $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
+>>>>>>> 65d997f1ec8a7509b0a3f3824bb63048e3ea1537
 
-    header("Location: ../login.php");
+        header("Location: ../login.php");
 
+    }
 }
 
 function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord,$email, $dbh)
