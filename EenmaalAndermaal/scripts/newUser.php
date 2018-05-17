@@ -62,14 +62,12 @@ function registerUser($dbh)
             echo "Fout" . $e->getMessage();
         }
 
-<<<<<<< HEAD
+
 
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
-=======
-        header("Location: ../login.php");
-        $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
->>>>>>> 65d997f1ec8a7509b0a3f3824bb63048e3ea1537
 
+    
+        $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
         header("Location: ../login.php");
 
     }
