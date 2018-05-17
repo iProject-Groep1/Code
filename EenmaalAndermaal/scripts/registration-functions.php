@@ -37,7 +37,7 @@ function emailReg($dbh)
             }
         }
         $_SESSION['regSucceedMelding'] = '
-    <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> De email is gestuurd naar: '. $email .' \', status: \'danger\'})</script>
+    <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> De email is gestuurd naar: '. $email .' \', status: \'success\'})</script>
     ';
         header('Location: ../registration.php');
 
