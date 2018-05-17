@@ -26,6 +26,7 @@ function placeItem($dbh, $id)
 
     echo '
 <div class="uk-margin-detail">
+
 <ul class="uk-breadcrumb" >
     <li><a href="#">Item</a></li>
     <li><a href="#">Item</a></li>
@@ -33,8 +34,8 @@ function placeItem($dbh, $id)
     <li><span>Active</span></li>
 </ul>
 </div>
-
-<div class="uk-grid uk-padding-resize" data-uk-grid-margin="">
+'; echo getProductTitle($dbh); echo'
+<div class="uk-grid uk-padding-resize  marge-left" data-uk-grid-margin="">
 
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
         <img class="uk-margin-detail uk-nice-uitlijnen " 
@@ -100,7 +101,9 @@ function placeItem($dbh, $id)
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
         ';
     echo getProductInfo($dbh);
+
     echo '
+
 
     </div>
     </p></div>

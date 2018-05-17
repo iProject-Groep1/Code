@@ -46,13 +46,13 @@ function getProductInfo($databasehandler){
     $objectNumber = $_GET['id'];
     $productInformation = '';
 
-    $query = "SELECT titel, beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
+    $query = "SELECT beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
               FROM dbo.Voorwerp
               WHERE voorwerpnummer = $objectNumber";
     $data = $databasehandler->query($query);
     while ($row = $data->fetch()) { //loopt elke row van de resultaten door
         $productInformation .= '<div class="uk-grid uk-grid-large"><div class="uk-width-2-3"><h4 class="h4-no-bottom">Productbeschrijving </h4><p>'. $row['beschrijving'] .'</p></div>';
-        $productInformation .= '<div class="uk-width-1-3"><h4 class="h4-no-bottom">Betalingswijze</h4><p>'. $row['betalingswijze'] .'</p>';
+        $productInformation .= '<div class="uk-width-1-3 uk-grid-collapse"><h4 class="h4-no-bottom">Betalingswijze</h4><p>'. $row['betalingswijze'] .'</p>';
         $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>'. $row['betalingsinstructie'] .'</p>';
         $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>'. $row['plaatsnaam'] .', '. $row['land'] .'</p>';
         $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>'. $row['verzendkosten'] .'</p>';
@@ -60,4 +60,18 @@ function getProductInfo($databasehandler){
         $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>'. $row['verkoper'] .'</p></div></div>';
     }
     return $productInformation;
+}
+
+function getProductTitle($databasehandler){
+    $objectNumber = $_GET['id'];
+    $productTitle = '';
+
+    $query = "SELECT titel
+              FROM dbo.Voorwerp
+              WHERE voorwerpnummer = $objectNumber";
+    $data = $databasehandler->query($query);
+    while ($row = $data->fetch()) { //loopt elke row van de resultaten door
+        $productTitle .= '<h1 class="marge-left">'. $row['titel'] .'</h1>';
+    }
+    return $productTitle;
 }
