@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Verificatie';
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
 include('scripts/country.php');

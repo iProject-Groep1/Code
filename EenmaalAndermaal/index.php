@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'EenmaalAndermaal';
 require_once('scripts/header.php');
 include('scripts/auction-item.php');
 include('scripts/homepage-functions.php');
