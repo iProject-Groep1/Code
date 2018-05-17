@@ -95,17 +95,17 @@
       <file leaf-file-name="registration-functions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+            <state relative-caret-position="312">
+              <caret line="35" column="55" lean-forward="true" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
               <folding>
-                <marker date="1526556016912" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-                <marker date="1526556016912" expanded="true" signature="1226:1246" ph="..." />
-                <marker date="1526556016912" expanded="true" signature="1937:2494" ph="..." />
-                <marker date="1526556016912" expanded="true" signature="1945:1977" ph="..." />
-                <marker date="1526556016912" expanded="true" signature="1984:2486" ph="..." />
-                <marker date="1526556016912" expanded="true" signature="2029:2342" ph="..." />
-                <marker date="1526556016912" expanded="true" signature="2349:2476" ph="..." />
-                <marker date="1526556016912" expanded="true" signature="2878:2919" ph="SELECT hash users" />
+                <marker date="1526556148355" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+                <marker date="1526556148355" expanded="true" signature="1226:1246" ph="..." />
+                <marker date="1526556148355" expanded="true" signature="1973:2530" ph="..." />
+                <marker date="1526556148355" expanded="true" signature="1981:2013" ph="..." />
+                <marker date="1526556148355" expanded="true" signature="2020:2522" ph="..." />
+                <marker date="1526556148355" expanded="true" signature="2065:2378" ph="..." />
+                <marker date="1526556148355" expanded="true" signature="2385:2512" ph="..." />
+                <marker date="1526556148355" expanded="true" signature="2914:2955" ph="SELECT hash users" />
               </folding>
             </state>
           </provider>
@@ -277,7 +277,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8205000" />
+    <option name="totallyTimeSpent" value="8339000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -437,14 +437,14 @@
         <state relative-caret-position="270">
           <caret line="33" column="52" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="52" />
           <folding>
-            <marker date="1526556016912" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-            <marker date="1526556016912" expanded="true" signature="1226:1246" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="1937:2494" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="1945:1977" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="1984:2486" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="2029:2342" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="2349:2476" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="2878:2919" ph="SELECT hash users" />
+            <marker date="1526556148355" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+            <marker date="1526556148355" expanded="true" signature="1226:1246" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="1973:2530" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="1981:2013" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2020:2522" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2065:2378" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2385:2512" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2914:2955" ph="SELECT hash users" />
           </folding>
         </state>
       </provider>
@@ -702,17 +702,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/registration-functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+        <state relative-caret-position="312">
+          <caret line="35" column="55" lean-forward="true" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
           <folding>
-            <marker date="1526556016912" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
-            <marker date="1526556016912" expanded="true" signature="1226:1246" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="1937:2494" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="1945:1977" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="1984:2486" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="2029:2342" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="2349:2476" ph="..." />
-            <marker date="1526556016912" expanded="true" signature="2878:2919" ph="SELECT hash users" />
+            <marker date="1526556148355" expanded="true" signature="851:916" ph="INSERT INTO Verificatie... " />
+            <marker date="1526556148355" expanded="true" signature="1226:1246" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="1973:2530" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="1981:2013" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2020:2522" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2065:2378" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2385:2512" ph="..." />
+            <marker date="1526556148355" expanded="true" signature="2914:2955" ph="SELECT hash users" />
           </folding>
         </state>
       </provider>
