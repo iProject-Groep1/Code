@@ -7,7 +7,7 @@ include('login-functions.php');
 
 if (!CheckLogin()) {
     $_SESSION['LogMelding'] = '
-<script>UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om een bod te plaatsen.\', status: \'danger\'})</script>
+<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om een bod te plaatsen.\', status: \'danger\'})</script>
 ';
 
     header("Location: ../login.php");
@@ -21,7 +21,7 @@ if (!CheckLogin()) {
         setMinBid($dbh, $id, $bedrag);
     } else if (empty($_GET['bedrag'])) {
         $_SESSION['bodMelding'] = '
-        <script>UIkit.notification({message: \'<span uk-icon="icon: close"></span> Vul een bodbedrag in!\', status: \'danger\'})</script>
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Vul een bodbedrag in!\', status: \'danger\'})</script>
 ';
         header('Location:../detailpage.php?id=' . $_GET['id']);
     }
@@ -38,7 +38,7 @@ function setMinBid($dbh, $id, $bedrag)
 
     if ($bedrag >= $maxBodBedrag) {
         $_SESSION['bodMelding'] = '
-        <script>UIkit.notification({message: \'<span uk-icon="icon: close"></span> Het bodbedrag moet minder dan'. $maxBodBedrag .'.\', status: \'danger\'})</script>
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Het bodbedrag moet minder dan'. $maxBodBedrag .'.\', status: \'danger\'})</script>
         ';
         header('Location:../detailpage.php?id=' . $id . '');
     } else if ($bedrag >= calcMinBid($dbh, $id)) {
@@ -47,7 +47,7 @@ function setMinBid($dbh, $id, $bedrag)
             $query = $dbh->prepare($sql);
             $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
             $_SESSION['bodMelding'] = '
-            <script>UIkit.notification({message: \'<span uk-icon="icon: check"></span> Uw bod van €' . $bedrag . ' is geplaatst.\', status: \'success\'})</script>
+            <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: check"></span> Uw bod van €' . $bedrag . ' is geplaatst.\', status: \'success\'})</script>
 ';
             header('Location:../detailpage.php?id=' . $id . '');
 
@@ -57,7 +57,7 @@ function setMinBid($dbh, $id, $bedrag)
 
     } else {
         $_SESSION['bodMelding'] = '
-        <script>UIkit.notification({message: \'<span uk-icon="icon: close"> </span> Het bodbedrag moet minimaal €' . $minBod . ' zijn.\', status: \'danger\'})</script>
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"> </span> Het bodbedrag moet minimaal €' . $minBod . ' zijn.\', status: \'danger\'})</script>
 ';
         header('Location:../detailpage.php?id=' . $id . '');
     }

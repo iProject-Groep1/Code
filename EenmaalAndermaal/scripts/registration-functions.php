@@ -31,7 +31,7 @@ function emailReg($dbh)
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
                 $_SESSION['emailMelding'] = '
-                <script>UIkit.notification({message: \'Deze email heeft al een code ontvangen.\', status: \'danger\'})</script>
+                <script style="border-radius: 25px;">UIkit.notification({message: \'Deze email heeft al een code ontvangen.\', status: \'danger\'})</script>
                 ';
                 header('Location:../registration.php');
             }
