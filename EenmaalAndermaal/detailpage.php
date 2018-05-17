@@ -13,7 +13,6 @@ placeItem($dbh, $id);
 if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])){
     echo $_SESSION['bodMelding'];
     $_SESSION['bodMelding'] = "";
-    session_unset();
 }
 
 
@@ -47,7 +46,7 @@ function placeItem($dbh, $id)
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-text-center uk-align-center">
                     <div class=" uk-display-inline-block uk-align-center">     
-                    <div class="uk-grid-small  uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
+                    <div class="uk-grid-small  uk-child-width-auto detail-pagina-countdown" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                         <div>
                             <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
                         </div>
@@ -79,7 +78,7 @@ function placeItem($dbh, $id)
          <div class="uk-width-1-4@s uk-align-left">
          <form action="scripts/placeBidDirect.php" method="get">
          <input class="uk-input" type="text" name="id" value="'. $id .'"hidden>
-        <input class="uk-input" type="text" placeholder="€'. $minBid .'" name="bedrag">
+        <input class="uk-input" type="number" min="'.$minBid.'" placeholder="€'. $minBid .'" name="bedrag">
         <input class="uk-button uk-button-danger uk-align-left" type="submit" name="submit" value="Bied direct">
         </form>
     </div>

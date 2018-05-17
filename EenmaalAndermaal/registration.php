@@ -5,18 +5,15 @@ include('scripts/homepage-functions.php');
 if(isset($_SESSION['emailMelding']) && !empty($_SESSION['emailMelding'])) {
     echo $_SESSION['emailMelding'];
     $_SESSION['emailMelding'] = "";
-    session_unset();
 }
 
 if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
     echo $_SESSION['regMelding'];
     $_SESSION['regMelding'] = "";
-    session_unset();
 }
 if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMelding'])) {
     echo $_SESSION['regSucceedMelding'];
-    $_SESSION['regSucceedMeldingMelding'] = "";
-    session_unset();
+    $_SESSION['regSucceedMelding'] = "";
 }
 ?>
 
