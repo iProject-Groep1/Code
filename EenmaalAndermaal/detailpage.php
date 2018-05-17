@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Veiling detailpagina';
 require_once('scripts/header.php');
 include('scripts/auction-item.php');
 include('scripts/detailpagina-functions.php');
