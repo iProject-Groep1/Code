@@ -18,9 +18,10 @@ function emailReg($dbh)
 
     if (isset($_POST['email']) && !empty($_POST['email'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $msg = 'The email you have entered is invalid, please try again.';
+            //TODO: uikit script melding, dan kan deze check weg bij verificatie
+
         } else {
-            $msg = 'Your account has been made, <br /> please verify it by clicking the activation link that has been send to your email.';
+            //TODO: als testen klaar is dit verplaatsen in de try zodat alleen een mail verstuurd wordt wanneer email klopt en geïnsert is.
             $hash = md5(rand(0, 1000));
             createMessage($email, $hash);
 
@@ -28,19 +29,16 @@ function emailReg($dbh)
                 $sql = "INSERT INTO Verificatie(email, hash, isGeactiveerd) VALUES(?,?,?)"; /* prepared statement */
                 $query = $dbh->prepare($sql);
                 $query->execute(array($email, $hash, $isGeactiveerd));
+                $_SESSION['regSucceedMelding'] = '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> De email is gestuurd naar: ' . $email . ' \', status: \'success\'})</script>';
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
                 $_SESSION['emailMelding'] = '
-                <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Deze email heeft al een code ontvangen.\', status: \'danger\'})</script>
-                ';
+                <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Deze email heeft al een code ontvangen.\', status: \'danger\'})</script>';
                 header('Location:../registration.php');
             }
         }
-        $_SESSION['regSucceedMelding'] = '
-    <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> De email is gestuurd naar: '. $email .' \', status: \'success\'})</script>
-    ';
         header('Location: ../registration.php');
-
     }
 }
 
