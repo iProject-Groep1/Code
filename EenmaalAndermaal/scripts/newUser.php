@@ -20,6 +20,7 @@ function registerUser($dbh)
     $postcode = $_POST['Postcode'];
     $plaatsnaam = $_POST['Plaatsnaam'];
     $country = $_POST['Land'];
+    //TODO: kan er een foutieve datum worden ingevuld???
     $birthDate = $_POST['Datum'];
     $username = $_POST['Gebruikersnaam'];
     $password = "";
@@ -44,12 +45,10 @@ function registerUser($dbh)
         $sql = $dbh->prepare($sql);
         $sql->bindParam(':username', $username);
         $sql->execute();
-        $username = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($row = $sql->fetch()) {
             if ($row['aantal'] != 0) {
                 $usernameCorrect = false;
-                //TODO: script melding
             } else {
                 $usernameCorrect = true;
             }
@@ -57,15 +56,14 @@ function registerUser($dbh)
 
 
         //controleer of de email nog niet bezet is
-        $sql = "SELECT count(email) AS aantal FROM Gebruiker WHERE mail_adres = :email";
+        //TODO BELANGRIJK!!!! DIT HOEFT NIET ALS HET AL IN REGISTRATIE IS GEIMPLEMENTEERD
+        $sql = "SELECT count(mail_adres) AS aantal FROM Gebruiker WHERE mail_adres = :email";
         $sql = $dbh->prepare($sql);
         $sql->bindParam(':email', $email);
         $sql->execute();
-        $email = $sql->fetch(PDO::FETCH_ASSOC);
 
         if ($row = $sql->fetch()) {
             if ($row['aantal'] != 0) {
-                //TODO: script melding
                 $emailUniek = false;
             } else {
                 $emailUniek = true;
@@ -76,7 +74,7 @@ function registerUser($dbh)
         echo "Fout" . $e->getMessage();
     }
 
-    //controleer of het email wel geldig is
+    //TODO BELANGRIJK!!!! DIT HOEFT NIET ALS HET AL IN REGISTRATIE IS GEIMPLEMENTEERD
     try {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailCorrect = false;
@@ -96,8 +94,6 @@ function registerUser($dbh)
     }
 
     if ($dataCorrect) {
-
-
         sanitizing_input($username, $firstname, $lastname, $firstAddress, $secondAddress, $postcode, $plaatsnaam, $securityQuestionAnswer, $email, $dbh);
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
@@ -107,19 +103,13 @@ function registerUser($dbh)
 
 
         $_SESSION['regMelding'] = '
-    <script>UIkit.notification({message: \'Bedankt voor de registratie ' . $username . '!\', status: \'danger\'})</script>
+    <script>UIkit.notification({message: \'Bedankt voor de registratie ' . $username . '!\', status: \'success\'})</script>
     ';
 
-
-        $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
-
-
-        $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
+        //TODO: iets inbouwen zodat gebruikersnaam al is ingevuld
         header("Location: ../login.php");
 
     } else {
-        echo $username;
-        die();
         $headerURL = "Location: ../verification.php?email=" . $_POST['email'] . "&hash=" . $_POST['hash'] . '&firstname=' . $firstname . '&lastname=' . $lastname . '&firstAddress=' . $firstAddress . '&secondAddress=' . $secondAddress . '&postalCode=' . $postcode . '&city=' . $plaatsnaam . '&birthDate=' . $birthDate . '&username=' . $username . '&securityQuestionAnswer=' . $securityQuestionAnswer;
         if (!$usernameCorrect) {
             $headerURL .= '&usernameError=1';

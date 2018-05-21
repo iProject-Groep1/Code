@@ -65,27 +65,32 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
 <div class="uk-margin">
     <input class="uk-input" type="date" name="Datum"'; if(isset($_GET['birthDate'])){$form .='value="'.$_GET['birthDate'].'"';}
     $form.='required>
-</div>
+</div>';
+    if(isset($_GET['usernameError']) && $_GET['usernameError'] == 1){$form.='<p class="uk-text-danger">Deze gebruikersnaam is al in gebruik.</p>';}
 
+    $form.='
 <div class="uk-margin">
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: user"></span>
-        <input class="uk-input" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam" '; if(isset($_GET['username'])){$form .='value="'.$_GET['username'].'"';}
+        <input class="uk-input'; if(isset($_GET['usernameError']) && $_GET['usernameError'] == 1){$form.=' uk-form-danger';} $form.= '" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam" '; if(isset($_GET['username'])){$form .='value="'.$_GET['username'].'"';}
     $form.='required>
     </div>
 </div>
 
+';
+        if(isset($_GET['passwordError']) && $_GET['passwordError'] == 1){$form.='<p class="uk-text-danger">De opgegeven wachtwoorden komen niet overeen.</p>';}
+$form.='
 <div class="uk-margin">
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-        <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord"required>
+        <input class="uk-input'; if(isset($_GET['passwordError']) && $_GET['passwordError'] == 1){$form.=' uk-form-danger';} $form.= '" type="password" placeholder="Wachtwoord" name="Wachtwoord"required>
     </div>
 </div>
 
 <div class="uk-margin">
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-        <input class="uk-input" type="password" placeholder="Wachtwoord bevestigen" name="Wachtwoord_bevestigen" required>
+        <input class="uk-input'; if(isset($_GET['passwordError']) && $_GET['passwordError'] == 1){$form.=' uk-form-danger';} $form.= '" type="password" placeholder="Wachtwoord bevestigen" name="Wachtwoord_bevestigen" required>
     </div>
 </div>
 
@@ -115,6 +120,7 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
     echo $form;
 
 } else {
+    //TODO: uikit script melding: je kan alleen op deze pagina komen via de registratie-email
     header('Location: registration.php');
 }
 

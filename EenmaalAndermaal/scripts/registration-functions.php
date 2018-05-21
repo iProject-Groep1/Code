@@ -13,6 +13,7 @@ if (isset($_POST["submit"])) {
 
 function emailReg($dbh)
 {
+    //TODO: BELANGRIJK!!!! KIJK EERST OF ER AL EEN ACCOUNT IS (TABEL GEBRUIKER) VOORDAT GECHECKT WORDT OP HIJ IN TABEL VERIFICATIE STAAT. ZOJA? MELDING MET: GEBRUIKER BESTAAT AL; INLOGGEN?
     $email = $_POST['email'];
     $isGeactiveerd = 0;
 
