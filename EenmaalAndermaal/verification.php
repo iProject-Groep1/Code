@@ -18,7 +18,7 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
 
 <body>
 
-<form action="scripts/newUser.php?email=' . $email . '" method="post" >
+<form action="scripts/new-user.php?email=' . $email . '" method="post" >
               <h3 class="uk-card-title uk-text-center uk-margin-bottom-remove">Registreren bij EenmaalAndermaal</h3>
     <div class="uk-card uk-card-default uk-card-body uk-width-2-5@m uk-margin-auto uk-margin-top-remove uk-margin-bottom">
 

@@ -41,7 +41,7 @@ function setMinBid($dbh, $id, $bedrag)
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Het bodbedrag moet minder dan'. $maxBodBedrag .'.\', status: \'danger\'})</script>
         ';
         header('Location:../detailpage.php?id=' . $id . '');
-    } else if ($bedrag >= calcMinBid($dbh, $id)) {
+    } else if ($bedrag >= $minBod) {
         try {
             $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
             $query = $dbh->prepare($sql);
