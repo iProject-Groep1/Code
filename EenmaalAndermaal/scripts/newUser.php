@@ -81,7 +81,7 @@ function registerUser($dbh)
     <script>UIkit.notification({message: \'Bedankt voor de registratie ' . $username . '!\', status: \'success\'})</script>
     ';
 
-        //TODO: iets inbouwen zodat gebruikersnaam al is ingevuld
+        //TODO: METEEN INLOGGEN
         header('Location: ../login.php?username='.$username);
 
     } else {
