@@ -34,36 +34,44 @@ $email = $_GET['email'];
 
 echo'
 <body>
-<form action="scripts/newUser.php?email='.$email.'" method="post" >
+<form class = "uk-form-horizontal" action="scripts/newUser.php?email='.$email.'" method="post" >
     <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-margin-auto uk-margin-top uk-margin-bottom">
       <h3 class="uk-card-title uk-text-center uk-margin-bottom">Registreren bij EenmaalAndermaal</h3>
 ';
 ?>
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Voornaam" name="Voornaam"required>
+
+    <div class="uk-margin uk-form-horizontal">
+        <label class="uk-form-label" for="Voornaam">Voornaam*: </label>
+        <div class="uk-form-controls">
+          <input class="uk-input" type="text" placeholder="Voornaam" name="Voornaam"required>
+        </div>
     </div>
 
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Achternaam" name="Achternaam"required>
+    <div class="uk-margin uk-form-horizontal">
+        <div class="uk-form-controls">
+            <input class="uk-input" type="text" placeholder="Achternaam" name="Achternaam"required>
+        </div>
     </div>
 
-    <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Eerste adres" name="EersteAdres"required>
+    <div class="uk-margin uk-form-horizontal">
+        <div class="uk-form-controls">
+            <input class="uk-input" type="text" placeholder="Eerste adres" name="EersteAdres"required>
+        </div>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <input class="uk-input" type="text" placeholder="Tweede adres" name="TweedeAdres">
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <input class="uk-input" type="text" placeholder="Postcode" name="Postcode"required>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <input class="uk-input" type="text" placeholder="Plaatsnaam" name="Plaatsnaam"required>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <select class="uk-select" name="Land"required >
           <option value="Nederland">Nederland</option>
   <?php
@@ -72,45 +80,45 @@ echo'
         </select>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <input class="uk-input" type="date" name="Datum"required>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: user"></span>
         <input class="uk-input" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam"required>
         </div>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord"required>
+            <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
         </div>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="password" placeholder="Wachtwoord_bevestigen"required>
+            <input class="uk-input" type="password" placeholder="Wachtwoord bevestigen"  required>
         </div>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <select class="uk-select" name="vraag"required>
         <?php
         Get_question($dbh);
         ?>
       </select>
-        <div class="uk-margin">
+        <div class="uk-margin uk-form-horizontal">
 
             <input class="uk-input" type="text" placeholder="Antwoord" name="Antwoord"required>
 
           </div>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-form-horizontal">
         <div class="uk-inline uk-width-1-1">
             <input class="uk-input uk-button-primary" type="submit" name = "submit"  value="versturen">
         </div>
