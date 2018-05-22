@@ -3,6 +3,7 @@ include('database-connect.php');
 
 if (isset($_POST['submit'])){
   registerUser($dbh);
+  echo 'hallo';
 }
 
 function registerUser($dbh)
@@ -12,7 +13,7 @@ function registerUser($dbh)
         echo 'Wachtwoord komt niet overeen';
         header('Location:newUser.php');
     } else {
-
+echo 'wachtwoord';
         $vraag = 0;
 
         //Alle variabelen van de Form
@@ -46,13 +47,13 @@ function registerUser($dbh)
 
             /*  sanitizing_input($firstname, $lastname, $username,  $email);*/
             sanitizing_input($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $antwoord, $email, $dbh);
-
+echo 'schoon';
             $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
             $query = $dbh->prepare($sql);
             $query->execute(array($username, $firstname, $lastname, $EersteAdres, $TweedeAdres, $Postcode, $Plaatsnaam, $country, $birth, $email, $passwordhash, $vraag, $antwoord));
 
-
+echo 'insert';
             $_SESSION['regMelding'] = '
     <script>UIkit.notification({message: \'Bedankt voor de registratie ' . $username . '!\', status: \'danger\'})</script>
     ';
@@ -66,7 +67,7 @@ function registerUser($dbh)
 
     $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
 
-    
+
         $_SESSION['messages'][] = "Bedankt voor uw registratie " . $firstname . "!";
         header("Location: ../login.php");
 
@@ -89,26 +90,26 @@ function sanitizing_input($username, $firstname, $lastname, $EersteAdres, $Tweed
 
     try {
 
-        $sql = "SELECT gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = :username";
+        $sql = "SELECT count(gebruikersnaam)  FROM Gebruiker WHERE gebruikersnaam = :username";
         $sql = $dbh->prepare($sql);
         $sql->bindParam(':username', $username);
         $sql->execute();
         $username = $sql->fetch(PDO::FETCH_ASSOC);
 
-        if ($sql->rowCount() != 0) {
+        if ($sql->fetch() != 0) {
             header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze username is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
         }
 
 
-        $sql = "SELECT email FROM Gebruiker WHERE mail_adres = :email";
+        $sql = "SELECT count(email) FROM Gebruiker WHERE mail_adres = :email";
         $sql = $dbh->prepare($sql);
         $sql->bindParam(':email', $email);
         $sql->execute();
         $email = $sql->fetch(PDO::FETCH_ASSOC);
 
-        if ($sql->rowCount() != 0) {
+        if ($sql->fetch() != 0) {
             header("Location: {$_SERVER['HTTP_REFERER']}");
             $_SESSION['messages'][] = 'Deze email is helaas al in gebruik';
             exit ('Velden zijn hetzelfde');
