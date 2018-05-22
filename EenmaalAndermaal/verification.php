@@ -17,15 +17,12 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
     $form = '
 
 <body>
-
+<h3 class="uk-margin uk-card-title uk-text-center">Registreren bij EenmaalAndermaal</h3>
 <form action="scripts/newUser.php?email=' . $email . '" method="post" >
-              <h3 class="uk-card-title uk-text-center uk-margin-bottom-remove">Registreren bij EenmaalAndermaal</h3>
     <div class="uk-card uk-card-default uk-card-body uk-width-2-5@m uk-margin-auto uk-margin-top-remove uk-margin-bottom">
-
-
     <input type="text" name="email" value="' . $_GET['email'] . '" hidden>
     <input type="text" name="hash" value="' . $_GET['hash'] . '" hidden>
-<p class="uk-icon-font-awesome">* : Verplicht veld</p>
+    <p class="uk-icon-font-awesome uk-margin-remove">* = Verplicht veld</p>
 <div class="uk-margin uk-form-horizontal">
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Voornaam* :</label>
     <input class="uk-input uk-width-2-3" type="text" placeholder="Voornaam" name="Voornaam"'; if(isset($_GET['firstname'])){$form .='value="'.$_GET['firstname'].'"';}
