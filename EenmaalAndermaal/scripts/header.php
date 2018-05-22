@@ -44,7 +44,7 @@ if (isset($_SESSION['username'])) {
 }
 $header .= '
 
-                        <li><a href="scripts/googleMaps.php">Contact</a></li>
+                        <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#">Algemene Voorwaarden</a></li>
                         <li><a href="#">Over EenmaalAndermaal</a></li>
