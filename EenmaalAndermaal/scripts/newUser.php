@@ -7,12 +7,9 @@ if (isset($_POST['submit'])) {
 
 function registerUser($dbh)
 {
-    $dataCorrect = false;
     $passwordCorrect = false;
     $passwordContainsNumbers = false;
     $usernameCorrect = false;
-    $emailCorrect = false;
-    $emailUniek = false;
 
     $firstname = $_POST['Voornaam'];
     $lastname = $_POST['Achternaam'];
@@ -39,7 +36,7 @@ function registerUser($dbh)
         $password = $password = $_POST['Wachtwoord'];
         $passwordhash = password_hash($password, PASSWORD_DEFAULT);
     }
-    
+
     try {
         //controleer of de gebruikersnaam nog niet bezet is
         $sql = "SELECT count(gebruikersnaam) AS aantal FROM Gebruiker WHERE gebruikersnaam = :username";
@@ -55,46 +52,12 @@ function registerUser($dbh)
             }
         }
 
-
-        //controleer of de email nog niet bezet is
-        //TODO BELANGRIJK!!!! DIT HOEFT NIET ALS HET AL IN REGISTRATIE IS GEIMPLEMENTEERD
-        $sql = "SELECT count(mail_adres) AS aantal FROM Gebruiker WHERE mail_adres = :email";
-        $sql = $dbh->prepare($sql);
-        $sql->bindParam(':email', $email);
-        $sql->execute();
-
-        if ($row = $sql->fetch()) {
-            if ($row['aantal'] != 0) {
-                $emailUniek = false;
-            } else {
-                $emailUniek = true;
-            }
-        }
-    } catch
-    (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
-
-    //TODO BELANGRIJK!!!! DIT HOEFT NIET ALS HET AL IN REGISTRATIE IS GEIMPLEMENTEERD
-    try {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailCorrect = false;
-            //TODO: script melding
-        } else {
-            if ($emailUniek) {
-                $emailCorrect = true;
-            }
-
-        }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
 
-    if ($passwordCorrect && $usernameCorrect && $emailCorrect) {
-        $dataCorrect = true;
-    }
 
-    if ($dataCorrect) {
+    if ($passwordCorrect && $usernameCorrect) {
         sanitizing_input($username, $firstname, $lastname, $firstAddress, $secondAddress, $postcode, $plaatsnaam, $securityQuestionAnswer, $email, $dbh);
 
         $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
@@ -118,18 +81,6 @@ function registerUser($dbh)
         if (!$passwordCorrect) {
             $headerURL .= '&passwordError=1';
         }
-
-        if (!$emailUniek || !$emailCorrect) {
-            $emailError = 0;
-            if (!$emailUniek) {
-                $emailError = 1;
-            }
-            if (!$emailCorrect) {
-                $emailError = 2;
-            }
-            $headerURL .= 'emailError=' . $emailError;
-        }
-
         header($headerURL);
     }
 }
@@ -147,8 +98,6 @@ function sanitizing_input($username, $firstname, $lastname, $eersteAdres, $tweed
     $postcode = htmlspecialchars($postcode);
     $plaatsnaam = htmlspecialchars($plaatsnaam);
     $antwoord = htmlspecialchars($antwoord);
-
-
 }
 
 ?>
