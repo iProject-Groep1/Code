@@ -60,18 +60,29 @@ function registerUser($dbh)
     if ($passwordCorrect && $usernameCorrect) {
         sanitizing_input($username, $firstname, $lastname, $firstAddress, $secondAddress, $postcode, $plaatsnaam, $securityQuestionAnswer, $email, $dbh);
 
-        $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
+        try {
+            $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
-        $query = $dbh->prepare($sql);
-        $query->execute(array($username, $firstname, $lastname, $firstAddress, $secondAddress, $postcode, $plaatsnaam, $country, $birthDate, $email, $passwordhash, $securityQuestion, $securityQuestionAnswer));
+            $query = $dbh->prepare($sql);
+            $query->execute(array($username, $firstname, $lastname, $firstAddress, $secondAddress, $postcode, $plaatsnaam, $country, $birthDate, $email, $passwordhash, $securityQuestion, $securityQuestionAnswer));
+        } catch (PDOException $e){
+            echo "Fout" . $e->getMessage();
+        }
 
+        try {
+            $sql = "delete from Verificatie where email like '$email'";
+            $query = $dbh->prepare($sql);
+            $query->execute();
+        } catch(PDOException $e){
+            echo "Fout" . $e->getMessage();
+        }
 
         $_SESSION['regMelding'] = '
     <script>UIkit.notification({message: \'Bedankt voor de registratie ' . $username . '!\', status: \'success\'})</script>
     ';
 
         //TODO: iets inbouwen zodat gebruikersnaam al is ingevuld
-        header("Location: ../login.php");
+        header('Location: ../login.php?username='.$username);
 
     } else {
         $headerURL = "Location: ../verification.php?email=" . $_POST['email'] . "&hash=" . $_POST['hash'] . '&firstname=' . $firstname . '&lastname=' . $lastname . '&firstAddress=' . $firstAddress . '&secondAddress=' . $secondAddress . '&postalCode=' . $postcode . '&city=' . $plaatsnaam . '&birthDate=' . $birthDate . '&username=' . $username . '&securityQuestionAnswer=' . $securityQuestionAnswer;
