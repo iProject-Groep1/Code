@@ -9,6 +9,7 @@ function registerUser($dbh)
 {
     $dataCorrect = false;
     $passwordCorrect = false;
+    $passwordContainsNumbers = false;
     $usernameCorrect = false;
     $emailCorrect = false;
     $emailUniek = false;
@@ -38,7 +39,7 @@ function registerUser($dbh)
         $password = $password = $_POST['Wachtwoord'];
         $passwordhash = password_hash($password, PASSWORD_DEFAULT);
     }
-
+    
     try {
         //controleer of de gebruikersnaam nog niet bezet is
         $sql = "SELECT count(gebruikersnaam) AS aantal FROM Gebruiker WHERE gebruikersnaam = :username";
