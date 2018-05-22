@@ -8,13 +8,13 @@ include('scripts/question.php');
 
 
 $match = 0;
-/*
+
 if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
     // Verify data
     //TODO CONTROLEER MET DATABASE
     $email = $_GET['email']; // Set email variable
     $hash = $_GET['hash']; // Set hash variable
-*/
+
     $form = '
 
 <body>
@@ -123,7 +123,7 @@ $form.='
 
 
 <div class="uk-margin uk-flex uk-flex-center ">
-    <div class="uk-inline uk-width-1-2">
+    <div class="uk-inline uk-width-2-3">
         <input class="uk-input uk-button-primary" type="submit" name = "submit"  value="Versturen">
     </div>
 </div>
@@ -135,29 +135,11 @@ $form.='
 
     echo $form;
 
-//}
-//else {
+}
+else {
     //TODO: uikit script melding: je kan alleen op deze pagina komen via de registratie-email
-    //header('Location: registration.php');
-//}
-
-
-//        <div class="uk-inline uk-width-1-1">
-//            <input class="uk-input uk-button-primary" type="submit" name = "submit"  value="versturen">
-//        </div>
-//   </div>
-
-//$search = $dbh->query("SELECT email, hash FROM Verificatie WHERE email='" . $email . "' AND hash='" . $hash . "'");
-//while ($row = $search->fetch()) {
-//    $match ++;
-//}
-//
-//if ($match > 0){
-//
-//    $dbh->query("UPDATE Verificatie SET isGeactiveerd='1' WHERE email='" . $email . "' AND hash='" . $hash . "'");
-//}
-
-
+    header('Location: registration.php');
+}
 
 require_once('scripts/footer.php');
 
