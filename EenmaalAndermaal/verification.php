@@ -98,7 +98,7 @@ $form.='
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Wachtwoord* :</label>
     <div class="uk-inline uk-width-2-3">
         <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-        <input class="uk-input'; if(isset($_GET['passwordError']) && $_GET['passwordError'] == 1){$form.=' uk-form-danger';} $form.= '" type="password" placeholder="Wachtwoord" name="Wachtwoord"required>
+        <input class="uk-input'; if(isset($_GET['passwordError']) && $_GET['passwordError'] == 1){$form.=' uk-form-danger';} $form.= '" type="password" placeholder="Wachtwoord" name="Wachtwoord" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
     </div>
 </div>
 
@@ -106,7 +106,7 @@ $form.='
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Wachtwoord Bevestigen* :</label>
     <div class="uk-inline uk-width-2-3">
         <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-        <input class="uk-input'; if(isset($_GET['passwordError']) && $_GET['passwordError'] == 1){$form.=' uk-form-danger';} $form.= '" type="password" placeholder="Wachtwoord bevestigen" name="Wachtwoord_bevestigen" required>
+        <input class="uk-input'; if(isset($_GET['passwordError']) && $_GET['passwordError'] == 1){$form.=' uk-form-danger';} $form.= '" type="password" placeholder="Wachtwoord bevestigen" name="Wachtwoord_bevestigen" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
 
     </div>
 </div>
