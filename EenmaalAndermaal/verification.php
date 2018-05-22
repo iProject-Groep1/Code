@@ -8,7 +8,6 @@ include('scripts/question.php');
 
 
 $validURL = false;
-echo "hallo";
 
 if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
     // Verify data
@@ -20,7 +19,6 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
         $query = $dbh->prepare($sql);
         $query->execute();
         if ($row = $query->fetch()) {
-            echo $row['aantal'];
             if ($row['aantal'] == 1) {
                 $validURL = true;
             }
