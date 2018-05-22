@@ -18,6 +18,7 @@ if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMelding'
 }
 
 if(isset($_SESSION['username'])){
+    //TODO: melding op vorige pagina dat je al een account hebt
     header('Location: logout.php');
 }
 ?>
