@@ -31,7 +31,7 @@ if(isset($_SESSION['username'])){
         <form action="scripts/registration-functions.php" method="post">
 
 
-            <input class="uk-input" type="text" placeholder="Email" name="email" required>
+            <input class="uk-input" type="email" placeholder="Email" name="email" required>
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
