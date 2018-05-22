@@ -171,19 +171,6 @@ CREATE TABLE Land (
 
 	CONSTRAINT LandKey PRIMARY KEY(land)
 )
-drop function if exists dbo.landInLand
-go
-create function dbo.landInLand (@land varchar)
-returns bit
-as
-begin 
-if (@land in (SELECT land FROM Land))
-	return 1
-else
-	return 0
-return 0
-end
-go
 
 
 CREATE TABLE Gebruiker (
@@ -207,7 +194,7 @@ CREATE TABLE Gebruiker (
 	CONSTRAINT FK_Gebruiker_Vraagnummerkey	FOREIGN KEY (vraag) REFERENCES Vraag(vraagnummer),
 	--DEZE HIERONDER WERKEN NIET
 	CONSTRAINT CK_Wachtwoord_Lengte CHECK(len(rtrim(ltrim(wachtwoord))) >= 7),
-	CONSTRAINT CK_Land CHECK (dbo.landInLand(land) = 1 ) 
+	CONSTRAINT FK_Gebruiker_Land			FOREIGN KEY (land) REFERENCES Land(land) 
 )
 
 CREATE TABLE Gebruikerstelefoon (
