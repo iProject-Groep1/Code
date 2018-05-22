@@ -16,6 +16,10 @@ if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMelding'
     echo $_SESSION['regSucceedMelding'];
     $_SESSION['regSucceedMelding'] = "";
 }
+
+if(isset($_SESSION['username'])){
+    header('Location: logout.php');
+}
 ?>
 
 <div class="uk-flex uk-flex-around uk-margin-xlarge-top uk-margin-xlarge-bottom uk-margin-auto" uk-grid>
