@@ -17,7 +17,6 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
 
     try {
         $sql = "SELECT COUNT (email) AS aantal FROM Verificatie WHERE email like '" . $email . "' AND hash like '" . $hash . "'";
-        var_dump($sql);
         $query = $dbh->prepare($sql);
         $query->execute();
         if ($row = $query->fetch()) {
