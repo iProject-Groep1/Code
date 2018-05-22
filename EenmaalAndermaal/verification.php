@@ -11,6 +11,7 @@ $match = 0;
 /*
 if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
     // Verify data
+    //TODO CONTROLEER MET DATABASE
     $email = $_GET['email']; // Set email variable
     $hash = $_GET['hash']; // Set hash variable
 */
