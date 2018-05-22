@@ -1,5 +1,4 @@
 <?php
-$pageTitle = 'Registreren';
 require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 
@@ -14,29 +13,26 @@ if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
 }
 if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMelding'])) {
     echo $_SESSION['regSucceedMelding'];
+
     $_SESSION['regSucceedMelding'] = "";
 }
 
-if(isset($_SESSION['username'])){
-    //TODO: melding op vorige pagina dat je al een account hebt
-    //header('Location: logout.php');
-}
 ?>
 
 <div class="uk-flex uk-flex-around uk-margin-xlarge-top uk-margin-xlarge-bottom uk-margin-auto" uk-grid>
     <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m">
-        <h3 class="uk-card-title uk-text-center uk-margin-bottom">1. Vul een geldig email-adres hieronder in en klik op
+        <h3 class="uk-card-title uk-text-center uk-margin-bottom">1. Vul je email-adres hieronder in en klik op
             "Registreer".</h3>
 
         <form action="scripts/registration-functions.php" method="post">
 
 
-            <input class="uk-input" type="email" placeholder="Email" name="email" required>
+            <input class="uk-input" type="text" placeholder="Email" name="email">
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
 
-                    <input class="uk-input uk-button-primary" id="registerSubmit" type="submit" value="Registreer"
+                    <input class="uk-input uk-button-primary" id="loginSubmit" type="submit" value="Registreer"
                     name="submit">
 
                 </div>

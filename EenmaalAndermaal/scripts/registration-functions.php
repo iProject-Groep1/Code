@@ -14,93 +14,33 @@ if (isset($_POST["submit"])) {
 function emailReg($dbh)
 {
     $email = $_POST['email'];
-    $emailUniekGebruiker = false;
-    $emailUniekVerificatie = false;
-    $emailCorrect = false;
-
+    $isGeactiveerd = 0;
 
     if (isset($_POST['email']) && !empty($_POST['email'])) {
-        //controleer of het emailadres nog geen account heeft
-        try {
-            $sql = "SELECT count(mail_adres) AS aantal FROM Gebruiker WHERE mail_adres = :email";
-            $sql = $dbh->prepare($sql);
-            $sql->bindParam(':email', $email);
-            $sql->execute();
-
-            if ($row = $sql->fetch()) {
-                if ($row['aantal'] != 0) {
-                    $emailUniekGebruiker = false;
-                } else {
-                    $emailUniekGebruiker = true;
-                }
-            }
-            echo "gebruikeremail";
-        } catch (PDOException $e) {
-            echo "Fout" . $e->getMessage();
-        }
-
-        //controleer of het emailadres nog geen verificatiemail heeft
-        try {
-            $sql = "SELECT count(email) AS aantal FROM Verificatie WHERE email = :email";
-            $sql = $dbh->prepare($sql);
-            $sql->bindParam(':email', $email);
-            $sql->execute();
-
-            if ($row = $sql->fetch()) {
-                if ($row['aantal'] != 0) {
-                    $emailUniekVerificatie = false;
-                } else {
-                    $emailUniekVerificatie = true;
-                }
-            }
-            echo "verificatie-email";
-        } catch (PDOException $e) {
-            echo "Fout" . $e->getMessage();
-        }
-
-        //controleer of het emailadres geldig is.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "emailfilter fout";
-            $emailCorrect = false;
+            $msg = 'The email you have entered is invalid, please try again.';
         } else {
-            echo "emailfilter goed";
-            if ($emailUniekGebruiker && $emailUniekVerificatie) {
-                $emailCorrect = true;
-            }
-        }
+            $msg = 'Your account has been made, <br /> please verify it by clicking the activation link that has been send to your email.';
+            $hash = md5(rand(0, 1000));
+            createMessage($email, $hash);
 
-        echo "voor check";
-        if ($emailCorrect && $emailUniekGebruiker && $emailUniekVerificatie) {
-            echo "insert";
             try {
-                $hash = md5(rand(0, 1000));
-                createMessage($email, $hash);
                 $sql = "INSERT INTO Verificatie(email, hash, isGeactiveerd) VALUES(?,?,?)"; /* prepared statement */
                 $query = $dbh->prepare($sql);
-                $query->execute(array($email, $hash, 0));
-                $_SESSION['regSucceedMelding'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> De email is gestuurd naar: ' . $email . ' \', status: \'success\'})</script>';
-                header('Location: ../registration.php');
+                $query->execute(array($email, $hash, $isGeactiveerd));
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
-            }
-        } else {
-            echo "EMAIL NIET INSErT";
-            if (!$emailCorrect) {
                 $_SESSION['emailMelding'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Vul een geldig e-mailadres in.\', status: \'danger\'})</script>';
+                <script>UIkit.notification({message: \'Deze email heeft al een code ontvangen.\', status: \'danger\'})</script>
+                ';
+                header('Location:../registration.php');
             }
-            if (!$emailUniekGebruiker) {
-                $_SESSION['emailMelding'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Er bestaat al een account met dit e-mailadres. <a href="login.php">Inloggen?</a>\', status: \'danger\'})</script>';
-            }
-            if (!$emailUniekVerificatie) {
-                //TODO: als triggers zijn ingebouwd: "PROBEER HET NOG EEN KEER OVER .... MINUTEN".
-                $_SESSION['emailMelding'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Dit e-mailadres heeft al een mail ontvangen.\', status: \'danger\'})</script>';
-            }
-            header('Location: ../registration.php');
         }
+        $_SESSION['regSucceedMelding'] = '
+    <script>UIkit.notification({message: \'De email is gestuurd naar: '. $email .' \', status: \'danger\'})</script>
+    ';
+        header('Location: ../registration.php');
+
     }
 }
 

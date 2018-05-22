@@ -1,6 +1,5 @@
 <?php
 //login pagina
-$pageTitle = 'Inloggen';
 include('scripts/header.php');
 
 //als je al ingelogd bent en op deze pagina komt wordt je doorgestuurt naar homepagina.
