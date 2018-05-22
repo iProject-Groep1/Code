@@ -63,10 +63,10 @@ function emailReg($dbh)
 
         //controleer of het emailadres geldig is.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "emailfilter goed";
+            echo "emailfilter fout";
             $emailCorrect = false;
         } else {
-            echo "emailfilter fout";
+            echo "emailfilter goed";
             if ($emailUniekGebruiker && $emailUniekVerificatie) {
                 $emailCorrect = true;
             }
@@ -74,9 +74,7 @@ function emailReg($dbh)
 
         echo "voor check";
         if ($emailCorrect && $emailUniekGebruiker && $emailUniekVerificatie) {
-
-
-
+            echo "insert";
             try {
                 $hash = md5(rand(0, 1000));
                 createMessage($email, $hash);
@@ -85,6 +83,7 @@ function emailReg($dbh)
                 $query->execute(array($email, $hash, $isGeactiveerd));
                 $_SESSION['regSucceedMelding'] = '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> De email is gestuurd naar: ' . $email . ' \', status: \'success\'})</script>';
+                header('Location: ../registration.php');
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
             }
