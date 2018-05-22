@@ -7,14 +7,34 @@ include('scripts/database-connect.php');
 include('scripts/question.php');
 
 
+<<<<<<< HEAD
 $match = 0;
 
+=======
+$validURL = false;
+/*
+>>>>>>> 7d6d44b06efe95b6f56ac4981d1003d4e796a514
 if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
     // Verify data
     //TODO CONTROLEER MET DATABASE
     $email = $_GET['email']; // Set email variable
     $hash = $_GET['hash']; // Set hash variable
 
+<<<<<<< HEAD
+=======
+    $sql = "SELECT COUNT(mail) AS aantal FROM Verificatie WHERE mail like '$email' AND hash like '$hash';
+    $query = $dbh->prepare($query);
+    $query->execute();
+    if($query->fetch()){
+    if($row['aantal'] == 1){
+    $validURL = true;
+    }
+    }
+*/
+//}
+
+//if($validURL){
+>>>>>>> 7d6d44b06efe95b6f56ac4981d1003d4e796a514
     $form = '
 
 <body>
@@ -138,8 +158,19 @@ $form.='
 }
 else {
     //TODO: uikit script melding: je kan alleen op deze pagina komen via de registratie-email
+<<<<<<< HEAD
     header('Location: registration.php');
 }
+=======
+$_SESSION['emailMelding'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Deze verificatielink is niet geldig.\', status: \'danger\'})</script>';
+    //header('Location: registration.php');
+//}
+
+
+
+
+>>>>>>> 7d6d44b06efe95b6f56ac4981d1003d4e796a514
 
 require_once('scripts/footer.php');
 
