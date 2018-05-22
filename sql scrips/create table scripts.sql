@@ -80,7 +80,7 @@ CREATE TABLE Voorwerp (
 	verzendinstructies		varchar (128)									null	,						-- char 27
 	verkoper				varchar (20)									not null,						-- 
 	koper					varchar (20)	default 'Onbekend'				null	,						-- aangepast van char 10 Ook aanpassen gebruiker table
-	veilinggesloten			bit				default 0						not null,						-- aangepast van een char 3.
+	veilinggesloten			as case when Current_timestamp >= looptijdbeginmoment and Current_timestamp <= looptijdEindmoment then 0 else 1	end  not null ,						-- aangepast van een char 3.
 
 CONSTRAINT voorwerpKey PRIMARY KEY (Voorwerpnummer),
 Constraint CK_Titel Check ( (len(rtrim(ltrim(titel)))) >1),
