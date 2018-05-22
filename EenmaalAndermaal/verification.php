@@ -7,14 +7,26 @@ include('scripts/database-connect.php');
 include('scripts/question.php');
 
 
-$match = 0;
+$validURL = false;
 /*
 if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
     // Verify data
     //TODO CONTROLEER MET DATABASE
     $email = $_GET['email']; // Set email variable
     $hash = $_GET['hash']; // Set hash variable
+
+    $sql = "SELECT COUNT(mail) AS aantal FROM Verificatie WHERE mail like '$email' AND hash like '$hash';
+    $query = $dbh->prepare($query);
+    $query->execute();
+    if($query->fetch()){
+    if($row['aantal'] == 1){
+    $validURL = true;
+    }
+    }
 */
+//}
+
+//if($validURL){
     $form = '
 
 <body>
@@ -141,24 +153,12 @@ $form.='
 //}
 //else {
     //TODO: uikit script melding: je kan alleen op deze pagina komen via de registratie-email
+$_SESSION['emailMelding'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Deze verificatielink is niet geldig.\', status: \'danger\'})</script>';
     //header('Location: registration.php');
 //}
 
 
-//        <div class="uk-inline uk-width-1-1">
-//            <input class="uk-input uk-button-primary" type="submit" name = "submit"  value="versturen">
-//        </div>
-//   </div>
-
-//$search = $dbh->query("SELECT email, hash FROM Verificatie WHERE email='" . $email . "' AND hash='" . $hash . "'");
-//while ($row = $search->fetch()) {
-//    $match ++;
-//}
-//
-//if ($match > 0){
-//
-//    $dbh->query("UPDATE Verificatie SET isGeactiveerd='1' WHERE email='" . $email . "' AND hash='" . $hash . "'");
-//}
 
 
 
