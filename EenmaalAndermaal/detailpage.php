@@ -7,15 +7,42 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
+$idCorrect = false;
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    try {
+        $stmt = $dbh->prepare("SELECT COUNT(voorwerpnummer) AS aantal FROM voorwerp WHERE voorwerpnummer = :voorwerpnummer");
+        $stmt->bindValue(":voorwerpnummer", $_GET['id'], PDO::PARAM_STR);
+        $stmt->execute();
+        if ($row = $stmt->fetch()) {
+            if ($row['aantal'] == 0) {
+                $idCorrect = false;
+            } else {
+                $idCorrect = true;
+            }
+        }
+    } catch (PDOException $e) {
+        echo "Error" . $e->getMessage();
+    }
+} else {
+    die();
+    header('Location: errorpage.php');
+}
 
-$id = $_GET['id'];
-placeItem($dbh, $id);
+if ($idCorrect) {
+    $id = $_GET['id'];
+    placeItem($dbh, $id);
 
 <<<<<<< HEAD
 if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
     echo $_SESSION['bodMelding'];
     $_SESSION['bodMelding'] = "";
 =======
+    if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
+        echo $_SESSION['bodMelding'];
+        $_SESSION['bodMelding'] = "";
+    }
+} else {
+    header('Location: errorpage.php');
 >>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
 }
 
