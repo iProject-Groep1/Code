@@ -56,7 +56,7 @@ function getProductInfo($dhb){
         $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>'. $row['betalingsinstructie'] .'</p>';
         $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>'. $row['plaatsnaam'] .', '. $row['land'] .'</p>';
         $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>'. $row['verzendkosten'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Verzendingstructies</h4><p>'. $row['verzendinstructies'] .'</p>';
+        $productInformation .= '<h4 class="h4-no-bottom">Verzendinstructies</h4><p>'. $row['verzendinstructies'] .'</p>';
         $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>'. $row['verkoper'] .'</p></div></div>';
     }
     return $productInformation;
