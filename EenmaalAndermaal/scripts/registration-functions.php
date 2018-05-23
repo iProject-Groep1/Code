@@ -34,10 +34,9 @@ function emailReg($dbh)
                     $emailUniekGebruiker = true;
                 }
             }
-            echo "gebruikeremail";
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
-
+         header('Location: errorpage.php?err=500');
         }
 
         //controleer of het emailadres nog geen verificatiemail heeft
@@ -54,25 +53,21 @@ function emailReg($dbh)
                     $emailUniekVerificatie = true;
                 }
             }
-            echo "verificatie-email";
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
+            header('Location: errorpage.php?err=500');
         }
 
         //controleer of het emailadres geldig is.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "emailfilter fout";
             $emailCorrect = false;
         } else {
-            echo "emailfilter goed";
             if ($emailUniekGebruiker && $emailUniekVerificatie) {
                 $emailCorrect = true;
             }
         }
 
-        echo "voor check";
         if ($emailCorrect && $emailUniekGebruiker && $emailUniekVerificatie) {
-            echo "insert";
             try {
                 $hash = md5(rand(0, 1000));
                 createMessage($email, $hash);
@@ -84,9 +79,9 @@ function emailReg($dbh)
                 header('Location: ../registration.php');
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
+                header('Location: errorpage.php?err=500');
             }
         } else {
-            echo "EMAIL NIET INSErT";
             if (!$emailCorrect) {
                 $_SESSION['emailMelding'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Vul een geldig e-mailadres in.\', status: \'danger\'})</script>';
