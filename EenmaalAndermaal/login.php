@@ -86,8 +86,6 @@ if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
 
             <hr class="uk-divider-icon">
 
-
-            <!-- TODO: href veranderen naar registreer pagina -->
             <p class="uk-text-center">Heeft u nog geen account? <a href="registration.php">Registreer</a> eenvoudig.</p>
 
 

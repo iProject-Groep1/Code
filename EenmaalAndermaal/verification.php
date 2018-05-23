@@ -45,7 +45,7 @@ if ($validURL) {
     if (isset($_GET['firstname'])) {
         $form .= 'value="' . $_GET['firstname'] . '"';
     }
-    $form .= 'required>
+    $form .= ' maxlength="25" required>
 </div>
 
 <div class="uk-margin uk-form-horizontal">
@@ -54,7 +54,7 @@ if ($validURL) {
     if (isset($_GET['lastname'])) {
         $form .= 'value="' . $_GET['lastname'] . '"';
     }
-    $form .= 'required>
+    $form .= ' maxlength="30" required>
 </div>
 
 <div class="uk-margin uk-form-horizontal">
@@ -63,7 +63,7 @@ if ($validURL) {
     if (isset($_GET['firstAddress'])) {
         $form .= 'value="' . $_GET['firstAddress'] . '"';
     }
-    $form .= 'required>
+    $form .= ' maxlength="30" required>
 </div>
 
 <div class="uk-margin uk-form-horizontal">
@@ -72,7 +72,7 @@ if ($validURL) {
     if (isset($_GET['secondAddress'])) {
         $form .= 'value="' . $_GET['secondAddress'] . '"';
     }
-    $form .= '>
+    $form .= ' maxlength="30">
 </div>
 
 <div class="uk-margin uk-form-horizontal">
@@ -81,7 +81,7 @@ if ($validURL) {
     if (isset($_GET['postalCode'])) {
         $form .= 'value="' . $_GET['postalCode'] . '"';
     }
-    $form .= 'required>
+    $form .= 'maxlength="7" required>
 </div>
 
 <div class="uk-margin uk-form-horizontal">
@@ -90,7 +90,7 @@ if ($validURL) {
     if (isset($_GET['city'])) {
         $form .= 'value="' . $_GET['city'] . '"';
     }
-    $form .= 'required>
+    $form .= ' maxlength="40" required>
 </div>
 
 <div class="uk-margin uk-form-horizontal">
@@ -109,7 +109,8 @@ if ($validURL) {
     if (isset($_GET['birthDate'])) {
         $form .= 'value="' . $_GET['birthDate'] . '"';
     }
-    $form .= 'required>
+    //TODO: maxlength voor datum
+    $form .= 'required> 
 </div>';
     if (isset($_GET['usernameError']) && $_GET['usernameError'] == 1) {
         $form .= '<p class="uk-text-danger">Deze gebruikersnaam is al in gebruik.</p>';
@@ -124,11 +125,11 @@ if ($validURL) {
     if (isset($_GET['usernameError']) && $_GET['usernameError'] == 1) {
         $form .= ' uk-form-danger';
     }
-    $form .= '" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam" ';
+    $form .= '" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam" maxlength="20" ';
     if (isset($_GET['username'])) {
         $form .= 'value="' . $_GET['username'] . '"';
     }
-    $form .= 'required>
+    $form .= ' maxlength="20" required>
 
     </div>
 </div>
@@ -138,6 +139,7 @@ if ($validURL) {
         $form .= '<p class="uk-text-danger">De opgegeven wachtwoorden komen niet overeen.</p>';
     }
     $form .= '
+<p class="uk-text-primary">Uw wachtwoord moet minimaal 7 karakters lang zijn en een hoofdletter en getal bevatten.</p>
 <div class="uk-margin uk-form-horizontal">
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Wachtwoord* :</label>
     <div class="uk-inline uk-width-2-3">
@@ -146,7 +148,7 @@ if ($validURL) {
     if (isset($_GET['passwordError']) && $_GET['passwordError'] == 1) {
         $form .= ' uk-form-danger';
     }
-    $form .= '" type="password" placeholder="Wachtwoord" name="Wachtwoord" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+    $form .= '" type="password" placeholder="Wachtwoord" name="Wachtwoord" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
     </div>
 </div>
 
@@ -158,7 +160,7 @@ if ($validURL) {
     if (isset($_GET['passwordError']) && $_GET['passwordError'] == 1) {
         $form .= ' uk-form-danger';
     }
-    $form .= '" type="password" placeholder="Wachtwoord bevestigen" name="Wachtwoord_bevestigen" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+    $form .= '" type="password" placeholder="Wachtwoord bevestigen" name="Wachtwoord_bevestigen" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
 
     </div>
 </div>
@@ -175,7 +177,7 @@ if ($validURL) {
     if (isset($_GET['securityQuestionAnswer'])) {
         $form .= 'value="' . $_GET['securityQuestionAnswer'] . '"';
     }
-    $form .= 'required>
+    $form .= ' maxlength="20" required>
     </div>
 </div>
 

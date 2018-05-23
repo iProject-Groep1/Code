@@ -2,6 +2,7 @@
 
 function calcMinBid($dbh, $id){
     $minBod = 0;
+    $highestBid = getHighestBid($dbh, $id);
     $minIncrement = 0.01;
     $increment = 0.50;
     $increment1 = 1.00;
@@ -9,18 +10,18 @@ function calcMinBid($dbh, $id){
     $increment3 = 10.00;
     $increment4 = 50.00;
 
-    if(getHighestBid($dbh, $id) < 1){
-        $minBod = getHighestBid($dbh, $id) + $minIncrement;
-    } else if(getHighestBid($dbh, $id) < 49.99) {
-        $minBod = getHighestBid($dbh, $id) + $increment;
-    } else if(getHighestBid($dbh, $id) < 499.99) {
-        $minBod = getHighestBid($dbh, $id) + $increment1;
-    } else if(getHighestBid($dbh, $id) < 999.99) {
-        $minBod = getHighestBid($dbh, $id) + $increment2;
-    } else if(getHighestBid($dbh, $id) < 4999.99) {
-        $minBod = getHighestBid($dbh, $id) + $increment3;
-    } else if(getHighestBid($dbh, $id) > 5000) {
-        $minBod = getHighestBid($dbh, $id) + $increment4;
+    if($highestBid < 1){
+        $minBod = $highestBid + $minIncrement;
+    } else if($highestBid < 49.99) {
+        $minBod = $highestBid + $increment;
+    } else if($highestBid < 499.99) {
+        $minBod = $highestBid + $increment1;
+    } else if($highestBid < 999.99) {
+        $minBod = $highestBid + $increment2;
+    } else if($highestBid < 4999.99) {
+        $minBod = $highestBid + $increment3;
+    } else if($highestBid > 5000) {
+        $minBod = $highestBid + $increment4;
     }
     return $minBod;
 }
@@ -61,4 +62,19 @@ function getHighestBid($dbh, $id)
         echo "Fout" . $e->getMessage();
     }
 
+}
+
+function getBids($dhb)
+{
+    $bid = "";
+    $objectNumber = $_GET['id'];
+    $query = "SELECT bodbedrag, gebruiker
+              FROM dbo.Bod
+              WHERE voorwerp = $objectNumber
+              ORDER BY bodbedrag DESC";
+    $data = $dhb->query($query);
+    while ($row = $data->fetch()) {
+        $bid .= '<div class="uk-grid"><div class="uk-width-1-2">'. $row['bodbedrag'] .'</div><div class="uk-width-1-2">'. $row['gebruiker'] . '</div></div>';
+    }
+    return $bid;
 }

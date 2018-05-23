@@ -11,9 +11,12 @@ include('scripts/bid-functions.php');
 $id = $_GET['id'];
 placeItem($dbh, $id);
 
+<<<<<<< HEAD
 if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
     echo $_SESSION['bodMelding'];
     $_SESSION['bodMelding'] = "";
+=======
+>>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
 }
 
 
@@ -37,9 +40,16 @@ function placeItem($dbh, $id)
 ';
     echo getProductTitle($dbh);
     echo '
+<<<<<<< HEAD
 <div class="uk-grid">
     <div class="uk-grid-medium uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
         <img class="uk-nice-uitlijnen" 
+=======
+<div class="uk-grid uk-padding-resize  marge-left" data-uk-grid-margin="">
+
+    <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
+        <img class="uk-margin-detail uk-nice-uitlijnen " 
+>>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
              src="images/productImages/' . $image . '"
              alt="" uk-cover>
     </div>
@@ -81,14 +91,25 @@ function placeItem($dbh, $id)
          <form action="scripts/placeBidDirect.php" method="get">
          <input class="uk-input" type="text" name="id" value="' . $id . '"hidden>
         <input class="uk-input " type="number" placeholder="€' . $minBid . '" name="bedrag">
+<<<<<<< HEAD
         </div>
         <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type="submit" name="submit" value="Bied direct">
+=======
+        <input class="uk-button uk-button-danger uk-align-left" type="submit" name="submit" value="Bied direct">
+>>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
         </form>
         <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
         <div class="uk-width-1-4@s uk-align-right">
         <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
     </div>
+<<<<<<< HEAD
             
+=======
+            <div class="uk-width-1-4@s uk-align-right">
+        <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
+    </div><br>
+            <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
+>>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
         </div>
     </div>
 
