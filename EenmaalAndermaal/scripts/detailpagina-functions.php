@@ -32,12 +32,7 @@ function getRelevantItems($dbh, $voorwerp)
     }
 }
 
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 8651310e53f41afbdc1d83c5e2669f1e0cda2c23
 function getProductInfo($dbh)
 {
     $objectNumber = $_GET['id'];
