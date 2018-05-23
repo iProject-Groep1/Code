@@ -25,7 +25,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     }
 } else {
     die();
-    header('Location: errorpage.php');
+    header('Location: errorpage.php?err=404');
 }
 
 if ($idCorrect) {
@@ -37,7 +37,7 @@ if ($idCorrect) {
         $_SESSION['bodMelding'] = "";
     }
 } else {
-    header('Location: errorpage.php');
+    header('Location: errorpage.php?err=404');
 }
 
 
