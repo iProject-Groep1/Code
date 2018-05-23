@@ -1,21 +1,25 @@
 <?php
 session_start();
-
+include('database-connect.php');
 
 $header = '
 
 <!DOCTYPE HTML>
 <html lang="nl">
 <head>
-    <title>'.$pageTitle.'</title>
+    <title>' . $pageTitle . '</title>
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="UIkit/css/uikit.min.css">
+    <link rel="stylesheet" href="UIkit/css/awesomplete.css">
     <link rel="stylesheet" href="style.css">
     <script src="UIkit/js/uikit.min.js"></script>
     <script src="UIkit/js/uikit-icons.js"></script>
+    <script src="UIkit/js/awesomplete.js"></script>
+    <script src="Uikit/js/index.js"></script>
+    
 </head>
 
 
@@ -85,15 +89,20 @@ $header .= '
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
-            <li><a href="category-overview.php">Alle Rubrieken</a></li>
-            <li><a href="category.php?categoryID=1">Verzamelen</a></li>
-            <li><a href="category.php?categoryID=9800">Auto\'s, motoren en boten</a></li>
-            <li><a href="category.php?categoryID=160">Computers</a></li>
-            <li><a href="category.php?categoryID=11700">Huis en tuin</a></li>
-            <li><a href="category.php?categoryID=12081">Baby</a></li>
-            <li><a href="category.php?categoryID=293">Consumentenelektronica</a></li>
-            <li><a href="category.php?categoryID=12155">Gezondheid en verzorging</a></li>
-            <li><a href="category.php?categoryID=353">Kunst, antiek en design</a></li>
+            <li><a href="category-overview.php">Alle Rubrieken</a></li>';
+
+            try{
+                $stmt = $dbh->prepare("SELECT TOP 9 COUNT(voorwerp) AS aantal, r.rubrieknaam, r.rubrieknummer FROM VoorwerpInRubriek vir INNER JOIN rubriek r ON  vir.rubriek_op_laagste_Niveau = r.rubrieknummer GROUP BY r.rubrieknaam, r.rubrieknummer ORDER BY aantal desc");
+                $stmt->execute();
+                while($row = $stmt->fetch()){
+                    $header.='<li><a href="category.php?categoryID='.$row['rubrieknummer'].'">'.$row['rubrieknaam'].'</a></li>';
+                }
+            } catch(PDOException $e){
+                echo "Error" . $e->getMessage();
+                header('Location: errorpage.php?err=500');
+            }
+            
+            $header.='
         </ul>
     </div>
 </nav>

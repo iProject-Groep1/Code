@@ -3,7 +3,7 @@ session_start();
 $redirect = "";
 if (isset($_SESSION['lastVisited'])) {
     $redirect = $_SESSION['lastVisited'];
-    if(strpos($redirect, 'verification.php') !== false){
+    if (strpos($redirect, 'verification.php') !== false) {
         $redirect = "../index.php";
     }
 } else {
@@ -19,21 +19,23 @@ if (isset($_POST['username'])) {
         } else {
             header('Location: ../login.php?notify=2');
         }
-        die();
     } else {
         require_once('database-connect.php');
-        $data = $dbh->query("SELECT wachtwoord FROM Gebruiker WHERE gebruikersnaam = '$_POST[username]'");
-        $row = $data->fetch();
-        if (!password_verify($_POST['password'], $row['wachtwoord'])) {
-            header('Location: ../login.php?notify=3&username=' . $_POST['username']);
-            die();
-
-        } else {
-            $_SESSION['username'] = $_POST['username'];
-            header('Location: ' . $redirect);
-            die();
+        try {
+            $stmt = $dbh->prepare("SELECT wachtwoord FROM Gebruiker WHERE gebruikersnaam = :gebruikersnaam");
+            $stmt->bindValue(":gebruikersnaam", $_POST['username'], PDO::PARAM_STR);
+            $stmt->execute();
+            $row = $stmt->fetch();
+            if (!password_verify($_POST['password'], $row['wachtwoord'])) {
+                header('Location: ../login.php?notify=3&username=' . $_POST['username']);
+            } else {
+                $_SESSION['username'] = $_POST['username'];
+                header('Location: ' . $redirect);
+            }
+        }catch (PDOException $e){
+            echo "Fout" . $e->getMessage();
+            header('Location: errorpage.php?err=500');
         }
-
 
     }
 }

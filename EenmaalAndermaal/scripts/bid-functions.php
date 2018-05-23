@@ -1,6 +1,7 @@
 <?php
 
-function calcMinBid($dbh, $id){
+function calcMinBid($dbh, $id)
+{
     $minBod = 0;
     $highestBid = getHighestBid($dbh, $id);
     $minIncrement = 0.01;
@@ -10,42 +11,43 @@ function calcMinBid($dbh, $id){
     $increment3 = 10.00;
     $increment4 = 50.00;
 
-    if($highestBid < 1){
+    if ($highestBid < 1) {
         $minBod = $highestBid + $minIncrement;
-    } else if($highestBid < 49.99) {
+    } else if ($highestBid < 49.99) {
         $minBod = $highestBid + $increment;
-    } else if($highestBid < 499.99) {
+    } else if ($highestBid < 499.99) {
         $minBod = $highestBid + $increment1;
-    } else if($highestBid < 999.99) {
+    } else if ($highestBid < 999.99) {
         $minBod = $highestBid + $increment2;
-    } else if($highestBid < 4999.99) {
+    } else if ($highestBid < 4999.99) {
         $minBod = $highestBid + $increment3;
-    } else if($highestBid > 5000) {
+    } else if ($highestBid > 5000) {
         $minBod = $highestBid + $increment4;
     }
     return $minBod;
 }
 
 
-function setOwnBid ($dbh, $id, $bod, $voorwerp){
+function setOwnBid($dbh, $id, $bod, $voorwerp)
+{
     $bodbedrag = $bod;
     $gebruiker = $_SESSION['username'];
     $bodtijd = getServerTime($dbh);
 
-    if($bodbedrag > setMinBid ($dbh, $id)){
+    if ($bodbedrag > setMinBid($dbh, $id)) {
         try {
             $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?,?,?,?)"; /* prepared statement */
             $query = $dbh->prepare($sql);
             $query->execute(array($voorwerp, $bodbedrag, $gebruiker, $bodtijd));
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
+            header('Location: errorpage.php?err=500');
         }
     } else {
         echo "Het bedrag is te weinig! Vul een groter bedrag in.";
     }
 
 }
-
 
 
 function getHighestBid($dbh, $id)
@@ -60,6 +62,7 @@ function getHighestBid($dbh, $id)
         return $row;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
     }
 
 }
@@ -78,5 +81,9 @@ function getBids($dbh)
         return $bid;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
+<<<<<<< HEAD
+=======
+        header('Location: errorpage.php?err=500');
+>>>>>>> 8651310e53f41afbdc1d83c5e2669f1e0cda2c23
     }
 }

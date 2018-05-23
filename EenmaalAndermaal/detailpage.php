@@ -24,7 +24,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         echo "Error" . $e->getMessage();
     }
 } else {
+<<<<<<< HEAD
     header('Location: errorpage.php');
+=======
+    die();
+    header('Location: errorpage.php?err=404');
+>>>>>>> 8651310e53f41afbdc1d83c5e2669f1e0cda2c23
 }
 
 if ($idCorrect) {
@@ -41,8 +46,12 @@ if ($idCorrect) {
             }
     }
 } else {
+<<<<<<< HEAD
     header('Location: errorpage.php');
 
+=======
+    header('Location: errorpage.php?err=404');
+>>>>>>> 8651310e53f41afbdc1d83c5e2669f1e0cda2c23
 }
 
 

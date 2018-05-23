@@ -4,16 +4,15 @@
 function setRelevantItems($dbh, $rubriek_op_laagste_Niveau)
 {
     try {
-
         $stmt = $dbh->prepare("SELECT top 4 v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd FROM Voorwerp v join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp  WHERE r.rubriek_op_laagste_Niveau = :rubriek_op_laagste_Niveau GROUP BY Voorwerpnummer, titel, looptijdEindmoment"); /* prepared statement */
         $stmt->bindValue(":rubriek_op_laagste_Niveau", $rubriek_op_laagste_Niveau, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
             echo createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $results['hoogsteBod'], $results['voorwerpnummer']);
         }
-
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
     }
 }
 
@@ -29,18 +28,22 @@ function getRelevantItems($dbh, $voorwerp)
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
     }
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 8651310e53f41afbdc1d83c5e2669f1e0cda2c23
 function getProductInfo($dbh)
 {
-
     $objectNumber = $_GET['id'];
     $productInformation = '';
     try {
-        $stmt = $dbh->prepare("SELECT beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
-              FROM dbo.Voorwerp
-              WHERE voorwerpnummer = :voorwerp");
+        $stmt = $dbh->prepare("SELECT beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper FROM dbo.Voorwerp WHERE voorwerpnummer = :voorwerp");
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
@@ -55,6 +58,7 @@ function getProductInfo($dbh)
         return $productInformation;
     } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
     }
 }
 
@@ -63,9 +67,7 @@ function getProductTitle($dbh)
     $objectNumber = $_GET['id'];
     $productTitle = '';
     try {
-        $stmt = $dbh->prepare("SELECT titel
-              FROM dbo.Voorwerp
-              WHERE voorwerpnummer = :voorwerp");
+        $stmt = $dbh->prepare("SELECT titel FROM dbo.Voorwerp WHERE voorwerpnummer = :voorwerp");
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
@@ -74,5 +76,6 @@ function getProductTitle($dbh)
         return $productTitle;
     } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
     }
 }
