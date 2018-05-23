@@ -24,7 +24,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         echo "Error" . $e->getMessage();
     }
 } else {
-    die();
+
     header('Location: errorpage.php?err=404');
 }
 
@@ -33,10 +33,16 @@ if ($idCorrect) {
     placeItem($dbh, $id);
 
     if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-        echo $_SESSION['bodMelding'];
-        $_SESSION['bodMelding'] = "";
+            echo $_SESSION['bodMelding'];
+            $_SESSION['bodMelding'] = "";
+
+            if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
+                echo $_SESSION['bodMelding'];
+                $_SESSION['bodMelding'] = "";
+            }
     }
 } else {
+
     header('Location: errorpage.php?err=404');
 }
 
@@ -61,17 +67,18 @@ function placeItem($dbh, $id)
 ';
     echo getProductTitle($dbh);
     echo '
-<div class="uk-grid uk-padding-resize  marge-left" data-uk-grid-margin="">
+
+<div class="uk-grid uk-padding-resize">
 
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
         <img class="uk-margin-detail uk-nice-uitlijnen " 
-             src="images/productImages/' . $image . '"
+             src="'.$image.'"
              alt="" uk-cover>
     </div>
 
-    <div class="uk-card uk-card-default uk-width-1-2@m uk-margin-detail-right no-shadow">
+    <div class="uk-grid-medium uk-width-1-2 uk-grid-width-*">
         <div class="uk-card-header niagara">
-            <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-grid-small uk-flex-middle">
                 <div class="uk-text-center uk-align-center">
                     <div class=" uk-display-inline-block uk-align-center">     
                     <div class="uk-grid-small  uk-child-width-auto detail-pagina-countdown" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
@@ -91,7 +98,6 @@ function placeItem($dbh, $id)
                             <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
                         </div>
                     </div>
-    
                 </div>
                 </div>
             </div>
@@ -102,22 +108,20 @@ function placeItem($dbh, $id)
     echo '
         </div>
         <div class="uk-card-footer grey">
-         <div class="uk-width-1-4@s uk-align-left">
-         <form action="scripts/placeBidDirect.php" method="get">
-         <input class="uk-input" type="text" name="id" value="' . $id . '"hidden>
-        <input class="uk-input " type="number" placeholder="€' . $minBid . '" name="bedrag">
-        <input class="uk-button uk-button-danger uk-align-left" type="submit" name="submit" value="Bied direct">
-        </form>
-    </div>
-            <div class="uk-width-1-4@s uk-align-right">
-        <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
-    </div><br>
+            <div class="uk-width-1-4@s uk-align-left uk-margin-remove-right uk-padding-remove-left">
+                <form action="scripts/placeBidDirect.php" method="get">
+                    <input class="uk-input" type="text" name="id" value="' . $id . '"hidden>
+                    <input class="uk-input " type="number" placeholder="€' . $minBid . '" name="bedrag">
+            </div>
+                    <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type="submit" name="submit" value="Bied direct">
+                </form>
             <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
+            <div class="uk-width-1-4@s uk-align-right">
+                <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
+            </div>
         </div>
-    </div>
-
 </div>
-
+</div>
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw">
     <h3 class="uk-display-block uk-align-center uk-text-center">Product Informatie</h3>
     <p>
