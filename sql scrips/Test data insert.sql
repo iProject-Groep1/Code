@@ -4,17 +4,8 @@ set dateformat dmy
 	delete from Bod
 	delete from Voorwerp
 	delete from Betaalwijze
-	delete from Looptijd
-	delete from Vraag
+	--delete from Looptijd
 	set dateformat dmy
-
-insert into Vraag 
-values  (0,'In welke straat ben je geboren?'),
-		(1,'Wat is de meisjesnaam van je moeder?'),
-		(2,'Wat is je lievelingsgerecht?'),
-		(3,'Hoe heet je oudste zusje?'),
-		(4,'Hoe heet je huisdier?'),
-		(5,'Wat is je favoriete film?');
 
 	INSERT INTO Betaalwijze VALUES
 ('IDEAL'),
@@ -31,10 +22,6 @@ INSERT INTO Looptijd VALUES
 (3),
 (7),
 (10);
-SET IDENTITY_INSERT Voorwerp ON
-
-
- 
 
 insert into Voorwerp ([Voorwerpnummer] , [Titel], [Beschrijving], [Startprijs], [Betalingswijze], [Betalingsinstructie], [Plaatsnaam], [Land], [Looptijd], [looptijdbeginmoment], [Verzendkosten], [Verzendinstructies], [Verkoper], [Veilinggesloten])values (1,'Dikke Bank','Mooie leren elegante bank',100.00, 'IDEAL', 'geef mij je geld', 'elst', 'Nederland', 1, CURRENT_TIMESTAMP,50,'stuur maar op', 'Karel de Groot', 0);
 insert into Voorwerp ([Voorwerpnummer] , [Titel], [Beschrijving], [Startprijs], [Betalingswijze], [Betalingsinstructie], [Plaatsnaam], [Land], [Looptijd], [looptijdbeginmoment], [Verzendkosten], [Verzendinstructies], [Verkoper], [Veilinggesloten])values	(2,'Mooie Spiegel','goede spiegel ',50.00,'Creditcard','dag na veiling betalen', 'Nijmegen','Nederland',3,CURRENT_TIMESTAMP,5,'Hij gaat met de bood mee','Michil de Haan',0 )
@@ -52,8 +39,6 @@ insert into Voorwerp ([Voorwerpnummer] , [Titel], [Beschrijving], [Startprijs], 
 insert into Voorwerp ([Voorwerpnummer] , [Titel], [Beschrijving], [Startprijs], [Betalingswijze], [Betalingsinstructie], [Plaatsnaam], [Land], [Looptijd], [looptijdbeginmoment], [Verzendkosten], [Verzendinstructies], [Verkoper], [Veilinggesloten])values	(15,'Vierkante trampoline', '213 x 305 cm, in nieuwstaat', 350.00, 'Bankoverschrift', 'Ik stuur een betaalverzoek', 'PayPal', 'Nederland', 7, CURRENT_TIMESTAMP, 30.00, 'Ik kom het brengen', 'hallo312', 0)
 insert into Voorwerp ([Voorwerpnummer] , [Titel], [Beschrijving], [Startprijs], [Betalingswijze], [Betalingsinstructie], [Plaatsnaam], [Land], [Looptijd], [looptijdbeginmoment], [Verzendkosten], [Verzendinstructies], [Verkoper], [Veilinggesloten])values	(16,'Jaguar X-Type', '2.5 V6 Automaat, 2003, Groen, 198k Kilometerstand. Projectauto (distributieriem moet vervangen worden)', 3000.50, 'Contant', 'Graag gepast betalen', 'Willemstad', 'Curaçao', 10, CURRENT_TIMESTAMP, 250, 'Auto moet gesleept worden', 'autogast2', 0)
 insert into Voorwerp ([Voorwerpnummer] , [Titel], [Beschrijving], [Startprijs], [Betalingswijze], [Betalingsinstructie], [Plaatsnaam], [Land], [Looptijd], [looptijdbeginmoment], [Verzendkosten], [Verzendinstructies], [Verkoper], [Veilinggesloten])values	(17,'Born Lucky Rapido Kinderwagen', 'Zwart, wandelwageninzet inbegrepen', 250.00, 'IDEAL', '...', 'Amsterdam',  'Nederland', 3, CURRENT_TIMESTAMP, 0.00, 'Ophalen s.v.p.', 'kinderwagenverkoper5', 0)
-SET IDENTITY_INSERT Voorwerp OFF
- 
 
 	delete from VoorwerpInRubriek
 	insert into VoorwerpInRubriek values	(1,7491);

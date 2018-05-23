@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Veiling detailpagina';
 require_once('scripts/header.php');
 include('scripts/auction-item.php');
 include('scripts/detailpagina-functions.php');
@@ -13,7 +14,6 @@ placeItem($dbh, $id);
 if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])){
     echo $_SESSION['bodMelding'];
     $_SESSION['bodMelding'] = "";
-    session_unset();
 }
 
 
@@ -26,6 +26,7 @@ function placeItem($dbh, $id)
 
     echo '
 <div class="uk-margin-detail">
+
 <ul class="uk-breadcrumb" >
     <li><a href="#">Item</a></li>
     <li><a href="#">Item</a></li>
@@ -33,8 +34,8 @@ function placeItem($dbh, $id)
     <li><span>Active</span></li>
 </ul>
 </div>
-
-<div class="uk-grid uk-padding-resize" data-uk-grid-margin="">
+'; echo getProductTitle($dbh); echo'
+<div class="uk-grid uk-padding-resize  marge-left" data-uk-grid-margin="">
 
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
         <img class="uk-margin-detail uk-nice-uitlijnen " 
@@ -43,11 +44,11 @@ function placeItem($dbh, $id)
     </div>
 
     <div class="uk-card uk-card-default uk-width-1-2@m uk-margin-detail-right no-shadow">
-        <div class="uk-card-header">
+        <div class="uk-card-header niagara">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-text-center uk-align-center">
                     <div class=" uk-display-inline-block uk-align-center">     
-                    <div class="uk-grid-small  uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
+                    <div class="uk-grid-small  uk-child-width-auto detail-pagina-countdown" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                         <div>
                             <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
                         </div>
@@ -70,33 +71,22 @@ function placeItem($dbh, $id)
             </div>
         </div>
         <div class="uk-card-body scroll grey">
-            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>-->
             ';
             echo getBids($dbh);
             echo '
         </div>
         <div class="uk-card-footer grey">
          <div class="uk-width-1-4@s uk-align-left">
-<<<<<<< HEAD
-         <form action="scripts/place-bid-direct.php" method="get">
-         <input class="uk-input" type="text" name="id" value="' . $id .'"hidden>
-        <input class="uk-input " type="number" placeholder="€'. $minBid .'" name="bedrag">
-=======
          <form action="scripts/placeBidDirect.php" method="get">
          <input class="uk-input" type="text" name="id" value="'. $id .'"hidden>
-        <input class="uk-input" type="text" placeholder="€'. $minBid .'" name="bedrag">
->>>>>>> ae531bcc34fe862ba88da01106603c0eaea8255f
+        <input class="uk-input " type="number" placeholder="€'. $minBid .'" name="bedrag">
         <input class="uk-button uk-button-danger uk-align-left" type="submit" name="submit" value="Bied direct">
         </form>
     </div>
             <div class="uk-width-1-4@s uk-align-right">
         <input class="uk-input" type="text" value= "€'. $minBid .'" disabled>
     </div><br>
-<<<<<<< HEAD
-            <a href="scripts/place-bid-minimum.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
-=======
-            <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right">Bied minimum</a>
->>>>>>> ae531bcc34fe862ba88da01106603c0eaea8255f
+            <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
         </div>
     </div>
 
@@ -110,7 +100,9 @@ function placeItem($dbh, $id)
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">
         ';
     echo getProductInfo($dbh);
+
     echo '
+
 
     </div>
     </p></div>

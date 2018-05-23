@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'EenmaalAndermaal';
 require_once('scripts/header.php');
 include('scripts/auction-item.php');
 include('scripts/homepage-functions.php');
@@ -25,7 +26,8 @@ foreach($queries as $soort => $query){
     <p>
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getHomepageCards($dbh, $query).'</div>
     </p>
-    </div>';
+    </div>
+    <hr>';
 }
 
 echo $attentionSeekers;

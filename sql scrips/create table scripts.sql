@@ -9,24 +9,24 @@ drop table if exists Bod
 go
 drop table if exists Voorwerp
 go
-drop table if exists Gebruiker
-go
 drop table if exists Rubriek
 go
 drop table if exists Betaalwijze
 go 
 drop table if exists Looptijd
 go
-
+drop table if exists Vraag
+go
+drop table if exists Gebruiker
+go
 drop table if exists Gebruikerstelefoon
 go
 drop table if exists Verificatie
 go
 drop table if exists Land
 go
-drop table if exists Vraag
-go
 
+go 
 Create table Betaalwijze	 (
 betaalwijze varchar (25) not null,
 
@@ -65,7 +65,7 @@ Constraint FK_Parent_Rubrieknummer FOREIGN KEY (parent) REFERENCES Rubriek(rubri
 
 go
 CREATE TABLE Voorwerp (
-	voorwerpnummer			bigint			identity 						not null,						-- een voorwerp word automatisch een nummer toegewezen door de database app C
+	voorwerpnummer			int												not null,						-- een voorwerp word automatisch een nummer toegewezen door de database app C
 	titel					varchar (50)									not null,						-- Dit doen we om het overzicht op de site te houden 
 	beschrijving			varchar (2000)									not null,						-- Dit doen we om men voldoende ruimte te geven om een duidelijke omschrijving te kunnen geven 
 	startprijs				numeric (9,2)	default 1.00					not null,						-- wij willen geen bedragen over de 10.000.000,00
@@ -80,11 +80,11 @@ CREATE TABLE Voorwerp (
 	verzendinstructies		varchar (128)									null	,						-- char 27
 	verkoper				varchar (20)									not null,						-- 
 	koper					varchar (20)	default 'Onbekend'				null	,						-- aangepast van char 10 Ook aanpassen gebruiker table
-	veilinggesloten			as case when Current_timestamp >= looptijdbeginmoment and Current_timestamp <= looptijdEindmoment then 0 else 1	end  not null ,						-- aangepast van een char 3.
+	veilinggesloten			bit												not null,						-- aangepast van een char 3.
 
 CONSTRAINT voorwerpKey PRIMARY KEY (Voorwerpnummer),
 Constraint CK_Titel Check ( (len(rtrim(ltrim(titel)))) >1),
-Constraint CK_startprijs Check (startprijs >= 0.01), -- app B page 6 
+Constraint CK_startprijs Check (startprijs >= 1), -- app B page 6 
 Constraint FK_looptijd  Foreign Key (looptijd) References Looptijd(dagen),
 Constraint FK_Betalingswijze Foreign Key (Betalingswijze) References Betaalwijze (betaalwijze),
 Constraint CK_Plaatsnaam Check ( (len(rtrim(ltrim(Plaatsnaam)))) >1),
@@ -121,7 +121,7 @@ END
 GO
 
 CREATE TABLE VoorwerpInRubriek (
-voorwerp					bigint			not null,
+voorwerp					int				not null,
 rubriek_op_laagste_Niveau	numeric (8)		not null						-- aangepast van int naar numeric 
 
 CONSTRAINT VoorwerpInRubriekKey PRIMARY KEY (Voorwerp,Rubriek_op_laagste_Niveau),
@@ -135,7 +135,7 @@ go
 
 
 CREATE TABLE Bod (
-	voorwerp			bigint				NOT NULL, 
+	voorwerp			int					NOT NULL, 
 	bodbedrag			NUMERIC(8, 2)		NOT NULL,				--veranderd van char(5)
 	gebruiker			VARCHAR(20)			NOT NULL,				--overal veranderd van char(10)
 	bodtijd				DATEtime	default Current_timestamp		NOT NULL,				--veranderd van char(10)
@@ -150,7 +150,7 @@ go
 
 CREATE TABLE Bestand (
 	filenaam				varchar(50)			NOT NULL,						-- aangepast van char(13)
-	voorwerp				bigint				NOT NULL,
+	voorwerp				int					NOT NULL,
 
 CONSTRAINT BestandKey PRIMARY KEY(filenaam),
 Constraint FK_Bestand_VoorwerpnummerKey FOREIGN KEY (voorwerp) REFERENCES voorwerp(voorwerpnummer)
@@ -171,19 +171,6 @@ CREATE TABLE Land (
 
 	CONSTRAINT LandKey PRIMARY KEY(land)
 )
-drop function if exists dbo.landInLand
-go
-create function dbo.landInLand (@land varchar)
-returns bit
-as
-begin 
-if (@land in (SELECT land FROM Land))
-	return 1
-else
-	return 0
-return 0
-end
-go
 
 
 CREATE TABLE Gebruiker (
@@ -207,7 +194,7 @@ CREATE TABLE Gebruiker (
 	CONSTRAINT FK_Gebruiker_Vraagnummerkey	FOREIGN KEY (vraag) REFERENCES Vraag(vraagnummer),
 	--DEZE HIERONDER WERKEN NIET
 	CONSTRAINT CK_Wachtwoord_Lengte CHECK(len(rtrim(ltrim(wachtwoord))) >= 7),
-	CONSTRAINT CK_Land CHECK (dbo.landInLand(land) = 1 ) 
+	CONSTRAINT FK_Gebruiker_Land			FOREIGN KEY (land) REFERENCES Land(land) 
 )
 
 CREATE TABLE Gebruikerstelefoon (
@@ -224,4 +211,3 @@ CREATE TABLE Gebruikerstelefoon (
 
 
 
-NSASAD
