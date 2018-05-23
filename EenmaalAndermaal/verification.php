@@ -138,6 +138,7 @@ if ($validURL) {
         $form .= '<p class="uk-text-danger">De opgegeven wachtwoorden komen niet overeen.</p>';
     }
     $form .= '
+<p class="uk-text-primary">Uw wachtwoord moet minimaal 7 karakters lang zijn en een hoofdletter en getal bevatten.</p>
 <div class="uk-margin uk-form-horizontal">
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Wachtwoord* :</label>
     <div class="uk-inline uk-width-2-3">
