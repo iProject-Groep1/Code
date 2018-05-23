@@ -7,15 +7,18 @@ $header = '
 <!DOCTYPE HTML>
 <html lang="nl">
 <head>
-    <title>'.$pageTitle.'</title>
+    <title>' . $pageTitle . '</title>
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="UIkit/css/uikit.min.css">
+    <link rel="stylesheet" href="UIkit/css/awesomplete.css">
     <link rel="stylesheet" href="style.css">
     <script src="UIkit/js/uikit.min.js"></script>
     <script src="UIkit/js/uikit-icons.js"></script>
+    <script src="UIkit/js/awesomplete.js"></script>
+    <script src="Uikit/js/index.js"></script>
 </head>
 
 
