@@ -37,6 +37,7 @@ function emailReg($dbh)
             echo "gebruikeremail";
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
+
         }
 
         //controleer of het emailadres nog geen verificatiemail heeft
