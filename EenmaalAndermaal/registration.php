@@ -3,6 +3,7 @@ $pageTitle = 'Registreren';
 require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 
+
 if(isset($_SESSION['emailMelding']) && !empty($_SESSION['emailMelding'])) {
     echo $_SESSION['emailMelding'];
     $_SESSION['emailMelding'] = "";
@@ -30,8 +31,16 @@ if(isset($_SESSION['username'])){
 
         <form action="scripts/registration-functions.php" method="post">
 
-
-            <input class="uk-input" type="email" placeholder="Email" name="email" required>
+            <section id="email">
+                <input class="uk-input" type="email" placeholder="Email" name="email" required>
+                <script>new Awesomplete('input[type="email"]', {
+                                list: ["aol.com", "att.net", "comcast.net", "facebook.com", "gmail.com", "gmx.com", "googlemail.com", "google.com", "hotmail.com", "hotmail.co.uk", "mac.com", "me.com", "mail.com", "msn.com", "live.com", "sbcglobal.net", "verizon.net", "yahoo.com", "yahoo.co.uk"],
+                                data: function (text, input) {
+                                    return input.slice(0, input.indexOf("@")) + "@" + text;
+                                },
+                                filter: Awesomplete.FILTER_STARTSWITH
+                            });</script></code></pre>
+            </section>
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
