@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include('database-connect.php');
 
 $header = '
 
@@ -88,15 +88,20 @@ $header .= '
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
-            <li><a href="category-overview.php">Alle Rubrieken</a></li>
-            <li><a href="category.php?categoryID=1">Verzamelen</a></li>
-            <li><a href="category.php?categoryID=9800">Auto\'s, motoren en boten</a></li>
-            <li><a href="category.php?categoryID=160">Computers</a></li>
-            <li><a href="category.php?categoryID=11700">Huis en tuin</a></li>
-            <li><a href="category.php?categoryID=12081">Baby</a></li>
-            <li><a href="category.php?categoryID=293">Consumentenelektronica</a></li>
-            <li><a href="category.php?categoryID=12155">Gezondheid en verzorging</a></li>
-            <li><a href="category.php?categoryID=353">Kunst, antiek en design</a></li>
+            <li><a href="category-overview.php">Alle Rubrieken</a></li>';
+
+            try{
+                $stmt = $dbh->prepare("SELECT TOP 9 COUNT(voorwerp) AS aantal, r.rubrieknaam, r.rubrieknummer FROM VoorwerpInRubriek vir INNER JOIN rubriek r ON  vir.rubriek_op_laagste_Niveau = r.rubrieknummer GROUP BY r.rubrieknaam, r.rubrieknummer ORDER BY aantal desc");
+                $stmt->execute();
+                while($row = $stmt->fetch()){
+                    $header.='<li><a href="category.php?categoryID='.$row['rubrieknummer'].'">'.$row['rubrieknaam'].'</a></li>';
+                }
+            } catch(PDOException $e){
+                echo "Error" . $e->getMessage();
+                header('Location: errorpage.php?err=500');
+            }
+            
+            $header.='
         </ul>
     </div>
 </nav>
