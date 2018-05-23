@@ -10,13 +10,11 @@ if(isset($_SESSION['username'])){
 if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
     echo $_SESSION['regMelding'];
     $_SESSION['regMelding'] = "";
-    session_unset();
 }
 
 if(isset($_SESSION['LogMelding']) && !empty($_SESSION['LogMelding'])) {
     echo $_SESSION['LogMelding'];
     $_SESSION['logMelding'] = "";
-    session_unset();
 }
 
 
