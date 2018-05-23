@@ -18,60 +18,77 @@ function setRelevantItems($dbh, $rubriek_op_laagste_Niveau)
 }
 
 
-function getRelevantItems($dbh, $voorwerp) {
-    $stmt = $dbh->prepare("SELECT rubriek_op_laagste_Niveau FROM VoorwerpInRubriek V WHERE V.voorwerp = :voorwerp"); /* prepared statement */
-    $stmt->bindValue(":voorwerp", $voorwerp, PDO::PARAM_STR); /* helpt tegen SQL injection */
-    $stmt->execute(); /* stuurt alles naar de server */
-    while ($results = $stmt->fetch()) {
-        setRelevantItems($dbh, $results['rubriek_op_laagste_Niveau']);
+function getRelevantItems($dbh, $voorwerp)
+{
+    try {
+        $stmt = $dbh->prepare("SELECT rubriek_op_laagste_Niveau FROM VoorwerpInRubriek V WHERE V.voorwerp = :voorwerp"); /* prepared statement */
+        $stmt->bindValue(":voorwerp", $voorwerp, PDO::PARAM_STR); /* helpt tegen SQL injection */
+        $stmt->execute(); /* stuurt alles naar de server */
+        while ($results = $stmt->fetch()) {
+            setRelevantItems($dbh, $results['rubriek_op_laagste_Niveau']);
+        }
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
     }
 }
 
-function getBids($dhb)
+function getBids($dbh)
 {
     $bid = "";
     $objectNumber = $_GET['id'];
-    $query = "SELECT bodbedrag, gebruiker
-              FROM dbo.Bod
-              WHERE voorwerp = $objectNumber
-              ORDER BY bodbedrag DESC";
-    $data = $dhb->query($query);
-    while ($row = $data->fetch()) {
-        $bid .= '<div class="uk-grid"><div class="uk-width-1-2">'. $row['bodbedrag'] .'</div><div class="uk-width-1-2">'. $row['gebruiker'] . '</div></div>';
+    try {
+        $stmt = $dbh->prepare("SELECT bodbedrag, gebruiker FROM dbo.Bod WHERE voorwerp = :voorwerp ORDER BY bodbedrag DESC");
+        $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) {
+            $bid .= '<div class="uk-grid"><div class="uk-width-1-2">' . $row['bodbedrag'] . '</div><div class="uk-width-1-2">' . $row['gebruiker'] . '</div></div>';
+        }
+        return $bid;
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
     }
-    return $bid;
 }
 
-function getProductInfo($dhb){
+function getProductInfo($dbh)
+{
     $objectNumber = $_GET['id'];
     $productInformation = '';
-
-    $query = "SELECT beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
+    try {
+        $stmt = $dbh->prepare("SELECT beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
               FROM dbo.Voorwerp
-              WHERE voorwerpnummer = $objectNumber";
-    $data = $dhb->query($query);
-    while ($row = $data->fetch()) { //loopt elke row van de resultaten door
-        $productInformation .= '<div class="uk-grid uk-grid-large"><div class="uk-width-2-3"><h4 class="h4-no-bottom">Productbeschrijving </h4><p>'. $row['beschrijving'] .'</p></div>';
-        $productInformation .= '<div class="uk-width-1-3 uk-grid-collapse"><h4 class="h4-no-bottom">Betalingswijze</h4><p>'. $row['betalingswijze'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>'. $row['betalingsinstructie'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>'. $row['plaatsnaam'] .', '. $row['land'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>'. $row['verzendkosten'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Verzendingstructies</h4><p>'. $row['verzendinstructies'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>'. $row['verkoper'] .'</p></div></div>';
+              WHERE voorwerpnummer = :voorwerp");
+        $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
+            $productInformation .= '<div class="uk-grid uk-grid-large"><div class="uk-width-2-3"><h4 class="h4-no-bottom">Productbeschrijving </h4><p>' . $row['beschrijving'] . '</p></div>';
+            $productInformation .= '<div class="uk-width-1-3 uk-grid-collapse"><h4 class="h4-no-bottom">Betalingswijze</h4><p>' . $row['betalingswijze'] . '</p>';
+            $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>' . $row['betalingsinstructie'] . '</p>';
+            $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>' . $row['plaatsnaam'] . ', ' . $row['land'] . '</p>';
+            $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>' . $row['verzendkosten'] . '</p>';
+            $productInformation .= '<h4 class="h4-no-bottom">Verzendingstructies</h4><p>' . $row['verzendinstructies'] . '</p>';
+            $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>' . $row['verkoper'] . '</p></div></div>';
+        }
+        return $productInformation;
+    } catch (PDOException $e) {
+        echo "Error" . $e->getMessage();
     }
-    return $productInformation;
 }
 
-function getProductTitle($dhb){
+function getProductTitle($dbh)
+{
     $objectNumber = $_GET['id'];
     $productTitle = '';
-
-    $query = "SELECT titel
+    try {
+        $stmt = $dbh->prepare("SELECT titel
               FROM dbo.Voorwerp
-              WHERE voorwerpnummer = $objectNumber";
-    $data = $dhb->query($query);
-    while ($row = $data->fetch()) { //loopt elke row van de resultaten door
-        $productTitle .= '<h1 class="marge-left">'. $row['titel'] .'</h1>';
+              WHERE voorwerpnummer = :voorwerp");
+        $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
+            $productTitle .= '<h1 class="marge-left">' . $row['titel'] . '</h1>';
+        }
+        return $productTitle;
+    } catch (PDOException $e) {
+        echo "Error" . $e->getMessage();
     }
-    return $productTitle;
 }
