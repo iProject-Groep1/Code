@@ -24,7 +24,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         echo "Error" . $e->getMessage();
     }
 } else {
-    die();
     header('Location: errorpage.php');
 }
 
@@ -32,18 +31,18 @@ if ($idCorrect) {
     $id = $_GET['id'];
     placeItem($dbh, $id);
 
-<<<<<<< HEAD
-if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-    echo $_SESSION['bodMelding'];
-    $_SESSION['bodMelding'] = "";
-=======
     if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-        echo $_SESSION['bodMelding'];
-        $_SESSION['bodMelding'] = "";
+            echo $_SESSION['bodMelding'];
+            $_SESSION['bodMelding'] = "";
+
+            if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
+                echo $_SESSION['bodMelding'];
+                $_SESSION['bodMelding'] = "";
+            }
     }
 } else {
     header('Location: errorpage.php');
->>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
+
 }
 
 
@@ -67,16 +66,11 @@ function placeItem($dbh, $id)
 ';
     echo getProductTitle($dbh);
     echo '
-<<<<<<< HEAD
-<div class="uk-grid">
-    <div class="uk-grid-medium uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
-        <img class="uk-nice-uitlijnen" 
-=======
-<div class="uk-grid uk-padding-resize  marge-left" data-uk-grid-margin="">
+
+<div class="uk-grid uk-padding-resize">
 
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
         <img class="uk-margin-detail uk-nice-uitlijnen " 
->>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
              src="images/productImages/' . $image . '"
              alt="" uk-cover>
     </div>
@@ -103,7 +97,6 @@ function placeItem($dbh, $id)
                             <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
                         </div>
                     </div>
-    
                 </div>
                 </div>
             </div>
@@ -114,34 +107,20 @@ function placeItem($dbh, $id)
     echo '
         </div>
         <div class="uk-card-footer grey">
-         <div class="uk-width-1-4@s uk-align-left uk-margin-remove-right">
-         <form action="scripts/placeBidDirect.php" method="get">
-         <input class="uk-input" type="text" name="id" value="' . $id . '"hidden>
-        <input class="uk-input " type="number" placeholder="€' . $minBid . '" name="bedrag">
-<<<<<<< HEAD
-        </div>
-        <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type="submit" name="submit" value="Bied direct">
-=======
-        <input class="uk-button uk-button-danger uk-align-left" type="submit" name="submit" value="Bied direct">
->>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
-        </form>
-        <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
-        <div class="uk-width-1-4@s uk-align-right">
-        <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
-    </div>
-<<<<<<< HEAD
-            
-=======
-            <div class="uk-width-1-4@s uk-align-right">
-        <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
-    </div><br>
+            <div class="uk-width-1-4@s uk-align-left uk-margin-remove-right uk-padding-remove-left">
+                <form action="scripts/placeBidDirect.php" method="get">
+                    <input class="uk-input" type="text" name="id" value="' . $id . '"hidden>
+                    <input class="uk-input " type="number" placeholder="€' . $minBid . '" name="bedrag">
+            </div>
+                    <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type="submit" name="submit" value="Bied direct">
+                </form>
             <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
->>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
+            <div class="uk-width-1-4@s uk-align-right">
+                <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
+            </div>
         </div>
-    </div>
-
 </div>
-
+</div>
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw">
     <h3 class="uk-display-block uk-align-center uk-text-center">Product Informatie</h3>
     <p>

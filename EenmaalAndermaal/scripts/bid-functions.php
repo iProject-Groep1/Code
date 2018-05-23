@@ -64,17 +64,19 @@ function getHighestBid($dbh, $id)
 
 }
 
-function getBids($dhb)
+function getBids($dbh)
 {
     $bid = "";
     $objectNumber = $_GET['id'];
-    $query = "SELECT bodbedrag, gebruiker
-              FROM dbo.Bod
-              WHERE voorwerp = $objectNumber
-              ORDER BY bodbedrag DESC";
-    $data = $dhb->query($query);
-    while ($row = $data->fetch()) {
-        $bid .= '<div class="uk-grid"><div class="uk-width-1-2">'. $row['bodbedrag'] .'</div><div class="uk-width-1-2">'. $row['gebruiker'] . '</div></div>';
+    try {
+        $stmt = $dbh->prepare("SELECT bodbedrag, gebruiker FROM dbo.Bod WHERE voorwerp = :voorwerp ORDER BY bodbedrag DESC");
+        $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) {
+            $bid .= '<div class="uk-grid"><div class="uk-width-1-2">' . $row['bodbedrag'] . '</div><div class="uk-width-1-2">' . $row['gebruiker'] . '</div></div>';
+        }
+        return $bid;
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
     }
-    return $bid;
 }

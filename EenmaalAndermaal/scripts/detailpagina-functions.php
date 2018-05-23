@@ -32,24 +32,6 @@ function getRelevantItems($dbh, $voorwerp)
     }
 }
 
-
-function getBids($dbh)
-{
-    $bid = "";
-    $objectNumber = $_GET['id'];
-    try {
-        $stmt = $dbh->prepare("SELECT bodbedrag, gebruiker FROM dbo.Bod WHERE voorwerp = :voorwerp ORDER BY bodbedrag DESC");
-        $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
-        $stmt->execute();
-        while ($row = $stmt->fetch()) {
-            $bid .= '<div class="uk-grid"><div class="uk-width-1-2">' . $row['bodbedrag'] . '</div><div class="uk-width-1-2">' . $row['gebruiker'] . '</div></div>';
-        }
-        return $bid;
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
-}
-
 function getProductInfo($dbh)
 {
 
@@ -58,34 +40,21 @@ function getProductInfo($dbh)
     try {
         $stmt = $dbh->prepare("SELECT beschrijving, betalingswijze, betalingsinstructie, plaatsnaam, land, verzendkosten, verzendinstructies, verkoper
               FROM dbo.Voorwerp
-<<<<<<< HEAD
-              WHERE voorwerpnummer = $objectNumber";
-    $data = $dhb->query($query);
-    while ($row = $data->fetch()) { //loopt elke row van de resultaten door
-        $productInformation .= '<div class="uk-grid uk-grid-large"><div class="uk-width-2-3"><h4 class="h4-no-bottom">Productbeschrijving </h4><p>'. $row['beschrijving'] .'</p></div>';
-        $productInformation .= '<div class="uk-width-1-3 uk-grid-collapse"><h4 class="h4-no-bottom">Betalingswijze</h4><p>'. $row['betalingswijze'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>'. $row['betalingsinstructie'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>'. $row['plaatsnaam'] .', '. $row['land'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>'. $row['verzendkosten'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Verzendinstructies</h4><p>'. $row['verzendinstructies'] .'</p>';
-        $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>'. $row['verkoper'] .'</p></div></div>';
-=======
               WHERE voorwerpnummer = :voorwerp");
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
-            $productInformation .= '<div class="uk-grid uk-grid-large"><div class="uk-width-2-3"><h4 class="h4-no-bottom">Productbeschrijving </h4><p>' . $row['beschrijving'] . '</p></div>';
-            $productInformation .= '<div class="uk-width-1-3 uk-grid-collapse"><h4 class="h4-no-bottom">Betalingswijze</h4><p>' . $row['betalingswijze'] . '</p>';
-            $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>' . $row['betalingsinstructie'] . '</p>';
+            $productInformation .= '<h4 class="h4-no-bottom">Productbeschrijving</h4><div class="uk-grid uk-grid-large"><div><iframe width="50%" class="uk-align-left"><p>' . $row['beschrijving'] . '</p></iframe>';
+            $productInformation .= '<div class="uk-width-1-3 uk-align-right"><h4 class="h4-no-bottom">Betalingswijze</h4><p>' . $row['betalingswijze'] . '</p>';
+            $productInformation .= '<div><h4 class="h4-no-bottom">Betalingsinstructie</h4><p>' . $row['betalingsinstructie'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>' . $row['plaatsnaam'] . ', ' . $row['land'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>' . $row['verzendkosten'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Verzendingstructies</h4><p>' . $row['verzendinstructies'] . '</p>';
-            $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>' . $row['verkoper'] . '</p></div></div>';
+            $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>' . $row['verkoper'] . '</p></div></div></div></div>';
         }
         return $productInformation;
     } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
->>>>>>> 8464f387f8a2aaadd14de0c14113e79f1b10480b
     }
 }
 
