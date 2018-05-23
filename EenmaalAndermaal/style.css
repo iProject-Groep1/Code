@@ -177,6 +177,10 @@ li .uk-button{
 	padding-right: 10px;
 }
 
+.padding-right {
+	padding: 0 20px 0 0;
+}
+
 .kleur-licht-blauw{
 	background-color: #BADAF0;
 }
