@@ -32,6 +32,7 @@ function getRelevantItems($dbh, $voorwerp)
     }
 }
 
+
 function getBids($dbh)
 {
     $bid = "";
@@ -51,6 +52,7 @@ function getBids($dbh)
 
 function getProductInfo($dbh)
 {
+
     $objectNumber = $_GET['id'];
     $productInformation = '';
     try {
