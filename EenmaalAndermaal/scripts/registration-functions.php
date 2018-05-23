@@ -14,9 +14,6 @@ if (isset($_POST["submit"])) {
 function emailReg($dbh)
 {
     $email = $_POST['email'];
-    //TODO: waar is dit voor?
-    $isGeactiveerd = 0;
-
     $emailUniekGebruiker = false;
     $emailUniekVerificatie = false;
     $emailCorrect = false;
@@ -80,7 +77,7 @@ function emailReg($dbh)
                 createMessage($email, $hash);
                 $sql = "INSERT INTO Verificatie(email, hash, isGeactiveerd) VALUES(?,?,?)"; /* prepared statement */
                 $query = $dbh->prepare($sql);
-                $query->execute(array($email, $hash, $isGeactiveerd));
+                $query->execute(array($email, $hash, 0));
                 $_SESSION['regSucceedMelding'] = '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> De email is gestuurd naar: ' . $email . ' \', status: \'success\'})</script>';
                 header('Location: ../registration.php');
