@@ -72,7 +72,7 @@ function placeItem($dbh, $id)
 
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
         <img class="uk-margin-detail uk-nice-uitlijnen " 
-             src="images/productImages/' . $image . '"
+             src="'.$image.'"
              alt="" uk-cover>
     </div>
 
