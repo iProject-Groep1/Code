@@ -53,6 +53,7 @@ function setMinBid($dbh, $id, $bedrag)
 
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
+            header('Location: errorpage.php?err=500');
         }
 
     } else {

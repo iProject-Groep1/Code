@@ -54,6 +54,7 @@ function registerUser($dbh)
 
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
     }
 
 
@@ -67,14 +68,16 @@ function registerUser($dbh)
             $query->execute(array($username, $firstname, $lastname, $firstAddress, $secondAddress, $postcode, $plaatsnaam, $country, $birthDate, $email, $passwordhash, $securityQuestion, $securityQuestionAnswer));
         } catch (PDOException $e){
             echo "Fout" . $e->getMessage();
+            header('Location: errorpage.php?err=500');
         }
 
         try {
-            $sql = "delete from Verificatie where email like '$email'";
-            $query = $dbh->prepare($sql);
-            $query->execute();
+            $stmt = $dbh->prepare("delete from Verificatie where email like ':email'");
+            $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+            $stmt->execute();
         } catch(PDOException $e){
             echo "Fout" . $e->getMessage();
+            header('Location: errorpage.php?err=500');
         }
 
         $_SESSION['regMelding'] = '

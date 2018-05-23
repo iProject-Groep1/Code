@@ -35,10 +35,8 @@ if(isset($_SESSION['username'])){
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
-
                     <input class="uk-input uk-button-primary" id="registerSubmit" type="submit" value="Registreer"
                     name="submit">
-
                 </div>
             </div>
 

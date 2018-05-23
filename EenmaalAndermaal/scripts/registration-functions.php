@@ -137,44 +137,4 @@ function createMessage($email, $hash)
     $headers .= 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
     mail($to, $subject, $message, $headers); // Send our email
 }
-
-
-function verifyEmail($hash, $dbh)
-{
-
-    try {
-        $sql = $dbh()->prepare("SELECT hash FROM users WHERE hash = :hash");
-        if ($sql == false) {
-            echo 'Failed to prepare statement';
-        }
-
-        $sql->bindParam(':hash', $hash);
-        $sql->execute();
-        $user = $sql->fetch();
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
-
-    if (is_array($user)) {
-
-        if (isset($_POST["email"]) && isset($_POST["hash"]) && password_verify($hash, $user['hash'])) {
-            $_SESSION['logged_in'] = true;
-            $_SESSION['login_time'] = timeLogged();
-            return true;
-
-        } else {
-            header("Location: login.php");
-
-            // Create een message die verteld dat de inloggegevens niet kloppen.
-            $_SESSION['messages'][] = 'Uw inloggegevens kloppen helaas niet.';
-            return false;
-        }
-    } else {
-        header("Location: login.php");
-        $_SESSION['messages'][] = 'Uw inloggegevens kloppen helaas niet.';
-        return false;
-    }
-}
-
-
 ?>
