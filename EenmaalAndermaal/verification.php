@@ -1,38 +1,39 @@
 <?php
-$pageTitle = 'Verificatie';
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
 include('scripts/country.php');
 include('scripts/database-connect.php');
 include('scripts/question.php');
 
+activateAccount($dbh);
 
-$validURL = false;
-
+function activateAccount($dbh)
+{
+$match = 0;
 if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
     // Verify data
     $email = $_GET['email']; // Set email variable
     $hash = $_GET['hash']; // Set hash variable
-
-    try {
-        $sql = "SELECT COUNT (email) AS aantal FROM Verificatie WHERE email like '" . $email . "' AND hash like '" . $hash . "'";
-        $query = $dbh->prepare($sql);
-        $query->execute();
-        if ($row = $query->fetch()) {
-            if ($row['aantal'] == 1) {
-                $validURL = true;
-            }
-        }
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-    }
 }
 
+$search = $dbh->query("SELECT email, hash FROM Verificatie WHERE email='" . $email . "' AND hash='" . $hash . "'");
+while ($row = $search->fetch()) {
+    $match ++;
+}
 
-if ($validURL) {
-    $form = '
+if ($match > 0){
 
+    $dbh->query("UPDATE Verificatie SET isGeactiveerd='1' WHERE email='" . $email . "' AND hash='" . $hash . "'");
+} else {
+
+}
+
+}
+$email = $_GET['email'];
+
+echo'
 <body>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <form action="scripts/new-user.php?email=' . $email . '" method="post" >
@@ -135,77 +136,94 @@ if ($validURL) {
         $form .= 'value="' . $_GET['username'] . '"';
     }
     $form .= 'required>
-
-    </div>
-</div>
-
+=======
+<form action="scripts/newUser.php?email='.$email.'" method="post" >
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-margin-auto uk-margin-top uk-margin-bottom">
+      <h3 class="uk-card-title uk-text-center uk-margin-bottom">Registreren bij EenmaalAndermaal</h3>
 ';
-    if (isset($_GET['passwordError']) && $_GET['passwordError'] == 1) {
-        $form .= '<p class="uk-text-danger">De opgegeven wachtwoorden komen niet overeen.</p>';
-    }
-    $form .= '
-<div class="uk-margin uk-form-horizontal">
-    <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Wachtwoord* :</label>
-    <div class="uk-inline uk-width-2-3">
-        <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-        <input class="uk-input';
-    if (isset($_GET['passwordError']) && $_GET['passwordError'] == 1) {
-        $form .= ' uk-form-danger';
-    }
-    $form .= '" type="password" placeholder="Wachtwoord" name="Wachtwoord" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
-    </div>
-</div>
-
-<div class="uk-margin uk-form-horizontal">
-    <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Wachtwoord Bevestigen* :</label>
-    <div class="uk-inline uk-width-2-3">
-        <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-        <input class="uk-input';
-    if (isset($_GET['passwordError']) && $_GET['passwordError'] == 1) {
-        $form .= ' uk-form-danger';
-    }
-    $form .= '" type="password" placeholder="Wachtwoord bevestigen" name="Wachtwoord_bevestigen" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
-
-    </div>
-</div>
-
-
-<div class="uk-margin uk-form-horizontal">
-    <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Veiligheidsvraag* :</label>
-    <select class="uk-select uk-width-2-3" name="vraag"required>' .
-        Get_question($dbh) . '
-    </select>
+?>
     <div class="uk-margin">
-        <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Antwoord* :</label>
-        <input class="uk-input uk-width-2-3" type="text" placeholder="Antwoord" name="Antwoord"';
-    if (isset($_GET['securityQuestionAnswer'])) {
-        $form .= 'value="' . $_GET['securityQuestionAnswer'] . '"';
-    }
-    $form .= 'required>
+        <input class="uk-input" type="text" placeholder="Voornaam" name="Voornaam"required>
     </div>
-</div>
+>>>>>>> ae531bcc34fe862ba88da01106603c0eaea8255f
 
-
-<div class="uk-margin uk-flex uk-flex-center ">
-    <div class="uk-inline uk-width-2-3">
-        <input class="uk-input uk-button-primary" type="submit" name = "submit"  value="Versturen">
+    <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="Achternaam" name="Achternaam"required>
     </div>
-</div>
+
+    <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="Eerste adres" name="EersteAdres"required>
+    </div>
+
+    <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="Tweede adres" name="TweedeAdres">
+    </div>
+
+    <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="Postcode" name="Postcode"required>
+    </div>
+
+    <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="Plaatsnaam" name="Plaatsnaam"required>
+    </div>
+
+    <div class="uk-margin">
+        <select class="uk-select" name="Land"required >
+          <option value="Nederland">Nederland</option>
+  <?php
+        Get_country($dbh);
+      ?>
+        </select>
+    </div>
+
+    <div class="uk-margin">
+        <input class="uk-input" type="date" name="Datum"required>
+    </div>
+
+    <div class="uk-margin">
+    <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: user"></span>
+        <input class="uk-input" type="text" placeholder="Gebruikersnaam" name="Gebruikersnaam"required>
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
+            <input class="uk-input" type="password" placeholder="Wachtwoord" name="Wachtwoord"required>
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
+            <input class="uk-input" type="password" placeholder="Wachtwoord_bevestigen"required>
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <select class="uk-select" name="vraag"required>
+        <?php
+        Get_question($dbh);
+        ?>
+      </select>
+        <div class="uk-margin">
+
+            <input class="uk-input" type="text" placeholder="Antwoord" name="Antwoord"required>
+
+          </div>
+    </div>
+
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <input class="uk-input uk-button-primary" type="submit" name = "submit"  value="versturen">
+        </div>
+    </div>
 
 
-</div>
+    </div>
 </form>
-</body>';
-
-    echo $form;
-
-} else {
-
-    $_SESSION['emailMelding'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \' <span uk-icon="icon: warning"></span> Deze verificatielink is niet geldig.\', status: \'danger\'})</script>';
-    header('Location: registration.php');
-}
-
-
+</body>
+<?php
 require_once('scripts/footer.php');
-
+?>

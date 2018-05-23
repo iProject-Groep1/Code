@@ -16,7 +16,7 @@ $return = '';
    catch (PDOException $e) {
       echo "Fout" . $e->getMessage();
   }
-  return $return;
+  echo $return;
 };
 
  ?>

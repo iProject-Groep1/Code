@@ -112,13 +112,9 @@ h3 {
 	margin: 5px 5px;
 }
 
-.detail-pagina-countdown{
-	color: white;
-}
-
 
 .uk-margin {
-	margin-bottom: 0;
+	margin-bottom: 0px;
 }
 
 [class*=uk-align] {
@@ -126,7 +122,7 @@ h3 {
 }
 
 .uk-card-header {
-	padding: 20px 0;
+	padding: 20px 0px;
 }
 
 .categories-reset-padding {
@@ -167,7 +163,7 @@ li .uk-button{
 }
 
 .uk-auction-margin{
-	margin: 10px 0;
+	margin: 10px 0px;
 }
 
 .uk-parent a {
@@ -175,35 +171,6 @@ li .uk-button{
 	color: black !important;
 	padding-left: 10px;
 	padding-right: 10px;
-}
-
-.kleur-licht-blauw{
-	background-color: #BADAF0;
-}
-
-.h4-no-bottom{
-	margin-bottom: -20px;
-}
-
-.scroll{
-	height: 350px;
-	overflow-y: scroll;
-}
-
-.grey{
-	background-color: #e5e7ec;
-}
-
-.niagara{
-	background-color: #5484A4;
-}
-
-.uk-card-body, .no-shadow{
-	box-shadow: none;
-}
-
-.marge-left{
-	margin-left: 2%;
 }
 
 
@@ -244,4 +211,27 @@ li .uk-button{
 	}
 }
 
+.kleur-licht-blauw{
+	background-color: #BADAF0;
+}
 
+.h4-no-bottom{
+	margin-bottom: -20px;
+}
+
+.scroll{
+	height: 350px;
+	overflow-y: scroll;
+}
+
+.grey{
+	background-color: #e5e7ec;
+}
+
+.uk-card-header{
+	background-color: #5484A4;
+}
+
+.uk-card-body, .no-shadow{
+	box-shadow: none;
+}

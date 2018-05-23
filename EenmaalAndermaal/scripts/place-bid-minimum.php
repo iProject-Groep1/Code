@@ -9,7 +9,7 @@ include('login-functions.php');
 $Login = CheckLogin ();
 if ($Login == false) {
     $_SESSION['LogMelding'] = '
-    <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om een bod te plaatsen.\', status: \'danger\'})</script>
+    <script>UIkit.notification({message: \'Log in first please\', status: \'danger\'})</script>
     ';
 
     header("Location: ../login.php");
@@ -34,11 +34,8 @@ function setMinBid($dbh, $id)
         $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
         $query = $dbh->prepare($sql);
         $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
-        $_SESSION['bodMelding'] = '
-            <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: check"></span> Uw bod van €' . $bodbedrag . ' is geplaatst.\', status: \'success\'})</script>
-';
+        echo "bod is geplaatst";
         header('Location:../detailpage.php?id=' . $id . '');
-
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
