@@ -9,7 +9,6 @@ include('scripts/bid-functions.php');
 
 $idCorrect = false;
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-    echo "geen id";
     try {
         $stmt = $dbh->prepare("SELECT COUNT(voorwerpnummer) AS aantal FROM voorwerp WHERE voorwerpnummer = :voorwerpnummer");
         $stmt->bindValue(":voorwerpnummer", $_GET['id'], PDO::PARAM_STR);
