@@ -2,7 +2,7 @@
 
  $terms = $_GET['data'];
 
- $data = file_get_contents("https://maps.googleapis.com/maps/api/place/autocomplete/json?input=".$terms."&types=geocode&key={YOUR_API_KEY}");
+ $data = file_get_contents("https://maps.googleapis.com/maps/api/place/autocomplete/json?input=".$terms."&types=geocode&key=AIzaSyD9hfir-xLwBUuX0-EK5BqPh9ahMgDF2Po");
 
 
  $arr = array();
