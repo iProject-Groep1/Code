@@ -63,3 +63,18 @@ function getHighestBid($dbh, $id)
     }
 
 }
+
+function getBids($dhb)
+{
+    $bid = "";
+    $objectNumber = $_GET['id'];
+    $query = "SELECT bodbedrag, gebruiker
+              FROM dbo.Bod
+              WHERE voorwerp = $objectNumber
+              ORDER BY bodbedrag DESC";
+    $data = $dhb->query($query);
+    while ($row = $data->fetch()) {
+        $bid .= '<div class="uk-grid"><div class="uk-width-1-2">'. $row['bodbedrag'] .'</div><div class="uk-width-1-2">'. $row['gebruiker'] . '</div></div>';
+    }
+    return $bid;
+}
