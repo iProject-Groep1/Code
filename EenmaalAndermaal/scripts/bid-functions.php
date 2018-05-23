@@ -81,9 +81,7 @@ function getBids($dbh)
         return $bid;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-<<<<<<< HEAD
-=======
         header('Location: errorpage.php?err=500');
->>>>>>> 8651310e53f41afbdc1d83c5e2669f1e0cda2c23
+
     }
 }
