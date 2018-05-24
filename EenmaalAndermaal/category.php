@@ -4,6 +4,7 @@ require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 include('scripts/auction-item.php');
 include('scripts/bid-functions.php');
+include('scripts/notify-bid.php');
 
 $idCorrect = false;
 if (isset($_GET['categoryID']) && !empty($_GET['categoryID'])) {

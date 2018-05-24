@@ -2,6 +2,7 @@
 //login pagina
 $pageTitle = 'Inloggen';
 include('scripts/header.php');
+include('scripts/notify-bid.php');
 
 //als je al ingelogd bent en op deze pagina komt wordt je doorgestuurt naar homepagina.
 if(isset($_SESSION['username'])){
@@ -15,6 +16,11 @@ if(isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
 if(isset($_SESSION['LogMelding']) && !empty($_SESSION['LogMelding'])) {
     echo $_SESSION['LogMelding'];
     $_SESSION['logMelding'] = "";
+}
+
+if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
+    echo $_SESSION['overBidMelding'];
+    $_SESSION['overBidMelding'] = "";
 }
 
 
