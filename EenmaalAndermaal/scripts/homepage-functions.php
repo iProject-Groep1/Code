@@ -99,18 +99,21 @@ function getAuctionEnd($dbh, $id)
 // Deze functie vraagt de filename van het plaatje van de auction op. Deze wordt opgehaald uit de database.
 function getAuctionFilename($dbh, $id)
 {
+    $array = [];
     try {
-        $stmt = $dbh->prepare("SELECT Filenaam FROM Voorwerp v, Bestand b WHERE v.Voorwerpnummer = b.Voorwerp AND v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
-        $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
-        $stmt->execute(); /* stuurt alles naar de server */
-//        $results = $stmt->fetch(PDO::FETCH_ASSOC); /* fetcht de data, hij haalt de gevraagde data op niet 0,1,2etc. maar title, duration etc.*/
+        $stmt = $dbh->prepare("SELECT Filenaam FROM Voorwerp v, Bestand b WHERE v.Voorwerpnummer = b.Voorwerp AND v.Voorwerpnummer = :Voorwerpnummer");
+        $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $i = 0;
         while ($results = $stmt->fetch()) {
-            $row = $results['Filenaam'];
+            $array[$i] = $results['Filenaam'];
+            $i++;
         }
-        return $row;
+        return $array;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
         header('Location: errorpage.php?err=500');
+
     }
 }
 
