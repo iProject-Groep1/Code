@@ -64,7 +64,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
     if($days >= 1){
         $itemCard .= '<div class="uk-countdown-number uk-countdown-days uk-text-center"> '. $days . ' Dagen  </div>';
     } else if ($days < 1 && $hours >= 1) {
-        $itemCard .= '<div class="uk-countdown-number uk-countdown-days uk-text-center"> '. $hours . ' Uren  </div>';
+        $itemCard .= '<div class="uk-countdown-number uk-countdown-days uk-text-center"> '. $hours . ' Uur  </div>';
     } else if ($hours < 1) {
         $itemCard .= '
                     <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
