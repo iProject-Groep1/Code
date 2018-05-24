@@ -60,8 +60,8 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
             </div>
             <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-grid">
                         <div class="uk-width-1-2 uk-text-center margin-to-zero" uk-grid><div class="uk-display-inline-block">
-                <h5 class="uk-text-center uk-display-inline">' . $productName . '</h5>
-                <h4 class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</h4>
+                <h5 class="uk-text-center uk-display-inline">' . get_words($productName, $count = 3) . '</h5>
+                <h4 class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> €' . $hoogsteBod . '</h4>
                 </div></div>
                 <div class="uk-width-1-2 uk-text-center margin-to-zero" uk-grid>
                 <div class="uk-display-inline-block">
@@ -105,6 +105,12 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                             ';
     return $itemCard;
 
+}
+
+
+function get_words($productName, $count = 10) {
+    preg_match("/(?:\w+(?:\W+|$)){0,$count}/", $productName, $matches);
+    return $matches[0];
 }
 
 
