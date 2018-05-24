@@ -3,7 +3,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 include('database-connect.php');
-require_once('notify-bid.php');
 
 $header = '
 
