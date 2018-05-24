@@ -100,7 +100,7 @@ function emailReg($dbh)
     }
 }
 
-
+//TODO de link moet een hash over de email en een hash over de tijd bevatten.
 function createMessage($email, $hash)
 {
     $to = $email; // Send email to our user

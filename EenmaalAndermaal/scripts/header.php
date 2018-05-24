@@ -98,7 +98,8 @@ $header .= '
             <li><a href="category-overview.php">Alle Rubrieken</a></li>';
 
             try{
-                $stmt = $dbh->prepare("SELECT TOP 9 COUNT(voorwerp) AS aantal, r.rubrieknaam, r.rubrieknummer FROM VoorwerpInRubriek vir INNER JOIN rubriek r ON  vir.rubriek_op_laagste_Niveau = r.rubrieknummer GROUP BY r.rubrieknaam, r.rubrieknummer ORDER BY aantal desc");
+                $stmt = $dbh->prepare("SELECT TOP 9 COUNT(voorwerpnummer) AS aantal, r.rubrieknaam, r.rubrieknummer FROM Voorwerp v JOIN VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp JOIN rubriek r ON  vir.rubriek_op_laagste_Niveau = r.rubrieknummer WHERE veilinggesloten = 0 GROUP BY r.rubrieknaam, r.rubrieknummer ORDER BY aantal desc
+");
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     $header.='<li><a href="category.php?categoryID='.$row['rubrieknummer'].'">'.$row['rubrieknaam'].'</a></li>';
