@@ -70,6 +70,7 @@ function getHighestBid($dbh, $id)
 
 }
 
+
 function getStartPrice($dbh, $id){
     try{
         $stmt = $dbh->prepare("SELECT startprijs FROM voorwerp where voorwerpnummer = :voorwerpnummer");
