@@ -7,6 +7,8 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
+
+
 $idCorrect = false;
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     try {
@@ -29,18 +31,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 }
 
 if ($idCorrect) {
+    if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
+        echo $_SESSION['bodMelding'];
+        $_SESSION['bodMelding'] = "";
+    }
     $id = $_GET['id'];
     placeItem($dbh, $id);
 
-    if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-            echo $_SESSION['bodMelding'];
-            $_SESSION['bodMelding'] = "";
 
-            if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-                echo $_SESSION['bodMelding'];
-                $_SESSION['bodMelding'] = "";
-            }
-    }
 } else {
 
     header('Location: errorpage.php?err=404');
