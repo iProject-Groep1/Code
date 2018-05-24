@@ -7,10 +7,6 @@ if (isset($_SESSION['username'])) {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             sendMessage($dbh, $id);
-            if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
-                echo $_SESSION['overBidMelding'];
-                $_SESSION['overBidMelding'] = "";
-            }
         }
     }
 }

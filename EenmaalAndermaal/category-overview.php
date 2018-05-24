@@ -5,6 +5,11 @@ require_once('scripts/header.php');
 require_once('scripts/category-overview-functions.php');
 include('scripts/notify-bid.php');
 
+if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
+    echo $_SESSION['overBidMelding'];
+    $_SESSION['overBidMelding'] = "";
+}
+
 //echo getAlphabetList();
 echo getCategoryOverview($dbh);
 

@@ -8,6 +8,10 @@ include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 include('scripts/notify-bid.php');
 
+if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
+    echo $_SESSION['overBidMelding'];
+    $_SESSION['overBidMelding'] = "";
+}
 
 $idCorrect = false;
 if (isset($_GET['id']) && !empty($_GET['id'])) {

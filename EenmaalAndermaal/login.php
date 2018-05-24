@@ -18,6 +18,11 @@ if(isset($_SESSION['LogMelding']) && !empty($_SESSION['LogMelding'])) {
     $_SESSION['logMelding'] = "";
 }
 
+if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
+    echo $_SESSION['overBidMelding'];
+    $_SESSION['overBidMelding'] = "";
+}
+
 
 if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
     $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
