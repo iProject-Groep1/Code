@@ -63,7 +63,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                 <h5 class="uk-text-center uk-display-inline">' . get_words($productName, $count = 3) . '</h5>
                 <h4 class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> €' . $hoogsteBod . '</h4>
                 </div></div>
-                <div class="uk-width-1-2 uk-text-center margin-to-zero" uk-grid>
+                <div class="uk-width-1-2 uk-text-center margin-to-zero uk-margin-top-zero" uk-grid>
                 <div class="uk-display-inline-block">
                 <a class="uk-button uk-button-danger" href="detailpage.php?id=' . $id . '">Bekijk nu</a>
                 <div class=" uk-align-right uk-display-inline-block">
