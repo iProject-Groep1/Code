@@ -42,7 +42,7 @@ function getProductInfo($dbh)
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
-            $productInformation .= '<div class="uk-child-width-1-2@l" uk-grid><div><h4 class="uk-align-right uk-height-">Productbeschrijving</h4><p>' . $row['beschrijving'] . '</p></div>';
+            $productInformation .= '<div class="uk-child-width-1-2@l uk-width-1-1" uk-grid><div><h4 class="uk-text-center uk-height-">Productbeschrijving</h4><p>' . $row['beschrijving'] . '</p></div>';
             $productInformation .= '<div><h4 class="h4-no-bottom">Betalingswijze</h4><p>' . $row['betalingswijze'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>' . $row['betalingsinstructie'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>' . $row['plaatsnaam'] . ', ' . $row['land'] . '</p>';

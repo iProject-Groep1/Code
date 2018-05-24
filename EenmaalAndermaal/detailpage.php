@@ -165,7 +165,7 @@ function placeItem($dbh, $id)
 </div >
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw" >
     <h3 class="uk-display-block uk-align-center uk-text-center" > Product Informatie </h3 >
-    <p >
+   
 
 
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin" >
@@ -176,7 +176,7 @@ function placeItem($dbh, $id)
 
 
     </div >
-    </p ></div >
+    </div >
 
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body" >
     <h3 class="uk-display-block uk-align-center uk-text-center" > Vergelijkbare veilingen </h3 >
