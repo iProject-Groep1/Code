@@ -100,8 +100,8 @@ function placeItem($dbh, $id)
 
     foreach ($image as $key) {
         $imageScript .=  '<li class="uk-width-3-4" >
-        <img class="uk-flex-center uk-align-center uk-height" src = "' . $key . '"
-                     style = "background-image: url(' . $key . ');" alt = "'. $key .'" >
+        <img class="uk-flex-center uk-align-center uk-height" src="' . $key . '"
+                     style="background-image: url(' . $key . ');" alt="'. $key .'" >
                      </li >';
         }
         echo $imageScript;
