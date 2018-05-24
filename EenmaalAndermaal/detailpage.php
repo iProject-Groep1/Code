@@ -90,78 +90,13 @@ function placeItem($dbh, $id)
     echo '
 
 
-<div class="uk-grid uk-flex  uk-padding-resize">
-    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s uk-grid-medium uk-margin-remove">
-        <div class="uk-grid-medium uk-display-inline uk-flex-wrap uk-flex-first uk-cover-container uk-margin-small-left uk-margin-small-right">
-                '; foreach ($image as $key) {
-        $imageScript .=  '<li class="uk-width-3-4" >
-        <img class="uk-flex-center uk-align-center uk-height" src="' . $key . '"
-                     style="background-image: url(' . $key . ');" alt="'. $key .'" >
-                     </li >';
-        }
-        echo $imageScript;
-echo '
-        </div>
-    </div>
-    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
-    <div class="uk-grid-medium uk-flex-wrap uk-flex-last uk-width-1-1 margin-to-zero">
-        <div class="uk-card-header niagara ">
-            <div class="uk-grid-small uk-flex-middle">
-                <div class="uk-text-center uk-align-center">
-                    <div class=" uk-display-inline-block uk-align-center">     
-                        <div class="uk-grid-small  uk-child-width-auto detail-pagina-countdown" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
-                            <div>
-                                <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
-                            </div>
-                            <div class="uk-countdown-separator">:</div>
-                            <div>
-                                <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>
-                            </div>
-                            <div class="uk-countdown-separator">:</div>
-                            <div>
-                                <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>
-                            </div>
-                            <div class="uk-countdown-separator">:</div>
-                            <div>
-                            <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-        <div class="uk-card-body scroll grey">
-            ';
-    echo getBids($dbh);
-    echo '
-        </div>
-        <div class="uk-card-footer grey">
-            <div class="uk-width-1-4 uk-align-left uk-margin-remove-right uk-padding-remove-left">
-                <form action="scripts/placeBidDirect.php" method="get">
-                    <input class="uk-input" type="text" name="id" value="' . $id . '"hidden>
-                    <input class="uk-input " type="number" placeholder="€' . $minBid . '" name="bedrag">
-            </div>
-            <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type="submit" name="submit" value="Bied direct">
-            </form>
-            <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
-            <div class="uk-width-1-4 uk-align-right">
-                <input class="uk-input uk-width-1-8" type="text" value= "€' . $minBid . '" disabled>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw">
-    <h3 class="uk-display-block uk-align-center uk-text-center">Product Informatie</h3>
-    <p>
 <div class="uk-grid uk-flex uk-flex-wrap uk-padding-resize">
 <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s ">
 
     <div class="uk-display-inline uk-flex-wrap uk-flex-first uk-cover-container uk-margin-small-left uk-margin-small-right">
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider="center: true">
     <ul class="uk-slider-items uk-grid uk-grid-match" uk-height-viewport="offset-top: true; offset-bottom: 30">
-        .';
+        ';
 
     foreach ($image as $key) {
         $imageScript .=  '<li class="uk-width-3-4" >
@@ -174,8 +109,8 @@ echo '
 
     echo '
     </ul>
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-maak-rood" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-maak-rood" href="#" uk-slidenav-next uk-slider-item="next"></a>
 
                      </div >
                    
