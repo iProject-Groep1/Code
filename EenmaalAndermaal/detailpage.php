@@ -8,7 +8,6 @@ include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
 
-
 $idCorrect = false;
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     try {
@@ -47,23 +46,41 @@ if ($idCorrect) {
 
 function placeItem($dbh, $id)
 {
-// TODO: ID moet worden aangepast aan het item.
+//TODO een query gebruiken voor al deze losse dingen
     $timeOfEnding = getAuctionEnd($dbh, $id);
     $minBid = calcMinBid($dbh, $id);
     $image = getAuctionFilename($dbh, $id);
+    $productTitle = '';
+    $categoryName = '';
+    $categoryID = '';
+
+    try {
+        $stmt = $dbh->prepare("select titel, rubrieknaam, rubrieknummer from voorwerp v join VoorwerpInRubriek vir on v.voorwerpnummer = vir.voorwerp join rubriek r on vir.rubriek_op_laagste_Niveau = r.rubrieknummer where v.voorwerpnummer = :voorwerpnummer");
+        $stmt->bindValue(":voorwerpnummer", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        if ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
+            $productTitle = $row['titel'];
+            $categoryName = $row['rubrieknaam'];
+            $categoryID = $row['rubrieknummer'];
+        }
+    } catch (PDOException $e) {
+        echo "Error" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
+    }
+
 
     echo '
 <div class="uk-margin-detail">
 
 <ul class="uk-breadcrumb" >
-    <li><a href="#">Item</a></li>
-    <li><a href="#">Item</a></li>
-    <li class="uk-disabled"><a>Disabled</a></li>
-    <li><span>Active</span></li>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="category.php?categoryID='.$categoryID.'">'.$categoryName.'</a></li>
+    <li class="uk-disabled"><span>' . $productTitle . '</span></li>
 </ul>
 </div>
 ';
-    echo getProductTitle($dbh);
+    echo '<h1 class="marge-left">' . $productTitle . '</h1>';
+
     echo '
 
 <div class="uk-grid uk-padding-resize">

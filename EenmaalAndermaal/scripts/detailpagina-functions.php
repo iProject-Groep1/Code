@@ -57,22 +57,6 @@ function getProductInfo($dbh)
     }
 }
 
-function getProductTitle($dbh)
-{
-    $objectNumber = $_GET['id'];
-    $productTitle = '';
-    try {
-        $stmt = $dbh->prepare("SELECT titel FROM dbo.Voorwerp WHERE voorwerpnummer = :voorwerp");
-        $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
-        $stmt->execute();
-        while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
-            $productTitle .= '<h1 class="marge-left">' . $row['titel'] . '</h1>';
-        }
-        return $productTitle;
-    } catch (PDOException $e) {
-        echo "Error" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
-    }
-}
+
 ?>
 
