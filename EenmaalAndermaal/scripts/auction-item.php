@@ -59,12 +59,12 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                      style="background-image: url(images/productImages/' . $image . ');" alt="Image"></a>
             </div>
             <div class="uk-overlay uk-overlay-primary uk-position-bottom">
-                        <div class="uk-width-1-2 uk-text-center" uk-grid><div>
+                        <div class="uk-width-1-2 uk-text-center" uk-grid><div class="uk-display-inline">
                 <h5 class="uk-text-center uk-display-inline">' . $productName . '</h5>
                 <h4 class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</h4>
                 </div></div>
                 <div class="uk-width-1-2 uk-text-center" uk-grid>
-                <div>
+                <div class="uk-display-inline">
                 <a class="uk-button uk-button-danger" href="detailpage.php?id=' . $id . '">Bekijk nu</a>
                 <div class=" uk-align-right uk-display-inline-block">
                 ';
