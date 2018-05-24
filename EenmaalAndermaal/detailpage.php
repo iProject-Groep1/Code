@@ -7,6 +7,8 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
+
+
 $idCorrect = false;
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     try {
@@ -29,18 +31,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 }
 
 if ($idCorrect) {
+    if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
+        echo $_SESSION['bodMelding'];
+        $_SESSION['bodMelding'] = "";
+    }
     $id = $_GET['id'];
     placeItem($dbh, $id);
 
-    if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-            echo $_SESSION['bodMelding'];
-            $_SESSION['bodMelding'] = "";
 
-            if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-                echo $_SESSION['bodMelding'];
-                $_SESSION['bodMelding'] = "";
-            }
-    }
 } else {
 
     header('Location: errorpage.php?err=404');
@@ -70,8 +68,13 @@ function placeItem($dbh, $id)
 
 <div class="uk-grid uk-padding-resize">
 
+<<<<<<< HEAD
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container" style="width:800px;height:auto">
         <img class="uk-flex-center uk-align-center" src="images/productImages/' . $image . '"
+=======
+    <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
+        <img class="uk-flex-center uk-align-center" src="' . $image . '"
+>>>>>>> be0e2dc4aae14a57e2fa23aa50ea99fa47f65262
                      style="background-image: url(images/productImages/' . $image . ');" alt="Image">
     </div>
 
