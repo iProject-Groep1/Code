@@ -42,13 +42,13 @@ function getProductInfo($dbh)
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
-            $productInformation .= '<h4 class="uk-align-left uk-height-">Productbeschrijving</h4><div class="uk-grid uk-grid-large"><div><div width="50%" class="uk-align-left"><p>' . $row['beschrijving'] . '</p></div>';
-            $productInformation .= '<div class="uk-width-1-3 uk-align-right"><h4 class="h4-no-bottom">Betalingswijze</h4><p>' . $row['betalingswijze'] . '</p>';
-            $productInformation .= '<div><h4 class="h4-no-bottom">Betalingsinstructie</h4><p>' . $row['betalingsinstructie'] . '</p>';
+            $productInformation .= '<div class="uk-child-width-1-2@l" uk-grid><div><h4 class="uk-align-right uk-height-">Productbeschrijving</h4><p>' . $row['beschrijving'] . '</p></div>';
+            $productInformation .= '<div><h4 class="h4-no-bottom">Betalingswijze</h4><p>' . $row['betalingswijze'] . '</p>';
+            $productInformation .= '<h4 class="h4-no-bottom">Betalingsinstructie</h4><p>' . $row['betalingsinstructie'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Plaatsnaam & land</h4><p>' . $row['plaatsnaam'] . ', ' . $row['land'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Verzendkosten</h4><p>' . $row['verzendkosten'] . '</p>';
             $productInformation .= '<h4 class="h4-no-bottom">Verzendingstructies</h4><p>' . $row['verzendinstructies'] . '</p>';
-            $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>' . $row['verkoper'] . '</p></div></div></div></div>';
+            $productInformation .= '<h4 class="h4-no-bottom">Verkoper</h4><p>' . $row['verkoper'] . '</p></div></div>';
         }
         return $productInformation;
     } catch (PDOException $e) {
