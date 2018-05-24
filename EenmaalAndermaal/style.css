@@ -107,6 +107,10 @@ h3 {
 	margin-top: 0!important;
 }
 
+.uk-overlay {
+	padding: 5px 30px;
+}
+
 .uk-navbar-brand:hover{
 color: #111111;
 }
