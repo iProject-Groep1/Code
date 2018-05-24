@@ -68,37 +68,35 @@ function placeItem($dbh, $id)
     echo getProductTitle($dbh);
     echo '
 
-<div class="uk-grid uk-padding-resize">
-
-    <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
-        <img class="uk-margin-detail uk-nice-uitlijnen " 
+<div class="uk-grid uk-flex uk-flex-wrap uk-padding-resize">
+    <div class="uk-width-1-2@xl uk-display-inline uk-flex-wrap uk-flex-first uk-cover-container margin-remove-left">
+        <img class="uk-margin-detail uk-nice-uitlijnen" 
              src="'.$image.'"
              alt="" uk-cover>
     </div>
-
-    <div class="uk-grid-medium uk-width-1-2 uk-grid-width-*">
+    <div class="uk-grid-medium uk-width-1-2@xl uk-flex-center@s uk-flex-center@m uk-flex-center@l uk-width-2-3@l uk-width-2-3@m uk-width-1-1@s uk-flex-wrap uk-flex-last uk-margin-remove-left">
         <div class="uk-card-header niagara">
             <div class="uk-grid-small uk-flex-middle">
                 <div class="uk-text-center uk-align-center">
                     <div class=" uk-display-inline-block uk-align-center">     
-                    <div class="uk-grid-small  uk-child-width-auto detail-pagina-countdown" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
-                        <div>
-                            <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
-                        </div>
-                        <div class="uk-countdown-separator">:</div>
-                        <div>
-                            <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>
-                        </div>
-                        <div class="uk-countdown-separator">:</div>
-                        <div>
-                            <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>
-                        </div>
-                        <div class="uk-countdown-separator">:</div>
-                        <div>
+                        <div class="uk-grid-small  uk-child-width-auto detail-pagina-countdown" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
+                            <div>
+                                <div class="uk-countdown-number uk-countdown-days uk-text-center"></div>
+                            </div>
+                            <div class="uk-countdown-separator">:</div>
+                            <div>
+                                <div class="uk-countdown-number uk-countdown-hours uk-text-center"></div>
+                            </div>
+                            <div class="uk-countdown-separator">:</div>
+                            <div>
+                                <div class="uk-countdown-number uk-countdown-minutes uk-text-center"></div>
+                            </div>
+                            <div class="uk-countdown-separator">:</div>
+                            <div>
                             <div class="uk-countdown-number uk-countdown-seconds uk-text-center"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -108,19 +106,19 @@ function placeItem($dbh, $id)
     echo '
         </div>
         <div class="uk-card-footer grey">
-            <div class="uk-width-1-4@s uk-align-left uk-margin-remove-right uk-padding-remove-left">
+            <div class="uk-width-1-4 uk-align-left uk-margin-remove-right uk-padding-remove-left">
                 <form action="scripts/placeBidDirect.php" method="get">
                     <input class="uk-input" type="text" name="id" value="' . $id . '"hidden>
                     <input class="uk-input " type="number" placeholder="€' . $minBid . '" name="bedrag">
             </div>
-                    <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type="submit" name="submit" value="Bied direct">
-                </form>
+            <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type="submit" name="submit" value="Bied direct">
+            </form>
             <a href="scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara">Bied minimum</a>
-            <div class="uk-width-1-4@s uk-align-right">
-                <input class="uk-input" type="text" value= "€' . $minBid . '" disabled>
+            <div class="uk-width-1-4 uk-align-right">
+                <input class="uk-input uk-width-1-8" type="text" value= "€' . $minBid . '" disabled>
             </div>
         </div>
-</div>
+    </div>
 </div>
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw">
     <h3 class="uk-display-block uk-align-center uk-text-center">Product Informatie</h3>

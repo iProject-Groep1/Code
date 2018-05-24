@@ -131,6 +131,10 @@ h3 {
 	padding: 20px 0;
 }
 
+.margin-biedingen-detail{
+	margin-left: -20px;
+}
+
 .categories-reset-padding {
 	padding-bottom: 20px;
 }
