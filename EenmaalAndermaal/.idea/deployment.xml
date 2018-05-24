@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="PublishConfigData" autoUpload="Always">
-=======
   <component name="PublishConfigData" autoUpload="Always" serverName="local">
->>>>>>> 819c415b2a9901ef1bbad6590f0b8c5841dd877c
     <serverData>
       <paths name="local">
         <serverdata>
