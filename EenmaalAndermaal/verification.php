@@ -101,15 +101,14 @@ if ($validURL) {
         . '
     </select>
 </div>
-
+<p class="uk-text-primary">U moet minimaal 18 jaar oud zijn om een gebruiker te worden.</p>
 <div class="uk-margin uk-form-horizontal">
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Geboortedatum* :</label>
     <input class="uk-input uk-width-2-3" type="date" name="Datum"';
     if (isset($_GET['birthDate'])) {
         $form .= 'value="' . $_GET['birthDate'] . '"';
     }
-    //TODO: maxlength voor datum
-    $form .= 'required> 
+    $form .= ' max="'.date('Y-m-d', strtotime("-18 year", time())).'" required>
 </div>';
     if (isset($_GET['usernameError']) && $_GET['usernameError'] == 1) {
         $form .= '<p class="uk-text-danger">Deze gebruikersnaam is al in gebruik.</p>';
