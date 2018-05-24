@@ -58,7 +58,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
     <!--TODO: Hier een bied minimum knop van maken??? -->
                 <a class="uk-button uk-button-danger uk-align-right" href="detailpage.php?id=' . $id . '">Bekijk nu</a>
                 <br>
-                <div class="uk-align-left uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</div>
+                <div class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</div>
                 <div class=" uk-align-right uk-display-inline-block">
                 ';
     if($days >= 1){
