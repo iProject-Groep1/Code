@@ -95,6 +95,9 @@ h3 {
 	margin: 0 0 0 800px;
 }
 
+.margin-to-zero {
+	margin: 0 0 0 0;
+}
 
 .uk-navbar-dropdown {
 	margin-top: 15px;
