@@ -82,7 +82,7 @@ if (isset($_SESSION['username'])) {
 $header .= '
             <li><a href="">Contact</a></li>
         </ul>';
-    if(isset($_SESSION['username'])) {
+    if(!isset($_SESSION['username'])) {
         $header.='
         <div class="uk-navbar-item uk-visible@m uk-navbar1" >
             <a href = "registration.php" class="uk-button uk-button-danger tm-button-default uk-icon" > Registreer nu </a >
