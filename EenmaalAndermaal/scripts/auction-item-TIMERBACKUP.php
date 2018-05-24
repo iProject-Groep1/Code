@@ -3,24 +3,46 @@
 
 function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id, $dbh)
 {
-    $datetime1 = date_create('getServerTime($dbh)');
+    $date1 = getServerTime($dbh);
+    $date2 = $timeOfEnding;
 
-    try {
-        $stmt = $dbh->prepare("SELECT LooptijdEindMoment FROM Voorwerp v WHERE v.Voorwerpnummer = :Voorwerpnummer"); /* prepared statement */
-        $stmt->bindValue(":Voorwerpnummer", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
-        $stmt->execute(); /* stuurt alles naar de server */
-        while ($results = $stmt->fetch()) {
-            $datetime2 = date_create($results['LooptijdEindMoment']);
-        }
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
+    $date1Timestamp = strtotime($date1);
+    $date2Timestamp = strtotime($date2);
+
+//Calculate the difference.
+    $difference = $date2Timestamp - $date1Timestamp;
+    $sec=1;
+    $min=($sec * 60);
+    $hrs=($sec * 60 * 60);
+    $day=($sec * 60 * 60 * 24);
+    $mon=($sec * 60 * 60 * 24 * 30.4167);
+    $yrs=($sec * 60 * 60 * 24 * 30.4167 * 12);
+    $years=0;$months=0;$days=0;$hours=0;$minutes=0;$seconds=0;
+    while ($yrs <= $difference){
+        $years= $years + 1; //how many years are there in difference
+        $difference= $difference - $yrs; // difference - years converted to second
+
     }
-    $date1 = new DateTime($datetime1);
-    $date2 = new DateTime($datetime2);
-
-    $echo = $date1->diff($date2)->format("%d days, %h hours %i minuts and %s seconds ");
-
+    while ($mon <= $difference){
+        $months= $months + 1;//how many months are there in remaining difference
+        $difference= $difference- $mon; // difference - months converted to second
+    }
+    while ($day <= $difference){
+        $days= $days + 1;//how many days are there in remaining difference
+        $difference= $difference- $day; // difference - days converted to second
+    }
+    while ($hrs <= $difference){
+        $hours= $hours + 1;//how many hours are there in remaining difference
+        $difference= $difference- $hrs; // difference - hourss converted to second
+    }
+    while ($min <= $difference){
+        $minutes= $minutes + 1;//how many minutes are there in remaining difference
+        $difference= $difference- $min; // difference - minutes converted to second
+    }
+    while ($sec <= $difference){
+        $seconds= $seconds + 1;//how many seconds are there in remaining difference
+        $difference= $difference- $sec; // difference - seconds
+    }
 
     $itemCard = '
     <div class="uk-auction-margin">
@@ -39,8 +61,11 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                 <div class="uk-align-left uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</div>
                 <div class=" uk-align-right uk-display-inline-block">
                 ';
-
-    if ($echo['d'] < 1) {
+    if($days >= 1){
+        $itemCard .= '<div class="uk-countdown-number uk-countdown-days uk-text-center"> '. $days . ' Dagen  </div>';
+    } else if ($days < 1 && $hours >= 1) {
+        $itemCard .= '<div class="uk-countdown-number uk-countdown-days uk-text-center"> '. $hours . ' Uren  </div>';
+    } else if ($hours < 1) {
         $itemCard .= '
                     <div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: ' . $timeOfEnding . ' ">
                         <div>
@@ -68,9 +93,8 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
         </div>
     </div>
                             ';
-//    return $itemCard;
-    echo $echo;
-    echo '<br>';
+    return $itemCard;
+
 }
 
 
