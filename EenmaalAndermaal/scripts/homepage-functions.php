@@ -123,6 +123,7 @@ function getHomepageCards($dbh, $query)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
+
             $price = $results['hoogsteBod'];
             if(is_null($price)){
                 $price = getStartPrice($dbh, $results['voorwerpnummer']);

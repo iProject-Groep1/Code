@@ -71,9 +71,8 @@ function placeItem($dbh, $id)
 <div class="uk-grid uk-padding-resize">
 
     <div class="uk-width-1-2 uk-row-first uk-display-inline uk-cover-container">
-        <img class="uk-margin-detail uk-nice-uitlijnen " 
-             src="'.$image.'"
-             alt="" uk-cover>
+        <img class="uk-flex-center uk-align-center" src="images/productImages/' . $image . '"
+                     style="background-image: url(images/productImages/' . $image . ');" alt="Image">
     </div>
 
     <div class="uk-grid-medium uk-width-1-2 uk-grid-width-*">
