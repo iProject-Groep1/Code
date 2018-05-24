@@ -128,7 +128,7 @@ function getHomepageCards($dbh, $query)
             if(is_null($price)){
                 $price = getStartPrice($dbh, $results['voorwerpnummer']);
             }
-            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $price, $results['voorwerpnummer']);
+            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $price, $results['voorwerpnummer'], $dbh);
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
