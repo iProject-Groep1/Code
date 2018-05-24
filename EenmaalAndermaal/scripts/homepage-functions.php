@@ -123,7 +123,11 @@ function getHomepageCards($dbh, $query)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
-            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $results['hoogsteBod'], $results['voorwerpnummer']);
+            $price = $results['hoogsteBod'];
+            if(is_null($price)){
+                $price = getStartPrice($dbh, $results['voorwerpnummer']);
+            }
+            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $price, $results['voorwerpnummer']);
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
