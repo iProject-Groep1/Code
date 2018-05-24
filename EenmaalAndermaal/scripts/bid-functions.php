@@ -70,6 +70,7 @@ function getHighestBid($dbh, $id)
 
 }
 
+
 function getStartPrice($dbh, $id){
     try{
         $stmt = $dbh->prepare("SELECT startprijs FROM voorwerp where voorwerpnummer = :voorwerpnummer");
@@ -94,7 +95,7 @@ function getBids($dbh)
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) {
-            $bid .= '<div class="uk-grid"><div class="uk-width-1-2">' . $row['bodbedrag'] . '</div><div class="uk-width-1-2">' . $row['gebruiker'] . '</div></div>';
+            $bid .= '<div class="uk-grid margin-biedingen-detail"><div class="uk-width-1-2">' . $row['bodbedrag'] . '</div><div class="uk-width-1-2">' . $row['gebruiker'] . '</div></div>';
         }
         return $bid;
     } catch (PDOException $e) {
