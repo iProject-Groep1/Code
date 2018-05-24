@@ -95,40 +95,50 @@ h3 {
 	margin: 0 0 0 800px;
 }
 
+.margin-to-zero {
+	margin: 0 0 0 0;
+}
 
 .uk-navbar-dropdown {
 	margin-top: 15px;
 }
 
+.uk-margin-top-zero{
+	margin-top: 0!important;
+}
+
+.uk-overlay {
+	padding: 5px 30px;
+}
 
 .uk-navbar-brand:hover{
-	color: #111111;
+color: #111111;
 }
 
 .uk-grid-small-changes {
-	margin: 20px 0 0 20px
+margin: 20px 0 0 20px
 }
 
 .uk-grid-changes {
-	padding: 0 0 0 0;
-	margin: 5px 5px;
+padding: 0 0 0 0;
+margin: 5px 5px;
 }
 
 .detail-pagina-countdown{
-	color: white;
+color: white;
 }
 
 
 .uk-margin {
-	margin-bottom: 0;
+margin-bottom: 0;
 }
 
 [class*=uk-align] {
- margin-bottom: 0;
+margin-bottom: 0;
 }
 
 .uk-card-header {
-	padding: 20px 0;
+padding: 20px 0;
 }
 
 .margin-biedingen-detail{
@@ -136,16 +146,16 @@ h3 {
 }
 
 .categories-reset-padding {
-	padding-bottom: 20px;
+padding-bottom: 20px;
 }
 
 .auctions-reset-margin {
-	margin-top: 20px;
-	margin-bottom: 20px;
+margin-top: 20px;
+margin-bottom: 20px;
 }
 
 .uk-navbar-toggle{
-	color: #FFFFFF;
+color: #FFFFFF;
 }
 
 .uk-timer-changes {
@@ -153,11 +163,11 @@ padding-left: 200px;
 }
 
 .uk-countdown-number, .uk-countdown-separator {
-	line-height: 35px;
+line-height: 35px;
 }
 
 li .uk-button{
-	/** TODO: !important wegwerken **/
+/** TODO: !important wegwerken **/
 	text-transform: none;
 	color: black !important;
 	background-color: white;

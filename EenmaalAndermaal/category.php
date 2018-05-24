@@ -3,6 +3,7 @@ $pageTitle = 'Rubriekpagina';
 require_once('scripts/header.php');
 include('scripts/homepage-functions.php');
 include('scripts/auction-item.php');
+include('scripts/bid-functions.php');
 
 $idCorrect = false;
 if (isset($_GET['categoryID']) && !empty($_GET['categoryID'])) {
@@ -44,7 +45,11 @@ function getAuctionCards($dbh, $rubrieknummer)
         $stmt->bindValue(":rubrieknummer", $rubrieknummer, PDO::PARAM_STR);
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
-            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $results['hoogsteBod'], $results['voorwerpnummer']);
+            $price = $results['hoogsteBod'];
+            if(is_null($price)){
+                $price = getStartPrice($dbh, $results['voorwerpnummer']);
+            }
+            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $price, $results['voorwerpnummer'], $dbh);
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();

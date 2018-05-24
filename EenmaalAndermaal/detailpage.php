@@ -7,6 +7,8 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
+
+
 $idCorrect = false;
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     try {
@@ -29,18 +31,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 }
 
 if ($idCorrect) {
+    if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
+        echo $_SESSION['bodMelding'];
+        $_SESSION['bodMelding'] = "";
+    }
     $id = $_GET['id'];
     placeItem($dbh, $id);
 
-    if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-            echo $_SESSION['bodMelding'];
-            $_SESSION['bodMelding'] = "";
 
-            if (isset($_SESSION['bodMelding']) && !empty($_SESSION['bodMelding'])) {
-                echo $_SESSION['bodMelding'];
-                $_SESSION['bodMelding'] = "";
-            }
-    }
 } else {
 
     header('Location: errorpage.php?err=404');
@@ -68,13 +66,16 @@ function placeItem($dbh, $id)
     echo getProductTitle($dbh);
     echo '
 
+
 <div class="uk-grid uk-flex uk-flex-wrap uk-padding-resize">
-    <div class="uk-width-1-2@xl uk-display-inline uk-flex-wrap uk-flex-first uk-cover-container margin-remove-left">
-        <img class="uk-margin-detail uk-nice-uitlijnen" 
-             src="'.$image.'"
-             alt="" uk-cover>
+<div class="uk-width-1-2@xl uk-width-1-1@l uk-width-1-1@m uk-width-1-1@s ">
+    <div class="uk-display-inline uk-flex-wrap uk-flex-first uk-cover-container uk-margin-small-left uk-margin-small-right">
+        <img class="uk-flex-center uk-align-center uk-height" src="' . $image . '"
+                     style="background-image: url(' . $image . ');" alt="Image">
+
     </div>
-    <div class="uk-grid-medium uk-width-1-2@xl uk-flex-center@s uk-flex-center@m uk-flex-center@l uk-width-2-3@l uk-width-2-3@m uk-width-1-1@s uk-flex-wrap uk-flex-last uk-margin-remove-left">
+    </div>
+    <div class="uk-grid-medium uk-width-1-2@xl uk-width-1-1 uk-flex-wrap uk-flex-last uk-margin-remove-left">
         <div class="uk-card-header niagara">
             <div class="uk-grid-small uk-flex-middle">
                 <div class="uk-text-center uk-align-center">
