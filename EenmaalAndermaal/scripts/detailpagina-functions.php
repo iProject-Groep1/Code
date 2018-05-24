@@ -8,7 +8,7 @@ function setRelevantItems($dbh, $rubriek_op_laagste_Niveau)
         $stmt->bindValue(":rubriek_op_laagste_Niveau", $rubriek_op_laagste_Niveau, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
-            echo createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $results['hoogsteBod'], $results['voorwerpnummer']);
+            echo createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $results['hoogsteBod'], $results['voorwerpnummer'], $dbh);
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
