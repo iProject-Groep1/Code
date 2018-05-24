@@ -74,3 +74,5 @@ function getProductTitle($dbh)
         header('Location: errorpage.php?err=500');
     }
 }
+?>
+
