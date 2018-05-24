@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'EenmaalAndermaal';
 require_once('scripts/header.php');
-include('scripts/auction-item-TIMERBACKUP.php');
+include('scripts/auction-item.php');
 include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
