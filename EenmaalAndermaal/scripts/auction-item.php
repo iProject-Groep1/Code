@@ -58,13 +58,13 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                 <img class="uk-flex-center uk-align-center" src="' . $image . '"
                      style="background-image: url(images/productImages/' . $image . ');" alt="Image"></a>
             </div>
-            <div class="uk-overlay uk-overlay-primary uk-position-bottom">
-                        <div class="uk-width-1-2 uk-text-center" uk-grid><div>
-                <h5 class="uk-text-center uk-display-inline">' . $productName . '</h5>
-                <h4 class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> € ' . $hoogsteBod . '</h4>
+            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-grid">
+                        <div class="uk-width-1-2 uk-text-center margin-to-zero" uk-grid><div class="uk-display-inline-block">
+                <h5 class="uk-text-center uk-display-inline">' . get_words($productName, $count = 3) . '</h5>
+                <h4 class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> €' . $hoogsteBod . '</h4>
                 </div></div>
-                <div class="uk-width-1-2 uk-text-center" uk-grid>
-                <div>
+                <div class="uk-width-1-2 uk-text-center margin-to-zero uk-margin-top-zero" uk-grid>
+                <div class="uk-display-inline-block">
                 <a class="uk-button uk-button-danger" href="detailpage.php?id=' . $id . '">Bekijk nu</a>
                 <div class=" uk-align-right uk-display-inline-block">
                 ';
@@ -105,6 +105,12 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                             ';
     return $itemCard;
 
+}
+
+
+function get_words($productName, $count = 10) {
+    preg_match("/(?:\w+(?:\W+|$)){0,$count}/", $productName, $matches);
+    return $matches[0];
 }
 
 
