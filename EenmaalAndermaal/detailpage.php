@@ -156,7 +156,7 @@ echo '
     <h3 class="uk-display-block uk-align-center uk-text-center">Product Informatie</h3>
     <p>
 <div class="uk-grid uk-flex uk-flex-wrap uk-padding-resize">
-<div class="uk-width-1-2@xl uk-width-1-1@l uk-width-1-1@m uk-width-1-1@s ">
+<div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s ">
 
     <div class="uk-display-inline uk-flex-wrap uk-flex-first uk-cover-container uk-margin-small-left uk-margin-small-right">
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider="center: true">
@@ -182,7 +182,7 @@ echo '
 
     </div >
     </div >
-    <div class="uk-grid-medium uk-width-1-2@xl uk-width-1-1 uk-flex-wrap uk-flex-last uk-margin-remove-left" >
+    <div class="uk-grid-medium uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s uk-flex-wrap uk-flex-last uk-margin-remove-left" >
         <div class="uk-card-header niagara" >
             <div class="uk-grid-small uk-flex-middle" >
                 <div class="uk-text-center uk-align-center" >
