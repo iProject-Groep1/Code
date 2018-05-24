@@ -28,7 +28,6 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
     }
 }
 
-
 if ($validURL) {
     $form = '
 
