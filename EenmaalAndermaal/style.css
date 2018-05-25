@@ -24,6 +24,10 @@ h3 {
 
 .uk-navbar-nav>li>a {
 	color: #FFFFFF;
+
+
+}
+.category-bar.uk-navbar-nav>li>a{
 	height: auto;
 }
 
