@@ -3,7 +3,7 @@ session_start();
 $redirect = "";
 if (isset($_SESSION['lastVisited'])) {
     $redirect = $_SESSION['lastVisited'];
-    if (strpos($redirect, 'verification.php') !== false) {
+    if (strpos($redirect, 'verification.php') !== false || strpos($redirect, 'registration.php') !== false || strpos($redirect, 'login.php') !== false ) {
         $redirect = "../index.php";
     }
 } else {
