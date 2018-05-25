@@ -24,6 +24,7 @@ h3 {
 
 .uk-navbar-nav>li>a {
 	color: #FFFFFF;
+	height: auto;
 }
 
 .uk-navbar2 {
