@@ -263,6 +263,16 @@ li .uk-button{
 	}
 }
 
+@media (max-width: 640px){
+	.uk-countdown-number, .uk-countdown-separator{
+		font-size: 1.5em;
+	}
+
+	.uk-font-size-changes {
+		font-size: 0.8em;
+	}
+}
+
 @media (min-width: 1200px) {
 	.uk-align-right{
 		margin-left: 0;
