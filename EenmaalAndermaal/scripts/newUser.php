@@ -72,8 +72,8 @@ function registerUser($dbh)
         }
 
         try {
-            $stmt = $dbh->prepare("delete from Verificatie where email like ':email'");
-            $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+            $stmt = $dbh->prepare("delete from Verificatie where email like :email");
+            $stmt->bindValue(":email", "%$email%", PDO::PARAM_STR);
             $stmt->execute();
         } catch(PDOException $e){
             echo "Fout" . $e->getMessage();
