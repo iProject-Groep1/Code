@@ -78,7 +78,7 @@ function placeItem($dbh, $id)
     echo '
 <div class="uk-margin-detail">
 
-<ul class="uk-breadcrumb" >
+<ul class="uk-breadcrumb uk-width-1-1" >
     <li><a href="index.php">Home</a></li>
     <li><a href="category.php?categoryID=' . $categoryID . '">' . $categoryName . '</a></li>
     <li class="uk-disabled"><span>' . $productTitle . '</span></li>
