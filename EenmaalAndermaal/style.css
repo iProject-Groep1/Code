@@ -214,11 +214,6 @@ li .uk-button{
 	margin-bottom: -20px;
 }
 
-.scroll{
-	height: 350px;
-	overflow-y: scroll;
-}
-
 .grey{
 	background-color: #e5e7ec;
 }
@@ -235,6 +230,13 @@ li .uk-button{
 	margin-left: 2%;
 }
 
+/*	-haalt het marge boven de afbeelding in de detailpagina weg
+	-staat nog niet in de detailpagina
+	-werkt nog niet
+
+set-line-height-0{
+	line-height: 0;
+}*/
 
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
 

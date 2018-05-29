@@ -91,7 +91,7 @@ function getBids($dbh)
     $bid = "";
     $objectNumber = $_GET['id'];
     try {
-        $stmt = $dbh->prepare("SELECT bodbedrag, gebruiker FROM dbo.Bod WHERE voorwerp = :voorwerp ORDER BY bodbedrag DESC");
+        $stmt = $dbh->prepare("SELECT TOP 5 bodbedrag, gebruiker FROM dbo.Bod WHERE voorwerp = :voorwerp ORDER BY bodbedrag DESC");
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) {
