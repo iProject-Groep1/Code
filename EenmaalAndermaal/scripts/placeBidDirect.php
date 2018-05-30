@@ -38,7 +38,7 @@ function setMinBid($dbh, $id, $bedrag)
 
     if ($bedrag >= $maxBodBedrag) {
         $_SESSION['bodMelding'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Het bodbedrag moet minder dan'. $maxBodBedrag .'.\', status: \'danger\'})</script>
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Het bodbedrag moet minder dan '. $maxBodBedrag .' zijn.\', status: \'danger\'})</script>
         ';
         header('Location:../detailpage.php?id=' . $id . '');
     } else if ($bedrag >= calcMinBid($dbh, $id)) {
