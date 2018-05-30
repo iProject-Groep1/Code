@@ -119,10 +119,18 @@ function placeItem($dbh, $id)
     </div >
     <div class="uk-grid-medium uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s uk-flex-wrap uk-flex-last uk-margin-remove-left" >
         <div class="uk-card-header niagara" >
+            
+            ';
+                $auctionStatus = getAuctionStatus($dbh);
+                if($auctionStatus == 1){
+                echo '<h4 class="uk-text-center uk-align-center white-font"> Deze veiling is gesloten </h4>' ;
+                }else if ($auctionStatus == 0){
+            echo'
+            
             <div class="uk-grid-small uk-flex-middle" >
                 <div class="uk-text-center uk-align-center" >
                     <div class=" uk-display-inline-block uk-align-center" >     
-                        <div class="uk-grid-small  uk-child-width-auto detail-pagina-countdown" uk-grid uk-countdown = "date: ' . $timeOfEnding . ' " >
+                        <div class="uk-grid-small  uk-child-width-auto white-font" uk-grid uk-countdown = "date: ' . $timeOfEnding . ' " >
                             <div >
                                 <div class="uk-countdown-number uk-countdown-days uk-text-center" ></div >
                             </div >
@@ -142,10 +150,16 @@ function placeItem($dbh, $id)
                     </div >
                 </div >
             </div >
+            '; } echo '
         </div >
         <div class="uk-card-body grey" >
 ';
-    echo getBids($dbh);
+    if($auctionStatus == 1){
+        echo '<h3> Veiling winnaar: </h3>';
+        echo getBids ($dbh, 1);
+    } else {
+        echo getBids($dbh);
+
     echo '
         </div >
         <div class="uk-card-footer grey" >
@@ -160,7 +174,9 @@ function placeItem($dbh, $id)
             <div class="uk-width-1-4 uk-align-right" >
                 <input class="uk-input uk-width-1-8" type = "text" value = "€' . $minBid . '" disabled >
             </div >
+            '; } echo '
         </div >
+         
     </div >
 </div >
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw" >
@@ -171,7 +187,6 @@ function placeItem($dbh, $id)
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin" >
 ';
     echo getProductInfo($dbh);
-
     echo '
 
 
