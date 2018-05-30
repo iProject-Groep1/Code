@@ -14,6 +14,5 @@ if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
 echo getCategoryOverview($dbh);
 
 
-
 require_once('scripts/footer.php');
 ?>

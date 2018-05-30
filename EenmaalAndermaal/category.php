@@ -27,9 +27,21 @@ if (isset($_GET['categoryID']) && !empty($_GET['categoryID'])) {
 }
 
 if ($idCorrect) {
+    $categoryTitle = '';
+    try {
+        $stmt = $dbh->prepare("SELECT rubrieknaam FROM rubriek WHERE rubrieknummer = :rubrieknummer");
+        $stmt->bindValue(":rubrieknummer", $_GET['categoryID'], PDO::PARAM_STR);
+        $stmt->execute();
+        if ($row = $stmt->fetch()) {
+            $categoryTitle = $row['rubrieknaam'];
+        }
+    } catch (PDOException $e) {
+        echo "Error" . $e->getMessage();
+    }
+
     //TODO: Rubriektitel dynamisch maken
     echo '<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
-    <h3 class="uk-display-block uk-align-center uk-text-center">Rubriektitel</h3>
+    <h3 class="uk-display-block uk-align-center uk-text-center">'.$categoryTitle.'</h3>
     <p>
 <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getAuctionCards($dbh, $_GET['categoryID']).'</div>
 </p></div>';

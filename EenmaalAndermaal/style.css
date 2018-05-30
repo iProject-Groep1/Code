@@ -24,6 +24,11 @@ h3 {
 
 .uk-navbar-nav>li>a {
 	color: #FFFFFF;
+
+
+}
+.category-bar.uk-navbar-nav>li>a{
+	height: auto;
 }
 
 .uk-navbar2 {
@@ -77,6 +82,10 @@ h3 {
 
 .uk-grid-small {
 	flex-wrap: nowrap;
+}
+
+.uk-maak-rood{
+	color: red;
 }
 
 .uk-logo {
@@ -205,11 +214,6 @@ li .uk-button{
 	margin-bottom: -20px;
 }
 
-.scroll{
-	height: 350px;
-	overflow-y: scroll;
-}
-
 .grey{
 	background-color: #e5e7ec;
 }
@@ -226,6 +230,13 @@ li .uk-button{
 	margin-left: 2%;
 }
 
+/*	-haalt het marge boven de afbeelding in de detailpagina weg
+	-staat nog niet in de detailpagina
+	-werkt nog niet
+
+set-line-height-0{
+	line-height: 0;
+}*/
 
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
 
@@ -249,6 +260,16 @@ li .uk-button{
 }
 
 @media (min-width: 640px){
+	.uk-countdown-number, .uk-countdown-separator{
+		font-size: 1.5em;
+	}
+
+	.uk-font-size-changes {
+		font-size: 0.8em;
+	}
+}
+
+@media (max-width: 640px){
 	.uk-countdown-number, .uk-countdown-separator{
 		font-size: 1.5em;
 	}

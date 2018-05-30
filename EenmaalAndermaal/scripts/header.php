@@ -94,7 +94,7 @@ $header .= '
 
 <nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
     <div class="uk-navbar-center">
-        <ul class="uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
+        <ul class="category-bar uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
             <li><a href="category-overview.php">Alle Rubrieken</a></li>';
 
             try{

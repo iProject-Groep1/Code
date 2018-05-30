@@ -78,7 +78,7 @@ function placeItem($dbh, $id)
     echo '
 <div class="uk-margin-detail">
 
-<ul class="uk-breadcrumb" >
+<ul class="uk-breadcrumb uk-width-1-1" >
     <li><a href="index.php">Home</a></li>
     <li><a href="category.php?categoryID=' . $categoryID . '">' . $categoryName . '</a></li>
     <li class="uk-disabled"><span>' . $productTitle . '</span></li>
@@ -91,7 +91,7 @@ function placeItem($dbh, $id)
 
 
 <div class="uk-grid uk-flex uk-flex-wrap uk-padding-resize">
-<div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s ">
+<div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
 
     <div class="uk-display-inline uk-flex-wrap uk-flex-first uk-cover-container uk-margin-small-left uk-margin-small-right">
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider="center: true">
@@ -99,7 +99,7 @@ function placeItem($dbh, $id)
         ';
 
     foreach ($image as $key) {
-        $imageScript .=  '<li class="uk-width-3-4" >
+        $imageScript .=  '<li class="uk-width-3-4 " >
         <img class="uk-flex-center uk-align-center uk-height" src="' . $key . '"
                      style="background-image: url(' . $key . ');" alt="'. $key .'" >
                      </li >';
@@ -109,8 +109,8 @@ function placeItem($dbh, $id)
 
     echo '
     </ul>
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-maak-rood" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-maak-rood" href="#" uk-slidenav-next uk-slider-item="next"></a>
 
                      </div >
                    
@@ -143,7 +143,7 @@ function placeItem($dbh, $id)
                 </div >
             </div >
         </div >
-        <div class="uk-card-body scroll grey" >
+        <div class="uk-card-body grey" >
 ';
     echo getBids($dbh);
     echo '
@@ -165,7 +165,7 @@ function placeItem($dbh, $id)
 </div >
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body kleur-licht-blauw" >
     <h3 class="uk-display-block uk-align-center uk-text-center" > Product Informatie </h3 >
-    <p >
+   
 
 
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin" >
@@ -176,7 +176,7 @@ function placeItem($dbh, $id)
 
 
     </div >
-    </p ></div >
+    </div >
 
 <div class="uk-card auctions-reset-margin uk-card-default uk-card-body" >
     <h3 class="uk-display-block uk-align-center uk-text-center" > Vergelijkbare veilingen </h3 >
