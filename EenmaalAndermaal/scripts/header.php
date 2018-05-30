@@ -81,8 +81,14 @@ if (isset($_SESSION['username'])) {
 }
 $header .= '
             <li><a href="">Contact</a></li>
-            <li><a href="Profile.php">Mijn Profiel</a></li>
-        </ul>';
+        ';
+
+if (isset($_SESSION['username'])) {
+    $header .= '<li><a href="Profile.php">Mijn Profiel</a></li>';
+}
+
+echo '</ul>';
+
 if (!isset($_SESSION['username'])) {
     $header .= '
         <div class="uk-navbar-item uk-visible@m uk-navbar1" >
