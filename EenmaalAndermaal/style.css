@@ -238,6 +238,13 @@ set-line-height-0{
 	line-height: 0;
 }*/
 
+
+.profile-sidebar{
+	position: absolute;
+	margin-left: 10%;
+}
+
+
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
 
 @media (min-width: 1090px){
@@ -257,6 +264,13 @@ set-line-height-0{
 	.responsive-laptop {
 		display: none;
 	}
+
+	.profile-sidebar{
+		position: static;
+		width: 25%;
+		margin: auto;
+	}
+
 }
 
 @media (min-width: 640px){
@@ -284,5 +298,7 @@ set-line-height-0{
 		margin-left: 0;
 	}
 }
+
+
 
 
