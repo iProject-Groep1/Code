@@ -179,6 +179,9 @@ if ($validURL) {
     </div>
 </div>
 
+<div class="uk-margin uk-form-horizontal">
+<label><input class="uk-checkbox" type="checkbox" required> Ik ga akkoord met de <a href="algemeneVoorwaarden.php" target="_blank">Algemene Voorwaarden</a></label>
+</div>
 
 <div class="uk-margin uk-flex uk-flex-center ">
     <div class="uk-inline uk-width-2-3">

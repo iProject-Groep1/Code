@@ -121,6 +121,7 @@ function createMessage($email, $hash)
 <div>
 <p>Uw account is gemaakt met het volgende e-mail adres: ' . $email . '</p>
 <p>Uw verificatie code is: ' . $hash . '</p>
+<p>IProject Groep 01</p>
 </div>
 
 
