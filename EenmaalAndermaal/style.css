@@ -52,6 +52,10 @@ h3 {
 	padding: 0 20px;
 }
 
+.uk-card-body {
+	padding: 0 30px;
+}
+
 .uk-margin-detail-right{
 	padding-right: 40px
 }
@@ -74,7 +78,9 @@ h3 {
 	padding-left: 0;
 }
 
-.
+.margin-card-left{
+	margin-left:40px;
+}
 
 .uk-overlay {
 	padding: 10px 10px;
@@ -133,7 +139,7 @@ padding: 0 0 0 0;
 margin: 5px 5px;
 }
 
-.detail-pagina-countdown{
+.white-font{
 color: white;
 }
 

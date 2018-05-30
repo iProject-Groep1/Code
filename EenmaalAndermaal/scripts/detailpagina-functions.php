@@ -60,6 +60,25 @@ function getProductInfo($dbh)
     }
 }
 
+function getAuctionStatus($dbh)
+{
+    $objectNumber = $_GET['id'];
+    try {
+        $stmt = $dbh->prepare("SELECT veilinggesloten FROM dbo.Voorwerp WHERE voorwerpnummer = :voorwerp");
+        $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
+            $auctionStatus= $row['veilinggesloten'];
+
+        }
+        return $auctionStatus;
+    } catch (PDOException $e) {
+        echo "Error" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
+    }
+}
+
+
 
 ?>
 
