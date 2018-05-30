@@ -23,26 +23,21 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     <h1 class="uk-text-center">Gegevens wijzigen</h1>
 
-    <div class="uk-grid auctions-reset-margin" uk-grid="">
-            <div class="uk-display-inline-block">
-                <ul class="uk-nav-default uk-nav-parent-icon uk-nav " uk-nav="">
-
-                    <li class="uk-parent uk-open uk-margin-detail">
-                        <a href="#">EenmaalAndermaal</a>
-                        <ul class="uk-nav-sub" aria-hidden="false">
-                            <li><a href="profile.php">Mijn Profiel</a></li>
-                            <li><a href="">Gegevens wijzigen</a></li>
-                            <li>
-                                <a href="#">Mijn Veilingen</a>
-
-                            </li>
-                            <li><a href="#">Mijn Biedingen</a></li>
-
-                        </ul>
+    <div class="profile-sidebar uk-align-center@m">
+        <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <li class="uk-parent uk-open">
+                <a href="#">EenmaalAndermaal</a>
+                <ul class="uk-nav-sub" aria-hidden="false">
+                    <li><a href="profile.php">Mijn Profiel</a></li>
+                    <li><a href="">Gegevens wijzigen</a></li>
+                    <li>
+                        <a href="#">Mijn Veilingen</a>
                     </li>
-
+                    <li><a href="#">Mijn Biedingen</a></li>
                 </ul>
-            </div>
+            </li>
+        </ul>
+    </div>
 
 
         <div class="uk-card uk-card-default uk-width-1-3@m uk-display-inline-block margin-card-left">
