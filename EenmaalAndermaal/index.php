@@ -28,7 +28,7 @@ $queries['Koopjes'] = "select top 4 v.voorwerpnummer, v.titel, v.looptijdEindmom
 $queries['Laatste kans'] = "select top 4 v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod , CURRENT_TIMESTAMP AS serverTijd from Voorwerp v left join bod b on v.voorwerpnummer = b.voorwerp where datediff(minute, CURRENT_TIMESTAMP, LooptijdEindmoment) < 10 AND v.veilinggesloten = 0 group by voorwerpnummer, titel, looptijdEindmoment";
 $attentionSeekers = "";
 foreach($queries as $soort => $query){
-    $attentionSeekers .=  '<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
+    $attentionSeekers .=  '<div class="uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body">
     <h3 class="uk-display-block uk-align-center uk-text-center">'.$soort.'</h3>
     <p>
     <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getHomepageCards($dbh, $query).'</div>
