@@ -52,7 +52,7 @@ $header .= '
 
                         <li><a href="#">Contact</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Algemene Voorwaarden</a></li>
+                        <li><a href="algemeneVoorwaarden.php">Algemene Voorwaarden</a></li>
                         <li><a href="#">Over EenmaalAndermaal</a></li>
                         <li><a href="#">FAQ</a></li>
                     </ul>
