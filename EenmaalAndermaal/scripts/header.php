@@ -68,11 +68,19 @@ $header .= '
         <a href="index.php" class="uk-navbar-item uk-navbar1 uk-logo">
             <img src="images/auction.png" class="uk-margin-small-right" width="32" height="28">EenmaalAndermaal</a>
     </div>
+
     <div class="uk-navbar-right uk-navbar-blue">
         <ul class="uk-navbar-nav uk-navbar-nav1 uk-visible@m">
+            <li><div>
+            <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+            <div style="background-color: white" class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+                <form class="uk-search uk-search-navbar uk-width-1-1">
+                    <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                </form>
+            </div>
+            </div>
             <li><a href="index.php">Home</a></li>
             <li><a href="category-overview.php">Rubrieken</a></li>';
-
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
     $header .= '<li><a href="logout.php">Uitloggen</a></li>';
