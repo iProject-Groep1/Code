@@ -17,6 +17,8 @@ drop table if exists Looptijd
 go
 drop table if exists Vraag
 go
+drop table if exists Verkoper
+go
 drop table if exists Gebruiker
 go
 drop table if exists Gebruikerstelefoon
@@ -90,6 +92,7 @@ Constraint FK_Betalingswijze Foreign Key (Betalingswijze) References Betaalwijze
 Constraint CK_Plaatsnaam Check ( (len(rtrim(ltrim(Plaatsnaam)))) >1),
 Constraint CK_Beschrijving Check ( (len(rtrim(ltrim(Plaatsnaam)))) >1) 
 );
+
 
 DROP FUNCTION IF EXISTS fnCHK_Maximaal_2_Gratis_Rubrieken_per_Voorwerp
 go
@@ -197,6 +200,19 @@ CREATE TABLE Gebruiker (
 	CONSTRAINT FK_Gebruiker_Land			FOREIGN KEY (land) REFERENCES Land(land) 
 )
 
+CREATE TABLE Verkoper (
+	gebruikersnaam		VARCHAR(20)		NOT NULL,						--veranderd van char(10)
+	bank				VARCHAR(20)		NOT NULL DEFAULT 'Rabobank',	--veranderd van char(8)
+	rekeningnummer		VARCHAR(34)				,						--TODO: nog voor regelen dat deze not null is als creditcardnummer null is en andersom... veranderd van int(7)
+	controleOptie		VARCHAR(10)		NOT NULL DEFAULT 'Post',		--veranderd van char(10)
+	creditcardnummer	numeric(16)				,						--TODO: nog regelen dat deze null is als controleOptie 'Post' is.
+	rating				numeric(4, 1)	NOT NULL,						
+	CONSTRAINT VerkoperKey PRIMARY KEY(gebruikersnaam),
+	CONSTRAINT FK_Verkoper_Gebruikersnaam FOREIGN KEY (gebruikersnaam) REFERENCES Gebruiker(gebruikersnaam),	
+	CONSTRAINT CK_controleOptie CHECK(controleOptie in ('Creditcard','Post')),
+	CONSTRAINT CK_rating CHECK(rating <= 100)
+)
+
 CREATE TABLE Gebruikerstelefoon (
 
 	volgnr				INTEGER				NOT NULL, 
@@ -207,7 +223,4 @@ CREATE TABLE Gebruikerstelefoon (
 	CONSTRAINT FK_Gebruikerstelefoon_Gebruikersnaamkey FOREIGN KEY (gebruiker) REFERENCES Gebruiker(gebruikersnaam)
 
 )
-
-
-
 
