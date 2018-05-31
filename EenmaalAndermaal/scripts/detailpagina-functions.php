@@ -1,6 +1,5 @@
 <?php
 
-
 function setRelevantItems($dbh, $rubriek_op_laagste_Niveau, $voorwerp)
 {
     $relevantItems = '';

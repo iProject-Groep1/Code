@@ -18,8 +18,13 @@ h3 {
 	background: #5484A4;
 }
 
-.uk-align-card{
+.uk-card-refactor{
 	margin-left: 400px;
+	padding: 0;
+}
+
+.uk-card-refactor2{
+	margin-left: 380px;
 }
 
 .uk-grid>* {
@@ -138,6 +143,10 @@ color: #111111;
 margin: 20px 0 0 20px
 }
 
+.uk-center-upload{
+	margin-left: 380px;
+}
+
 .uk-grid-changes {
 padding: 0 0 0 0;
 margin: 5px 5px;
@@ -164,6 +173,15 @@ padding: 20px 0;
 	margin-left: -20px;
 }
 
+.uk-upload-picture{
+	padding:30px 255px;
+}
+
+.uk-textarea{
+	width: 220%;
+	max-width: 220%;
+}
+
 .categories-reset-padding {
 padding-bottom: 20px;
 }
@@ -171,6 +189,13 @@ padding-bottom: 20px;
 .auctions-reset-margin {
 margin-top: 20px;
 margin-bottom: 20px;
+}
+
+
+
+.uk-button-reset{
+	padding:0;
+	margin:0;
 }
 
 .uk-navbar-toggle{
@@ -203,6 +228,11 @@ li .uk-button{
 
 .uk-auction-margin{
 	margin: 10px 0;
+}
+
+.uk-reset-margins{
+	margin:0;
+	padding:0;
 }
 
 .uk-parent a {
@@ -264,6 +294,9 @@ set-line-height-0{
 	.responsive-laptop {
 		display: flex;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 }
 
 @media (max-width: 1090px){
@@ -280,6 +313,9 @@ set-line-height-0{
 		width: 25%;
 		margin: auto;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 
 }
 
@@ -291,6 +327,9 @@ set-line-height-0{
 	.uk-font-size-changes {
 		font-size: 0.8em;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 }
 
 @media (max-width: 640px){
@@ -301,11 +340,18 @@ set-line-height-0{
 	.uk-font-size-changes {
 		font-size: 0.8em;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 }
 
 @media (min-width: 1200px) {
 	.uk-align-right{
 		margin-left: 0;
+	}
+
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
 	}
 }
 
