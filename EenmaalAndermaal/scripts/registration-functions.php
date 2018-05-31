@@ -104,7 +104,7 @@ function emailReg($dbh)
 function createMessage($email, $hash)
 {
     $to = $email; // Send email to our user
-    $subject = 'Registratie | Verificatie EenmaalAndermaal | I-projectgroep 1'; // Give the email a subject
+    $subject = 'Registratie | Verificatie EenmaalAndermaal | I-Project Groep 1'; // Give the email a subject
     $message = '
  <!DOCTYPE HTML>
  <html lang="nl">
