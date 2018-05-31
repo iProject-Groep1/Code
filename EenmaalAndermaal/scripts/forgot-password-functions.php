@@ -65,6 +65,7 @@ function usernameValid($username, $dbh)
     return false;
 }
 
+//TODO: password generator
 function sendNewPassword($email)
 {
     $to = $email; // Send email to our user
@@ -76,16 +77,17 @@ function sendNewPassword($email)
  <meta charset="UTF-8">
 </head>
 <body>
-<h1>Bedankt voor het registreren!</h1>
+<h1>Uw nieuwe wachtwoord.</h1>
 <div>
-<p>Je account is gemaakt, nadat je gegevens hebt ingevuld kan je inloggen op <a href="http://iproject1.icasites.nl/login.php">EenmaalAndermaal</a></p>
-<p>Klik op <a href="http://iproject1.icasites.nl/verification.php?email=' . $email . '&hash=' . $hash . '">deze link</a> om je gegevens in te vullen.</p>
+<p>U heeft zojuist een nieuw wachtwoord aangevraagd.</p>
+<p>Uw nieuwe wachtwoord is: <span>...</span></p>
  </div>
 
 <div>
-<p>Uw account is gemaakt met het volgende e-mail adres: ' . $email . '</p>
-<p>Uw verificatie code is: ' . $hash . '</p>
-<p>IProject Groep 01</p>
+<p>U kunt hiermee inloggen via <a href="iproject1.icasites.nl/login.php">deze</a> link</p>
+<p>Heeft u dit wachtwoord niet aangevraagd? Neem dan zo snel mogelijk contact op met onze klantenservice.</p>
+
+<p>I-Project Groep 1</p>
 </div>
 
 
