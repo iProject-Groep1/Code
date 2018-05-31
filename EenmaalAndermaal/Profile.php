@@ -21,7 +21,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     ?>
 
-    <h1 class="uk-text-center">Mijn Profiel</h1>
+    <h2 class="uk-text-center">Mijn Profiel</h2>
     <div class="uk-margin-left@l uk-margin-left@m">
         <div class="profile-sidebar uk-align-center@m">
             <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
