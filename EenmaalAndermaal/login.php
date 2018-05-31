@@ -86,7 +86,7 @@ if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
             </div>
 
             <!-- TODO: href veranderen naar wachtwoord vergeten pagina -->
-            <p class="uk-text-center"><a href="#">Wachtwoord vergeten?</a></p>
+            <p class="uk-text-center"><a href="forgot-password.php">Wachtwoord vergeten?</a></p>
 
             <hr class="uk-divider-icon">
 
