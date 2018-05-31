@@ -294,6 +294,9 @@ set-line-height-0{
 	.responsive-laptop {
 		display: flex;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 }
 
 @media (max-width: 1090px){
@@ -310,6 +313,9 @@ set-line-height-0{
 		width: 25%;
 		margin: auto;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 
 }
 
@@ -321,6 +327,9 @@ set-line-height-0{
 	.uk-font-size-changes {
 		font-size: 0.8em;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 }
 
 @media (max-width: 640px){
@@ -331,11 +340,18 @@ set-line-height-0{
 	.uk-font-size-changes {
 		font-size: 0.8em;
 	}
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
+	}
 }
 
 @media (min-width: 1200px) {
 	.uk-align-right{
 		margin-left: 0;
+	}
+
+	.uk-card-body .uk-nav-default {
+		margin: 25px -40px;
 	}
 }
 
