@@ -23,27 +23,23 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     <h1 class="uk-text-center">Gegevens wijzigen</h1>
 
-    <div class="profile-sidebar uk-align-center@m">
-        <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
-            <li class="uk-parent uk-open">
-                <a href="#">EenmaalAndermaal</a>
-                <ul class="uk-nav-sub" aria-hidden="false">
-                    <li
-                    "><a href="profile.php">Mijn Profiel</a></li>
-                    <li><a href="">Gegevens wijzigen</a></li>
-                    <li>
-                        <a href="#">Mijn Veilingen</a>
-                    </li>
-                    <li><a href="#">Mijn Biedingen</a></li>
-                    <li> <a class="uk-button uk-button-primary" href="#">Plaats Advertentie</a></li>
-                </ul>
-            </li>
-        </ul>
+    <div class="uk-grid uk-flex">
+        <div class="uk-align-left profile-sidebar uk-align-center@m uk-display-block uk-width-1-2@s uk-width-1-6@m">
+            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+                <li class="uk-parent uk-open">
+                    <a href="#">EenmaalAndermaal</a>
+                    <ul class="uk-nav-sub" aria-hidden="false">
+                        <li><a href="profile.php">Mijn Profiel</a></li>
+                        <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
+                        <li><a href="#">Mijn Veilingen</a></li>
+                        <li><a href="#">Mijn Biedingen</a></li>
+                        <li><a class="uk-button uk-button-primary" href="#">Plaats Advertentie</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
-    </div>
-
-
-        <div class="uk-card uk-card-default uk-width-1-3@m uk-display-inline-block margin-card-left">
+        <div class="uk-align-card uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block">
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
                     <div class="uk-width-expand">
@@ -53,39 +49,42 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
             <div class="uk-card-body">
                 <p>
-                <form>
-                    <fieldset class="uk-fieldset">
+                    <form>
+                        <fieldset class="uk-fieldset">
 
-                        <div class="uk-margin">
-                            <label class="uk-form-label" for="form-horizontal-text">Voornaam: </label>
-                            <div class="uk-form-controls">
-                                <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Voornaam">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text">Voornaam: </label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-horizontal-text" type="text"
+                                           placeholder="Voornaam">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="uk-margin">
-                            <label class="uk-form-label" for="form-horizontal-text">Achternaam: </label>
-                            <div class="uk-form-controls">
-                                <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Achternaam">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text">Achternaam: </label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-horizontal-text" type="text"
+                                           placeholder="Achternaam">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="uk-margin">
-                            <label class="uk-form-label" for="form-horizontal-text">Geboortedatum: </label>
-                            <div class="uk-form-controls">
-                                <input class="uk-input" id="form-horizontal-text" type="date">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text">Geboortedatum: </label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-horizontal-text" type="date">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="uk-margin">
-                            <label class="uk-form-label" for="form-horizontal-text">Mobiele telefoonnummer: </label>
-                            <div class="uk-form-controls">
-                                <input class="uk-input" id="form-horizontal-text" type="text"
-                                       placeholder="telefoonnummer">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text">Mobiele
+                                    telefoonnummer: </label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-horizontal-text" type="text"
+                                           placeholder="telefoonnummer">
+                                </div>
                             </div>
-                        </div>
 
-                        <hr class="uk-divider-icon">
+                            <hr class="uk-divider-icon">
 
                 <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
 
@@ -94,15 +93,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                            value="Opslaan">
                 </div>
 
-                    </fieldset>
+                </fieldset>
                 </form>
 
                 </p>
             </div>
         </div>
 
-
-        <div class="uk-card uk-card-default uk-width-1-3@m uk-display-inline-block margin-card-left">
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block">
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
                     <div class="uk-width-expand">
@@ -144,9 +142,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
                 <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
 
-                    <div class="uk-inline uk-align-right uk-width-1-3">
-                        <input class="uk-input uk-button-primary" type="submit" name="submit " id="loginSubmit"
-                               value="Opslaan">
+                <div class="uk-inline uk-align-right uk-width-1-3">
+                    <input class="uk-input uk-button-primary" type="submit" name="submit " id="loginSubmit"
+                           value="Opslaan">
                 </div>
 
 

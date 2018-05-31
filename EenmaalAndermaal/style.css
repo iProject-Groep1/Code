@@ -18,6 +18,10 @@ h3 {
 	background: #5484A4;
 }
 
+.uk-align-card{
+	margin-left: 400px;
+}
+
 .uk-grid>* {
 	padding-left: 20px;
 }
@@ -247,7 +251,7 @@ set-line-height-0{
 
 .profile-sidebar{
 	position: absolute;
-	margin-left: 10%;
+	margin-left: 4%;
 }
 
 
