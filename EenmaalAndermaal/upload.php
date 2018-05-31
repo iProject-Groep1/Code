@@ -105,7 +105,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
                 UIkit.upload('.js-upload', {
 
-                    url: 'upload',
+                    url: 'images',
                     multiple: true,
 
                     beforeSend: function () {
