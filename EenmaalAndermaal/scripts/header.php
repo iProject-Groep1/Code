@@ -89,14 +89,22 @@ if (isset($_SESSION['username'])) {
 }
 $header .= '
             <li><a href="">Contact</a></li>
-        </ul>';
-    if(!isset($_SESSION['username'])) {
-        $header.='
+        ';
+
+if (isset($_SESSION['username'])) {
+    $header .= '<li><a href="Profile.php">Mijn Profiel</a></li>';
+}
+
+echo '</ul>';
+
+if (!isset($_SESSION['username'])) {
+    $header .= '
         <div class="uk-navbar-item uk-visible@m uk-navbar1" >
             <a href = "registration.php" class="uk-button uk-button-danger tm-button-default uk-icon" > Registreer nu </a >
         </div >';
-        }
-        $header.='
+}
+
+$header .= '
     </div>
 </nav>
 
@@ -105,19 +113,19 @@ $header .= '
         <ul class="category-bar uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
             <li><a href="category-overview.php">Alle Rubrieken</a></li>';
 
-            try{
-                $stmt = $dbh->prepare("SELECT TOP 9 COUNT(voorwerpnummer) AS aantal, r.rubrieknaam, r.rubrieknummer FROM Voorwerp v JOIN VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp JOIN rubriek r ON  vir.rubriek_op_laagste_Niveau = r.rubrieknummer WHERE veilinggesloten = 0 GROUP BY r.rubrieknaam, r.rubrieknummer ORDER BY aantal desc
+try {
+    $stmt = $dbh->prepare("SELECT TOP 9 COUNT(voorwerpnummer) AS aantal, r.rubrieknaam, r.rubrieknummer FROM Voorwerp v JOIN VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp JOIN rubriek r ON  vir.rubriek_op_laagste_Niveau = r.rubrieknummer WHERE veilinggesloten = 0 GROUP BY r.rubrieknaam, r.rubrieknummer ORDER BY aantal desc
 ");
-                $stmt->execute();
-                while($row = $stmt->fetch()){
-                    $header.='<li><a href="category.php?categoryID='.$row['rubrieknummer'].'">'.$row['rubrieknaam'].'</a></li>';
-                }
-            } catch(PDOException $e){
-                echo "Error" . $e->getMessage();
-                header('Location: errorpage.php?err=500');
-            }
-            
-            $header.='
+    $stmt->execute();
+    while ($row = $stmt->fetch()) {
+        $header .= '<li><a href="category.php?categoryID=' . $row['rubrieknummer'] . '">' . $row['rubrieknaam'] . '</a></li>';
+    }
+} catch (PDOException $e) {
+    echo "Error" . $e->getMessage();
+    header('Location: errorpage.php?err=500');
+}
+
+$header .= '
         </ul>
     </div>
 </nav>

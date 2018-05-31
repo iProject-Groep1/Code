@@ -86,12 +86,12 @@ function getStartPrice($dbh, $id){
     }
 }
 
-function getBids($dbh)
+function getBids($dbh, $aantal = 5)
 {
     $bid = "";
     $objectNumber = $_GET['id'];
     try {
-        $stmt = $dbh->prepare("SELECT TOP 5 bodbedrag, gebruiker FROM dbo.Bod WHERE voorwerp = :voorwerp ORDER BY bodbedrag DESC");
+        $stmt = $dbh->prepare("SELECT TOP $aantal bodbedrag, gebruiker FROM dbo.Bod WHERE voorwerp = :voorwerp ORDER BY bodbedrag DESC");
         $stmt->bindValue(":voorwerp", $objectNumber, PDO::PARAM_STR);
         $stmt->execute();
         while ($row = $stmt->fetch()) {
