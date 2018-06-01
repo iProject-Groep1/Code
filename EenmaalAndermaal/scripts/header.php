@@ -5,6 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 include('database-connect.php');
 
+
 $header = '
 
 <!DOCTYPE HTML>
@@ -22,7 +23,7 @@ $header = '
     <script src="UIkit/js/uikit-icons.js"></script>
     <script src="UIkit/js/awesomplete.js"></script>
     <script src="Uikit/js/index.js"></script>
-    
+
 </head>
 
 
@@ -75,8 +76,8 @@ $header .= '
             <li><div>
             <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
             <div style="background-color: white" class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                <form class="uk-search uk-search-navbar uk-width-1-1">
-                    <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                <form class="uk-search uk-search-navbar uk-width-1-1" action="../SearchResults.php" method="post">
+                    <input class="uk-search-input" type="search" name="Searching" placeholder="Search..." autofocus>
                 </form>
             </div>
             </div>
@@ -123,7 +124,7 @@ try {
     }
 } catch (PDOException $e) {
     echo "Error" . $e->getMessage();
-   header('Location: errorpage.php?err=500');
+    header('Location: errorpage.php?err=500');
 }
 
 $header .= '
@@ -131,5 +132,6 @@ $header .= '
     </div>
 </nav>
 ';
+
 echo $header;
 ?>

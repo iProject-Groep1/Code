@@ -5,7 +5,7 @@ function searchRubriek($dbh, $search)
 
     try {
         $SQL = "
-SELECT TOP 5 COUNT(voorwerpnummer) AS aantal, r.rubrieknaam as naam, r.rubrieknummer 
+SELECT TOP 5 COUNT(voorwerpnummer) AS aantal, r.rubrieknaam as naam, r.rubrieknummer as nummer
 FROM Voorwerp v JOIN VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp 
 JOIN rubriek r ON  vir.rubriek_op_laagste_Niveau = r.rubrieknummer 
 WHERE veilinggesloten = 0 
@@ -20,7 +20,7 @@ ORDER BY aantal desc";
         $echo = "";
         while ($results = $stmt->fetch()) {
 
-            $echo .='<a href="upload.php?Rubriek='. $results['naam'] .'">'. $results['naam'] . '</a><br>';
+            $echo .='<a href="upload.php?Rubriek='. $results['naam'] .'Rubrieknr='.$results['nummer'].'">'. $results['naam'] . '</a><br>';
         }
         echo $echo;
     } catch (PDOException $e) {
