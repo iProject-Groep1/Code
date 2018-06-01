@@ -30,10 +30,10 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php">Mijn Profiel</a></li>
-                        <li><a href="changeProfile.php"><strong>Gegevens wijzigen</strong></a></li>
+                        <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
                         <li><a href="#">Mijn Veilingen</a></li>
                         <li><a href="#">Mijn Biedingen</a></li>
-                        <li><a class="uk-button uk-button-primary" href="upload.php">Plaats Advertentie</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
                     </ul>
                 </li>
             </ul>
@@ -49,29 +49,29 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
             <div class="uk-card-body">
                 <p>
-                    <form>
+                    <form method="POST" action="scripts/change-personal-information.php">
                         <fieldset class="uk-fieldset">
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Voornaam: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-horizontal-text" type="text"
-                                           placeholder="Voornaam">
+                                    <input class="uk-input" name="firstname" id="form-horizontal-text" type="text"
+                                           value="<?= $data['voornaam'] ?>" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Achternaam: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-horizontal-text" type="text"
-                                           placeholder="Achternaam">
+                                    <input class="uk-input" name="lastname" id="form-horizontal-text" type="text"
+                                           value="<?= $data['achternaam'] ?>" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Geboortedatum: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-horizontal-text" type="date">
+                                    <input class="uk-input" name="birthday" id="form-horizontal-text" type="date" value="<?= $data['geboortedag'] ?>" required>
                                 </div>
                             </div>
 
@@ -79,7 +79,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Mobiele
                                     telefoonnummer: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-horizontal-text" type="text"
+                                    <input class="uk-input" name="mobileNr" id="form-horizontal-text" type="text"
                                            placeholder="telefoonnummer">
                                 </div>
                             </div>
@@ -110,14 +110,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
             <div class="uk-card-body">
                 <p>
-                    <form>
+                    <form method="POST" action="scripts/change-e-mail.php">
                         <fieldset class="uk-fieldset">
 
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-horizontal-text">E-mailadres* </label>
+                                <label class="uk-form-label" for="form-horizontal-text">Huidig e-mailadres* </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="text"
-                                           placeholder="Voornaam">
+                                           value="<?= $data['mail_adres'] ?>" name="oldMail" required>
                                 </div>
                             </div>
 
@@ -125,15 +125,15 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Wachtwoord* </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="password"
-                                           placeholder="Wachtwoord">
+                                           placeholder="Wachtwoord" name="password" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-horizontal-text">Nieuw Wachtwoord* </label>
+                                <label class="uk-form-label" for="form-horizontal-text">Nieuw e-mailadres* </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="password"
-                                           placeholder="Nieuw Wachtwoord">
+                                           placeholder="Nieuw e-mailadres" name="newMail" required>
                                 </div>
                             </div>
 
