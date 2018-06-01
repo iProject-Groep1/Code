@@ -33,6 +33,7 @@ if (isset($_POST['questionAnswer'])) {
                     $stmt->bindValue(":username", $_POST['hiddenUsername'], PDO::PARAM_STR);
                     $stmt->execute();
                     sendNewPassword($results['mail_adres'], $newPassword);
+                    
                     $_SESSION['passwordResetNotification'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Uw nieuwe wachtwoord is gemaild.\', status: \'success\'})</script>';
                     header('Location: ../login.php?username=' . $_POST['hiddenUsername']);
