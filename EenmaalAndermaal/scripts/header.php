@@ -122,7 +122,7 @@ try {
     }
 } catch (PDOException $e) {
     echo "Error" . $e->getMessage();
-    header('Location: errorpage.php?err=500');
+   header('Location: errorpage.php?err=500');
 }
 
 $header .= '
@@ -130,6 +130,5 @@ $header .= '
     </div>
 </nav>
 ';
-
 echo $header;
 ?>
