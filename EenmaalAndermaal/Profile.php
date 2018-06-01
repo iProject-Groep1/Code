@@ -3,6 +3,14 @@ $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
 
+if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
+    echo $_SESSION['noChance'];
+    $_SESSION['noChance'] = "";
+}
+if(isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
+    echo $_SESSION['chance'];
+    $_SESSION['chance'] = "";
+}
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
@@ -150,7 +158,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
             <div class="uk-flex uk-flex-row uk-flex-around">
                 <!-- knoppen -->
-                <a class="uk-button uk-button-primary" href="">Wijzig gegevens</a>
+                <a class="uk-button uk-button-primary" href="changeProfile.php">Wijzig gegevens</a>
                 <a class="uk-button uk-button-primary" href="">Wijzig wachtwoord</a>
 
             </div>

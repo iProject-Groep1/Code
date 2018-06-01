@@ -33,8 +33,9 @@ if ($validURL) {
 
 <body>
 <h3 class="uk-margin uk-card-title uk-text-center">Registreren bij EenmaalAndermaal</h3>
-<form action="scripts/newUser.php?email=' . $email . '" method="post" >
+
     <div class="uk-card uk-card-default uk-card-body uk-width-2-5@m uk-margin-auto uk-margin-top-remove uk-margin-bottom">
+<form action="scripts/newUser.php?email=' . $email . '" method="post">
     <input type="text" name="email" value="' . $_GET['email'] . '" hidden>
     <input type="text" name="hash" value="' . $_GET['hash'] . '" hidden>
     <p class="uk-icon-font-awesome uk-margin-remove">* = Verplicht veld</p>
