@@ -1,11 +1,12 @@
 <?php
 include_once('database-connect.php');
 
+//start sessie als nog geen sessie is gestart.
 if (!isset($_SESSION)) {
     session_start();
 }
 
-
+//controleer of de gebruikersnaam bestaat in de database.
 if (isset($_POST['username'])) {
     if (usernameValid($_POST['username'], $dbh)) {
         header('Location: ../forgot-password.php?username=' . $_POST['username']);
@@ -13,17 +14,18 @@ if (isset($_POST['username'])) {
         header('Location: ../forgot-password.php');
     }
 } else {
-    header('Location ../errorpage.php?err=400');
+    header('Location ../forgot-password.php');
 }
-
 
 if (isset($_POST['questionAnswer'])) {
     try {
+        //controleert of de combinatie gebruikersnaam en antwoordtekst overeen komt
         $stmt = $dbh->prepare("SELECT COUNT(gebruikersnaam) AS aantal, mail_adres FROM Gebruiker WHERE gebruikersnaam LIKE :username AND antwoordtekst LIKE :answer GROUP BY mail_adres");
         $stmt->bindValue(":username", $_POST['hiddenUsername'], PDO::PARAM_STR);
         $stmt->bindValue(":answer", $_POST['questionAnswer'], PDO::PARAM_STR);
         $stmt->execute();
         if ($results = $stmt->fetch()) {
+            //als de combinatie klopt wordt een nieuw wachtwoord gemaakt en gemaild.
             if ($results['aantal'] == 1) {
                 $newPassword = randomPassword(20);
                 $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
@@ -37,12 +39,10 @@ if (isset($_POST['questionAnswer'])) {
                     $_SESSION['passwordResetNotification'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Uw nieuwe wachtwoord is gemaild.\', status: \'success\'})</script>';
                     header('Location: ../login.php?username=' . $_POST['hiddenUsername']);
-
                 } catch (PDOException $e) {
                     echo "Fout" . $e->getMessage();
                     header('Location: ../errorpage.php?err=500');
                 }
-
             } else {
                 $_SESSION['questionNotification'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
@@ -61,7 +61,7 @@ if (isset($_POST['questionAnswer'])) {
     header('Location ../errorpage.php?err=400');
 }
 
-
+//controleert in de database of een gebruikersnaam bestaat of niet.
 function usernameValid($username, $dbh)
 {
     try {
@@ -84,7 +84,7 @@ function usernameValid($username, $dbh)
     return false;
 }
 
-//TODO: password generator
+//stuurt via de mail een nieuw wachtwoord op.
 function sendNewPassword($email, $newPassword)
 {
     $to = $email; // Send email to our user
