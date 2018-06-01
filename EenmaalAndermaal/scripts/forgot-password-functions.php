@@ -17,30 +17,36 @@ if (isset($_POST['username'])) {
 }
 
 
-if(isset($_POST['questionAnswer'])){
-    try{
+if (isset($_POST['questionAnswer'])) {
+    try {
         $stmt = $dbh->prepare("SELECT COUNT(gebruikersnaam) AS aantal, mail_adres FROM Gebruiker WHERE gebruikersnaam LIKE :username AND antwoordtekst LIKE :answer GROUP BY mail_adres");
         $stmt->bindValue(":username", $_POST['hiddenUsername'], PDO::PARAM_STR);
-        $stmt->bindValue(":answer", $_POST['questionAnswer'], PDO::PARAM_STR );
+        $stmt->bindValue(":answer", $_POST['questionAnswer'], PDO::PARAM_STR);
         $stmt->execute();
-        if($results = $stmt->fetch()){
-            if($results['aantal'] == 1){
+        if ($results = $stmt->fetch()) {
+            if ($results['aantal'] == 1) {
                 $newPassword = randomPassword(20);
+                $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+                try {
+                    $stmt = $dbh->prepare("UPDATE Gebruiker SET wachtwoord = :newPassword WHERE gebruikersnaam LIKE :username");
+                    $stmt->bindValue()
+                } catch (PDOException $e) {
+                    echo "Fout" . $e->getMessage();
+                }
                 sendNewPassword($results['mail_adres'], $newPassword);
             } else {
                 $_SESSION['questionNotification'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
-                header('Location: ../forgot-password.php?username='.$_POST['hiddenUsername']);
+                header('Location: ../forgot-password.php?username=' . $_POST['hiddenUsername']);
             }
         }
-    } catch(PDOException $e){
+    } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
         header('Location: ../errorpage.php?err=500');
     }
 } else {
     header('Location ../errorpage.php?err=400');
 }
-
 
 
 function usernameValid($username, $dbh)
@@ -80,7 +86,7 @@ function sendNewPassword($email, $newPassword)
 <h1>Uw nieuwe wachtwoord.</h1>
 <div>
 <p>U heeft zojuist een nieuw wachtwoord aangevraagd.</p>
-<p>Uw nieuwe wachtwoord is: <span>'.$newPassword.'</span></p>
+<p>Uw nieuwe wachtwoord is: <span>' . $newPassword . '</span></p>
  </div>
 
 <div>
@@ -103,7 +109,8 @@ function sendNewPassword($email, $newPassword)
 
 //BRON: https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
 //TODO cryptografisch veilige wachtwoordgenerator.
-function randomPassword($length) {
+function randomPassword($length)
+{
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
     $pass = array(); //remember to declare $pass as an array
     $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
