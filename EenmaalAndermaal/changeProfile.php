@@ -2,7 +2,12 @@
 $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
+include('scripts/country.php');
 
+if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
+    echo $_SESSION['noChance'];
+    $_SESSION['noChance'] = "";
+}
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
@@ -76,11 +81,36 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             </div>
 
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-horizontal-text">Mobiele
-                                    telefoonnummer: </label>
+                                <label class="uk-form-label" for="form-horizontal-text">Eerste adres: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" name="mobileNr" id="form-horizontal-text" type="text"
-                                           placeholder="telefoonnummer">
+                                    <input class="uk-input" id="form-horizontal-text" type="text"
+                                           value="<?= $data['adresregel1'] ?>" name="adres1" required>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text">Postcode: </label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-horizontal-text" type="text"
+                                           value="<?= $data['postcode'] ?>" name="postalCode" required>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text">Plaatsnaam: </label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-horizontal-text" type="text"
+                                           value="<?= $data['plaatsnaam'] ?>" name="placeName" required>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text">Land: </label>
+                                <div class="uk-form-controls">
+                                    <select class="uk-select" name="land"required >
+                                        <option value="<?= $data['land'] ?>"><?= $data['land'] ?></option>
+                                        <?= Get_country($dbh) ?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -112,17 +142,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <p>
                     <form method="POST" action="scripts/change-e-mail.php">
                         <fieldset class="uk-fieldset">
-
+                            <h4>Uw huidige e-mailadres is <?= $data['mail_adres'] ?></h4>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-horizontal-text">Huidig e-mailadres* </label>
-                                <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-horizontal-text" type="text"
-                                           value="<?= $data['mail_adres'] ?>" name="oldMail" required>
-                                </div>
-                            </div>
-
-                            <div class="uk-margin">
-                                <label class="uk-form-label" for="form-horizontal-text">Wachtwoord* </label>
+                                <label class="uk-form-label" for="form-horizontal-text">Huidige wachtwoord* </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="password"
                                            placeholder="Wachtwoord" name="password" required>
@@ -132,7 +154,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Nieuw e-mailadres* </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-horizontal-text" type="password"
+                                    <input class="uk-input" id="form-horizontal-text" type="text"
                                            placeholder="Nieuw e-mailadres" name="newMail" required>
                                 </div>
                             </div>
