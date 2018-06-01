@@ -5,7 +5,8 @@ require('scripts/header.php');
 include('scripts/database-connect.php');
 
 
-if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
+
 
     //haal bijna alle informatie van een gebruiker op
 //TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
@@ -20,10 +21,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         header('Location: errorpage.php?err=500');
     }
 
-    ?>
+    $Rubriek = $_GET['Rubriek'];
 
+echo '
     <h1 class="uk-center-upload">Plaats Advertentie</h1>
-
+    <p class=" uk-center-upload ">'.$Rubriek . ' </p>
     <div class="uk-align-left profile-sidebar uk-align-center@m uk-display-block uk-width-1-2@s uk-width-1-6@m">
         <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
             <li class="uk-parent uk-open">
@@ -98,6 +100,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
 
             <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+
+';
+?>
 
             <script>
 
