@@ -17,7 +17,7 @@ include('scripts/database-connect.php');
                         <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
                         <li><a href="#">Mijn Veilingen</a></li>
                         <li><a href="#">Mijn Biedingen</a></li>
-                        <li><a class="uk-button uk-button-primary" href="upload.php">Plaats Advertentie</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
                     </ul>
                 </li>
             </ul>
