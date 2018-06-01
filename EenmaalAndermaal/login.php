@@ -23,6 +23,13 @@ if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
     $_SESSION['overBidMelding'] = "";
 }
 
+if (isset($_SESSION['passwordResetNotification']) && !empty($_SESSION['passwordResetNotification'])) {
+    echo $_SESSION['passwordResetNotification'];
+    $_SESSION['passwordResetNotification'] = "";
+}
+
+
+
 
 if(isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
     $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
