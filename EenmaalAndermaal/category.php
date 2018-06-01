@@ -27,21 +27,55 @@ if (isset($_GET['categoryID']) && !empty($_GET['categoryID'])) {
 }
 
 if ($idCorrect) {
-    $categoryTitle = '';
-    try {
-        $stmt = $dbh->prepare("SELECT rubrieknaam FROM rubriek WHERE rubrieknummer = :rubrieknummer");
-        $stmt->bindValue(":rubrieknummer", $_GET['categoryID'], PDO::PARAM_STR);
+    $categoryArray;
+        try {
+        $stmt = $dbh->prepare("SELECT	P4.rubrieknaam AS Parent4Rubrieknaam,
+		P4.rubrieknummer AS Parent4Rubrieknummer,
+		P3.rubrieknaam AS Parent3Rubrieknaam,
+		P3.rubrieknummer AS Parent3Rubrieknummer,
+		P2.rubrieknaam AS Parent2Rubrieknaam,
+		P2.rubrieknummer AS Parent2Rubrieknummer,
+		P1.rubrieknaam AS Parent1Rubrieknaam,
+		P1.rubrieknummer AS Parent1Rubrieknummer,
+		S.rubrieknaam AS HuidigRubrieknaam, 
+		S.rubrieknummer AS HuidigRubrieknummer		
+FROM	rubriek S
+		LEFT JOIN rubriek P1 ON P1.rubrieknummer = S.parent
+		LEFT JOIN rubriek P2 ON P2.rubrieknummer = P1.parent
+		LEFT JOIN rubriek P3 ON P3.rubrieknummer = P2.parent
+		LEFT JOIN rubriek P4 ON P4.rubrieknummer = P3.parent
+WHERE	S.rubrieknummer = :categoryID");
+        $stmt->bindValue(":categoryID", $_GET['categoryID'], PDO::PARAM_STR);
         $stmt->execute();
-        if ($row = $stmt->fetch()) {
-            $categoryTitle = $row['rubrieknaam'];
+        if ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
+            $categoryArray[$row['Parent4Rubrieknaam']] = $row['Parent4Rubrieknummer'];
+            $categoryArray[$row['Parent3Rubrieknaam']] = $row['Parent3Rubrieknummer'];
+            $categoryArray[$row['Parent2Rubrieknaam']] = $row['Parent2Rubrieknummer'];
+            $categoryArray[$row['Parent1Rubrieknaam']] = $row['Parent1Rubrieknummer'];
+            $categoryArray[$row['HuidigRubrieknaam']] = $row['HuidigRubrieknummer'];
         }
     } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
     }
 
-    //TODO: Rubriektitel dynamisch maken
+
+    //breadcrumb
+    echo '
+<div class="uk-margin-detail">
+<ul class="uk-breadcrumb uk-width-1-1" >
+    <li><a href="index.php">Home</a></li>';
+    //loopt door de bovenstaande rubrieken en vult de breadcrumb
+    foreach ($categoryArray as $categoryName => $categoryID) {
+        if (!empty($categoryID && $categoryID != -1)) {
+            echo '<li><a href="category.php?categoryID=' . $categoryID . '">' . $categoryName . '</a></li>';
+        }
+    }
+    echo '</ul>
+</div>
+';
     echo '<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
-    <h3 class="uk-display-block uk-align-center uk-text-center">'.$categoryTitle.'</h3>
+    <h3 class="uk-display-block uk-align-center uk-text-center">'.array_search($_GET['categoryID'], $categoryArray).'</h3>
     <p>
 <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getAuctionCards($dbh, $_GET['categoryID']).'</div>
 </p></div>';

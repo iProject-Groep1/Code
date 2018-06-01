@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $pageTitle = 'Veiling detailpagina';
 require_once('scripts/header.php');
 include('scripts/auction-item.php');
@@ -56,32 +57,57 @@ function placeItem($dbh, $id)
     $minBid = calcMinBid($dbh, $id);
     $image = getAuctionFilename($dbh, $id);
     $productTitle = '';
-    $categoryName = '';
-    $categoryID = '';
+    $categoryArray;
+
     $imageScript = '';
 
     try {
-        $stmt = $dbh->prepare("select titel, rubrieknaam, rubrieknummer from voorwerp v join VoorwerpInRubriek vir on v.voorwerpnummer = vir.voorwerp join rubriek r on vir.rubriek_op_laagste_Niveau = r.rubrieknummer where v.voorwerpnummer = :voorwerpnummer");
+        $stmt = $dbh->prepare("SELECT	titel,
+		P4.rubrieknaam AS Parent4Rubrieknaam,
+		P4.rubrieknummer AS Parent4Rubrieknummer,
+		P3.rubrieknaam AS Parent3Rubrieknaam,
+		P3.rubrieknummer AS Parent3Rubrieknummer,
+		P2.rubrieknaam AS Parent2Rubrieknaam,
+		P2.rubrieknummer AS Parent2Rubrieknummer,
+		P1.rubrieknaam AS Parent1Rubrieknaam,
+		P1.rubrieknummer AS Parent1Rubrieknummer,
+		S.rubrieknaam AS HuidigRubrieknaam, 
+		S.rubrieknummer AS HuidigRubrieknummer		
+FROM	Voorwerp v 
+		JOIN	VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp 
+		LEFT JOIN rubriek S ON rubriek_op_laagste_niveau = rubrieknummer 
+		LEFT JOIN rubriek P1 ON P1.rubrieknummer = S.parent
+		LEFT JOIN rubriek P2 ON P2.rubrieknummer = P1.parent
+		LEFT JOIN rubriek P3 ON P3.rubrieknummer = P2.parent
+		LEFT JOIN rubriek P4 ON P4.rubrieknummer = P3.parent
+WHERE voorwerpnummer = :voorwerpnummer");
         $stmt->bindValue(":voorwerpnummer", $id, PDO::PARAM_STR);
         $stmt->execute();
         if ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
             $productTitle = $row['titel'];
-            $categoryName = $row['rubrieknaam'];
-            $categoryID = $row['rubrieknummer'];
+            $categoryArray[$row['Parent4Rubrieknaam']] = $row['Parent4Rubrieknummer'];
+            $categoryArray[$row['Parent3Rubrieknaam']] = $row['Parent3Rubrieknummer'];
+            $categoryArray[$row['Parent2Rubrieknaam']] = $row['Parent2Rubrieknummer'];
+            $categoryArray[$row['Parent1Rubrieknaam']] = $row['Parent1Rubrieknummer'];
+            $categoryArray[$row['HuidigRubrieknaam']] = $row['HuidigRubrieknummer'];
         }
     } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
         header('Location: errorpage.php?err=500');
     }
 
-
+//breadcrumb
     echo '
 <div class="uk-margin-detail">
-
 <ul class="uk-breadcrumb uk-width-1-1" >
-    <li><a href="index.php">Home</a></li>
-    <li><a href="category.php?categoryID=' . $categoryID . '">' . $categoryName . '</a></li>
-    <li class="uk-disabled"><span>' . $productTitle . '</span></li>
+    <li><a href="index.php">Home</a></li>';
+    //loopt door de bovenstaande rubrieken en vult de breadcrumb
+    foreach ($categoryArray as $categoryName => $categoryID) {
+        if (!empty($categoryID && $categoryID != -1)) {
+            echo '<li><a href="category.php?categoryID=' . $categoryID . '">' . $categoryName . '</a></li>';
+        }
+    }
+    echo '<li class="uk-disabled"><span>' . $productTitle . '</span></li>
 </ul>
 </div>
 ';
@@ -99,12 +125,12 @@ function placeItem($dbh, $id)
         ';
 
     foreach ($image as $key) {
-        $imageScript .=  '<li class="uk-width-3-4 " >
+        $imageScript .= '<li class="uk-width-3-4 " >
         <img class="uk-flex-center uk-align-center uk-height" src="' . $key . '"
-                     style="background-image: url(' . $key . ');" alt="'. $key .'" >
+                     style="background-image: url(' . $key . ');" alt="' . $key . '" >
                      </li >';
-        }
-        echo $imageScript;
+    }
+    echo $imageScript;
 
 
     echo '
@@ -121,11 +147,11 @@ function placeItem($dbh, $id)
         <div class="uk-card-header niagara" >
             
             ';
-                $auctionStatus = getAuctionStatus($dbh);
-                if($auctionStatus == 1){
-                echo '<h4 class="uk-text-center uk-align-center white-font"> Deze veiling is gesloten </h4>' ;
-                }else if ($auctionStatus == 0){
-            echo'
+    $auctionStatus = getAuctionStatus($dbh);
+    if ($auctionStatus == 1) {
+        echo '<h4 class="uk-text-center uk-align-center white-font"> Deze veiling is gesloten </h4>';
+    } else if ($auctionStatus == 0) {
+        echo '
             
             <div class="uk-grid-small uk-flex-middle" >
                 <div class="uk-text-center uk-align-center" >
@@ -150,17 +176,19 @@ function placeItem($dbh, $id)
                     </div >
                 </div >
             </div >
-            '; } echo '
+            ';
+    }
+    echo '
         </div >
         <div class="uk-card-body grey" >
 ';
-    if($auctionStatus == 1){
+    if ($auctionStatus == 1) {
         echo '<h3> Veiling winnaar: </h3>';
-        echo getBids ($dbh, 1);
+        echo getBids($dbh, 1);
     } else {
         echo getBids($dbh);
 
-    echo '
+        echo '
         </div >
         <div class="uk-card-footer grey" >
             <div class="uk-width-1-4 uk-align-left uk-margin-remove-right uk-padding-remove-left" >
@@ -174,7 +202,9 @@ function placeItem($dbh, $id)
             <div class="uk-width-1-4 uk-align-right" >
                 <input class="uk-input uk-width-1-8" type = "text" value = "€' . $minBid . '" disabled >
             </div >
-            '; } echo '
+            ';
+    }
+    echo '
         </div >
          
     </div >
