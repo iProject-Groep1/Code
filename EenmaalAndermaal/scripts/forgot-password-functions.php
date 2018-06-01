@@ -33,19 +33,24 @@ if (isset($_POST['questionAnswer'])) {
                     $stmt->bindValue(":username", $_POST['hiddenUsername'], PDO::PARAM_STR);
                     $stmt->execute();
                     sendNewPassword($results['mail_adres'], $newPassword);
-                    $_SESSION['questionNotification'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
+                    $_SESSION['passwordResetNotification'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Uw nieuwe wachtwoord is gemaild.\', status: \'success\'})</script>';
                     header('Location: ../login.php?username=' . $_POST['hiddenUsername']);
 
                 } catch (PDOException $e) {
                     echo "Fout" . $e->getMessage();
+                    header('Location: ../errorpage.php?err=500');
                 }
 
             } else {
-                $_SESSION['passwordResetNotification'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Uw nieuwe wachtwoord is gemaild.\', status: \'success\'})</script>';
+                $_SESSION['questionNotification'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
                 header('Location: ../forgot-password.php?username=' . $_POST['hiddenUsername']);
             }
+        } else {
+            $_SESSION['questionNotification'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
+            header('Location: ../forgot-password.php?username=' . $_POST['hiddenUsername']);
         }
     } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
