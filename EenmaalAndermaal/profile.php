@@ -3,17 +3,16 @@ $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
 
-if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
+if (isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
     echo $_SESSION['noChance'];
     $_SESSION['noChance'] = "";
 }
-if(isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
+if (isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
     echo $_SESSION['chance'];
     $_SESSION['chance'] = "";
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-
     //haal bijna alle informatie van een gebruiker op
 //TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
     $data = "";
@@ -26,11 +25,10 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         echo "Fout" . $e->getMessage();
         header('Location: errorpage.php?err=500');
     }
-
     ?>
-
     <h2 class="uk-text-center">Mijn Profiel</h2>
     <div class="uk-margin-left@l uk-margin-left@m">
+
         <div class="profile-sidebar uk-align-center@m">
             <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
                 <li class="uk-parent uk-open">
@@ -45,7 +43,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 </li>
             </ul>
         </div>
-
 
         <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-margin-auto uk-flex uk-flex-column uk-flex-wrap-around uk-margin-medium-top uk-margin-large-bottom">
             <div class="uk-overflow-auto">
