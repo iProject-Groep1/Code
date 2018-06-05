@@ -165,9 +165,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <?php
 
 } else {
-    //TODO netjes naar inlogpagina sturen met melding "u moet inloggen".
-    header('Location: errorpage.php?err=404');
-
+    header('Location: login.php?');
 }
 
 

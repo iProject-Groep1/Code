@@ -44,14 +44,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Nieuw wachtwoord*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" name="newPassword" id="form-horizontal-text" type="password" required>
+                                <input class="uk-input" name="newPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
                             </div>
                         </div>
 
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Nieuw wachtwoord opnieuw invullen*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" name="confirmPassword" id="form-horizontal-text" type="password" required>
+                                <input class="uk-input" name="confirmPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
                             </div>
                         </div>
 
@@ -71,7 +71,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <?php
 
 } else {
-    //TODO netjes naar inlogpagina sturen met melding "u moet inloggen".
-    header('Location: errorpage.php?err=404');
+    header('Location: login.php?');
 }
 include('scripts/footer.php');
