@@ -66,7 +66,7 @@ if(!isset($_GET['verification'])) {
                         required><?= getPaymentMethodList($dbh) ?></select>
             </div>
             <div class="uk-margin uk-form-horizontal">
-                <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="bankAccountNumber">Creditcardnummer
+                <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="bankAccountNumber">Rekeningnummer
                     :</label>
                 <div class="uk-inline uk-width-2-3">
                     <span class="uk-form-icon" uk-icon="icon: credit-card"></span>
