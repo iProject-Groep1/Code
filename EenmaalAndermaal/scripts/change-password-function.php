@@ -52,4 +52,4 @@ if($passwordConfirmCorrect & $passwordCorrect){
     header('Location: ../change-password.php?');
     $_SESSION['noChance'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoorden komen niet overeen\', status: \'danger\'})</script>';
-} 
+}
