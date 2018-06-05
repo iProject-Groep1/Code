@@ -125,7 +125,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
         <input class="uk-button uk-button-primary uk-button-reset" type="submit" name="submit"
                value="Plaats advertentie">
     </div>
-    </form>';
+    </form>
+    </div>';
 
 
 } else {
