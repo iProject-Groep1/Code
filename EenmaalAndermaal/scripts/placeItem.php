@@ -8,6 +8,17 @@ if(isset($_POST['submit'])){
 
 function insertItem($dbh)
 {
+    try {
+        $stmt = $dbh->prepare("SELECT gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper FROM gebruiker LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam ORDER BY volgnr");
+        $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetch();
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
+    }
+
+
     $rubrieknr = $_POST['Rubrieknr'];
     $titel = $_POST['Titel'];
     $startprijs = $_POST['Startprijs'];
@@ -15,8 +26,8 @@ function insertItem($dbh)
     $betalingswijze = $_POST['Betalingswijze'];
     $veilingtijd =  $_POST['Veilingtijd'];
     $beschrijving = $_POST['Beschrijving'];
-    $plaatsnaam = 'TestlandTim';
-    $land = 'TestlandTim';
+    $plaatsnaam = $data['plaatsnaam'];
+    $land = $data['land'];
     $verkoper = $_SESSION['username'];
 
     try {
