@@ -5,6 +5,8 @@ require_once('scripts/header.php');
 require_once('scripts/become-seller-functions.php');
 require_once('scripts/database-connect.php');
 
+
+
 if(!isset($_SESSION)){
     session_start();
 }

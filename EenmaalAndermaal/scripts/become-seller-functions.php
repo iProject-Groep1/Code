@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
         if ($result = $stmt->fetch()) {
             $emailAdress = $result['mail_adres'];
-            if (password_verify($_POST['wachtwoord'], $result['wachtwoord'])) {
+            if (password_verify($_POST['password'], $result['wachtwoord'])) {
                 $passwordCorrect = true;
             } else {
                 $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit wachtwoord klopt niet.\', status: \'danger\'})</script>';
@@ -55,7 +55,8 @@ if (isset($_POST['submit'])) {
             };
         }
     } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
+        echo "Fout bij ophalen wachtwoord" . $e->getMessage();
+
     }
 
     $verificationMethod = $_POST['verificationMethod'];
@@ -64,11 +65,17 @@ if (isset($_POST['submit'])) {
     if ($verificationMethod == "Creditcard") {
         if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
             $dataCorrect = false;
+            if(empty($_POST['bankAccountNumber'])){
+                $_POST['bankAccountNumber'] = NULL;
+            }
         } else if (!empty($_POST['paymentMethod']) && isset($_POST['paymentMethod'])) {
             $dataCorrect = true;
         }
     } else if ($verificationMethod = "Post") {
         if (!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) {
+            if(empty($_POST['creditCardNumber'])){
+                $_POST['creditCardNumber'] = NULL;
+            }
             $dataCorrect = true;
         } else {
             $dataCorrect = false;
@@ -90,7 +97,9 @@ if (isset($_POST['submit'])) {
             $stmt->bindValue(":verificatiecode", $verificationCode, PDO::PARAM_STR);
             $stmt->execute();
         } catch (PDOException $e) {
-            echo "Fout" . $e->getMessage();
+            echo "Fout bij insert" . $e->getMessage();
+            var_dump($_POST);
+            die();
             header('Location: ../errorpage.php?err=500');
         }
         //maak meteen verkoper als creditcardverificatie is gebruikt
@@ -101,6 +110,7 @@ if (isset($_POST['submit'])) {
                 $stmt->execute();
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
+                die();
                 header('Location: ../errorpage.php?err=500');
             }
         }
