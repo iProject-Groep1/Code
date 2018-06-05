@@ -107,7 +107,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Land: </label>
                                 <div class="uk-form-controls">
-                                    <select class="uk-select" name="land"required >
+                                    <select class="uk-select" name="country"required >
                                         <option value="<?= $data['land'] ?>"><?= $data['land'] ?></option>
                                         <?= Get_country($dbh) ?>
                                     </select>
