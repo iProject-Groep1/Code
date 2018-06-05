@@ -156,7 +156,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             <div class="uk-flex uk-flex-row uk-flex-around">
                 <!-- knoppen -->
                 <a class="uk-button uk-button-primary" href="changeProfile.php">Wijzig gegevens</a>
-                <a class="uk-button uk-button-primary" href="">Wijzig wachtwoord</a>
+                <a class="uk-button uk-button-primary" href="change-password.php">Wijzig wachtwoord</a>
 
             </div>
         </div>
@@ -165,9 +165,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <?php
 
 } else {
-    //TODO netjes naar inlogpagina sturen met melding "u moet inloggen".
-    header('Location: errorpage.php?err=404');
-
+    header('Location: login.php?');
 }
 
 
