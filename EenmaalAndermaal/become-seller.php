@@ -80,7 +80,7 @@ if(!isset($_GET['verification'])) {
                     :</label>
                 <div class="uk-inline uk-width-2-3">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                    <input class="uk-input" type="text" placeholder="Wachtwoord" name="password" id="password"
+                    <input class="uk-input" type="password" placeholder="Wachtwoord" name="password" id="password"
                            maxlength="72" required>
                 </div>
             </div>
