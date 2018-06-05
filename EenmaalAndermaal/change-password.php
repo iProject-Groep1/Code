@@ -60,7 +60,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
 
                         <div class="uk-inline uk-align-right uk-width-1-3">
-                            <input class="uk-input uk-button-primary" type="submit" name="submit" value="Opslaan">
+                            <input class="uk-input uk-button-primary niagara" type="submit" name="submit" value="Opslaan">
                         </div>
                     </fieldset>
                 </form>
