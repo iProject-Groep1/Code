@@ -41,8 +41,9 @@ function insertItem($dbh)
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        die();
-        header('Location: errorpage.php?err=500');
+        $_SESSION['fillEverything'] = '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'success\'})</script>';
+        header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
     }
 
 
@@ -54,8 +55,9 @@ function insertItem($dbh)
         $query->execute(array($lastid, $rubrieknr));
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        die();
-        header('Location: errorpage.php?err=500');
+        $_SESSION['fillEverything'] = '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'success\'})</script>';
+        header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
     }
 
     uploadPicture ($lastid, $dbh);
@@ -108,13 +110,17 @@ function uploadPicture ($lastid, $dbh){
                 $query->execute(array('http://iproject1.icasites.nl/upload/'.$_FILES["Image"]["name"].'',$lastid));
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
-                die();
-                header('Location: errorpage.php?err=500');
+                $_SESSION['fillEverything2'] = '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'success\'})</script>';
+                header('Location: ../upload.php');
             }
             echo "The file ". basename( $_FILES["Image"]["name"]). " has been uploaded.";
             header('Location: ../detailpage.php?id=' . $lastid . '');
         } else {
             echo "Sorry, there was an error uploading your file.";
+            $_SESSION['fillEverything2'] = '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'success\'})</script>';
+            header('Location: ../upload.php');
         }
     }
 }
