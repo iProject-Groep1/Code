@@ -1,10 +1,11 @@
 <?php
 
+
 function setRelevantItems($dbh, $rubriek_op_laagste_Niveau, $voorwerp)
 {
     $relevantItems = '';
     try {
-        $stmt = $dbh->prepare("SELECT top 4 v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd FROM Voorwerp v join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp  WHERE r.rubriek_op_laagste_Niveau = :rubriek_op_laagste_Niveau AND voorwerpnummer != :voorwerpnummer GROUP BY Voorwerpnummer, titel, looptijdEindmoment"); /* prepared statement */
+        $stmt = $dbh->prepare("SELECT top 4 v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp  WHERE r.rubriek_op_laagste_Niveau = :rubriek_op_laagste_Niveau AND voorwerpnummer != :voorwerpnummer GROUP BY Voorwerpnummer, titel, looptijdEindmoment"); /* prepared statement */
        $stmt->bindValue(":voorwerpnummer", $voorwerp, PDO::PARAM_STR);
         $stmt->bindValue(":rubriek_op_laagste_Niveau", $rubriek_op_laagste_Niveau, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
@@ -80,4 +81,3 @@ function getAuctionStatus($dbh)
 
 
 ?>
-

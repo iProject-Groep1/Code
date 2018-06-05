@@ -12,12 +12,17 @@ if (isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
     $_SESSION['chance'] = "";
 }
 
+if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotification'])) {
+    echo $_SESSION['profileNotification'];
+    $_SESSION['profileNotification'] = "";
+}
+
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     //haal bijna alle informatie van een gebruiker op
 //TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
     $data = "";
     try {
-        $stmt = $dbh->prepare("SELECT gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper FROM gebruiker LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam ORDER BY volgnr");
+        $stmt = $dbh->prepare("SELECT  g.gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper, rating FROM gebruiker g LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker LEFT JOIN verkoper v on g.gebruikersnaam = v.gebruikersnaam WHERE g.gebruikersnaam like :gebruikersnaam  ORDER BY volgnr");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetch();
@@ -75,8 +80,17 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         ?>
                         <tr>
                             <td class="uk-table-shrink"><span uk-icon="happy"></span></td>
-                            <td class="uk-width-1-3">Accounttype:</td>
-                            <td><p class="uk-text-center"></p></td>
+                            <td class="uk-width-1-3">Waardering:</td>
+                            <td><p class="uk-text-center"><?php
+                                    $numberOfStars = (int) $data['rating'] /= 20;
+                                    for($i = 0; $i < $numberOfStars; $i++){
+                                        ?>
+                                        <span uk-icon="star" class="rating-star"></span>
+                        <?php
+                                    }
+
+                                    ?>
+                                </p></td>
                         </tr>
                         <?php
                     }

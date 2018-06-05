@@ -270,6 +270,12 @@ li .uk-button{
 	margin-left: 2%;
 }
 
+
+.rating-star[uk-icon=star] svg{
+	fill: yellow-green;
+					 color: yellowgreen;
+				 }
+
 /*	-haalt het marge boven de afbeelding in de detailpagina weg
 	-staat nog niet in de detailpagina
 	-werkt nog niet

@@ -3,6 +3,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
 $pageTitle = 'Inloggen';
 include('scripts/header.php');
 include('scripts/notify-bid.php');
