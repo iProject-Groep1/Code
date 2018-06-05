@@ -70,7 +70,7 @@ if(!isset($_GET['verification'])) {
                     :</label>
                 <div class="uk-inline uk-width-2-3">
                     <span class="uk-form-icon" uk-icon="icon: credit-card"></span>
-                    <input class="uk-input" type="number" placeholder="Rekeningnummer" name="bankAccountNumber"
+                    <input class="uk-input" type="text" placeholder="Rekeningnummer" name="bankAccountNumber"
                            id="bankAccountNumber"
                            maxlength="34" required>
                 </div>
