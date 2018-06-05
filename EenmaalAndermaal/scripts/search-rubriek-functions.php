@@ -20,7 +20,7 @@ ORDER BY aantal desc";
         $echo = "";
         while ($results = $stmt->fetch()) {
 
-            $echo .='<a href="upload.php?Rubriek='. $results['naam'] .'Rubrieknr='.$results['nummer'].'">'. $results['naam'] . '</a><br>';
+            $echo .='<a href="upload.php?Rubriek='. $results['naam'] .'&Rubrieknr='.$results['nummer'].'">'. $results['naam'] . '</a><br>';
         }
         echo $echo;
     } catch (PDOException $e) {
