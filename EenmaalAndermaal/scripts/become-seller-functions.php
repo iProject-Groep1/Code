@@ -98,8 +98,6 @@ if (isset($_POST['submit'])) {
             $stmt->execute();
         } catch (PDOException $e) {
             echo "Fout bij insert" . $e->getMessage();
-            var_dump($_POST);
-            die();
             header('Location: ../errorpage.php?err=500');
         }
         //maak meteen verkoper als creditcardverificatie is gebruikt
@@ -115,6 +113,9 @@ if (isset($_POST['submit'])) {
             }
         }
         createVerificationMail($emailAdress, $verificationMethod, $verificationCode);
+
+        $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
+        header('Location: ../profile.php');
     }
 }
 

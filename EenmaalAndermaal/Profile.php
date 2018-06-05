@@ -12,6 +12,11 @@ if (isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
     $_SESSION['chance'] = "";
 }
 
+if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotification'])) {
+    echo $_SESSION['profileNotification'];
+    $_SESSION['profileNotification'] = "";
+}
+
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     //haal bijna alle informatie van een gebruiker op
 //TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
