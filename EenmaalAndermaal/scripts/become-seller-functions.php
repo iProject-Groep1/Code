@@ -28,10 +28,14 @@ if (isset($_POST['submitVerification'])) {
             $stmt = $dbh->prepare("UPDATE Gebruiker SET verkoper = 1 WHERE gebruikersnaam LIKE :gebruikersnaam");
             $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
             $stmt->execute();
+            $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> U bent nu verkoper!\', status: \'success\'})</script>';
+            header('Location: ../profile.php');
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
             header('Location: ../errorpage.php?err=500');
         }
+
+
     } else {
         $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \' < span uk - icon = "icon: close" ></span > Deze code klopt niet . \', status: \'danger\'})</script>';
         header('Location: ../become-seller.php?verification=1');
@@ -137,7 +141,7 @@ function createVerificationMail($email, $verificationMethod, $verificationCode =
         $message .= '<p>We hebben uw gegevens geverifiëerd bij uw maatschappij en deze komen overeen.</p>
                     <h2>U bent nu een verkoper!</h2>';
     } else if ($verificationMethod == "Post") {
-        $message .= '<p>Uw verificatiecode is: ' . $verificationCode . ', vul deze in op <a href="become-seller.php?verification=1">deze</a> pagina.</p> ';
+        $message .= '<p>Uw verificatiecode is: ' . $verificationCode . ', vul deze in op <a href="http://iproject1.icasites.nl/become-seller.php?verification=1">deze</a> pagina.</p> ';
     }
 
 
