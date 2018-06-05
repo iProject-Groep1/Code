@@ -107,7 +107,7 @@ if(!isset($_GET['verification'])) {
                     : </label>
                 <div class="uk-inline uk-width-2-3">
                     <span class="uk-form-icon" uk-icon="icon: check"></span>
-                    <input class="uk-input" type="number" placeholder="Verificatiecode" name="verificationCode"
+                    <input class="uk-input" type="text" placeholder="Verificatiecode" name="verificationCode"
                            id="verificationCode"
                            maxlength="10" required>
                 </div>
