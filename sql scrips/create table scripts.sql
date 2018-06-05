@@ -206,6 +206,7 @@ CREATE TABLE Verkoper (
 	rekeningnummer		VARCHAR(34)				,						--TODO: nog voor regelen dat deze not null is als creditcardnummer null is en andersom... veranderd van int(7)
 	controleOptie		VARCHAR(10)		NOT NULL DEFAULT 'Post',		--veranderd van char(10)
 	creditcardnummer	numeric(16)				,						--TODO: nog regelen dat deze null is als controleOptie 'Post' is.
+	verificatiecode		VARCHAR(10)				,
 	rating				numeric(4, 1)	NOT NULL,						
 	CONSTRAINT VerkoperKey PRIMARY KEY(gebruikersnaam),
 	CONSTRAINT FK_Verkoper_Gebruikersnaam FOREIGN KEY (gebruikersnaam) REFERENCES Gebruiker(gebruikersnaam),	
