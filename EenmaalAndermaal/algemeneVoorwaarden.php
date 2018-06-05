@@ -35,9 +35,9 @@ require_once('scripts/header.php');
         </ul>
 
         <h2>Waarom EenmaalAndermaal gegevens nodig heeft</h2>
-        <p>EenmaalAndermaal verwerkt uw persoonsgegevens om per e-mail contact met u op te kunnen nemen,
-            om indien nodig de verkoper uw adresgegevens te geven wanneer u een veiling gewonnen heeft, en om op de site
-            aan te geven dat u een bod heeft gedaan.</p>
+        <p>EenmaalAndermaal verwerkt uw persoonsgegevens om per e-mail contact met u op te kunnen nemen.
+            Indien nodig kan EenmaalAndermaal de verkoper uw adresgegevens te geven wanneer u een veiling gewonnen heeft. Om op de site
+            aan te geven dat u een bod heeft gedaan zal een bodbedrag en een tijdsvermelding.</p>
         <h2>Uw gegevens inzien, wijzigen en verwijderen</h2>
         <p>U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. U kunt uw gegevens
             inzien op uw profielpagina. Hier kunt u deze gegevens ook wijzigen, en indien gewenst uw account
