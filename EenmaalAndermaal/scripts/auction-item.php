@@ -58,14 +58,16 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                 <img class="uk-flex-center uk-align-center" src="' . $image . '"
                      style="background-image: url(images/productImages/' . $image . ');" alt="Image"></a>
             </div>
-            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-grid">
-                        <div class="uk-width-1-2 uk-text-center margin-to-zero" uk-grid><div class="uk-display-inline-block">
-                <h5 class="uk-text-center uk-display-inline">' . get_words($productName, $count = 3) . '</h5>
-                <h4 class="uk-align-left uk-vertical-align-bottom uk-display-inline uk-countdown-number"> €' . $hoogsteBod . '</h4>
-                </div></div>
-                <div class="uk-width-1-2 uk-text-center margin-to-zero uk-margin-top-zero" uk-grid>
-                <div class="uk-display-inline-block">
-                <a class="uk-button uk-button-danger" href="detailpage.php?id=' . $id . '">Bekijk nu</a>
+            <div class="uk-overlay uk-overlay-primary uk-position-bottom">
+                        <div class="">
+                <h5 class="uk-display-inline-block text-overflow uk-width-3-5">' . $productName . '</h5>
+              
+                <a class="uk-button uk-button-danger uk-align-right uk-width-2-5" href="detailpage.php?id=' . $id . '">Bekijk nu</a>
+                </div>
+                <div class="uk-width-1">
+                <h4 class="uk-align-left uk-countdown-number"> €' . $hoogsteBod . '</h4>
+                <div class="">
+                
                 <div class=" uk-align-right uk-display-inline-block">
                 ';
     if ($days >= 1) {
@@ -229,6 +231,5 @@ function get_words($productName, $count = 10) {
     preg_match("/(?:\w+(?:\W+|$)){0,$count}/", $productName, $matches);
     return $matches[0];
 }
-
 
 ?>
