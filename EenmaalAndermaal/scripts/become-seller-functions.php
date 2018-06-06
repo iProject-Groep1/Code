@@ -28,7 +28,7 @@ if (isset($_POST['submitVerification'])) {
             $stmt = $dbh->prepare("UPDATE Gebruiker SET verkoper = 1 WHERE gebruikersnaam LIKE :gebruikersnaam");
             $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
             $stmt->execute();
-            $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> U bent nu verkoper!\', status: \'success\'})</script>';
+            $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: check"></span> U bent nu verkoper!\', status: \'success\'})</script>';
             header('Location: ../profile.php');
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
