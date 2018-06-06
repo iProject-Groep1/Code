@@ -81,7 +81,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 include('scripts/footer.php');
 
-function searchMyAuctions($dbh)
+function searchMyBids($dbh)
 {
 
     $searchItems = '';
@@ -90,11 +90,11 @@ function searchMyAuctions($dbh)
 FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
  WHERE g.gebruikersnaam like :bindvalue and veilinggesloten = 0  GROUP BY Voorwerpnummer, titel, looptijdEindmoment order by titel ' ; /* prepared statement */
     $bindValue = $_SESSION['username'];
-    $searchItems .=   getMyAuctions($dbh, $queries['search'],$bindValue);
+    $searchItems .=   getMyBids($dbh, $queries['search'],$bindValue);
     echo $searchItems;
 }
 
-function getMyAuctions($dbh, $query, $bindvalue)
+function getMyBids($dbh, $query, $bindvalue)
 {
     $itemCards = "";
     try {
