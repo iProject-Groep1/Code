@@ -36,3 +36,25 @@ FROM	rubriek S
 		LEFT JOIN rubriek P3 ON P3.rubrieknummer = P2.parent
 		LEFT JOIN rubriek P4 ON P4.rubrieknummer = P3.parent
 WHERE	S.rubrieknummer = 8733
+
+
+--voorwerpen in onderliggende rubrieken
+
+
+
+
+
+
+
+
+--subrubrieken van een rubriek.
+SELECT	S1.rubrieknummer AS Sub1Rubrieknummer,
+		S2.rubrieknummer AS Sub2Rubrieknummer,
+		S3.rubrieknummer AS Sub3Rubrieknummer,
+		S4.rubrieknummer AS Sub4Rubrieknummer			
+FROM	rubriek P
+		LEFT JOIN rubriek S1 ON S1.Parent = P.Rubrieknummer
+		LEFT JOIN rubriek S2 ON S2.Parent = S1.Rubrieknummer
+		LEFT JOIN rubriek S3 ON S3.Parent = S2.Rubrieknummer
+		LEFT JOIN rubriek S4 ON S4.Parent = S3.Rubrieknummer
+WHERE	P.rubrieknummer = 9800
