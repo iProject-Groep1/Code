@@ -78,13 +78,13 @@ $X=0;
 
 function getVerfijn($dbh){
 $rubrieken = array();
- $rubrieken =  $_POST['rubriek'];
+$rubrieken =  $_POST['rubriek'];
 sort($rubrieken);
 $bindValue = '%boot%';
 
 $or = '';
  foreach ($rubrieken as $key ) {
-   $or .= " rubrieknaam =   . $key .  or ";
+   $or .= " rubrieknaam =  $key  or ";
  }
  $or = substr($or, 0 , -3);
 
@@ -96,7 +96,7 @@ $query=  'SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1
           (select voorwerp from VoorwerpInRubriek vr join Rubriek r on r.rubrieknummer = vr.rubriek_op_laagste_Niveau where
                '.$or.') GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs' ; /* prepared statement */
 
-
+die();
 echo getSearchItems($dbh, $query,$bindValue);
 }
 
