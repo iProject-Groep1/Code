@@ -97,7 +97,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                             <option>1</option>
                             <option>3</option>
                             <option>5</option>
-                            <option default>7</option>
+                            <option selected>7</option>
                             <option>10</option>
                         </select>
                     </div>

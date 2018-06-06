@@ -107,7 +107,7 @@ function uploadPicture ($lastid, $dbh){
         $uploadOk = 0;
     }
 // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    if($imageFileType != "jpg" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, only JPG, JPEG, PNG & GIF files are allowed. \', status: \'success\'})</script>';
