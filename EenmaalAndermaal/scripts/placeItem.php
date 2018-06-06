@@ -53,7 +53,7 @@ function insertItem($dbh)
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
         $_SESSION['fillEverything'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'success\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'danger\'})</script>';
         header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
     }
 
