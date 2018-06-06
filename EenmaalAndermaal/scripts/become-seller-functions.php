@@ -77,10 +77,13 @@ if (isset($_POST['submit'])) {
                 $dataCorrect = true;
             }
         } else if ($verificationMethod = "Post") {
-            if (!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) {
+            if ((!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) || !empty($_POST['creditCardNumber']) && isset($_POST['creditCardNumber'])) {
                 //TODO: check of 1 van beide is ingevuld
                 if (empty($_POST['creditCardNumber'])) {
                     $_POST['creditCardNumber'] = NULL;
+                }
+                if(empty($_POST['bankAccountNumber'])){
+                    $_POST['bankAccountNumber'] = NULL;
                 }
                 $dataCorrect = true;
             } else {
