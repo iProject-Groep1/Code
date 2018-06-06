@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     if ($verificationMethod == "Creditcard") {
         if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
             $dataCorrect = false;
-            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: creditcard"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
 
             if(empty($_POST['bankAccountNumber'])){
                 $_POST['bankAccountNumber'] = NULL;
@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
             $dataCorrect = true;
         } else {
             $dataCorrect = false;
-            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: creditcard"></span> U moet een bankrekeningnummer invullen\', status: \'danger\'})</script>';
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een bankrekeningnummer of creditcardnummer invullen\', status: \'danger\'})</script>';
         }
     }
 
