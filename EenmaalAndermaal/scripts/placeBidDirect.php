@@ -13,19 +13,26 @@ if (!CheckLogin()) {
     header("Location: ../login.php");
 
 } else {
-
-    if (isset($_GET['id']) && !empty($_GET['id']) && isset($_GET['bedrag']) && !empty($_GET['bedrag'])) {
-        // Verify data
-        $id = $_GET['id']; // Set id variable
-        $bedrag = $_GET['bedrag']; //Set bedrag variable
-        setMinBid($dbh, $id, $bedrag);
-    } else if (empty($_GET['bedrag'])) {
+    if (getSeller($dbh, $_GET['id']) == $_SESSION['username']) {
         $_SESSION['bodMelding'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Vul een bodbedrag in!\', status: \'danger\'})</script>
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> U mag niet up uw eigen veiling bieden!\', status: \'danger\'})</script>
 ';
         header('Location:../detailpage.php?id=' . $_GET['id']);
-    }
+    } else {
 
+        if (isset($_GET['id']) && !empty($_GET['id']) && isset($_GET['bedrag']) && !empty($_GET['bedrag'])) {
+            // Verify data
+            $id = $_GET['id']; // Set id variable
+            $bedrag = $_GET['bedrag']; //Set bedrag variable
+            setMinBid($dbh, $id, $bedrag);
+        } else if (empty($_GET['bedrag'])) {
+            $_SESSION['bodMelding'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Vul een bodbedrag in!\', status: \'danger\'})</script>
+';
+            header('Location:../detailpage.php?id=' . $_GET['id']);
+        }
+
+    }
 }
 
 function setMinBid($dbh, $id, $bedrag)

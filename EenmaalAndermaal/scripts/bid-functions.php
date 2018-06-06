@@ -70,6 +70,27 @@ function getHighestBid($dbh, $id)
 
 }
 
+
+function getSeller($dbh, $id)
+{
+    try {
+        $stmt = $dbh->prepare("SELECT verkoper from voorwerp v WHERE voorwerpnummer = :Voorwerp"); /* prepared statement */
+        $stmt->bindValue(":Voorwerp", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
+        $stmt->execute(); /* stuurt alles naar de server */
+        if ($results = $stmt->fetch()) {
+            $row = $results['verkoper'];
+        }
+        return $row;
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+        header('Location: ../errorpage.php?err=500');
+    }
+
+}
+
+
+
+
 function getHighestBidder($dbh, $id)
 {
     try {
