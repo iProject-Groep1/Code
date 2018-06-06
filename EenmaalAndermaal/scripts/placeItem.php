@@ -88,7 +88,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
 // Check file size
     if ($_FILES["Image"]["size"] > 500000) {
         $_SESSION['fillEverything2'] .= '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, your file is too large.. \', status: \'success\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, uw plaatje is te groot.. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
@@ -96,15 +96,12 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
         $_SESSION['fillEverything2'] .= '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, only JPG, JPEG, PNG & GIF files are allowed. \', status: \'success\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, wij accepteren alleen JPG, JPEG, PNG & GIF files. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
 // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        $_SESSION['fillEverything2'] .= '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, your file was not uploaded. \', status: \'success\'})</script>';
-        header('Location: ../search-Rubriek.php');
 // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["Image"]["tmp_name"], $target_file)) {
@@ -119,7 +116,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
                 $_SESSION['fillEverything'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'success\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'danger\'})</script>';
                 header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
             }
 
@@ -132,7 +129,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
             } catch (PDOException $e) {
                 echo "Fout" . $e->getMessage();
                 $_SESSION['fillEverything2'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'success\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'danger\'})</script>';
                 header('Location: ../search-Rubriek.php');
             }
             echo "The file ". basename( $_FILES["Image"]["name"]). " has been uploaded.";
@@ -140,7 +137,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
         } else {
             echo "Sorry, there was an error uploading your file.";
             $_SESSION['fillEverything2'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'success\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'danger\'})</script>';
             header('Location: ../search-Rubriek.php');
         }
     }
