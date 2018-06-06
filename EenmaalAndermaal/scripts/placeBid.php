@@ -16,11 +16,18 @@ if ($Login == false) {
 
 
 } else {
+    if (getSeller($dbh, $_GET['id']) == $_SESSION['username']) {
+        $_SESSION['bodMelding'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> U mag niet up uw eigen veiling bieden!\', status: \'danger\'})</script>
+';
+        header('Location:../detailpage.php?id=' . $_GET['id']);
+    } else {
 
-    if (isset($_GET['id']) && !empty($_GET['id'])) {
-        // Verify data
-        $id = $_GET['id']; // Set email variable
-        setMinBid($dbh, $id);
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            // Verify data
+            $id = $_GET['id']; // Set email variable
+            setMinBid($dbh, $id);
+        }
     }
 }
 

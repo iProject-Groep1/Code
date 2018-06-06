@@ -15,8 +15,8 @@ include('scripts/database-connect.php');
                     <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php">Mijn Profiel</a></li>
                         <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
-                        <li><a href="#">Mijn Veilingen</a></li>
-                        <li><a href="#">Mijn Biedingen</a></li>
+                        <li><a href="myAuctions.php">Mijn Veilingen</a></li>
+                        <li><a href="showBids.php">Mijn Biedingen</a></li>
                         <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
                     </ul>
                 </li>

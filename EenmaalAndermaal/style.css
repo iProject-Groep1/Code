@@ -24,12 +24,22 @@ h3 {
 }
 
 .uk-card-refactor2{
-	margin-left: 380px;
+	margin-left: 200px;
 }
 
 .uk-grid>* {
 	padding-left: 20px;
 }
+
+.uk-highest-bid {
+	color: #4CBB17;
+}
+
+
+.uk-not-highest-bid{
+	color: red;
+}
+
 
 .uk-navbar-nav>li>a {
 	color: #FFFFFF;
@@ -290,6 +300,12 @@ set-line-height-0{
 	margin-left: 4%;
 }
 
+.text-overflow{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	/*width:66%;*/
+}
 
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
 
