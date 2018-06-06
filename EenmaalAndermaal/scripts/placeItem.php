@@ -53,7 +53,7 @@ function insertItem($dbh)
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
         $_SESSION['fillEverything'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'success\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'danger\'})</script>';
         header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
     }
 
@@ -93,10 +93,9 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
         $uploadOk = 0;
     }
 // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
+    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" ) {
         $_SESSION['fillEverything2'] .= '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, wij accepteren alleen JPG, JPEG, PNG & GIF files. \', status: \'danger\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, wij accepteren alleen JPG, JPEG, PNG en GIF files. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
