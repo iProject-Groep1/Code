@@ -39,11 +39,22 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
-                        <li><a href="profile.php">Mijn Profiel</a></li>
-                        <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
-                        <li><a href="myAuctions.php">Mijn Veilingen</a></li>
-                        <li><a href="#">Mijn Biedingen</a></li>
-                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
+                        <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
+                        <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                        <li><a href="#"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <?php
+                        if ($data['verkoper'] == 0) {
+                            ?>
+                            <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
+                            <?php
+                        } else {
+                            ?>
+                            <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                            <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+                            </li>
+                            <?php
+                        } ?>
+
                     </ul>
                 </li>
             </ul>
@@ -69,9 +80,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <td></td>
                         <td class="uk-width-1-3">Accounttype:</td>
                         <td><p class="uk-text-center"><?php if ($data['verkoper'] == 1) {
-                                    echo "Verkoper";
+                                    echo 'Verkoper';
                                 } else if ($data['verkoper'] == 0) {
-                                    echo "Gebruiker";
+                                    echo 'Gebruiker <a href="become-seller.php" class="uk-icon-link" uk-icon="tag" class="uk-margin-small-right" uk-tooltip="Verkoper worden?"></a>';
                                 } ?></p></td>
                     </tr>
                     <!-- TODO: rating -->
@@ -82,11 +93,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <td class="uk-table-shrink"><span uk-icon="happy"></span></td>
                             <td class="uk-width-1-3">Waardering:</td>
                             <td><p class="uk-text-center"><?php
-                                    $numberOfStars = (int) $data['rating'] /= 20;
-                                    for($i = 0; $i < $numberOfStars; $i++){
+                                    $numberOfStars = (int)$data['rating'] /= 20;
+                                    for ($i = 0; $i < $numberOfStars; $i++) {
                                         ?>
                                         <span uk-icon="star" class="rating-star"></span>
-                        <?php
+                                        <?php
                                     }
 
                                     ?>

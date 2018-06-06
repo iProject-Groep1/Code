@@ -6,8 +6,7 @@ require_once('scripts/become-seller-functions.php');
 require_once('scripts/database-connect.php');
 
 
-
-if(!isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
 }
 
@@ -22,10 +21,25 @@ if (isset($_SESSION['becomeSellerFormNotification']) && !empty($_SESSION['become
     $_SESSION['becomeSellerFormNotification'] = "";
 }
 
+//stuur terug wanneer je al verkoper bent
+try {
+    $stmt = $dbh->prepare("SELECT verkoper FROM Gebruiker where gebruikersnaam LIKE :gebruikersnaam");
+    $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+    $stmt->execute();
+    if ($data = $stmt->fetch()) {
+        if ($data['verkoper'] == 1) {
+            $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> U bent al verkoper!\', status: \'danger\'})</script>';
+            header('Location: profile.php');
+        }
+    }
+} catch (PDOException $e) {
+    echo "Fout" . $e->getMessage();
+}
+
 ?>
     <h2 class="uk-text-center">Verkoper worden</h2>
 <?php
-if(!isset($_GET['verification'])) {
+if (!isset($_GET['verification'])) {
     ?>
 
     <div class="uk-card uk-card-default uk-card-body uk-width-2-5@m uk-margin-auto uk-flex uk-flex-column uk-flex-wrap-around uk-margin-medium-top uk-margin-large-bottom">
