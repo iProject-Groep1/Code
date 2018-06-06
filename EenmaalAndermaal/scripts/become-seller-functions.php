@@ -78,6 +78,7 @@ if (isset($_POST['submit'])) {
         }
     } else if ($verificationMethod = "Post") {
         if (!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) {
+            //TODO: check of 1 van beide is ingevuld
             if(empty($_POST['creditCardNumber'])){
                 $_POST['creditCardNumber'] = NULL;
             }
