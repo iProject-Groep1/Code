@@ -93,9 +93,9 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
         $uploadOk = 0;
     }
 // Allow certain file formats
-    if($imageFileType != "jpg" ) {
+    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" ) {
         $_SESSION['fillEverything2'] .= '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, wij accepteren alleen JPG files. \', status: \'danger\'})</script>';
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, wij accepteren alleen JPG, JPEG, PNG en GIF files. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
