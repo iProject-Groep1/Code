@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     if ($verificationMethod == "Creditcard") {
         if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
             $dataCorrect = false;
-            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: creditcard"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
 
             if(empty($_POST['bankAccountNumber'])){
                 $_POST['bankAccountNumber'] = NULL;
@@ -78,13 +78,14 @@ if (isset($_POST['submit'])) {
         }
     } else if ($verificationMethod = "Post") {
         if (!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) {
+            //TODO: check of 1 van beide is ingevuld
             if(empty($_POST['creditCardNumber'])){
                 $_POST['creditCardNumber'] = NULL;
             }
             $dataCorrect = true;
         } else {
             $dataCorrect = false;
-            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: creditcard"></span> U moet een bankrekeningnummer invullen\', status: \'danger\'})</script>';
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een bankrekeningnummer of creditcardnummer invullen\', status: \'danger\'})</script>';
         }
     }
 
@@ -122,9 +123,9 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
         header('Location: ../profile.php');
-    }
-} else {
-    header('Location: ../become-seller.php');
+    }else {
+        header('Location: ../become-seller.php');
+}
 }
 
 function createVerificationMail($email, $verificationMethod, $verificationCode = "kaas")
