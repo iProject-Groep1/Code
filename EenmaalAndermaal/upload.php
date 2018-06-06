@@ -106,12 +106,12 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
         <div class="uk-card-refactor auctions-reset-margin uk-display-inline-block uk-margin-top-zero">
             <div class="js-upload uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
-                <span class="uk-text-middle">Sleep hier een foto in of </span>
                 <div uk-form-custom>
                     <input type="file" name="Image" multiple>
-                    <span class="uk-link">selecteer er een</span>
+                    <span class="uk-link">Selecteer een foto</span>
                 </div>
             </div>
+           
             
     <div class="auctions-reset-margin uk-display-inline-block uk-margin-top-zero">
         <div class="uk-margin">

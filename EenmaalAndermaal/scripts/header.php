@@ -53,6 +53,7 @@ if (isset($_SESSION['username'])) {
 $header .= '
 
                         <li><a href="#">Contact</a></li>
+                        <li><a href="profile.php">Mijn Profiel</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="algemeneVoorwaarden.php">Algemene Voorwaarden</a></li>
                         <li><a href="#">Over EenmaalAndermaal</a></li>

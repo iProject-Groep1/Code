@@ -126,7 +126,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <td><p class="uk-text-center"><?= $data['mail_adres'] ?></p></td>
                     </tr>
                     <tr>
-                        <td class="uk-table-shrink"><span uk-icon="location"></span></td>
+                        <td class="uk-table-shrink"><span uk-icon="home"></span></td>
                         <td class="uk-width-1-3"><p>Adres:</p></td>
                         <td><p class="uk-text-center"><?= $data['adresregel1'] ?></p></td>
                     </tr>
@@ -142,15 +142,15 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     }
                     ?>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td class="uk-table-shrink"><span uk-icon="location"></span></td>
+                        <td class="uk-width-1-3"><p>Postode:</p></td>
                         <td>
                             <p class="uk-text-center"><?= strtoupper($data['postcode']) . " " . $data['plaatsnaam'] ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td class="uk-table-shrink"><span uk-icon="world"></span></td>
+                        <td class="uk-width-1-3"><p>Land:</p></td>
                         <td><p class="uk-text-center"><?= $data['land'] ?></p></td>
                     </tr>
 

@@ -90,25 +90,35 @@ function uploadPicture ($lastid, $dbh){
             $uploadOk = 0;
         }
     }
+
+    /*
 // Check if file already exists
     if (file_exists($target_file)) {
         echo "Sorry, file already exists.";
         $uploadOk = 0;
     }
+    */
+
 // Check file size
     if ($_FILES["Image"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
+        $_SESSION['fillEverything2'] .= '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, your file is too large.. \', status: \'success\'})</script>';
+        header('Location: ../upload.php');
         $uploadOk = 0;
     }
 // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $_SESSION['fillEverything2'] .= '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, only JPG, JPEG, PNG & GIF files are allowed. \', status: \'success\'})</script>';
+        header('Location: ../upload.php');
         $uploadOk = 0;
     }
 // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+        $_SESSION['fillEverything2'] .= '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, your file was not uploaded. \', status: \'success\'})</script>';
+        header('Location: ../upload.php');
 // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["Image"]["tmp_name"], $target_file)) {
