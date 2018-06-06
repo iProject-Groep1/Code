@@ -122,9 +122,9 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
         header('Location: ../profile.php');
-    }
-} else {
-    header('Location: ../become-seller.php');
+    }else {
+        header('Location: ../become-seller.php');
+}
 }
 
 function createVerificationMail($email, $verificationMethod, $verificationCode = "kaas")
