@@ -41,7 +41,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
                         <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                        <li><a href="#"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
                         <?php
                         if ($data['verkoper'] == 0) {
                             ?>
