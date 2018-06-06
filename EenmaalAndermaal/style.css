@@ -290,6 +290,12 @@ set-line-height-0{
 	margin-left: 4%;
 }
 
+.text-overflow{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	/*width:66%;*/
+}
 
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
 
