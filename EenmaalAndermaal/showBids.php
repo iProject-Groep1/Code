@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Mijn Veilingen";
+$pageTitle = "Mijn Biedingen";
 include('scripts/header.php');
 include('scripts/auction-item.php');
 include('scripts/homepage-functions.php');
@@ -34,7 +34,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         header('Location: errorpage.php?err=500');
     }
     ?>
-    <h2 class="uk-text-center">Mijn Veilingen</h2>
+    <h2 class="uk-text-center">Mijn Biedingen</h2>
     <div class="uk-margin-left@l uk-margin-left@m">
 
         <div class="profile-sidebar uk-align-center@m">
@@ -53,14 +53,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         </div>
 
         <div class="uk-grid uk-align-center uk-card-refactor2  uk-flex uk-flex-center auctions-reset-margin">
-            <!-- gebruikersinformatie -->
+                <!-- gebruikersinformatie -->
 
 
-            <?php
+                <?php
 
-            searchMyAuctions($dbh);
+                searchMyAuctions($dbh);
 
-            ?>
+                ?>
 
 
             <div class="uk-overflow-auto">
@@ -81,7 +81,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 include('scripts/footer.php');
 
-function searchMyAuctions($dbh)
+function searchMyBids($dbh)
 {
 
     $searchItems = '';
@@ -90,11 +90,11 @@ function searchMyAuctions($dbh)
 FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
  WHERE g.gebruikersnaam like :bindvalue and veilinggesloten = 0  GROUP BY Voorwerpnummer, titel, looptijdEindmoment order by titel ' ; /* prepared statement */
     $bindValue = $_SESSION['username'];
-    $searchItems .=   getMyAuctions($dbh, $queries['search'],$bindValue);
+    $searchItems .=   getMyBids($dbh, $queries['search'],$bindValue);
     echo $searchItems;
 }
 
-function getMyAuctions($dbh, $query, $bindvalue)
+function getMyBids($dbh, $query, $bindvalue)
 {
     $itemCards = "";
     try {

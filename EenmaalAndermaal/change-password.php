@@ -36,7 +36,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Huidig wachtwoord*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" name="currentPassword" id="form-horizontal-text" type="password" required>
+                                <input class="uk-input" placeholder="Vul uw huidige wachtwoord in"name="currentPassword" id="form-horizontal-text" type="password" required>
                             </div>
                         </div>
 
@@ -44,14 +44,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Nieuw wachtwoord*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" name="newPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
+                                <input class="uk-input" placeholder="Vul uw nieuwe wachtwoord in" name="newPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
                             </div>
                         </div>
 
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Nieuw wachtwoord opnieuw invullen*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" name="confirmPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
+                                <input class="uk-input" placeholder="Vul opnieuw uw nieuwe wachtwoord in"name="confirmPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
 
                         <div class="uk-inline uk-align-right uk-width-1-3">
-                            <input class="uk-input uk-button-primary" type="submit" name="submit" value="Opslaan">
+                            <input class="uk-input uk-button-primary niagara" type="submit" name="submit" value="Opslaan">
                         </div>
                     </fieldset>
                 </form>

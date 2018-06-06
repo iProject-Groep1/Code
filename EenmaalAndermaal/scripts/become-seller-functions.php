@@ -28,10 +28,14 @@ if (isset($_POST['submitVerification'])) {
             $stmt = $dbh->prepare("UPDATE Gebruiker SET verkoper = 1 WHERE gebruikersnaam LIKE :gebruikersnaam");
             $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
             $stmt->execute();
+            $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: check"></span> U bent nu verkoper!\', status: \'success\'})</script>';
+            header('Location: ../profile.php');
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
             header('Location: ../errorpage.php?err=500');
         }
+
+
     } else {
         $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \' < span uk - icon = "icon: close" ></span > Deze code klopt niet . \', status: \'danger\'})</script>';
         header('Location: ../become-seller.php?verification=1');
@@ -56,7 +60,6 @@ if (isset($_POST['submit'])) {
         }
     } catch (PDOException $e) {
         echo "Fout bij ophalen wachtwoord" . $e->getMessage();
-
     }
 
     $verificationMethod = $_POST['verificationMethod'];
@@ -65,6 +68,8 @@ if (isset($_POST['submit'])) {
     if ($verificationMethod == "Creditcard") {
         if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
             $dataCorrect = false;
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
+
             if(empty($_POST['bankAccountNumber'])){
                 $_POST['bankAccountNumber'] = NULL;
             }
@@ -73,12 +78,14 @@ if (isset($_POST['submit'])) {
         }
     } else if ($verificationMethod = "Post") {
         if (!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) {
+            //TODO: check of 1 van beide is ingevuld
             if(empty($_POST['creditCardNumber'])){
                 $_POST['creditCardNumber'] = NULL;
             }
             $dataCorrect = true;
         } else {
             $dataCorrect = false;
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een bankrekeningnummer of creditcardnummer invullen\', status: \'danger\'})</script>';
         }
     }
 
@@ -116,7 +123,9 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
         header('Location: ../profile.php');
-    }
+    }else {
+        header('Location: ../become-seller.php');
+}
 }
 
 function createVerificationMail($email, $verificationMethod, $verificationCode = "kaas")
@@ -137,7 +146,7 @@ function createVerificationMail($email, $verificationMethod, $verificationCode =
         $message .= '<p>We hebben uw gegevens geverifiëerd bij uw maatschappij en deze komen overeen.</p>
                     <h2>U bent nu een verkoper!</h2>';
     } else if ($verificationMethod == "Post") {
-        $message .= '<p>Uw verificatiecode is: ' . $verificationCode . ', vul deze in op <a href="become-seller.php?verification=1">deze</a> pagina.</p> ';
+        $message .= '<p>Uw verificatiecode is: ' . $verificationCode . ', vul deze in op <a href="http://iproject1.icasites.nl/become-seller.php?verification=1">deze</a> pagina.</p> ';
     }
 
 

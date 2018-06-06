@@ -24,7 +24,7 @@ h3 {
 }
 
 .uk-card-refactor2{
-	margin-left: 380px;
+	margin-left: 200px;
 }
 
 .uk-grid>* {
@@ -269,6 +269,12 @@ li .uk-button{
 .marge-left{
 	margin-left: 2%;
 }
+
+
+.rating-star[uk-icon=star] svg{
+	fill: yellow-green;
+					 color: yellowgreen;
+				 }
 
 /*	-haalt het marge boven de afbeelding in de detailpagina weg
 	-staat nog niet in de detailpagina
