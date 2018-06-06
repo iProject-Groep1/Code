@@ -57,24 +57,10 @@ function insertItem($dbh)
         header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
     }
 
-
-    try {
-        $sql = "insert into VoorwerpInRubriek ([voorwerp],[rubriek_op_laagste_Niveau])
-        values (?,?)";
-
-        $query = $dbh->prepare($sql);
-        $query->execute(array($lastid, $rubrieknr));
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-        $_SESSION['fillEverything'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'success\'})</script>';
-        header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
-    }
-
-    uploadPicture ($lastid, $dbh);
+    uploadPicture ($lastid, $dbh, $rubrieknr, $titel);
 }
 
-function uploadPicture ($lastid, $dbh){
+function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
     $target_dir = "../upload/";
     $target_file = $target_dir . basename($_FILES["Image"]["name"]);
     $uploadOk = 1;
@@ -103,25 +89,39 @@ function uploadPicture ($lastid, $dbh){
     if ($_FILES["Image"]["size"] > 500000) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, your file is too large.. \', status: \'success\'})</script>';
-        header('Location: ../upload.php');
+        header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
 // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "jpeg"
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, only JPG, JPEG, PNG & GIF files are allowed. \', status: \'success\'})</script>';
-        header('Location: ../upload.php');
+        header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
 // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, your file was not uploaded. \', status: \'success\'})</script>';
-        header('Location: ../upload.php');
+        header('Location: ../search-Rubriek.php');
 // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["Image"]["tmp_name"], $target_file)) {
+
+
+            try {
+                $sql = "insert into VoorwerpInRubriek ([voorwerp],[rubriek_op_laagste_Niveau])
+        values (?,?)";
+
+                $query = $dbh->prepare($sql);
+                $query->execute(array($lastid, $rubrieknr));
+            } catch (PDOException $e) {
+                echo "Fout" . $e->getMessage();
+                $_SESSION['fillEverything'] = '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'success\'})</script>';
+                header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
+            }
 
             try {
                 $sql = "insert into Bestand ([filenaam],[voorwerp])
@@ -133,7 +133,7 @@ function uploadPicture ($lastid, $dbh){
                 echo "Fout" . $e->getMessage();
                 $_SESSION['fillEverything2'] = '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'success\'})</script>';
-                header('Location: ../upload.php');
+                header('Location: ../search-Rubriek.php');
             }
             echo "The file ". basename( $_FILES["Image"]["name"]). " has been uploaded.";
             header('Location: ../detailpage.php?id=' . $lastid . '');
@@ -141,7 +141,7 @@ function uploadPicture ($lastid, $dbh){
             echo "Sorry, there was an error uploading your file.";
             $_SESSION['fillEverything2'] = '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'success\'})</script>';
-            header('Location: ../upload.php');
+            header('Location: ../search-Rubriek.php');
         }
     }
 }
