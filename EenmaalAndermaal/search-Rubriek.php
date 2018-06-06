@@ -3,6 +3,16 @@ $pageTitle = "Upload rubriek";
 require('scripts/header.php');
 include('scripts/database-connect.php');
 
+if (isset($_SESSION['fillEverything']) && !empty($_SESSION['fillEverything'])) {
+    echo $_SESSION['fillEverything'];
+    $_SESSION['fillEverything'] = "";
+}
+
+if (isset($_SESSION['fillEverything2']) && !empty($_SESSION['fillEverything2'])) {
+    echo $_SESSION['fillEverything2'];
+    $_SESSION['fillEverything2'] = "";
+}
+
 
     ?>
 
