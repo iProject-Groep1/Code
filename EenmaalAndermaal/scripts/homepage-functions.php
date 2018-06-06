@@ -135,10 +135,12 @@ function getHomepageCards($dbh, $query)
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
+        die();
         header('Location: errorpage.php?err=500');
     }
     return $itemCards;
 }
+
 
 
 

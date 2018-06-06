@@ -70,6 +70,23 @@ function getHighestBid($dbh, $id)
 
 }
 
+function getHighestBidder($dbh, $id)
+{
+    try {
+        $stmt = $dbh->prepare("SELECT top 1 MAX(Bodbedrag) as Hoogstebod, gebruiker from Bod b WHERE b.Voorwerp = :Voorwerp group by gebruiker order by Hoogstebod desc"); /* prepared statement */
+        $stmt->bindValue(":Voorwerp", $id, PDO::PARAM_STR); /* helpt tegen SQL injection */
+        $stmt->execute(); /* stuurt alles naar de server */
+        if ($results = $stmt->fetch()) {
+            $row = $results['gebruiker'];
+        }
+        return $row;
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+        header('Location: ../errorpage.php?err=500');
+    }
+
+}
+
 
 function getStartPrice($dbh, $id){
     try{

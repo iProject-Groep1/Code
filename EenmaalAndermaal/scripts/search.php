@@ -29,6 +29,7 @@ function getSearchItems($dbh, $query,$bindValue)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->bindValue(":bindValue", $bindValue , PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
+        echo ($results);
         while ($results = $stmt->fetch()) {
 
             $price = $results['hoogsteBod'];
@@ -88,15 +89,14 @@ $or = '';
  }
  $or = substr($or, 0 , -3);
 
-$query=  'SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)
+$query=  "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)
           AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
          FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp
                          join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
          WHERE titel like :bindValue and veilinggesloten = 0 and voorwerpnummer in
           (select voorwerp from VoorwerpInRubriek vr join Rubriek r on r.rubrieknummer = vr.rubriek_op_laagste_Niveau where
-               '.$or.') GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs' ; /* prepared statement */
+               $or) GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs" ; /* prepared statement */
 
-die();
 echo getSearchItems($dbh, $query,$bindValue);
 }
 

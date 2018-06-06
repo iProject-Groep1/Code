@@ -31,6 +31,16 @@ h3 {
 	padding-left: 20px;
 }
 
+.uk-highest-bid {
+	color: #4CBB17;
+}
+
+
+.uk-not-highest-bid{
+	color: red;
+}
+
+
 .uk-navbar-nav>li>a {
 	color: #FFFFFF;
 

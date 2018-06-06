@@ -58,7 +58,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
                 <?php
 
-                searchMyAuctions($dbh);
+                searchMyBids($dbh);
 
                 ?>
 
@@ -83,31 +83,34 @@ include('scripts/footer.php');
 
 function searchMyBids($dbh)
 {
+    $searchItems = "";
 
-    $searchItems = '';
-
-    $queries['search'] = 'SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
+    $queries['search'] = '
+SELECT voorwerpnummer, titel, looptijdEindmoment, (SELECT filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam , MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
 FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
- WHERE g.gebruikersnaam like :bindvalue and veilinggesloten = 0  GROUP BY Voorwerpnummer, titel, looptijdEindmoment order by titel ' ; /* prepared statement */
+WHERE b.gebruiker like :bindvalue and v.veilinggesloten = 0   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
+' ;
+
     $bindValue = $_SESSION['username'];
     $searchItems .=   getMyBids($dbh, $queries['search'],$bindValue);
     echo $searchItems;
 }
+
 
 function getMyBids($dbh, $query, $bindvalue)
 {
     $itemCards = "";
     try {
         $stmt = $dbh->prepare($query); /* prepared statement */
-        $stmt->bindValue(":bindvalue", $bindvalue , PDO::PARAM_STR); /* helpt tegen SQL injection */
+        $stmt->bindValue(":bindvalue", $bindvalue, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
 
             $price = $results['hoogsteBod'];
-            if(is_null($price)){
+            if (is_null($price)) {
                 $price = getStartPrice($dbh, $results['voorwerpnummer']);
             }
-            $itemCards .= createItemScript($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $price, $results['voorwerpnummer'], $dbh);
+            $itemCards .= createMyBids($results['titel'], $results['looptijdEindmoment'], $results['bestandsnaam'], $price, $results['voorwerpnummer'], $dbh);
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
