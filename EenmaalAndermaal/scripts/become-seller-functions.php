@@ -60,7 +60,6 @@ if (isset($_POST['submit'])) {
         }
     } catch (PDOException $e) {
         echo "Fout bij ophalen wachtwoord" . $e->getMessage();
-
     }
 
     $verificationMethod = $_POST['verificationMethod'];
@@ -69,6 +68,8 @@ if (isset($_POST['submit'])) {
     if ($verificationMethod == "Creditcard") {
         if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
             $dataCorrect = false;
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: creditcard"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
+
             if(empty($_POST['bankAccountNumber'])){
                 $_POST['bankAccountNumber'] = NULL;
             }
@@ -83,6 +84,7 @@ if (isset($_POST['submit'])) {
             $dataCorrect = true;
         } else {
             $dataCorrect = false;
+            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: creditcard"></span> U moet een bankrekeningnummer invullen\', status: \'danger\'})</script>';
         }
     }
 
@@ -121,6 +123,8 @@ if (isset($_POST['submit'])) {
         $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
         header('Location: ../profile.php');
     }
+} else {
+    header('Location: ../become-seller.php');
 }
 
 function createVerificationMail($email, $verificationMethod, $verificationCode = "kaas")
