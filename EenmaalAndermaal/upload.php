@@ -4,15 +4,6 @@ $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
 
-if (isset($_SESSION['fillEverything']) && !empty($_SESSION['fillEverything'])) {
-    echo $_SESSION['fillEverything'];
-    $_SESSION['fillEverything'] = "";
-}
-
-if (isset($_SESSION['fillEverything2']) && !empty($_SESSION['fillEverything2'])) {
-    echo $_SESSION['fillEverything2'];
-    $_SESSION['fillEverything2'] = "";
-}
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
 
@@ -97,7 +88,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                             <option>1</option>
                             <option>3</option>
                             <option>5</option>
-                            <option default>7</option>
+                            <option selected>7</option>
                             <option>10</option>
                         </select>
                     </div>
