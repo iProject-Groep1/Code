@@ -104,6 +104,10 @@ function getMyBids($dbh, $query, $bindvalue)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->bindValue(":bindvalue", $bindvalue, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
+        $count = $stmt->rowCount();
+        if($count == 0){
+            echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog niet geboden op een voorwerp</h2><h3><a href="index.php">zoek een leuke veiling!</a></h3 class="uk-alert-warning"></div>';
+        }
         while ($results = $stmt->fetch()) {
 
             $price = $results['hoogsteBod'];
@@ -115,8 +119,6 @@ function getMyBids($dbh, $query, $bindvalue)
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
     }
-    if(empty($results)){
-        echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog niet geboden op een voorwerp</h2><h3><a href="index.php">zoek een leuke veiling!</a></h3 class="uk-alert-warning"></div>';
-    }
+
     return $itemCards;
 }
