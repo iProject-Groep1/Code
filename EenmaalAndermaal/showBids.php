@@ -35,7 +35,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     }
     ?>
     <h2 class="uk-text-center">Mijn Biedingen</h2>
-    <div class="uk-margin-left@l uk-margin-left@m">
+    <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">
 
         <div class="profile-sidebar uk-align-center@m">
             <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
@@ -114,6 +114,9 @@ function getMyBids($dbh, $query, $bindvalue)
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
+    }
+    if(empty($results)){
+        echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog niet geboden op een voorwerp</h2><h3><a href="index.php">zoek een leuke veiling!</a></h3 class="uk-alert-warning"></div>';
     }
     return $itemCards;
 }
