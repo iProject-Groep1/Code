@@ -85,7 +85,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
     }
     */
 
-    if (strlen($_FILES["Image"]["name"]) > 100) {
+    if (strlen($_FILES["Image"]["name"]) > 500) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, uw plaatjesnaam is te groot.. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
