@@ -256,6 +256,10 @@ li .uk-button{
 	padding-right: 10px;
 }
 
+.marge-left {
+	margin-left: 4%;
+}
+
 .flex-space-evenly{
 	justify-content: flex-evenly;
 }
