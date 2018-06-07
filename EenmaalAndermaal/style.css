@@ -257,7 +257,7 @@ li .uk-button{
 }
 
 .marge-left {
-	margin-left: 4%;
+	margin-left: 4%!important;
 }
 
 .flex-space-evenly{
@@ -287,9 +287,6 @@ li .uk-button{
 	box-shadow: none;
 }
 
-.marge-left{
-	margin-left: 2%;
-}
 
 
 .rating-star[uk-icon=star] svg{
