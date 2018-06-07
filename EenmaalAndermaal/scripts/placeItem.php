@@ -85,6 +85,13 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
     }
     */
 
+    if (strlen($_FILES["Image"]["name"]) > 100) {
+        $_SESSION['fillEverything2'] .= '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, uw plaatjesnaam is te groot.. \', status: \'danger\'})</script>';
+        header('Location: ../search-Rubriek.php');
+        $uploadOk = 0;
+    }
+
 // Check file size
     if ($_FILES["Image"]["size"] > 500000) {
         $_SESSION['fillEverything2'] .= '
