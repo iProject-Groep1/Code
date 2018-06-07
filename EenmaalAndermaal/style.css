@@ -252,6 +252,9 @@ li .uk-button{
 	padding-right: 10px;
 }
 
+.flex-space-evenly{
+	justify-content: flex-evenly;
+}
 .padding-right {
 	padding: 0 20px 0 0;
 }

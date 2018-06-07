@@ -28,8 +28,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     <h1 class="uk-text-center">Gegevens wijzigen</h1>
 
-    <div class="uk-grid uk-flex">
-        <div class="uk-align-left profile-sidebar uk-align-center@m uk-display-block uk-width-1-2@s uk-width-1-6@m">
+
+        <div class="uk-align-left profile-sidebar uk-align-center@m uk-display-inline-block uk-width-1-2@s uk-width-1-6@m">
             <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
@@ -43,8 +43,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 </li>
             </ul>
         </div>
-
-        <div class="uk-align-card uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block">
+    <div class="uk-grid uk-flex uk-grid flex-space-evenly">
+        <div class="uk-align-card uk-card uk-card-default uk-card-body uk-width-1-1@s uk-width-2-3@m uk-width-1-2@l uk-width-2-5@xl uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block uk-a">
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
                     <div class="uk-width-expand">
@@ -130,7 +130,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
         </div>
 
-        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block">
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-1@s uk-width-2-3@m uk-width-1-2@l uk-width-2-5@xl uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block">
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
                     <div class="uk-width-expand">
