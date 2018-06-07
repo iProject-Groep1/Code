@@ -18,8 +18,7 @@ if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotifica
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    //haal bijna alle informatie van een gebruiker op
-//TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
+    //haal alle informatie van een gebruiker op
     $data = "";
     try {
         $stmt = $dbh->prepare("SELECT  g.gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper, rating FROM gebruiker g LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker LEFT JOIN verkoper v on g.gebruikersnaam = v.gebruikersnaam WHERE g.gebruikersnaam like :gebruikersnaam  ORDER BY volgnr");
@@ -41,7 +40,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
                         <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                        <li><a href="#"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
                         <?php
                         if ($data['verkoper'] == 0) {
                             ?>
@@ -126,7 +125,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <td><p class="uk-text-center"><?= $data['mail_adres'] ?></p></td>
                     </tr>
                     <tr>
-                        <td class="uk-table-shrink"><span uk-icon="location"></span></td>
+                        <td class="uk-table-shrink"><span uk-icon="home"></span></td>
                         <td class="uk-width-1-3"><p>Adres:</p></td>
                         <td><p class="uk-text-center"><?= $data['adresregel1'] ?></p></td>
                     </tr>
@@ -142,15 +141,15 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     }
                     ?>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td class="uk-table-shrink"><span uk-icon="location"></span></td>
+                        <td class="uk-width-1-3"><p>Postode:</p></td>
                         <td>
                             <p class="uk-text-center"><?= strtoupper($data['postcode']) . " " . $data['plaatsnaam'] ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td class="uk-table-shrink"><span uk-icon="world"></span></td>
+                        <td class="uk-width-1-3"><p>Land:</p></td>
                         <td><p class="uk-text-center"><?= $data['land'] ?></p></td>
                     </tr>
 

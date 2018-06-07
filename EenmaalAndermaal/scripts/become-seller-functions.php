@@ -12,8 +12,8 @@ if (isset($_POST['submitVerification'])) {
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->bindValue(":verificatiecode", $_POST['verificationCode'], PDO::PARAM_STR);
         $stmt->execute();
-        if($result = $stmt->fetch()){
-            if($result['aantal'] != 1){
+        if ($result = $stmt->fetch()) {
+            if ($result['aantal'] != 1) {
                 $verificationCodeCorrect = false;
             } else {
                 $verificationCodeCorrect = true;
@@ -23,7 +23,7 @@ if (isset($_POST['submitVerification'])) {
         echo "Fout" . $e->getMessage();
     }
 
-    if($verificationCodeCorrect){
+    if ($verificationCodeCorrect) {
         try {
             $stmt = $dbh->prepare("UPDATE Gebruiker SET verkoper = 1 WHERE gebruikersnaam LIKE :gebruikersnaam");
             $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
@@ -37,7 +37,7 @@ if (isset($_POST['submitVerification'])) {
 
 
     } else {
-        $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \' < span uk - icon = "icon: close" ></span > Deze code klopt niet . \', status: \'danger\'})</script>';
+        $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Deze code klopt niet.\', status: \'danger\'})</script>';
         header('Location: ../become-seller.php?verification=1');
     }
 }
@@ -51,81 +51,85 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
         if ($result = $stmt->fetch()) {
             $emailAdress = $result['mail_adres'];
-            if (password_verify($_POST['password'], $result['wachtwoord'])) {
-                $passwordCorrect = true;
-            } else {
+            $passwordCorrect = password_verify($_POST['password'], $result['wachtwoord']);
+
+            if (!$passwordCorrect) {
                 $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit wachtwoord klopt niet.\', status: \'danger\'})</script>';
                 header('Location: ../become-seller.php');
-            };
+            }
         }
     } catch (PDOException $e) {
         echo "Fout bij ophalen wachtwoord" . $e->getMessage();
     }
 
-    $verificationMethod = $_POST['verificationMethod'];
-    $dataCorrect = false;
+    if ($passwordCorrect) {
+        $verificationMethod = $_POST['verificationMethod'];
+        $dataCorrect = false;
 
-    if ($verificationMethod == "Creditcard") {
-        if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
-            $dataCorrect = false;
-            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
-
-            if(empty($_POST['bankAccountNumber'])){
-                $_POST['bankAccountNumber'] = NULL;
-            }
-        } else if (!empty($_POST['paymentMethod']) && isset($_POST['paymentMethod'])) {
-            $dataCorrect = true;
-        }
-    } else if ($verificationMethod = "Post") {
-        if (!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) {
-            //TODO: check of 1 van beide is ingevuld
-            if(empty($_POST['creditCardNumber'])){
-                $_POST['creditCardNumber'] = NULL;
-            }
-            $dataCorrect = true;
-        } else {
-            $dataCorrect = false;
-            $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een bankrekeningnummer of creditcardnummer invullen\', status: \'danger\'})</script>';
-        }
-    }
-
-    if ($dataCorrect) {
-        //TODO: functienaam aanpassen?
-        $verificationCode = randomPassword(10);
-        //zet alle data in verkopertabel
-        try {
-            //TODO: ja dit kan beter een arraytje worden want nu is het wel erg veel regels code terwijl dat eigenlijk niet hoeft doei
-            $stmt = $dbh->prepare("INSERT INTO Verkoper VALUES(:gebruikersnaam, :betaalwijze, :rekeningnummer, :controleOptie, :creditcardnummer, :verificatiecode, 50)");
-            $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
-            $stmt->bindValue(":betaalwijze", $_POST['paymentMethod'], PDO::PARAM_STR);
-            $stmt->bindValue(":rekeningnummer", $_POST['bankAccountNumber'], PDO::PARAM_STR);
-            $stmt->bindValue(":controleOptie", $_POST['verificationMethod'], PDO::PARAM_STR);
-            $stmt->bindValue(":creditcardnummer", $_POST['creditCardNumber'], PDO::PARAM_STR);
-            $stmt->bindValue(":verificatiecode", $verificationCode, PDO::PARAM_STR);
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo "Fout bij insert" . $e->getMessage();
-            header('Location: ../errorpage.php?err=500');
-        }
-        //maak meteen verkoper als creditcardverificatie is gebruikt
         if ($verificationMethod == "Creditcard") {
+            if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
+                $dataCorrect = false;
+                $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een creditcardnummer invullen.\', status: \'danger\'})</script>';
+                if (empty($_POST['bankAccountNumber'])) {
+                    $_POST['bankAccountNumber'] = NULL;
+                }
+            } else if (!empty($_POST['paymentMethod']) && isset($_POST['paymentMethod'])) {
+                $dataCorrect = true;
+            }
+        } else if ($verificationMethod = "Post") {
+            if ((!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) || !empty($_POST['creditCardNumber']) && isset($_POST['creditCardNumber'])) {
+                //TODO: check of 1 van beide is ingevuld
+                if (empty($_POST['creditCardNumber'])) {
+                    $_POST['creditCardNumber'] = NULL;
+                }
+                if(empty($_POST['bankAccountNumber'])){
+                    $_POST['bankAccountNumber'] = NULL;
+                }
+                $dataCorrect = true;
+            } else {
+                $dataCorrect = false;
+                $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: credit-card"></span> U moet een bankrekeningnummer of creditcardnummer invullen\', status: \'danger\'})</script>';
+            }
+        }
+
+        if ($dataCorrect) {
+            //TODO: functienaam aanpassen?
+            $verificationCode = randomPassword(10);
+            //zet alle data in verkopertabel
             try {
-                $stmt = $dbh->prepare("UPDATE Gebruiker SET verkoper = 1 WHERE gebruikersnaam LIKE :gebruikersnaam");
+                //TODO: ja dit kan beter een arraytje worden want nu is het wel erg veel regels code terwijl dat eigenlijk niet hoeft doei
+                $stmt = $dbh->prepare("INSERT INTO Verkoper VALUES(:gebruikersnaam, :betaalwijze, :rekeningnummer, :controleOptie, :creditcardnummer, :verificatiecode, 50)");
                 $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+                $stmt->bindValue(":betaalwijze", $_POST['paymentMethod'], PDO::PARAM_STR);
+                $stmt->bindValue(":rekeningnummer", $_POST['bankAccountNumber'], PDO::PARAM_STR);
+                $stmt->bindValue(":controleOptie", $_POST['verificationMethod'], PDO::PARAM_STR);
+                $stmt->bindValue(":creditcardnummer", $_POST['creditCardNumber'], PDO::PARAM_STR);
+                $stmt->bindValue(":verificatiecode", $verificationCode, PDO::PARAM_STR);
                 $stmt->execute();
             } catch (PDOException $e) {
-                echo "Fout" . $e->getMessage();
-                die();
+                echo "Fout bij insert" . $e->getMessage();
                 header('Location: ../errorpage.php?err=500');
             }
-        }
-        createVerificationMail($emailAdress, $verificationMethod, $verificationCode);
+            //maak meteen verkoper als creditcardverificatie is gebruikt
+            if ($verificationMethod == "Creditcard") {
+                try {
+                    $stmt = $dbh->prepare("UPDATE Gebruiker SET verkoper = 1 WHERE gebruikersnaam LIKE :gebruikersnaam");
+                    $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+                    $stmt->execute();
+                } catch (PDOException $e) {
+                    echo "Fout" . $e->getMessage();
+                    die();
+                    header('Location: ../errorpage.php?err=500');
+                }
+            }
+            createVerificationMail($emailAdress, $verificationMethod, $verificationCode);
 
-        $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
-        header('Location: ../profile.php');
-    }else {
-        header('Location: ../become-seller.php');
-}
+            $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
+            header('Location: ../profile.php');
+        } else {
+            header('Location: ../become-seller.php');
+        }
+    }
 }
 
 function createVerificationMail($email, $verificationMethod, $verificationCode = "kaas")

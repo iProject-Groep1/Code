@@ -1,10 +1,10 @@
 <?php
 include('database-connect.php');
 session_start();
-$username = $_SESSION['username'];
-$currentPassword = $_POST['currentPassword'];
-$newPassword = $_POST['newPassword'];
-$confirmPassword = $_POST['confirmPassword'];
+$username = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$currentPassword = htmlentities($_POST['currentPassword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$newPassword = htmlentities($_POST['newPassword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$confirmPassword = htmlentities($_POST['confirmPassword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 $passwordConfirmCorrect = false;
 $passwordCorrect = false;
 $passwordHash = "";
@@ -12,9 +12,9 @@ $passwordHash = "";
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     if (empty(trim($currentPassword)) || empty(trim($newPassword)) || empty(trim($confirmPassword))) {
-        header('Location: ../change-password.php?');
         $_SESSION['noChance'] = '
     <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw wachtwoord is niet gewijzigd.\', status: \'danger\'})</script>';
+        header('Location: ../change-password.php?');
     } else {
 //controleert of wachtwoorden overeen komen.
         if ($newPassword != $confirmPassword) {
@@ -41,8 +41,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         }
 
         if ($passwordConfirmCorrect & $passwordCorrect) {
-            $sql = "UPDATE Gebruiker SET wachtwoord = '$passwordhash' WHERE gebruikersnaam = '$username'";
-            $stmt = $dbh->prepare($sql);
+            $stmt = $dbh->prepare("UPDATE Gebruiker SET wachtwoord = :wachtwoord WHERE gebruikersnaam = :gebruikersnaam");
+            $stmt->bindValue(":wachtwoord", $passwordhash, PDO::PARAM_STR);
+            $stmt->bindValue(":gebruikersnaam", $username, PDO::PARAM_STR);
             $stmt->execute();
             header('Location: ../profile.php?');
             $_SESSION['chance'] = '

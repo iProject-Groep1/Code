@@ -4,15 +4,6 @@ $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
 
-if (isset($_SESSION['fillEverything']) && !empty($_SESSION['fillEverything'])) {
-    echo $_SESSION['fillEverything'];
-    $_SESSION['fillEverything'] = "";
-}
-
-if (isset($_SESSION['fillEverything2']) && !empty($_SESSION['fillEverything2'])) {
-    echo $_SESSION['fillEverything2'];
-    $_SESSION['fillEverything2'] = "";
-}
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
 
@@ -42,11 +33,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
             <li class="uk-parent uk-open">
                 <a href="#">EenmaalAndermaal</a>
                 <ul class="uk-nav-sub" aria-hidden="false">
-                    <li><a href="profile.php">Mijn Profiel</a></li>
-                    <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
-                    <li><a href="#">Mijn Veilingen</a></li>
-                    <li><a href="#">Mijn Biedingen</a></li>
-                    <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
+                        <li><a href="profile.php">Mijn Profiel</a></li>
+                        <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
+                        <li><a href="myAuctions.php">Mijn Veilingen</a></li>
+                        <li><a href="showBids.php">Mijn Biedingen</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
                 </ul>
             </li>
         </ul>
@@ -71,15 +62,15 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-text">Startprijs</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="any"
-                               placeholder="0" name="Startprijs">
+                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="0.01"
+                               placeholder="€" name="Startprijs">
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-text">Verzendkosten</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="any"
-                               placeholder="0" name="Verzendkosten">
+                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="0.01"
+                               placeholder="€" name="Verzendkosten">
                     </div>
                 </div>
                 <div class="uk-margin">
@@ -97,7 +88,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                             <option>1</option>
                             <option>3</option>
                             <option>5</option>
-                            <option default>7</option>
+                            <option selected>7</option>
                             <option>10</option>
                         </select>
                     </div>
@@ -106,12 +97,12 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
         <div class="uk-card-refactor auctions-reset-margin uk-display-inline-block uk-margin-top-zero">
             <div class="js-upload uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
-                <span class="uk-text-middle">Sleep hier een foto in of </span>
                 <div uk-form-custom>
                     <input type="file" name="Image" multiple>
-                    <span class="uk-link">selecteer er een</span>
+                    <span class="uk-link">Selecteer een foto</span>
                 </div>
             </div>
+           
             
     <div class="auctions-reset-margin uk-display-inline-block uk-margin-top-zero">
         <div class="uk-margin">

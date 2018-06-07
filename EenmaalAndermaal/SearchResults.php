@@ -4,7 +4,7 @@ include('scripts/header.php');
 include('scripts/search.php');
 include('scripts/database-connect.php');
 $searchTerm = '';
-$searchTerm = $_POST['Searching'];
+$searchTerm = htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
 ?>
 <div class="uk-grid">

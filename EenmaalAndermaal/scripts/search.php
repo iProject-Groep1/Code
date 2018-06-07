@@ -7,7 +7,7 @@ include('auction-item.php');
  function searchItems($dbh)
 {
   if (isset($_POST['Searching']) && !empty($_POST['Searching'])) {
-    $search =  $_POST['Searching'] ;
+    $search =  htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
   }
   $searchItems = "";
 
@@ -29,6 +29,7 @@ function getSearchItems($dbh, $query,$bindValue)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->bindValue(":bindValue", $bindValue , PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
+<<<<<<< HEAD
 
         $count = $stmt->rowCount();
 
@@ -36,6 +37,9 @@ function getSearchItems($dbh, $query,$bindValue)
         return '.                     .                  Er zijn geen Items gevonden. ';
         }
 
+=======
+        echo ($results);
+>>>>>>> e8aa3ec7d24a2048f07cef26e6a12fa812fc1a98
         while ($results = $stmt->fetch()) {
 
             $price = $results['hoogsteBod'];
@@ -88,12 +92,35 @@ $count = $stmt->rowCount();
 }
 
 function getVerfijn($dbh){
+<<<<<<< HEAD
 if (isset($_POST['rubriek'])){
   $bindValue2 =$_POST['rubriek'];
 }
   else return '.   .         Geen rubriek geslecteerd.';
 if (isset($_POST['searchterm'])){
   $bindValue = '%'. $_POST['searchterm'] .'%' ;
+=======
+$rubrieken = array();
+$rubrieken = htmlentities($_POST['rubriek'], ENT_QUOTES | ENT_IGNORE, "UTF-8")
+sort($rubrieken);
+$bindValue = '%boot%';
+
+$or = '';
+ foreach ($rubrieken as $key ) {
+   $or .= " rubrieknaam =  $key  or ";
+ }
+ $or = substr($or, 0 , -3);
+
+$query=  "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)
+          AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
+         FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp
+                         join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
+         WHERE titel like :bindValue and veilinggesloten = 0 and voorwerpnummer in
+          (select voorwerp from VoorwerpInRubriek vr join Rubriek r on r.rubrieknummer = vr.rubriek_op_laagste_Niveau where
+               $or) GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs" ; /* prepared statement */
+
+echo getSearchItems($dbh, $query,$bindValue);
+>>>>>>> e8aa3ec7d24a2048f07cef26e6a12fa812fc1a98
 }
  else return '.    .         Geen zoekterm opgegeven.';
 

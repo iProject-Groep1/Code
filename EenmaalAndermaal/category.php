@@ -88,7 +88,25 @@ function getAuctionCards($dbh, $rubrieknummer)
 {
     $itemCards = "";
     try {
-        $stmt = $dbh->prepare("SELECT v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod , CURRENT_TIMESTAMP AS serverTijd, count(b.voorwerp) as aantal from Voorwerp v join VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp left join bod b on v.voorwerpnummer = b.voorwerp where veilinggesloten = 0 AND vir.rubriek_op_laagste_Niveau = :rubrieknummer group by voorwerpnummer, titel, looptijdEindmoment  order by aantal desc"); /* prepared statement */
+        $stmt = $dbh->prepare("DECLARE @GekozenRubriek INT = :rubrieknummer
+SELECT TOP 100 v. voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod , CURRENT_TIMESTAMP AS serverTijd, count(b.voorwerp) as aantal 
+FROM Voorwerp v left join bod b on v.voorwerpnummer = b.voorwerp
+WHERE VeilingGesloten=0
+AND EXISTS
+( 
+  SELECT * FROM VoorwerpInRubriek vir
+  LEFT JOIN Rubriek R1 ON vir.rubriek_op_laagste_Niveau=R1.Rubrieknummer /*left join rubriekenboom naar boven*/ 
+  LEFT JOIN Rubriek S1 ON S1.Rubrieknummer=R1.[parent]
+  LEFT JOIN Rubriek S2 ON S2.Rubrieknummer=S1.[parent]
+  LEFT JOIN Rubriek S3 ON S3.Rubrieknummer=S2.[parent]
+  LEFT JOIN Rubriek S4 ON S4.Rubrieknummer=S3.[parent]
+  WHERE v.Voorwerpnummer=vir.Voorwerp
+    AND vir.rubriek_op_laagste_Niveau IN (R1.Rubrieknummer,S1.Rubrieknummer,S2.Rubrieknummer,S3.Rubrieknummer,S4.Rubrieknummer)
+	AND @GekozenRubriek IN (R1.Rubrieknummer,S1.Rubrieknummer,S2.Rubrieknummer,S3.Rubrieknummer,S4.Rubrieknummer)
+)
+GROUP BY voorwerpnummer, titel, looptijdEindmoment
+ORDER BY LooptijdEindMoment DESC
+"); /* prepared statement */
         $stmt->bindValue(":rubrieknummer", $rubrieknummer, PDO::PARAM_STR);
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {

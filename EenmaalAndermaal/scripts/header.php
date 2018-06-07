@@ -53,6 +53,7 @@ if (isset($_SESSION['username'])) {
 $header .= '
 
                         <li><a href="#">Contact</a></li>
+                        <li><a href="profile.php">Mijn Profiel</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="algemeneVoorwaarden.php">Algemene Voorwaarden</a></li>
                         <li><a href="#">Over EenmaalAndermaal</a></li>
@@ -76,7 +77,7 @@ $header .= '
             <li><div>
             <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
             <div style="background-color: white" class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                <form class="uk-search uk-search-navbar uk-width-1-1" action="../SearchResults.php" method="post">
+                <form class="uk-search uk-search-navbar uk-width-1-1" action="SearchResults.php" method="post">
                     <input class="uk-search-input" type="search" name="Searching" placeholder="Search..." autofocus>
                 </form>
             </div>

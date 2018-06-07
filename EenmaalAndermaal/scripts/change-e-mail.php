@@ -1,9 +1,9 @@
 <?php
 include('database-connect.php');
 session_start();
-$username = $_SESSION['username'];
-$password = $_POST['password'];
-$newMail = $_POST['newMail'];
+$username = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$password = htmlentities($_POST['password'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$newMail = htmlentities($_POST['newMail'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
 if (empty($password) || empty($newMail)) {
     header('Location: ../changeProfile.php?');
@@ -24,17 +24,18 @@ if (empty($password) || empty($newMail)) {
         header('Location: errorpage.php?err=500');
     }
     if (!password_verify($password, $row['wachtwoord'])) {
-        header('Location: ../changeProfile.php?');
         $_SESSION['noChance'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoord is incorrect.\', status: \'danger\'})</script>';
+        header('Location: ../changeProfile.php?');
     }else{
         try{
-            $sql = "UPDATE Gebruiker SET mail_adres = '$newMail' WHERE gebruikersnaam = '$username'";
-            $stmt = $dbh->prepare($sql);
+            $stmt = $dbh->prepare("UPDATE Gebruiker SET mail_adres = :mail_adres WHERE gebruikersnaam = :gebruikersnaam");
+            $stmt->bindValue(":mail_adres", $newMail, PDO::PARAM_STR);
+            $stmt->bindValue(":gebruikersnaam", $username, PDO::PARAM_STR);
             $stmt->execute();
-            header('Location: ../profile.php?');
             $_SESSION['chance'] = '
             <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw e-mailadres is gewijzigd.\', status: \'success\'})</script>';
+            header('Location: ../profile.php?');
         } catch (PDOException $e) {
             echo "Fout" . $e->getMessage();
             header('Location: errorpage.php?err=500');
