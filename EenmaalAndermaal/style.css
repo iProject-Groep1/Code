@@ -236,6 +236,10 @@ li .uk-button{
 	padding: 0 20px;
 }
 
+.minimal-height-itempage{
+	min-height: 200px;
+}
+
 .uk-auction-margin{
 	margin: 10px 0;
 }
