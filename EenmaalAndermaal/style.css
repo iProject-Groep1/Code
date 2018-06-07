@@ -322,6 +322,9 @@ set-line-height-0{
 	.uk-card-body .uk-nav-default {
 		margin: 25px -40px;
 	}
+
+
+
 }
 
 @media (max-width: 1090px){
@@ -341,6 +344,11 @@ set-line-height-0{
 	.uk-card-body .uk-nav-default {
 		margin: 25px -40px;
 	}
+	.uk-card-refactor2{
+		margin-left: 20px;
+	}
+
+
 
 }
 
@@ -355,6 +363,8 @@ set-line-height-0{
 	.uk-card-body .uk-nav-default {
 		margin: 25px -40px;
 	}
+
+
 }
 
 @media (max-width: 640px){
