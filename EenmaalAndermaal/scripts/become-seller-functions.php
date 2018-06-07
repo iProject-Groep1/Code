@@ -37,7 +37,7 @@ if (isset($_POST['submitVerification'])) {
 
 
     } else {
-        $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \' < span uk - icon = "icon: close" ></span > Deze code klopt niet . \', status: \'danger\'})</script>';
+        $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Deze code klopt niet.\', status: \'danger\'})</script>';
         header('Location: ../become-seller.php?verification=1');
     }
 }
