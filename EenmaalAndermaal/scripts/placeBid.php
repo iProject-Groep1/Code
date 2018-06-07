@@ -34,7 +34,7 @@ if ($Login == false) {
 function setMinBid($dbh, $id)
 {
     $bodbedrag = calcMinBid($dbh, $id);
-    $gebruiker = $_SESSION['username'];
+    $gebruiker = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     $bodtijd = getServerTime($dbh);
 
     try {

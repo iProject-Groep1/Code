@@ -1,9 +1,9 @@
 <?php
 include('database-connect.php');
 session_start();
-$username = $_SESSION['username'];
-$password = $_POST['password'];
-$newMail = $_POST['newMail'];
+$username = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$password = htmlentities($_POST['password'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$newMail = htmlentities($_POST['newMail'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
 if (empty($password) || empty($newMail)) {
     header('Location: ../changeProfile.php?');
