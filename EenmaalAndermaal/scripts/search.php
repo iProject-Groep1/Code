@@ -37,7 +37,6 @@ function getSearchItems($dbh, $query, $bindValue)
         }
 
         while ($results = $stmt->fetch()) {
-            echo($results);
             $price = $results['hoogsteBod'];
             if (is_null($price)) {
                 $price = $results['startprijs'];
