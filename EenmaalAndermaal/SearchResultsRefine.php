@@ -11,17 +11,12 @@ if(isset($_POST['submit'])){
   <h3 class="uk-display-block uk-align-left uk-text-center">Zoekresultaten  </h3>
   <p>
   <div class="uk-grid uk-align-left uk-width-medium-1-4 uk-flex uk-flex-left auctions-reset-margin">
-    <?php $echo = getVerfijn($dbh); echo $echo;?>
+    <?php $echo = getVerfijn($dbh); echo $echo; empty ($_POST['searchterm']); ?>
   </div>
   </p>
   </div>
   </div>
-  <div class="uk-align-right uk-width-1-5 uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body"  >
-  <form class="uk-search uk-search-default uk-align-right "action="../SearchResults.php" method="post">
-    <label for="searchterm">Nieuwe zoekterm</label>
-    <input class="uk-search-input" type="search" name="Searching" placeholder="Search..." >
-  </form>
-</div>
+
 
 
 </div>

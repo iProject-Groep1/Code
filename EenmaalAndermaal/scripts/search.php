@@ -9,7 +9,7 @@ include('auction-item.php');
   if (isset($_POST['Searching']) && !empty($_POST['Searching'])) {
     $search =  $_POST['Searching'] ;
   }
-  $searchItems = '';
+  $searchItems = "";
 
       $queries['search'] = 'SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
 FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
@@ -29,6 +29,13 @@ function getSearchItems($dbh, $query,$bindValue)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->bindValue(":bindValue", $bindValue , PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
+
+        $count = $stmt->rowCount();
+
+        if ($count == 0){
+        return '.                     .                  Er zijn geen Items gevonden. ';
+        }
+
         while ($results = $stmt->fetch()) {
 
             $price = $results['hoogsteBod'];
@@ -59,6 +66,11 @@ try {
   $stmt->bindValue(":bindValue", $bindValue , PDO::PARAM_STR); /* helpt tegen SQL injection */
   $stmt->execute(); /* stuurt alles naar de server */
 
+$count = $stmt->rowCount();
+
+        if ($count == 0){
+        return 'Er zijn geen Items gevonden. ';
+        }
 
   while ($row = $stmt->fetch()) {
 /* <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>*/
@@ -76,10 +88,16 @@ try {
 }
 
 function getVerfijn($dbh){
+if (isset($_POST['rubriek'])){
+  $bindValue2 =$_POST['rubriek'];
+}
+  else return '.   .         Geen rubriek geslecteerd.';
+if (isset($_POST['searchterm'])){
+  $bindValue = '%'. $_POST['searchterm'] .'%' ;
+}
+ else return '.    .         Geen zoekterm opgegeven.';
 
 
-$bindValue = '%'. $_POST['searchterm'] .'%' ;
-$bindValue2 =$_POST['rubriek'];
 
 $query=  "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)
           AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
@@ -96,6 +114,11 @@ $query=  "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1
                $stmt->bindValue(1, $bindValue , PDO::PARAM_STR); /* helpt tegen SQL injection */
                $stmt->bindValue(2, $bindValue2 , PDO::PARAM_STR); /* helpt tegen SQL injection */
                $stmt->execute(); /* stuurt alles naar de server */
+
+               $count = $stmt->rowCount();
+                       if ($count= 0){
+                       return 'Er zijn geen Items gevonden. ';
+                       }
                while ($results = $stmt->fetch()) {
 
                    $price = $results['hoogsteBod'];
