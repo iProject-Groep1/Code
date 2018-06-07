@@ -38,7 +38,7 @@ if (!CheckLogin()) {
 function setMinBid($dbh, $id, $bedrag)
 {
     $bodbedrag = $bedrag;
-    $gebruiker = $_SESSION['username'];
+    $gebruiker = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     $bodtijd = getServerTime($dbh);
     $minBod = calcMinBid($dbh, $id);
     $maxBodBedrag = 2147483647;
