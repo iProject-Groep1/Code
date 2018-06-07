@@ -1,14 +1,14 @@
 <?php
 include('database-connect.php');
 session_start();
-$username = $_SESSION['username'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
+$username = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$firstname = htmlentities($_POST['firstname'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$lastname = htmlentities($_POST['lastname'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 $birthday = $_POST['birthday'];
-$adres1 = $_POST['adres1'];
-$postalCode = $_POST['postalCode'];
-$placeName = $_POST['placeName'];
-$country = $_POST['country'];
+$adres1 = htmlentities($_POST['adres1'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$postalCode = htmlentities($_POST['postalCode'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$placeName = htmlentities($_POST['placeName'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$country = htmlentities($_POST['country'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
 if (empty(trim($firstname)) || empty(trim($lastname)) || empty(trim($birthday)) || empty(trim($adres1)) || empty(trim($postalCode)) || empty(trim($placeName)) || empty(trim($country))) {
     $_SESSION['noChance'] = '

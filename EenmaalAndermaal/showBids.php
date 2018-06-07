@@ -86,7 +86,7 @@ function searchMyBids($dbh)
     $searchItems = "";
 
     $queries['search'] = '
-SELECT voorwerpnummer, titel, looptijdEindmoment, (SELECT filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam , MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
+SELECT voorwerpnummer, titel, looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam , MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
 FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
 WHERE b.gebruiker like :bindvalue and v.veilinggesloten = 0   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
 ' ;

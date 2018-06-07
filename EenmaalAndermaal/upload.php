@@ -62,15 +62,15 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-text">Startprijs</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="any"
-                               placeholder="0" name="Startprijs">
+                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="0.01"
+                               placeholder="€" name="Startprijs">
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-text">Verzendkosten</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="any"
-                               placeholder="0" name="Verzendkosten">
+                        <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="0.01"
+                               placeholder="€" name="Verzendkosten">
                     </div>
                 </div>
                 <div class="uk-margin">

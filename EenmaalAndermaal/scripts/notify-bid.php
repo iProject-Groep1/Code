@@ -1,11 +1,11 @@
 <?php
 
 include('database-connect.php');
+// TODO: Functionaliteit die een melding stuurt wanneer je overgeboden bent. Voor dit project is dit geen eis.
+// TODO: Dit kan echter wel geïmplementeerd worden d.m.v. een array die alle users vergelijkt met je biedingen
 //
 //if (isset($_SESSION['username'])) {
-//    echo "hallo";
 //    var_dump(makeArrayBidders($dbh));
-//    echo "kaas";
 //    die();
 //    if (in_array($_SESSION['username'], makeArrayBidders($dbh))) {
 //        if (isset($_GET['id'])) {
@@ -50,7 +50,6 @@ include('database-connect.php');
 //        return $array;
 //    } catch (PDOException $e) {
 //        echo "Fout" . $e->getMessage();
-//        die();
 //        header('Location: errorpage.php?err=500');
 //
 //    }

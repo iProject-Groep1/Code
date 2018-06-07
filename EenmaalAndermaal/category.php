@@ -89,7 +89,7 @@ function getAuctionCards($dbh, $rubrieknummer)
     $itemCards = "";
     try {
         $stmt = $dbh->prepare("DECLARE @GekozenRubriek INT = :rubrieknummer
-SELECT TOP 50 v. voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod , CURRENT_TIMESTAMP AS serverTijd, count(b.voorwerp) as aantal 
+SELECT TOP 100 v. voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod , CURRENT_TIMESTAMP AS serverTijd, count(b.voorwerp) as aantal 
 FROM Voorwerp v left join bod b on v.voorwerpnummer = b.voorwerp
 WHERE VeilingGesloten=0
 AND EXISTS

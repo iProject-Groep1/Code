@@ -19,16 +19,16 @@ function insertItem($dbh)
     }
 
 
-    $rubrieknr = $_POST['Rubrieknr'];
-    $titel = $_POST['Titel'];
-    $startprijs = $_POST['Startprijs'];
-    $verzendkosten = $_POST['Verzendkosten'];
-    $betalingswijze = $_POST['Betalingswijze'];
-    $veilingtijd =  $_POST['Veilingtijd'];
-    $beschrijving = $_POST['Beschrijving'];
-    $plaatsnaam = $data['plaatsnaam'];
-    $land = $data['land'];
-    $verkoper = $_SESSION['username'];
+    $rubrieknr = htmlentities($_POST['Rubrieknr'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $titel = htmlentities($_POST['Titel'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $startprijs = htmlentities($_POST['Startprijs'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $verzendkosten = htmlentities($_POST['Verzendkosten'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $betalingswijze = htmlentities($_POST['Betalingswijze'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $veilingtijd =  htmlentities($_POST['Veilingtijd'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $beschrijving = htmlentities($_POST['Beschrijving'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $plaatsnaam = htmlentities($data['plaatsnaam'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $land = htmlentities($data['land'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+    $verkoper = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
     try {
         $sql = "SET NOCOUNT ON; insert into
