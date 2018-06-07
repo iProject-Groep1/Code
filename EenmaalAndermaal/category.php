@@ -122,3 +122,5 @@ ORDER BY LooptijdEindMoment DESC
     }
     return $itemCards;
 }
+
+include('scripts/footer.php');
