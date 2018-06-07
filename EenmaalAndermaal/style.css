@@ -287,6 +287,9 @@ li .uk-button{
 	box-shadow: none;
 }
 
+.uk-breadcrumb {
+	margin-left: 2%;
+}
 
 
 .rating-star[uk-icon=star] svg{
