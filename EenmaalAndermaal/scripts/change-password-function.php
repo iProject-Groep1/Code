@@ -1,10 +1,10 @@
 <?php
 include('database-connect.php');
 session_start();
-$username = $_SESSION['username'];
-$currentPassword = $_POST['currentPassword'];
-$newPassword = $_POST['newPassword'];
-$confirmPassword = $_POST['confirmPassword'];
+$username = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$currentPassword = htmlentities($_POST['currentPassword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$newPassword = htmlentities($_POST['newPassword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$confirmPassword = htmlentities($_POST['confirmPassword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 $passwordConfirmCorrect = false;
 $passwordCorrect = false;
 $passwordHash = "";

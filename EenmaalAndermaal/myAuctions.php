@@ -35,7 +35,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     }
     ?>
     <h2 class="uk-text-center">Mijn Veilingen</h2>
-    <div class="uk-margin-left@l uk-margin-left@m">
+    <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">
 
         <div class="profile-sidebar uk-align-center@m">
             <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
@@ -101,6 +101,10 @@ function getMyAuctions($dbh, $query, $bindvalue)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->bindValue(":bindvalue", $bindvalue , PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
+        $count = $stmt->rowCount();
+        if($count == 0){
+            echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog geen veilingen aangemaakt.</h2><p>Om dit te doen, ga naar <a href="search-Rubriek.php">plaats advertentie</a>.</p></div>';
+        }
         while ($results = $stmt->fetch()) {
 
             $price = $results['hoogsteBod'];

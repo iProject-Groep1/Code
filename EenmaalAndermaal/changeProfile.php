@@ -26,23 +26,24 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     ?>
 
-    <h1 class="uk-text-center">Gegevens wijzigen</h1>
+    <h2 class="uk-text-center">Gegevens wijzigen</h2>
+    <div class="uk-margin-left@l uk-margin-left@m">
 
-
-        <div class="uk-align-left profile-sidebar uk-align-center@m uk-display-inline-block uk-width-1-2@s uk-width-1-6@m">
-            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
-                <li class="uk-parent uk-open">
-                    <a href="#">EenmaalAndermaal</a>
-                    <ul class="uk-nav-sub" aria-hidden="false">
-                        <li><a href="profile.php">Mijn Profiel</a></li>
-                        <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
-                        <li><a href="myAuctions.php">Mijn Veilingen</a></li>
-                        <li><a href="showBids.php">Mijn Biedingen</a></li>
-                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+    <div class="profile-sidebar uk-align-center@m">
+        <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <li class="uk-parent uk-open">
+                <a href="#">EenmaalAndermaal</a>
+                <ul class="uk-nav-sub" aria-hidden="false">
+                    <li><a href="profile.php">Mijn Profiel</a></li>
+                    <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
+                    <li><a href="myAuctions.php">Mijn Veilingen</a></li>
+                    <li><a href="showBids.php">Mijn Biedingen</a></li>
+                    <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-grid uk-align-center uk-card-refactor2 uk-flex uk-flex-center auctions-reset-margin">
     <div class="uk-grid uk-flex uk-grid flex-space-evenly">
         <div class="uk-align-card uk-card uk-card-default uk-card-body uk-width-1-1@s uk-width-2-3@m uk-width-1-2@l uk-width-2-5@xl uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block uk-a">
             <div class="uk-card-header">
@@ -176,6 +177,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 </p>
             </div>
         </div>
+    </div>
     </div>
     <?php
 

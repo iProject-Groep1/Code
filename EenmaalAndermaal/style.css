@@ -236,6 +236,10 @@ li .uk-button{
 	padding: 0 20px;
 }
 
+.minimal-height-itempage{
+	min-height: 200px;
+}
+
 .uk-auction-margin{
 	margin: 10px 0;
 }
@@ -250,6 +254,10 @@ li .uk-button{
 	color: black !important;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+.marge-left {
+	margin-left: 4%!important;
 }
 
 .flex-space-evenly{
@@ -279,7 +287,7 @@ li .uk-button{
 	box-shadow: none;
 }
 
-.marge-left{
+.uk-breadcrumb {
 	margin-left: 2%;
 }
 
@@ -322,6 +330,9 @@ set-line-height-0{
 	.uk-card-body .uk-nav-default {
 		margin: 25px -40px;
 	}
+
+
+
 }
 
 @media (max-width: 1090px){
@@ -341,6 +352,36 @@ set-line-height-0{
 	.uk-card-body .uk-nav-default {
 		margin: 25px -40px;
 	}
+	.uk-card-refactor2{
+		margin-left: 20px;
+	}
+
+	.uk-center-upload{
+		margin-left: 0;
+		text-align: center;
+	}
+
+	.uk-responsive-maken{
+		padding-left: -20px;
+		margin-left: 20px;
+	}
+
+	.uk-card-refactor{
+		margin-left: 40px;
+		padding: 0;
+	}
+
+	.uk-upload-picture{
+		margin-top: 20px;
+		padding:30px 180px;
+	}
+
+	.uk-textarea {
+		width: 180%;
+		max-width: 220%;
+	}
+
+
 
 }
 
@@ -355,6 +396,9 @@ set-line-height-0{
 	.uk-card-body .uk-nav-default {
 		margin: 25px -40px;
 	}
+
+
+
 }
 
 @media (max-width: 640px){
