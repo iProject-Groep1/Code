@@ -26,28 +26,31 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
 
 
     echo '
-    <h1 class="uk-center-upload">Plaats Advertentie</h1>
+    
+    <h2 class="uk-center-upload">Plaats Advertentie</h2>
     <p class=" uk-center-upload ">' . $Rubrieknaam . '</p>
-    <div class="uk-align-left profile-sidebar uk-align-center@m uk-display-block uk-width-1-2@s uk-width-1-6@m">
-        <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
-            <li class="uk-parent uk-open">
-                <a href="#">EenmaalAndermaal</a>
-                <ul class="uk-nav-sub" aria-hidden="false">
+    <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">
+
+        <div class="profile-sidebar uk-align-center@m">
+            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+                <li class="uk-parent uk-open">
+                    <a href="#">EenmaalAndermaal</a>
+                    <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php">Mijn Profiel</a></li>
                         <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
                         <li><a href="myAuctions.php">Mijn Veilingen</a></li>
                         <li><a href="showBids.php">Mijn Biedingen</a></li>
                         <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
-    <div class="" uk-grid>
+    <div class="uk-width-1-1\@s" uk-grid>
         <div class="uk-card-refactor auctions-reset-margin uk-display-inline-block">
             <img class="uk-display-block" src="images/placeholde-img.png" alt="placeholder" width="300">
         </div>
-        <div class="uk-display-inline-block uk-width-1-2@s uk-width-1-3@m">
+        <div class="uk-display-inline-block uk-width-1-1@s uk-width-1-2@m uk-responsive-maken">
             <form class="uk-form-horizontal uk-margin-large" action="scripts/placeItem.php" method="post" enctype="multipart/form-data">
             <!-- hidden meegestuurde waarde voor het Rubrieknr -->
             <input class="uk-input" id="form-horizontal-text" type="text" value="' . $Rubrieknr . '"
@@ -95,7 +98,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                 </div>
         </div>
         <div class="uk-card-refactor auctions-reset-margin uk-display-inline-block uk-margin-top-zero">
-            <div class="js-upload uk-placeholder uk-text-center uk-upload-picture">
+            <div class="uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
                 <div uk-form-custom>
                     <input type="file" name="Image" multiple>

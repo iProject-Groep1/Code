@@ -92,30 +92,12 @@ function getVerfijn($dbh)
         $bindValue2 = $_POST['rubriek'];
     } else return '.   .         Geen rubriek geslecteerd.';
     if (isset($_POST['searchterm'])) {
+$_POST['searchterm'] = htmlentities($_POST['searchterm'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
         $bindValue = '%' . $_POST['searchterm'] . '%';
-        $rubrieken = array();
-        $rubrieken = htmlentities($_POST['rubriek'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
-sort($rubrieken);
-$bindValue = '%boot%';
 
-$or = '';
- foreach ($rubrieken as $key) {
-     $or .= " rubrieknaam =  $key  or ";
- }
- $or = substr($or, 0, -3);
-
-$query = "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)
-          AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
-         FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp
-                         join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
-         WHERE titel like :bindValue and veilinggesloten = 0 and voorwerpnummer in
-          (select voorwerp from VoorwerpInRubriek vr join Rubriek r on r.rubrieknummer = vr.rubriek_op_laagste_Niveau where
-               $or) GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs"; /* prepared statement */
-
-echo getSearchItems($dbh, $query, $bindValue);
-} else {
-        return '.    .         Geen zoekterm opgegeven.';
-    }
+      } else {
+              return '.    .         Geen zoekterm opgegeven.';
+          }
 
     $query = "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)
           AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
