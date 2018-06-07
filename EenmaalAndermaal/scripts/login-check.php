@@ -1,5 +1,6 @@
 <?php
 session_start();
+//Onthoudt welke pagina het laatst bezocht is voor de gebruiker op de login pagina kwam.
 $redirect = "";
 if (isset($_SESSION['lastVisited'])) {
     $redirect = $_SESSION['lastVisited'];

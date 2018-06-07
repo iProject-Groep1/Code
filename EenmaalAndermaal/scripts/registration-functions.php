@@ -2,14 +2,9 @@
 session_start();
 include('database-connect.php');
 
-
-/* ALLE INLOG PAGINA FUNCTIES */
-/* Deze 2 if statements zorgen ervoor dat er gecheckt wordt of er gesubmit is.
- Indien een van de 2 forms ingevuld is start hij een functie. */
 if (isset($_POST["submit"])) {
     emailReg($dbh);
 }
-
 
 function emailReg($dbh)
 {
