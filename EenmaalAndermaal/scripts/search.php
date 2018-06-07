@@ -7,7 +7,7 @@ include('auction-item.php');
  function searchItems($dbh)
 {
   if (isset($_POST['Searching']) && !empty($_POST['Searching'])) {
-    $search =  $_POST['Searching'] ;
+    $search =  htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
   }
   $searchItems = '';
 
@@ -79,7 +79,7 @@ $X=0;
 
 function getVerfijn($dbh){
 $rubrieken = array();
-$rubrieken =  $_POST['rubriek'];
+$rubrieken = htmlentities($_POST['rubriek'], ENT_QUOTES | ENT_IGNORE, "UTF-8")
 sort($rubrieken);
 $bindValue = '%boot%';
 
