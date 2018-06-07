@@ -18,8 +18,7 @@ if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotifica
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    //haal bijna alle informatie van een gebruiker op
-//TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
+    //haal alle informatie van een gebruiker op
     $data = "";
     try {
         $stmt = $dbh->prepare("SELECT  g.gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper, rating FROM gebruiker g LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker LEFT JOIN verkoper v on g.gebruikersnaam = v.gebruikersnaam WHERE g.gebruikersnaam like :gebruikersnaam  ORDER BY volgnr");
