@@ -3,6 +3,7 @@
 $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
+require('scripts/paymentOptions.php');
 
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
@@ -59,14 +60,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                     <label class="uk-form-label" for="form-horizontal-text">Titel</label>
                     <div class="uk-form-controls">
                         <input class="uk-input" id="form-horizontal-text" type="text"
-                               placeholder="Titel" name="Titel">
+                               placeholder="Titel" name="Titel" required>
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-text">Startprijs</label>
                     <div class="uk-form-controls">
                         <input class="uk-input" id="form-horizontal-text" type="number" min="0" step="0.01"
-                               placeholder="€" name="Startprijs">
+                               placeholder="€" name="Startprijs" required>
                     </div>
                 </div>
                 <div class="uk-margin">
@@ -80,14 +81,17 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                     <label class="uk-form-label" for="form-horizontal-text">Betalingswijze</label>
                     <div class="uk-form-controls">
                     <!-- TODO: Haal alle betaalwijze uit de database en laad deze in een <ul> -->
-                        <input class="uk-input" id="form-horizontal-text" type="text"
-                               placeholder="IDEAL" name="Betalingswijze">
+                                   <select class="uk-select" name="Betalingswijze" required>
+       ' .
+        Get_payment($dbh)
+        . '
+    </select>
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-select">Veilingtijd</label>
                     <div class="uk-form-controls">
-                        <select class="uk-select" id="form-horizontal-select" name="Veilingtijd">
+                        <select class="uk-select" id="form-horizontal-select" name="Veilingtijd" required>
                             <option>1</option>
                             <option>3</option>
                             <option>5</option>
@@ -101,7 +105,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
             <div class="uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
                 <div uk-form-custom>
-                    <input type="file" name="Image" multiple>
+                    <input type="file" name="Image" multiple required>
                     <span class="uk-link">Selecteer een foto</span>
                 </div>
             </div>
