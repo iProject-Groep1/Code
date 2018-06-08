@@ -21,18 +21,6 @@ if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotifica
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    //haal bijna alle informatie van een gebruiker op
-//TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
-    $data = "";
-    try {
-        $stmt = $dbh->prepare("SELECT  g.gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper, rating FROM gebruiker g LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker LEFT JOIN verkoper v on g.gebruikersnaam = v.gebruikersnaam WHERE g.gebruikersnaam like :gebruikersnaam  ORDER BY volgnr");
-        $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
-        $stmt->execute();
-        $data = $stmt->fetch();
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
-    }
     ?>
     <h2 class="uk-text-center">Mijn Veilingen</h2>
     <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">
