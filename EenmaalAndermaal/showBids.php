@@ -6,20 +6,6 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
-if (isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
-    echo $_SESSION['noChance'];
-    $_SESSION['noChance'] = "";
-}
-if (isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
-    echo $_SESSION['chance'];
-    $_SESSION['chance'] = "";
-}
-
-if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotification'])) {
-    echo $_SESSION['profileNotification'];
-    $_SESSION['profileNotification'] = "";
-}
-
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     ?>
@@ -50,7 +36,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 
                 <?php
-                searchMyBids($dbh);
+                searchMyBids($dbh, 0); //Niet gewonnen
                 ?>
             </div>
 
@@ -60,15 +46,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
         <div class="uk-grid uk-align-center uk-card-refactor2  uk-flex uk-flex-center auctions-reset-margin">
             <?php
-            searchMyWonBids($dbh);
+            searchMyBids($dbh, 1); //Gewonnen
             ?>
         </div>
 
     </div>
-
-
-
-
 
     <?php
 
@@ -79,36 +61,20 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 include('scripts/footer.php');
 
-function searchMyBids($dbh)
+function searchMyBids($dbh, $status)
 {
     $searchItems = "";
 
-    $queries['search'] = '
+    $queries['search'] = "
 SELECT voorwerpnummer, titel, looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam , MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
 FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
-WHERE b.gebruiker like :bindvalue and v.veilinggesloten = 0   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
-';
+WHERE b.gebruiker like :bindvalue and v.veilinggesloten = $status   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
+";
 
     $bindValue = $_SESSION['username'];
-    $searchItems .= getMyBids($dbh, $queries['search'], $bindValue, 0);
+    $searchItems .= getMyBids($dbh, $queries['search'], $bindValue, $status);
     echo $searchItems;
 }
-
-function searchMyWonBids($dbh)
-{
-    $searchItems = "";
-
-    $queries['search'] = '
-SELECT voorwerpnummer, titel, looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam , MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
-FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
-WHERE v.koper like :bindvalue and v.veilinggesloten = 1   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
-';
-
-    $bindValue = $_SESSION['username'];
-    $searchItems .= getMyBids($dbh, $queries['search'], $bindValue, 1);
-    echo $searchItems;
-}
-
 
 function getMyBids($dbh, $query, $bindvalue, $won)
 {

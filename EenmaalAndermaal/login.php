@@ -17,6 +17,11 @@ if (isset($_SESSION['regMelding']) && !empty($_SESSION['regMelding'])) {
     $_SESSION['regMelding'] = "";
 }
 
+if (isset($_SESSION['safety']) && !empty($_SESSION['safety'])) {
+    echo $_SESSION['safety'];
+    $_SESSION['safety'] = "";
+}
+
 if (isset($_SESSION['LogMelding']) && !empty($_SESSION['LogMelding'])) {
     echo $_SESSION['LogMelding'];
     $_SESSION['logMelding'] = "";
