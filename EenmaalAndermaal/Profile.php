@@ -98,6 +98,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                         <span uk-icon="star" class="rating-star"></span>
                                         <?php
                                     }
+                                    for($i = 0; $i < 5-$numberOfStars; $i++){
+                                        ?>
+                                        <span uk-icon="star"></span>
+                                        <?php
+                                    }
 
                                     ?>
                                 </p></td>
