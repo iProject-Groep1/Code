@@ -32,7 +32,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         </div>
         <div class="uk-grid uk-align-center uk-card-refactor2  uk-flex uk-flex-center auctions-reset-margin">
             <?php
-            searchMyAuctions($dbh);
+            searchMyAuctions($dbh, 0); //Open veilingen
             ?>
         </div>
 
@@ -42,7 +42,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         </div>
         <div class="uk-grid uk-align-center uk-card-refactor2  uk-flex uk-flex-center auctions-reset-margin">
             <?php
-            searchMyClosedAuctions($dbh);
+            searchMyAuctions($dbh, 1); //Gesloten veilingen
             ?>
         </div>
 
@@ -59,29 +59,15 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 include('scripts/footer.php');
 
-function searchMyAuctions($dbh)
+function searchMyAuctions($dbh, $status)
 {
-
     $searchItems = '';
 
     $queries['search'] = 'SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
 FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
  WHERE g.gebruikersnaam like :bindvalue and veilinggesloten = 0  GROUP BY Voorwerpnummer, titel, looptijdEindmoment order by titel '; /* prepared statement */
     $bindValue = $_SESSION['username'];
-    $searchItems .= getMyAuctions($dbh, $queries['search'], $bindValue, 0);
-    echo $searchItems;
-}
-
-function searchMyClosedAuctions($dbh)
-{
-
-    $searchItems = '';
-
-    $queries['search'] = 'SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
-FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
- WHERE g.gebruikersnaam like :bindvalue and veilinggesloten = 1  GROUP BY Voorwerpnummer, titel, looptijdEindmoment order by titel '; /* prepared statement */
-    $bindValue = $_SESSION['username'];
-    $searchItems .= getMyAuctions($dbh, $queries['search'], $bindValue, 1);
+    $searchItems .= getMyAuctions($dbh, $queries['search'], $bindValue, $status);
     echo $searchItems;
 }
 
