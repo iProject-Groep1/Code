@@ -105,7 +105,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
             <div class="uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
                     <div uk-form-custom>
-                        <input type="file" name="image" multiple>
+                        <input type="file" name="Image" multiple>
                         <span class="uk-link">selecteer een foto</span>
                     </div>
             </div>
