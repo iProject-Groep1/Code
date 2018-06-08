@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
             //zet alle data in verkopertabel
             try {
                 //TODO: ja dit kan beter een arraytje worden want nu is het wel erg veel regels code terwijl dat eigenlijk niet hoeft doei
-                $stmt = $dbh->prepare("INSERT INTO Verkoper VALUES(:gebruikersnaam, :betaalwijze, :rekeningnummer, :controleOptie, :creditcardnummer, :verificatiecode, 50)");
+                $stmt = $dbh->prepare("INSERT INTO Verkoper (gebruikersnaam, bank, rekeningnummer, controleOptie, creditcardnummer, verificatiecode, rating) VALUES(:gebruikersnaam, :betaalwijze, :rekeningnummer, :controleOptie, :creditcardnummer, :verificatiecode, 50)");
                 $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
                 $stmt->bindValue(":betaalwijze", $_POST['paymentMethod'], PDO::PARAM_STR);
                 $stmt->bindValue(":rekeningnummer", $_POST['bankAccountNumber'], PDO::PARAM_STR);

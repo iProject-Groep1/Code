@@ -6,21 +6,18 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
-if (isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
-    echo $_SESSION['noChance'];
-    $_SESSION['noChance'] = "";
-}
-if (isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
-    echo $_SESSION['chance'];
-    $_SESSION['chance'] = "";
-}
-
-if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotification'])) {
-    echo $_SESSION['profileNotification'];
-    $_SESSION['profileNotification'] = "";
-}
-
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    //haal alle informatie van een gebruiker op
+    $data = "";
+    try {
+        $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
+        $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetch();
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
+    }
 
     ?>
     <h2 class="uk-text-center">Mijn Biedingen</h2>
@@ -31,11 +28,22 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
-                        <li><a href="profile.php">Mijn Profiel</a></li>
-                        <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
-                        <li><a href="myAuctions.php">Mijn Veilingen</a></li>
-                        <li><a href="showBids.php">Mijn Biedingen</a></li>
-                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
+                        <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
+                        <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                        <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <?php
+                        if ($data['verkoper'] == 0) {
+                            ?>
+                            <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
+                            <?php
+                        } else {
+                            ?>
+                            <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                            <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+                            </li>
+                            <?php
+                        } ?>
+
                     </ul>
                 </li>
             </ul>
@@ -50,7 +58,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 
                 <?php
-                searchMyBids($dbh);
+                searchMyBids($dbh, 0); //Niet gewonnen
                 ?>
             </div>
 
@@ -60,15 +68,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
         <div class="uk-grid uk-align-center uk-card-refactor2  uk-flex uk-flex-center auctions-reset-margin">
             <?php
-            searchMyWonBids($dbh);
+            searchMyBids($dbh, 1); //Gewonnen
             ?>
         </div>
 
     </div>
-
-
-
-
 
     <?php
 
@@ -79,36 +83,20 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 include('scripts/footer.php');
 
-function searchMyBids($dbh)
+function searchMyBids($dbh, $status)
 {
     $searchItems = "";
 
-    $queries['search'] = '
+    $queries['search'] = "
 SELECT voorwerpnummer, titel, looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam , MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
 FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
-WHERE b.gebruiker like :bindvalue and v.veilinggesloten = 0   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
-';
+WHERE b.gebruiker like :bindvalue and v.veilinggesloten = $status   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
+";
 
     $bindValue = $_SESSION['username'];
-    $searchItems .= getMyBids($dbh, $queries['search'], $bindValue, 0);
+    $searchItems .= getMyBids($dbh, $queries['search'], $bindValue, $status);
     echo $searchItems;
 }
-
-function searchMyWonBids($dbh)
-{
-    $searchItems = "";
-
-    $queries['search'] = '
-SELECT voorwerpnummer, titel, looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam , MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd
-FROM Voorwerp v full outer join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp join Gebruiker g on g.gebruikersnaam = v.verkoper
-WHERE v.koper like :bindvalue and v.veilinggesloten = 1   GROUP BY b.voorwerp , Voorwerpnummer, titel, looptijdEindmoment order by titel; 
-';
-
-    $bindValue = $_SESSION['username'];
-    $searchItems .= getMyBids($dbh, $queries['search'], $bindValue, 1);
-    echo $searchItems;
-}
-
 
 function getMyBids($dbh, $query, $bindvalue, $won)
 {
