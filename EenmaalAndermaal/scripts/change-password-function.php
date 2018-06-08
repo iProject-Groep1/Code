@@ -8,10 +8,18 @@ $confirmPassword = htmlentities($_POST['confirmPassword'], ENT_QUOTES | ENT_IGNO
 $passwordConfirmCorrect = false;
 $passwordCorrect = false;
 $passwordHash = "";
-$Chances = 3 - $_SESSION['Pogingen'];
 
-if($_SESSION['Pogingen'] = 0) {
-    header('Location: ../logout.php');
+$pogingen = 3 - $_SESSION['Pogingen'];
+echo $_SESSION['Pogingen'];
+
+if($_SESSION['Pogingen'] >= 3) {
+    session_unset();
+    session_destroy();
+    header('Location: ../login.php?');
+    session_start();
+    $_SESSION['safety'] = '
+    <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Om veiligheidsredenen bent u uitgelogd. Wachtwoord vergeten? <a href="forgot-password.php"> Klik Hier </a>\', status: \'danger\'})</script>';
+    die();
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
@@ -56,14 +64,15 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         } else if (!$passwordConfirmCorrect & !$passwordCorrect) {
             header('Location: ../change-password.php?');
             $_SESSION['noChance'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect en wachtwoorden komen niet overeen. U kan nog '. $Chances .' keer proberen\', status: \'danger\'})</script>';
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect en wachtwoorden komen niet overeen. U kan nog '. $pogingen .' keer proberen\', status: \'danger\'})</script>';
         } else if (!$passwordCorrect) {
             header('Location: ../change-password.php?');
-            $_SESSION['Pogingen'] =  $_SESSION['Pogingen'] + 1;
+            $_SESSION['Pogingen'] ++;
             $_SESSION['noChance'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect , u kan nog '. $Chances .' keer proberen\', status: \'danger\'})</script>';
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect , u kan nog '. $pogingen .' keer proberen\', status: \'danger\'})</script>';
         } else if (!$passwordConfirmCorrect) {
             header('Location: ../change-password.php?');
+            $_SESSION['Pogingen'] ++;
             $_SESSION['noChance'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoorden komen niet overeen\', status: \'danger\'})</script>';
         }
