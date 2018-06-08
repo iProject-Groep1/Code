@@ -34,11 +34,22 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             <li class="uk-parent uk-open">
                 <a href="#">EenmaalAndermaal</a>
                 <ul class="uk-nav-sub" aria-hidden="false">
-                    <li><a href="profile.php">Mijn Profiel</a></li>
-                    <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
-                    <li><a href="myAuctions.php">Mijn Veilingen</a></li>
-                    <li><a href="showBids.php">Mijn Biedingen</a></li>
-                    <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
+                    <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
+                    <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                    <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                    <?php
+                    if ($data['verkoper'] == 0) {
+                        ?>
+                        <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+                        </li>
+                        <?php
+                    } ?>
+
                 </ul>
             </li>
         </ul>

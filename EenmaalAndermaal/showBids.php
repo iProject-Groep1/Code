@@ -7,6 +7,17 @@ include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    //haal alle informatie van een gebruiker op
+    $data = "";
+    try {
+        $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
+        $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetch();
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+        header('Location: errorpage.php?err=500');
+    }
 
     ?>
     <h2 class="uk-text-center">Mijn Biedingen</h2>
@@ -17,11 +28,22 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
-                        <li><a href="profile.php">Mijn Profiel</a></li>
-                        <li><a href="changeProfile.php">Gegevens wijzigen</a></li>
-                        <li><a href="myAuctions.php">Mijn Veilingen</a></li>
-                        <li><a href="showBids.php">Mijn Biedingen</a></li>
-                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php">Plaats Advertentie</a></li>
+                        <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
+                        <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                        <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <?php
+                        if ($data['verkoper'] == 0) {
+                            ?>
+                            <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
+                            <?php
+                        } else {
+                            ?>
+                            <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                            <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+                            </li>
+                            <?php
+                        } ?>
+
                     </ul>
                 </li>
             </ul>

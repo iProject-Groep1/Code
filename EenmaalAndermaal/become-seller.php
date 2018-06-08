@@ -38,6 +38,33 @@ try {
 
 ?>
     <h2 class="uk-text-center">Verkoper worden</h2>
+ <div class="uk-margin-left@l uk-margin-left@m">
+
+    <div class="profile-sidebar uk-align-center@m">
+        <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <li class="uk-parent uk-open">
+                <a href="#">EenmaalAndermaal</a>
+                <ul class="uk-nav-sub" aria-hidden="false">
+                    <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
+                    <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                    <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                    <?php
+                    if ($data['verkoper'] == 0) {
+                        ?>
+                        <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+                        </li>
+                        <?php
+                    } ?>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
 <?php
 if (!isset($_GET['verification'])) {
     ?>
@@ -137,4 +164,7 @@ if (!isset($_GET['verification'])) {
 
     <?php
 }
+?>
+ </div>
+     <?php
 include_once('scripts/footer.php');
