@@ -8,6 +8,11 @@ $confirmPassword = htmlentities($_POST['confirmPassword'], ENT_QUOTES | ENT_IGNO
 $passwordConfirmCorrect = false;
 $passwordCorrect = false;
 $passwordHash = "";
+$Chances = 3 - $_SESSION['Pogingen'];
+
+if($_SESSION['Pogingen'] = 0) {
+    header('Location: ../logout.php');
+}
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
@@ -58,8 +63,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect\', status: \'danger\'})</script>';
         } else if (!$passwordConfirmCorrect) {
             header('Location: ../change-password.php?');
+            $_SESSION['Pogingen'] += 1;
             $_SESSION['noChance'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoorden komen niet overeen\', status: \'danger\'})</script>';
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoorden komen niet overeen, u heeft nog '. $Chances .' kansen\', status: \'danger\'})</script>';
         }
 
     }
