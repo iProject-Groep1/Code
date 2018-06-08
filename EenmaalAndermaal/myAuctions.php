@@ -6,20 +6,6 @@ include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
-if (isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
-    echo $_SESSION['noChance'];
-    $_SESSION['noChance'] = "";
-}
-if (isset($_SESSION['chance']) && !empty($_SESSION['chance'])) {
-    echo $_SESSION['chance'];
-    $_SESSION['chance'] = "";
-}
-
-if (isset($_SESSION['profileNotification']) && !empty($_SESSION['profileNotification'])) {
-    echo $_SESSION['profileNotification'];
-    $_SESSION['profileNotification'] = "";
-}
-
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     ?>
     <h2 class="uk-text-center">Mijn Veilingen</h2>
