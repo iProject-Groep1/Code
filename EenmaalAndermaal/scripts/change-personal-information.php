@@ -31,7 +31,7 @@ if (empty(trim($firstname)) || empty(trim($lastname)) || empty(trim($birthday)) 
         header('Location: ../profile.php?');
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
+        header('Location: ../errorpage.php?err=500');
     }
 }
 
