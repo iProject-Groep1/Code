@@ -1,301 +1,294 @@
 /* CSS Document */
 
-
 body {
-	background-color: #FFFFFF;/*#e5e7ec*/
+    background-color: #FFFFFF; /*#e5e7ec*/
 }
 
 h3 {
-	margin: 0 0 0 0;
+    margin: 0 0 0 0;
 }
 
-
 .align-center {
-	text-align: center;
+    text-align: center;
 }
 
 .uk-navbar {
-	background: #5484A4;
+    background: #5484A4;
 }
 
-.uk-card-refactor{
-	margin-left: 400px;
-	padding: 0;
+.uk-card-refactor {
+    margin-left: 400px;
+    padding: 0;
 }
 
-.uk-card-refactor2{
-	margin-left: 200px;
+.uk-card-refactor2 {
+    margin-left: 200px;
 }
 
-.uk-grid>* {
-	padding-left: 20px;
+.uk-grid > * {
+    padding-left: 20px;
 }
 
 .uk-highest-bid {
-	color: #4CBB17;
+    color: #4CBB17;
 }
 
-
-.uk-not-highest-bid{
-	color: red;
+.uk-not-highest-bid {
+    color: red;
 }
 
-
-.uk-navbar-nav>li>a {
-	color: #FFFFFF;
-
+.uk-navbar-nav > li > a {
+    color: #FFFFFF;
 
 }
-.category-bar.uk-navbar-nav>li>a{
-	height: auto;
+
+.category-bar.uk-navbar-nav > li > a {
+    height: auto;
 }
 
 .uk-navbar2 {
-	background: #e5e7ec;/*#FFFFFF*/
-	color: #000000;
+    background: #e5e7ec; /*#FFFFFF*/
+    color: #000000;
 }
 
-.uk-navbar-nav2>li>a {
-	color: #000000;
+.uk-navbar-nav2 > li > a {
+    color: #000000;
 }
 
 .uk-block {
-	background: #FFFFFF;
+    background: #FFFFFF;
 }
 
-.uk-margin-detail{
-	padding-left: 40px
+.uk-margin-detail {
+    padding-left: 40px
 }
 
 .uk-nice-uitlijnen {
-	padding: 0 20px;
+    padding: 0 20px;
 }
 
 .uk-card-body {
-	padding: 30px 30px;
+    padding: 30px 30px;
 }
 
-.uk-margin-detail-right{
-	padding-right: 40px
+.uk-margin-detail-right {
+    padding-right: 40px
 }
 
 .uk-button-default2 {
-	border: 1px solid #000000;
-	color: #000000;
+    border: 1px solid #000000;
+    color: #000000;
 }
 
-.uk-navbar-brand{
-	color: #FFFFFF;
-	font-size: 30px;
+.uk-navbar-brand {
+    color: #FFFFFF;
+    font-size: 30px;
 }
 
 .uk-overlay-primary {
-	background: rgba(34,34,34,.65);
+    background: rgba(34, 34, 34, .65);
 }
 
-.uk-grid-small>* {
-	padding-left: 0;
+.uk-grid-small > * {
+    padding-left: 0;
 }
 
-.margin-card-left{
-	margin-left:40px;
+.margin-card-left {
+    margin-left: 40px;
 }
 
 .uk-overlay {
-	padding: 10px 10px;
+    padding: 10px 10px;
 }
 
 .uk-grid-small {
-	flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
-.uk-maak-rood{
-	color: red;
+.uk-maak-rood {
+    color: red;
 }
 
 .uk-logo {
-	color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .uk-button-default {
-	color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .uk-color-white {
-	color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .copyright-margin {
-	margin: 0 0 0 800px;
+    margin: 0 0 0 800px;
 }
 
 .margin-to-zero {
-	margin: 0 0 0 0;
+    margin: 0 0 0 0;
 }
 
 .uk-navbar-dropdown {
-	margin-top: 15px;
+    margin-top: 15px;
 }
 
-.uk-margin-top-zero{
-	margin-top: 0!important;
+.uk-margin-top-zero {
+    margin-top: 0 !important;
 }
 
 .uk-overlay {
-	padding: 5px 30px;
+    padding: 5px 30px;
 }
 
-.uk-navbar-brand:hover{
-color: #111111;
+.uk-navbar-brand:hover {
+    color: #111111;
 }
 
 .uk-grid-small-changes {
-margin: 20px 0 0 20px
+    margin: 20px 0 0 20px
 }
 
-.uk-center-upload{
-	margin-left: 380px;
+.uk-center-upload {
+    margin-left: 380px;
 }
 
 .uk-grid-changes {
-padding: 0 0 0 0;
-margin: 5px 5px;
+    padding: 0 0 0 0;
+    margin: 5px 5px;
 }
 
-.white-font{
-color: white;
+.white-font {
+    color: white;
 }
-
 
 .uk-margin {
-margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 [class*=uk-align] {
-margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .uk-card-header {
-padding: 20px 0;
+    padding: 20px 0;
 }
 
-.margin-biedingen-detail{
-	margin-left: -20px;
+.margin-biedingen-detail {
+    margin-left: -20px;
 }
 
-.uk-upload-picture{
-	padding:30px 255px;
+.uk-upload-picture {
+    padding: 30px 255px;
 }
 
-.uk-textarea{
-	width: 220%;
-	max-width: 220%;
+.uk-textarea {
+    width: 220%;
+    max-width: 220%;
 }
 
 .categories-reset-padding {
-padding-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 .auctions-reset-margin {
-margin-top: 20px;
-margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-
-
-.uk-button-reset{
-	padding:0;
-	margin:0;
+.uk-button-reset {
+    padding: 0;
+    margin: 0;
 }
 
-.uk-navbar-toggle{
-color: #FFFFFF;
+.uk-navbar-toggle {
+    color: #FFFFFF;
 }
 
 .uk-timer-changes {
-padding-left: 200px;
+    padding-left: 200px;
 }
 
 .uk-countdown-number, .uk-countdown-separator {
-line-height: 35px;
+    line-height: 35px;
 }
 
-li .uk-button{
-/** TODO: !important wegwerken **/
-	text-transform: none;
-	color: black !important;
-	background-color: white;
-	border: 1px solid lightgrey;
+li .uk-button {
+    /** TODO: !important wegwerken **/
+    text-transform: none;
+    color: black !important;
+    background-color: white;
+    border: 1px solid lightgrey;
 }
 
-.uk-align-right{
-	margin-left:0;
+.uk-align-right {
+    margin-left: 0;
 }
 
-.uk-button{
-	padding: 0 20px;
+.uk-button {
+    padding: 0 20px;
 }
 
-.minimal-height-itempage{
-	min-height: 200px;
+.minimal-height-itempage {
+    min-height: 200px;
 }
 
-.uk-auction-margin{
-	margin: 10px 0;
+.uk-auction-margin {
+    margin: 10px 0;
 }
 
-.uk-reset-margins{
-	margin:0;
-	padding:0;
+.uk-reset-margins {
+    margin: 0;
+    padding: 0;
 }
 
 .uk-parent a {
-	/** TODO: important wegwerken **/
-	color: black !important;
-	padding-left: 10px;
-	padding-right: 10px;
+    /** TODO: important wegwerken **/
+    color: black !important;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .marge-left {
-	margin-left: 4%!important;
+    margin-left: 4% !important;
 }
 
-.flex-space-evenly{
-	justify-content: flex-evenly;
+.flex-space-evenly {
+    justify-content: flex-evenly;
 }
+
 .padding-right {
-	padding: 0 20px 0 0;
+    padding: 0 20px 0 0;
 }
 
-.kleur-licht-blauw{
-	background-color: #BADAF0;
+.kleur-licht-blauw {
+    background-color: #BADAF0;
 }
 
-.h4-no-bottom{
-	margin-bottom: -20px;
+.h4-no-bottom {
+    margin-bottom: -20px;
 }
 
-.grey{
-	background-color: #e5e7ec;
+.grey {
+    background-color: #e5e7ec;
 }
 
-.niagara{
-	background-color: #5484A4;
+.niagara {
+    background-color: #5484A4;
 }
 
-.no-shadow{
-	box-shadow: none;
+.no-shadow {
+    box-shadow: none;
 }
 
 .uk-breadcrumb {
-	margin-left: 2%;
+    margin-left: 2%;
 }
 
-
-.rating-star[uk-icon=star] svg{
-	fill: yellow-green;
-					 color: yellowgreen;
-				 }
+.rating-star[uk-icon=star] svg {
+    fill: yellow-green;
+    color: yellowgreen;
+}
 
 /*	-haalt het marge boven de afbeelding in de detailpagina weg
 	-staat nog niet in de detailpagina
@@ -305,123 +298,122 @@ set-line-height-0{
 	line-height: 0;
 }*/
 
-
-.profile-sidebar{
-	position: absolute;
-	margin-left: 4%;
+.profile-sidebar {
+    position: absolute;
+    margin-left: 4%;
 }
 
-.text-overflow{
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-	/*width:66%;*/
+.text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    /*width:66%;*/
 }
 
 /* MEDIA QUERY'S -> RESPONSIVE DESIGN */
 
-@media (min-width: 1090px){
-	.responsive-mobile {
-		display: none;
-	}
-	.responsive-laptop {
-		display: flex;
-	}
-	.uk-card-body .uk-nav-default {
-		margin: 25px -40px;
-	}
+@media (min-width: 1090px) {
+    .responsive-mobile {
+        display: none;
+    }
 
+    .responsive-laptop {
+        display: flex;
+    }
 
-
-}
-
-@media (max-width: 1090px){
-	.responsive-mobile {
-		display: flex;
-	}
-
-	.responsive-laptop {
-		display: none;
-	}
-
-	.profile-sidebar{
-		position: static;
-		width: 50%;
-		margin: auto;
-	}
-	.uk-card-body .uk-nav-default {
-		margin: 25px -40px;
-	}
-	.uk-card-refactor2{
-		margin-left: 20px;
-	}
-
-	.uk-center-upload{
-		margin-left: 0;
-		text-align: center;
-	}
-
-	.uk-responsive-maken{
-		padding-left: -20px;
-		margin-left: 20px;
-	}
-
-	.uk-card-refactor{
-		margin-left: 40px;
-		padding: 0;
-	}
-
-	.uk-upload-picture{
-		margin-top: 20px;
-		padding:30px 180px;
-	}
-
-	.uk-textarea {
-		width: 180%;
-		max-width: 220%;
-	}
-
-
+    .uk-card-body .uk-nav-default {
+        margin: 25px -40px;
+    }
 
 }
 
-@media (min-width: 640px){
-	.uk-countdown-number, .uk-countdown-separator{
-		font-size: 1.5em;
-	}
+@media (max-width: 1090px) {
+    .responsive-mobile {
+        display: flex;
+    }
 
-	.uk-font-size-changes {
-		font-size: 0.8em;
-	}
-	.uk-card-body .uk-nav-default {
-		margin: 25px -40px;
-	}
+    .responsive-laptop {
+        display: none;
+    }
 
+    .profile-sidebar {
+        position: static;
+        width: 50%;
+        margin: auto;
+    }
 
+    .uk-card-body .uk-nav-default {
+        margin: 25px -40px;
+    }
+
+    .uk-card-refactor2 {
+        margin-left: 20px;
+    }
+
+    .uk-center-upload {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .uk-responsive-maken {
+        padding-left: -20px;
+        margin-left: 20px;
+    }
+
+    .uk-card-refactor {
+        margin-left: 40px;
+        padding: 0;
+    }
+
+    .uk-upload-picture {
+        margin-top: 20px;
+        padding: 30px 180px;
+    }
+
+    .uk-textarea {
+        width: 180%;
+        max-width: 220%;
+    }
 
 }
 
-@media (max-width: 640px){
-	.uk-countdown-number, .uk-countdown-separator{
-		font-size: 1.5em;
-	}
+@media (min-width: 640px) {
+    .uk-countdown-number, .uk-countdown-separator {
+        font-size: 1.5em;
+    }
 
-	.uk-font-size-changes {
-		font-size: 0.8em;
-	}
-	.uk-card-body .uk-nav-default {
-		margin: 25px -40px;
-	}
+    .uk-font-size-changes {
+        font-size: 0.8em;
+    }
+
+    .uk-card-body .uk-nav-default {
+        margin: 25px -40px;
+    }
+
+}
+
+@media (max-width: 640px) {
+    .uk-countdown-number, .uk-countdown-separator {
+        font-size: 1.5em;
+    }
+
+    .uk-font-size-changes {
+        font-size: 0.8em;
+    }
+
+    .uk-card-body .uk-nav-default {
+        margin: 25px -40px;
+    }
 }
 
 @media (min-width: 1200px) {
-	.uk-align-right{
-		margin-left: 0;
-	}
+    .uk-align-right {
+        margin-left: 0;
+    }
 
-	.uk-card-body .uk-nav-default {
-		margin: 25px -40px;
-	}
+    .uk-card-body .uk-nav-default {
+        margin: 25px -40px;
+    }
 }
 
 
