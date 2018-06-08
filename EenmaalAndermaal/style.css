@@ -288,6 +288,14 @@ li .uk-button {
     margin-left: 2%;
 }
 
+.uk-breadcrumb2 {
+    margin-left: 0;
+}
+
+.uk-margin-1{
+    margin-left: 1px;
+}
+
 .rating-star[uk-icon=star] svg {
     fill: yellow-green;
     color: yellowgreen;

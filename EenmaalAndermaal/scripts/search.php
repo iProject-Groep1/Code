@@ -33,7 +33,7 @@ function getSearchItems($dbh, $query, $bindValue)
         $count = $stmt->rowCount();
 
         if ($count == 0) {
-            return '.                     .                  Er zijn geen Items gevonden. ';
+            return 'Er zijn geen Items gevonden. ';
         }
 
         while ($results = $stmt->fetch()) {
@@ -96,7 +96,7 @@ $_POST['searchterm'] = htmlentities($_POST['searchterm'], ENT_QUOTES | ENT_IGNOR
         $bindValue = '%' . $_POST['searchterm'] . '%';
 
       } else {
-              return '.    .         Geen zoekterm opgegeven.';
+              return ' Geen zoekterm opgegeven ';
           }
 
     $query = "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)

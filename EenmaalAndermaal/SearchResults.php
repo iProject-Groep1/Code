@@ -12,7 +12,7 @@ $searchTerm = htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8"
     <div class="uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body">
 <h3 class="uk-display-block uk-align-left uk-text-center">Zoekresultaten, u heeft gezocht op <?php echo '"' .$searchTerm .'"'; ?></h3>
 <p>
-<div class="uk-grid uk-align-left uk-width-medium-1-4 uk-flex uk-flex-left auctions-reset-margin">
+<div class="uk-breadcrumb2 uk-grid uk-align-left uk-width-medium-1-4 uk-flex uk-flex-left auctions-reset-margin">
   <?php  searchItems($dbh)?>
 </div>
 </p>

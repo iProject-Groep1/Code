@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
       <div class="uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body">
   <h3 class="uk-display-block uk-align-left uk-text-center">Zoekresultaten  </h3>
   <p>
-  <div class="uk-breadcrumb uk-grid uk-align-left uk-width-medium-1-4 uk-flex uk-flex-left auctions-reset-margin">
+  <div class="uk-breadcrumb2 uk-grid uk-align-left uk-width-medium-1-4 uk-flex uk-flex-left auctions-reset-margin">
     <?php $echo = getVerfijn($dbh); echo $echo; empty ($_POST['searchterm']); ?>
   </div>
   </p>
