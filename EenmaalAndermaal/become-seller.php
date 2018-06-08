@@ -72,7 +72,7 @@ if (!isset($_GET['verification'])) {
                     <span class="uk-form-icon" uk-icon="icon: credit-card"></span>
                     <input class="uk-input" type="number" placeholder="Creditcardnummer" name="creditCardNumber"
                            id="creditCardNumber"
-                           maxlength="16">
+                           max="9999999999999999">
                 </div>
             </div>
             <div class="uk-margin uk-form-horizontal">
