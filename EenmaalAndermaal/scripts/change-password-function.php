@@ -59,13 +59,13 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect en wachtwoorden komen niet overeen\', status: \'danger\'})</script>';
         } else if (!$passwordCorrect) {
             header('Location: ../change-password.php?');
-            $_SESSION['noChance'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect\', status: \'danger\'})</script>';
-        } else if (!$passwordConfirmCorrect) {
-            header('Location: ../change-password.php?');
             $_SESSION['Pogingen'] += 1;
             $_SESSION['noChance'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoorden komen niet overeen, u heeft nog '. $Chances .' kansen\', status: \'danger\'})</script>';
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect , u heeft nog '. $Chances .' kansen\', status: \'danger\'})</script>';
+        } else if (!$passwordConfirmCorrect) {
+            header('Location: ../change-password.php?');
+            $_SESSION['noChance'] = '
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoorden komen niet overeen\', status: \'danger\'})</script>';
         }
 
     }
