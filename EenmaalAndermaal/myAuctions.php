@@ -95,9 +95,9 @@ function getMyAuctions($dbh, $query, $bindvalue, $open)
         $count = $stmt->rowCount();
         if ($count == 0) {
             if (!$open) {
-                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog geen veilingen aangemaakt.</h2><p>Om dit te doen, ga naar <a href="search-Rubriek.php">plaats advertentie</a>.</p></div>';
+                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft geen actieve veilingen.</h2><p>Ga naar <a href="search-Rubriek.php">deze</a> pagina om een veiling aan te maken.</p></div>';
             } else {
-                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog afgelopen veilingen.</h2><p>Kijk over een tijdje opnieuw.</p></div>';
+                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog geen afgelopen veilingen.</h2><p>Kijk over een tijdje opnieuw.</p></div>';
             }
         }
         while ($results = $stmt->fetch()) {
