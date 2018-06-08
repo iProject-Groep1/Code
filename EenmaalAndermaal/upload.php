@@ -104,10 +104,10 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
         <div class="uk-card-refactor auctions-reset-margin uk-display-inline-block uk-margin-top-zero">
             <div class="uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
-                <div uk-form-custom>
-                    <input type="file" name="Image" multiple required>
-                    <span class="uk-link">Selecteer een foto</span>
-                </div>
+                    <div uk-form-custom>
+                        <input type="file" name="image" multiple>
+                        <span class="uk-link">selecteer een foto</span>
+                    </div>
             </div>
            
             
