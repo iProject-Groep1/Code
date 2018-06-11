@@ -3,7 +3,7 @@
 $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
-require('scripts/paymentOptions.php');
+require('scripts/payment-options.php');
 
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
@@ -35,8 +35,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
             <a href="#">EenmaalAndermaal</a>
             <ul class="uk-nav-sub" aria-hidden="false">
                 <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
                 <?php
                 if ($data['verkoper'] == 0) {
                     ?>
@@ -44,7 +44,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                     <?php
                 } else {
                     ?>
-                    <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                    <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
                     <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
                     </li>
                     <?php
@@ -62,7 +62,7 @@ echo '
             <img class="uk-display-block" src="images/placeholde-img.png" alt="placeholder" width="300">
         </div>
         <div class="uk-display-inline-block uk-width-1-1@s uk-width-1-2@m uk-responsive-maken">
-            <form class="uk-form-horizontal uk-margin-large" action="scripts/placeItem.php" method="post" enctype="multipart/form-data">
+            <form class="uk-form-horizontal uk-margin-large" action="scripts/place-item.php" method="post" enctype="multipart/form-data">
             <!-- hidden meegestuurde waarde voor het Rubrieknr -->
             <input class="uk-input" id="form-horizontal-text" type="text" value="' . $Rubrieknr . '"
                                name="Rubrieknr" hidden>

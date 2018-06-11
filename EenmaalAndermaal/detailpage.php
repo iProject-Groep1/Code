@@ -192,7 +192,7 @@ WHERE voorwerpnummer = :voorwerpnummer");
         </div >
         <div class="uk-card-footer grey" >
             <div class="uk-width-1-4 uk-align-left uk-margin-remove-right uk-padding-remove-left" >
-                <form action = "scripts/placeBidDirect.php" method = "get" >
+                <form action = "scripts/place-bid-direct.php" method = "get" >
                     <input class="uk-input" type = "text" name = "id" value = "' . $id . '"hidden >
                     <input class="uk-input " type = "number" min="' . $minBid . '" step="0.01" placeholder = "€' . $minBid . '" name = "bedrag" >
             </div >

@@ -35,7 +35,7 @@ if ($validURL) {
 <h3 class="uk-margin uk-card-title uk-text-center">Registreren bij EenmaalAndermaal</h3>
 
     <div class="uk-card uk-card-default uk-card-body uk-width-2-5@m uk-margin-auto uk-margin-top-remove uk-margin-bottom">
-<form action="scripts/newUser.php?email=' . $email . '" method="post">
+<form action="scripts/new-user.php?email=' . $email . '" method="post">
     <input type="text" name="email" value="' . $_GET['email'] . '" hidden>
     <input type="text" name="hash" value="' . $_GET['hash'] . '" hidden>
     <p class="uk-icon-font-awesome uk-margin-remove">* = Verplicht veld</p>
@@ -181,7 +181,7 @@ if ($validURL) {
 </div>
 
 <div class="uk-margin uk-form-horizontal">
-<label><input class="uk-checkbox" type="checkbox" required> Ik ga akkoord met de <a href="algemeneVoorwaarden.php" target="_blank">Algemene Voorwaarden</a></label>
+<label><input class="uk-checkbox" type="checkbox" required> Ik ga akkoord met de <a href="algemene-voorwaarden.php" target="_blank">Algemene Voorwaarden</a></label>
 </div>
 
 <div class="uk-margin uk-flex uk-flex-center ">

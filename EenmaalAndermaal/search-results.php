@@ -21,7 +21,7 @@ $searchTerm = htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8"
 
 <div class="uk-align-right uk-width-1-5 uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body"  >
   <h3>Geavanceerd zoeken</h3>
-<form action="SearchResultsRefine.php" method="post" >
+<form action="search-results-refine.php" method="post" >
   <label for="searchterm">Zoekterm </label> <br>
   <input type="text" name="searchterm" value="<?php print ($searchTerm) ; ?>"><br>
   <label for="Rubrieken">Gevonden in de rubrieken</label> <br>
