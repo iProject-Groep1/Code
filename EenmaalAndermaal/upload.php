@@ -7,13 +7,10 @@ require('scripts/paymentOptions.php');
 
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
-
-
-    //haal bijna alle informatie van een gebruiker op
-//TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
+    //Haalt de status van een gebruiker op (verkoper of geen verkoper).
     $data = "";
     try {
-        $stmt = $dbh->prepare("SELECT gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");
+        $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetch();

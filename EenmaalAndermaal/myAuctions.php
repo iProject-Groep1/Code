@@ -7,7 +7,7 @@ include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    //haal alle informatie van een gebruiker op
+    //Haalt de status van een gebruiker op (verkoper of geen verkoper).
     $data = "";
     try {
         $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
