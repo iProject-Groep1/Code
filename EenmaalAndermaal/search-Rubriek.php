@@ -62,7 +62,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </ul>
         </div>
 
-        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-margin-auto uk-flex uk-flex-column uk-flex-wrap-around uk-margin-medium-top uk-margin-large-bottom">
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-2@m uk-margin-auto uk-flex uk-flex-column uk-flex-wrap-around uk-margin-medium-top uk-margin-large-bottom">
             <div class="uk-overflow-auto">
                 <!-- gebruikersinformatie -->
                 <form class="uk-form-horizontal uk-margin-large" action="<?php echo $_SERVER['PHP_SELF']; ?>"
