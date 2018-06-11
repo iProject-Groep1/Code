@@ -101,6 +101,7 @@ function registerUser($dbh)
 
 function sanitizing_input($username, $firstname, $lastname, $eersteAdres, $tweedeAdres, $postcode, $plaatsnaam, $antwoord, $email, $dbh)
 {
+    $username = htmlspecialchars($username);
     $firstname = trim($firstname);
     $lastname = trim($lastname);
     $firstname = ucfirst($firstname);
@@ -113,5 +114,3 @@ function sanitizing_input($username, $firstname, $lastname, $eersteAdres, $tweed
     $plaatsnaam = htmlspecialchars($plaatsnaam);
     $antwoord = htmlspecialchars($antwoord);
 }
-
-?>

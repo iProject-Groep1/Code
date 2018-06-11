@@ -5,7 +5,7 @@ include('scripts/auction-item.php');
 include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
-include('scripts/notify-bid.php');
+
 
 
 //haalt de top 4 populaire items uit de database. Deze top 4 is gebaseerd op de veilingen met de meeste boden (aflopend)

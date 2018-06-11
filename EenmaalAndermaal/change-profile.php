@@ -2,7 +2,7 @@
 $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
-include('scripts/country.php');
+include('scripts/option-lists.php');
 
 if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
     echo $_SESSION['noChance'];

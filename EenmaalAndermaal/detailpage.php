@@ -7,7 +7,6 @@ include('scripts/detailpagina-functions.php');
 include('scripts/homepage-functions.php');
 include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
-include('scripts/notify-bid.php');
 
 if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
     echo $_SESSION['overBidMelding'];

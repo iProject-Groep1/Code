@@ -2,9 +2,8 @@
 $pageTitle = 'Verificatie';
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
-include('scripts/country.php');
 include('scripts/database-connect.php');
-include('scripts/question.php');
+include('scripts/option-lists.php');
 
 
 $validURL = false;

@@ -10,6 +10,20 @@ if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    //haalt verkoperstatus op
+    try {
+        $stmt = $dbh->prepare("SELECT verkoper FROM Gebruiker where gebruikersnaam LIKE :gebruikersnaam");
+        $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+        $stmt->execute();
+        if ($data = $stmt->fetch()) {
+            if ($data['verkoper'] == 1) {
+                $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> U bent al verkoper!\', status: \'danger\'})</script>';
+                header('Location: profile.php');
+            }
+        }
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
 
 ?>
     <h2 class="uk-text-center">Wachtwoord wijzigen</h2>

@@ -6,6 +6,7 @@ include('auction-item.php');
 
 function searchItems($dbh)
 {
+    $search = "";
     if (isset($_POST['Searching']) && !empty($_POST['Searching'])) {
         $search = htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     }

@@ -51,8 +51,6 @@ if (isset($_SESSION['username'])) {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
 $header .= '
-
-                        <li><a href="#">Contact</a></li>
                         <li><a href="profile.php">Mijn Profiel</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="algemeneVoorwaarden.php">Algemene Voorwaarden</a></li>
@@ -61,6 +59,14 @@ $header .= '
                     </ul>
                 </div>
             </li>
+            <li><div>
+            <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+            <div style="background-color: white" class="uk-drop" uk-drop="mode: click; pos: right-center; offset: 0">
+                <form class="uk-search uk-search-navbar uk-width-1-1" action="search-results.php" method="post">
+                    <input class="uk-search-input" type="search" name="Searching" placeholder="Search..." autofocus>
+                </form>
+            </div>
+            </div></li>
         </ul>
     </div>
 </nav>
@@ -81,7 +87,7 @@ $header .= '
                     <input class="uk-search-input" type="search" name="Searching" placeholder="Search..." autofocus>
                 </form>
             </div>
-            </div>
+            </div></li>
             <li><a href="index.php">Home</a></li>
             <li><a href="category-overview.php">Rubrieken</a></li>';
 //check of ingelogd is
@@ -90,9 +96,6 @@ if (isset($_SESSION['username'])) {
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
-$header .= '
-            <li><a href="">Contact</a></li>
-        ';
 
 if (isset($_SESSION['username'])) {
     $header .= '<li><a href="Profile.php">Mijn Profiel</a></li>';
@@ -111,7 +114,7 @@ $header .= '
     </div>
 </nav>
 
-<nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
+<nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar>
     <div class="uk-navbar-center">
         <ul class="category-bar uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
             <li><a href="category-overview.php">Alle Rubrieken</a></li>';

@@ -3,7 +3,7 @@
 $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
-require('scripts/payment-options.php');
+require('scripts/option-lists.php');
 
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {

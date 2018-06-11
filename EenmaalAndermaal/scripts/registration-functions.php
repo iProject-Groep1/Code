@@ -129,4 +129,3 @@ function createMessage($email, $hash)
     $headers .= 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
     mail($to, $subject, $message, $headers); // Send our email
 }
-?>
