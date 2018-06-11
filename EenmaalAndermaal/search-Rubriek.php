@@ -68,8 +68,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <form class="uk-form-horizontal uk-margin-large" action="<?php echo $_SERVER['PHP_SELF']; ?>"
                       method="post">
                     <div class="uk-margin">
+                        <p class="uk-text-primary">Typ de rubriek in waar u uw product in wil plaatsen.</p>
                         <label class="uk-form-label" for="form-horizontal-text">Zoek uw rubriek</label>
+
                         <div class="uk-form-controls">
+
                             <input class="uk-input" id="form-horizontal-text" type="text"
                                    placeholder="Rubrieknaam" name="search">
                         </div>
@@ -83,6 +86,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     <?php
                     require_once('scripts/search-rubriek-functions.php');
                     if (isset($_POST['search']) && !empty($_POST['search'])) {
+                        echo '<p class="uk-form-label-font">Klik op uw rubriek.</p>';
                         searchRubriek($dbh, '' . $_POST['search'] . '');
                     }
                     ?>

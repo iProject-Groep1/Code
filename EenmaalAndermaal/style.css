@@ -78,6 +78,12 @@ h3 {
     padding-right: 40px
 }
 
+.uk-form-label-font {
+    color: #333;
+    font-size: .875rem;
+    margin-bottom: 10px;
+}
+
 .uk-button-default2 {
     border: 1px solid #000000;
     color: #000000;
