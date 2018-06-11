@@ -95,7 +95,7 @@ if ($validURL) {
 
 <div class="uk-margin uk-form-horizontal">
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Land* :</label>
-    <select class="uk-select uk-width-2-3" name="Land"required >
+    <select class="uk-select uk-width-2-3" name="Land" required >
         <option value="Nederland">Nederland</option>
        ' .
         Get_country($dbh)
@@ -167,7 +167,7 @@ if ($validURL) {
 
 <div class="uk-margin uk-form-horizontal">
     <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="Voornaam">Veiligheidsvraag* :</label>
-    <select class="uk-select uk-width-2-3" name="vraag"required>' .
+    <select class="uk-select uk-width-2-3" name="vraag" required>' .
         Get_question($dbh) . '
     </select>
     <div class="uk-margin">

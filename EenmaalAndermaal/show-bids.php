@@ -24,7 +24,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">
 
         <div class="profile-sidebar uk-align-center@m">
-            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav>
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">

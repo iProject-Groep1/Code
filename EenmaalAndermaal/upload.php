@@ -27,36 +27,43 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
     
     <h2 class="uk-center-upload">Plaats Advertentie</h2>
     <p class=" uk-center-upload ">' . $Rubrieknaam . '</p>
-    <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">'?>
+    <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">' ?>
 
-<div class="profile-sidebar uk-align-center@m">
-    <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
-        <li class="uk-parent uk-open">
-            <a href="#">EenmaalAndermaal</a>
-            <ul class="uk-nav-sub" aria-hidden="false">
-                <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
-                <?php
-                if ($data['verkoper'] == 0) {
-                    ?>
-                    <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
-                    <?php
-                } else {
-                    ?>
-                    <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
-                    <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+    <div class="profile-sidebar uk-align-center@m">
+        <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <li class="uk-parent uk-open">
+                <a href="#">EenmaalAndermaal</a>
+                <ul class="uk-nav-sub" aria-hidden="false">
+                    <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a>
+                    </li>
+                    <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens
+                            wijzigen</a></li>
+                    <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a>
                     </li>
                     <?php
-                } ?>
+                    if ($data['verkoper'] == 0) {
+                        ?>
+                        <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper
+                                worden</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn
+                                Veilingen</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus"
+                                                                                                   class="uk-margin-small-right"></span>Plaats
+                                Advertentie</a>
+                        </li>
+                        <?php
+                    } ?>
 
-            </ul>
-        </li>
-    </ul>
-</div>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-<?php
-echo '
+    <?php
+    echo '
     <div class="uk-width-1-1\@s" uk-grid>
         <div class="uk-card-refactor auctions-reset-margin uk-display-inline-block">
             <img class="uk-display-block" src="images/placeholde-img.png" alt="placeholder" width="300">
@@ -90,7 +97,6 @@ echo '
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-text">Betalingswijze</label>
                     <div class="uk-form-controls">
-                    <!-- TODO: Haal alle betaalwijze uit de database en laad deze in een <ul> -->
                                    <select class="uk-select" name="Betalingswijze" required>
        ' .
         Get_payment($dbh)

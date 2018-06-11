@@ -23,7 +23,6 @@ if(isset($_SESSION['regSucceedMelding']) && !empty($_SESSION['regSucceedMelding'
 }
 
 if(isset($_SESSION['username'])){
-    //TODO: melding op vorige pagina dat je al een account hebt
     header('Location: logout.php');
 }
 ?>
@@ -46,8 +45,7 @@ if(isset($_SESSION['username'])){
                                     return input.slice(0, input.indexOf("@")) + "@" + text;
                                 },
                                 filter: Awesomplete.FILTER_STARTSWITH
-                            });</script></code></pre>
-
+                            });</script>
                 </div>
             </section>
 

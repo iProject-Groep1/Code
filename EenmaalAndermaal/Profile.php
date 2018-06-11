@@ -34,7 +34,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <div class="uk-margin-left@l uk-margin-left@m">
 
         <div class="profile-sidebar uk-align-center@m">
-            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav>
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
@@ -81,10 +81,10 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <td><p class="uk-text-center"><?php if ($data['verkoper'] == 1) {
                                     echo 'Verkoper';
                                 } else if ($data['verkoper'] == 0) {
-                                    echo 'Gebruiker <a href="become-seller.php" class="uk-icon-link" uk-icon="tag" class="uk-margin-small-right" uk-tooltip="Verkoper worden?"></a>';
+                                    echo 'Gebruiker <a href="become-seller.php" class="uk-icon-link uk-margin-small-right" uk-icon="tag" uk-tooltip="Verkoper worden?"></a>';
                                 } ?></p></td>
                     </tr>
-                    <!-- TODO: rating -->
+
                     <?php
                     if ($data['verkoper'] == 1) {
                         ?>
@@ -158,7 +158,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <td><p class="uk-text-center"><?= $data['land'] ?></p></td>
                     </tr>
 
-                    <!--TODO: telefoonnummers -->
                     <?php if (!empty($data['telefoon'])) { ?>
                         <tr>
                             <td class="uk-table-shrink"><span uk-icon="receiver"></span></td>
@@ -177,8 +176,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <?php
                     }
                     ?>
-
-                    </tbody>
                 </table>
             </div>
 

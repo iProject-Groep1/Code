@@ -12,7 +12,6 @@ if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     //haal bijna alle informatie van een gebruiker op
-//TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
     $data = "";
     try {
         $stmt = $dbh->prepare("SELECT gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");
@@ -119,12 +118,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Land: </label>
                                 <div class="uk-form-controls">
-                                    <select class="uk-select" name="country"required >
+                                    <select class="uk-select" name="country" required >
                                         <option value="<?= $data['land'] ?>"><?= $data['land'] ?></option>
                                         <?= Get_country($dbh) ?>
                                     </select>
                                 </div>
                             </div>
+                        </fieldset>
+                </form>
 
                             <hr class="uk-divider-icon">
 
@@ -135,10 +136,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                            value="Opslaan">
                 </div>
 
-                </fieldset>
-                </form>
 
-                </p>
+
             </div>
         </div>
 

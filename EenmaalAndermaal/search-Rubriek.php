@@ -50,7 +50,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             ?>
                             <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn
                                     Veilingen</a></li>
-                            <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus"
+                            <li><a class="uk-button uk-button-primary" href="search-rubriek.php"><span uk-icon="plus"
                                                                                                        class="uk-margin-small-right"></span>Plaats
                                     Advertentie</a>
                             </li>

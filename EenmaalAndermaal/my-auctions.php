@@ -23,7 +23,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">
 
         <div class="profile-sidebar uk-align-center@m">
-            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav>
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
@@ -103,7 +103,7 @@ function getMyAuctions($dbh, $query, $bindvalue, $open)
         $count = $stmt->rowCount();
         if ($count == 0) {
             if (!$open) {
-                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft geen actieve veilingen.</h2><p>Ga naar <a href="search-Rubriek.php">deze</a> pagina om een veiling aan te maken.</p></div>';
+                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft geen actieve veilingen.</h2><p>Ga naar <a href="search-rubriek.php">deze</a> pagina om een veiling aan te maken.</p></div>';
             } else {
                 echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog geen afgelopen veilingen.</h2><p>Kijk over een tijdje opnieuw.</p></div>';
             }

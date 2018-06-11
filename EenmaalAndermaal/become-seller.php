@@ -11,7 +11,6 @@ if (!isset($_SESSION)) {
 }
 
 if (!isset($_SESSION['username'])) {
-    //TODO: melding werkend maken
     $_SESSION['logMelding'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om deze pagina te bezoeken.\', status: \'danger\'})</script>';
     header('Location: login.php');
 }
@@ -75,7 +74,6 @@ if (!isset($_GET['verification'])) {
             de volgende gebruikersnaam: "<?= $_SESSION['username'] ?>"</p>
 
         <form method="POST" action="scripts/become-seller-functions.php">
-            <!-- TODO: maxlengths -->
             <div class="uk-margin uk-form-horizontal">
                 <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="paymentMethod">Verificatiemethode
                     : <span uk-icon="question"></span>

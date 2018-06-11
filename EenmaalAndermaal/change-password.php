@@ -48,7 +48,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Huidig wachtwoord*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" placeholder="Vul uw huidige wachtwoord in"name="currentPassword" id="form-horizontal-text" type="password" required>
+                                <input class="uk-input" placeholder="Vul uw huidige wachtwoord in" name="currentPassword" id="form-horizontal-text" type="password" required>
                             </div>
                         </div>
 
@@ -63,7 +63,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Nieuw wachtwoord opnieuw invullen*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" placeholder="Vul opnieuw uw nieuwe wachtwoord in"name="confirmPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
+                                <input class="uk-input" placeholder="Vul opnieuw uw nieuwe wachtwoord in" name="confirmPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
                             </div>
                         </div>
 

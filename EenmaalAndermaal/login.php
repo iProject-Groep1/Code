@@ -6,7 +6,6 @@ if (!isset($_SESSION)) {
 
 $pageTitle = 'Inloggen';
 include('scripts/header.php');
-include('scripts/notify-bid.php');
 
 //als je al ingelogd bent en op deze pagina komt wordt je doorgestuurt naar homepagina.
 if (isset($_SESSION['username'])) {
@@ -110,7 +109,6 @@ if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
                 </div>
             </div>
 
-            <!-- TODO: href veranderen naar wachtwoord vergeten pagina -->
             <p class="uk-text-center"><a href="forgot-password.php">Wachtwoord vergeten?</a></p>
 
             <hr class="uk-divider-icon">
