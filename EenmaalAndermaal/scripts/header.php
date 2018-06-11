@@ -46,14 +46,14 @@ $header = '
                         <li><a href="category-overview.php">Rubrieken</a></li>';
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>
+                <li><a href="profile.php">Mijn Profiel</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
 $header .= '
-                        <li><a href="profile.php">Mijn Profiel</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="algemeneVoorwaarden.php">Algemene Voorwaarden</a></li>
+                        <li><a href="algemene-voorwaarden.php">Algemene Voorwaarden</a></li>
                     </ul>
                 </div>
             </li>
@@ -90,14 +90,12 @@ $header .= '
             <li><a href="category-overview.php">Rubrieken</a></li>';
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>
+                <li><a href="Profile.php">Mijn Profiel</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
 
-if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="Profile.php">Mijn Profiel</a></li>';
-}
 
 echo '</ul>';
 
