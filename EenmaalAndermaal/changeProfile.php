@@ -73,7 +73,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Voornaam: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" name="firstname" id="form-horizontal-text" type="text"
-                                           value="<?= $data['voornaam'] ?>" required>
+                                           value="<?= $data['voornaam'] ?>" maxlength="25" required>
                                 </div>
                             </div>
 
@@ -81,14 +81,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Achternaam: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" name="lastname" id="form-horizontal-text" type="text"
-                                           value="<?= $data['achternaam'] ?>" required>
+                                           value="<?= $data['achternaam'] ?>" maxlength="30" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Geboortedatum: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" name="birthday" id="form-horizontal-text" type="date" value="<?= $data['geboortedag'] ?>" required>
+                                    <input class="uk-input" name="birthday" id="form-horizontal-text" type="date" value="<?= $data['geboortedag'] ?>" max="<?=date('Y-m-d', strtotime("-18 year", time()))?>" required>
                                 </div>
                             </div>
 
@@ -96,7 +96,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Eerste adres: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="text"
-                                           value="<?= $data['adresregel1'] ?>" name="adres1" required>
+                                           value="<?= $data['adresregel1'] ?>" name="adres1" maxlength="30" required>
                                 </div>
                             </div>
 
@@ -104,7 +104,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Postcode: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="text"
-                                           value="<?= $data['postcode'] ?>" name="postalCode" required>
+                                           value="<?= $data['postcode'] ?>" name="postalCode" maxlength="7" required>
                                 </div>
                             </div>
 
@@ -112,7 +112,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Plaatsnaam: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="text"
-                                           value="<?= $data['plaatsnaam'] ?>" name="placeName" required>
+                                           value="<?= $data['plaatsnaam'] ?>" name="placeName" maxlength="40" required>
                                 </div>
                             </div>
 
