@@ -93,7 +93,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
     }
 
 // Check file size
-    if ($_FILES["Image"]["size"] > 1000000) {
+    if ($_FILES["Image"]["size"] > 10000000) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, uw plaatje is te groot.. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
