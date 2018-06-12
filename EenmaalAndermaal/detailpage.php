@@ -197,7 +197,7 @@ WHERE voorwerpnummer = :voorwerpnummer");
             </div >
             <input class="uk-button uk-button-danger uk-align-left uk-margin-remove-right" type = "submit" name = "submit" value = "Bied direct" >
             </form >
-            <a href = "scripts/placeBid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara" > Bied minimum </a >
+            <a href = "scripts/place-bid.php?id=' . $id . '" class="uk-button uk-button-danger uk-align-right niagara" > Bied minimum </a >
             <div class="uk-width-1-4 uk-align-right" >
                 <input class="uk-input uk-width-1-8" type = "text" value = "€' . $minBid . '" disabled >
             </div >
