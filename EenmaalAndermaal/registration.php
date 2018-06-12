@@ -1,7 +1,6 @@
 <?php
 $pageTitle = 'Registreren';
 require_once('scripts/header.php');
-include('scripts/homepage-functions.php');
 
 if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
     echo $_SESSION['overBidMelding'];

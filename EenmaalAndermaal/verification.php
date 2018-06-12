@@ -2,7 +2,6 @@
 $pageTitle = 'Verificatie';
 require_once('scripts/header.php');
 include('scripts/database-connect.php');
-include('scripts/database-connect.php');
 include('scripts/option-lists.php');
 
 
