@@ -3,7 +3,6 @@ $pageTitle = "Wachtwoord wijzigen";
 require('scripts/header.php');
 include('scripts/database-connect.php');
 
-
 if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
     echo $_SESSION['noChance'];
     $_SESSION['noChance'] = "";

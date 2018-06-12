@@ -34,8 +34,3 @@ if (empty(trim($firstname)) || empty(trim($lastname)) || empty(trim($birthday)) 
         header('Location: ../errorpage.php?err=500');
     }
 }
-
-
-
-
-

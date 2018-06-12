@@ -5,7 +5,6 @@ include('scripts/database-connect.php');
 include('scripts/database-connect.php');
 include('scripts/option-lists.php');
 
-
 $validURL = false;
 
 if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
@@ -205,4 +204,3 @@ if ($validURL) {
 
 
 require_once('scripts/footer.php');
-

@@ -5,7 +5,6 @@ include('bid-functions.php');
 include('homepage-functions.php');
 include('login-functions.php');
 
-
 $Login = CheckLogin ();
 if ($Login == false) {
     $_SESSION['LogMelding'] = '

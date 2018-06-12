@@ -252,9 +252,6 @@ WHERE voorwerpnummer = :voorwerpnummer");
     </div >
     </p ></div >
 ';
-
-
 }
-
 require_once('scripts/footer.php');
 ?>

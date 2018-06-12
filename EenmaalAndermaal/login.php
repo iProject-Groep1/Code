@@ -46,10 +46,7 @@ if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
  * 2 = allebei niet.
  * 3 = combinatie gebruikersnaam/wachtwoord bestaat niet
  */
-
-
 ?>
-
     <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-margin-auto uk-margin-xlarge-top uk-margin-xlarge-bottom">
         <h3 class="uk-card-title uk-text-center uk-margin-bottom">Inloggen bij EenmaalAndermaal</h3>
         <?php
@@ -123,5 +120,4 @@ if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
 
 <?php
 include('scripts/footer.php')
-
 ?>

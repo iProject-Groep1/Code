@@ -194,6 +194,4 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 } else {
     header('Location: login.php?');
 }
-
-
 include('scripts/footer.php');

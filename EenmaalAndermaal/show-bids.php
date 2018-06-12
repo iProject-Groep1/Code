@@ -71,16 +71,11 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             searchMyBids($dbh, 1); //Gewonnen
             ?>
         </div>
-
     </div>
-
     <?php
-
 } else {
     header('Location: login.php?');
 }
-
-
 include('scripts/footer.php');
 
 function searchMyBids($dbh, $status)

@@ -9,9 +9,7 @@ if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
     $_SESSION['overBidMelding'] = "";
 }
 
-//echo getAlphabetList();
 echo getCategoryOverview($dbh);
-
 
 require_once('scripts/footer.php');
 ?>

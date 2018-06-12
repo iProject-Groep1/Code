@@ -1,6 +1,4 @@
 <?php
-
-
 function setRelevantItems($dbh, $rubriek_op_laagste_Niveau, $voorwerp)
 {
     $relevantItems = '';
@@ -19,7 +17,6 @@ function setRelevantItems($dbh, $rubriek_op_laagste_Niveau, $voorwerp)
     }
 }
 
-
 function getRelevantItems($dbh, $voorwerp)
 {
     try {
@@ -34,7 +31,6 @@ function getRelevantItems($dbh, $voorwerp)
         header('Location: errorpage.php?err=500');
     }
 }
-
 
 function getProductInfo($dbh)
 {
@@ -90,6 +86,4 @@ function getAuctionStatus($dbh)
         header('Location: errorpage.php?err=500');
     }
 }
-
-
 ?>

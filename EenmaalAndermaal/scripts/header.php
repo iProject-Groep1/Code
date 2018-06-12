@@ -5,7 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 include('database-connect.php');
 
-
 $header = '
 
 <!DOCTYPE HTML>

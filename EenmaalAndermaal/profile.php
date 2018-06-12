@@ -187,12 +187,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
         </div>
     </div>
-
     <?php
-
 } else {
     header('Location: login.php?');
 }
-
-
 include('scripts/footer.php');
