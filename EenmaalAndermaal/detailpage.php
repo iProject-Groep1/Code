@@ -95,6 +95,10 @@ WHERE voorwerpnummer = :voorwerpnummer");
             $categoryArray[$row['Parent2Rubrieknaam']] = $row['Parent2Rubrieknummer'];
             $categoryArray[$row['Parent1Rubrieknaam']] = $row['Parent1Rubrieknummer'];
             $categoryArray[$row['HuidigRubrieknaam']] = $row['HuidigRubrieknummer'];
+            $seller = $row['verkoper'];
+            $sellerMail = $row['verkoperMail'];
+            $buyer = $row['koper'];
+            $buyerMail =  $row['koperMail'];
         }
     } catch (PDOException $e) {
         echo "Error" . $e->getMessage();
@@ -155,11 +159,13 @@ WHERE voorwerpnummer = :voorwerpnummer");
     $auctionStatus = getAuctionStatus($dbh);
     if ($auctionStatus == 1) {
         echo '<h4 class="uk-text-center uk-align-center white-font"> Deze veiling is gesloten </h4>';
-        if($_SESSION['username'] == $seller){
-            echo '<h3 class="uk-text-center uk-align-center white-font">Neem contact op met de winnaar <a href="mailto:'.$buyerMail.'?Subject=U%20heeft%20gewonnen" target="_top" uk-icon="icon: mail" uk-tooltip="Mail '.$buyer.'"></a></h3>';
-        }
-        if($_SESSION['username'] == $buyer){
-            echo '<h3 class="uk-text-center uk-align-center white-font">Neem contact op met de verkoper <a href="mailto:'.$sellerMail.'?Subject=Ik%20heb%20gewonnen" target="_top" uk-icon="icon: mail" uk-tooltip="Mail  '.$seller.'"></a></h3>';
+        if(isset($_SESSION['username'])) {
+            if ($_SESSION['username'] == $seller) {
+                echo '<h4 class="uk-text-center uk-align-center white-font">Neem contact op met de winnaar <a href="mailto:' . $buyerMail . '?Subject=U%20heeft%20gewonnen" target="_top" uk-icon="icon: mail" uk-tooltip="Mail ' . $buyer . '"></a></h4>';
+            }
+            if ($_SESSION['username'] == $buyer) {
+                echo '<h4 class="uk-text-center uk-align-center white-font">Neem contact op met de verkoper <a href="mailto:' . $sellerMail . '?Subject=Ik%20heb%20gewonnen" target="_top" uk-icon="icon: mail" uk-tooltip="Mail  ' . $seller . '"></a></h4>';
+            }
         }
     } else if ($auctionStatus == 0) {
         echo '
