@@ -56,12 +56,16 @@ function placeItem($dbh, $id)
     $minBid = calcMinBid($dbh, $id);
     $image = getAuctionFilename($dbh, $id);
     $productTitle = '';
+    $seller = "";
+    $sellerMail = "";
+    $buyer = "";
+    $buyerMail = "";
     $categoryArray;
 
     $imageScript = '';
 
     try {
-        $stmt = $dbh->prepare("SELECT	titel,
+        $stmt = $dbh->prepare("SELECT	titel, koper, gK.mail_adres AS koperMail, gV.mail_adres AS verkoperMail, v.verkoper,
 		P4.rubrieknaam AS Parent4Rubrieknaam,
 		P4.rubrieknummer AS Parent4Rubrieknummer,
 		P3.rubrieknaam AS Parent3Rubrieknaam,
@@ -73,7 +77,9 @@ function placeItem($dbh, $id)
 		S.rubrieknaam AS HuidigRubrieknaam, 
 		S.rubrieknummer AS HuidigRubrieknummer		
 FROM	Voorwerp v 
-		JOIN	VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp 
+		LEFT JOIN Gebruiker gV on  v.verkoper = gV.gebruikersnaam
+		LEFT JOIN Gebruiker gK on v.koper = gK.gebruikersnaam
+		LEFT JOIN	VoorwerpInRubriek vir ON v.voorwerpnummer = vir.voorwerp 
 		LEFT JOIN rubriek S ON rubriek_op_laagste_niveau = rubrieknummer 
 		LEFT JOIN rubriek P1 ON P1.rubrieknummer = S.parent
 		LEFT JOIN rubriek P2 ON P2.rubrieknummer = P1.parent
@@ -149,6 +155,12 @@ WHERE voorwerpnummer = :voorwerpnummer");
     $auctionStatus = getAuctionStatus($dbh);
     if ($auctionStatus == 1) {
         echo '<h4 class="uk-text-center uk-align-center white-font"> Deze veiling is gesloten </h4>';
+        if($_SESSION['username'] == $seller){
+            echo '<h3 class="uk-text-center uk-align-center white-font">Neem contact op met de winnaar <a href="mailto:'.$buyerMail.'?Subject=U%20heeft%20gewonnen" target="_top" uk-icon="icon: mail" uk-tooltip="Mail '.$buyer.'"></a></h3>';
+        }
+        if($_SESSION['username'] == $buyer){
+            echo '<h3 class="uk-text-center uk-align-center white-font">Neem contact op met de verkoper <a href="mailto:'.$sellerMail.'?Subject=Ik%20heb%20gewonnen" target="_top" uk-icon="icon: mail" uk-tooltip="Mail  '.$seller.'"></a></h3>';
+        }
     } else if ($auctionStatus == 0) {
         echo '
             
