@@ -245,9 +245,7 @@ WHERE voorwerpnummer = :voorwerpnummer");
     <p >
 <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin" >
 ';
-
     getRelevantItems($dbh, $id);
-
     echo '
     </div >
     </p ></div >
