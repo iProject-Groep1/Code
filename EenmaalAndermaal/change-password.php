@@ -10,6 +10,20 @@ if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    //haalt verkoperstatus op
+    try {
+        $stmt = $dbh->prepare("SELECT verkoper FROM Gebruiker where gebruikersnaam LIKE :gebruikersnaam");
+        $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
+        $stmt->execute();
+        if ($data = $stmt->fetch()) {
+            if ($data['verkoper'] == 1) {
+                $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> U bent al verkoper!\', status: \'danger\'})</script>';
+                header('Location: profile.php');
+            }
+        }
+    } catch (PDOException $e) {
+        echo "Fout" . $e->getMessage();
+    }
 
 ?>
     <h2 class="uk-text-center">Wachtwoord wijzigen</h2>
@@ -21,8 +35,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                        <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                        <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                        <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
                         <?php
                         if ($data['verkoper'] == 0) {
                             ?>
@@ -30,7 +44,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <?php
                         } else {
                             ?>
-                            <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                            <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
                             <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
                             </li>
                             <?php
@@ -48,7 +62,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Huidig wachtwoord*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" placeholder="Vul uw huidige wachtwoord in"name="currentPassword" id="form-horizontal-text" type="password" required>
+                                <input class="uk-input" placeholder="Vul uw huidige wachtwoord in" name="currentPassword" id="form-horizontal-text" type="password" required>
                             </div>
                         </div>
 
@@ -63,7 +77,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-horizontal-text">Nieuw wachtwoord opnieuw invullen*</label>
                             <div class="uk-form-controls">
-                                <input class="uk-input" placeholder="Vul opnieuw uw nieuwe wachtwoord in"name="confirmPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
+                                <input class="uk-input" placeholder="Vul opnieuw uw nieuwe wachtwoord in" name="confirmPassword" id="form-horizontal-text" type="password" pattern="(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="72" required>
                             </div>
                         </div>
 

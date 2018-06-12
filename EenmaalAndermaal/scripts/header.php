@@ -35,7 +35,17 @@ $header = '
             <img src="images/auction.png" class="uk-margin-small-right" width="32" height="28">EenmaalAndermaal</a>
     </div>
     <div>
-        <ul class="uk-navbar-nav">
+        <ul class="uk-navbar-nav uk-position-right">
+            <li>
+            <div>
+                <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                    <div style="background-color: white" class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+                        <form class="uk-search uk-search-navbar uk-width-1-1" action="search-results.php" method="post">
+                            <input class="uk-search-input" type="search" name="Searching" placeholder="Search..." autofocus>
+                        </form>
+                    </div>
+            </div>
+            </li>
             <li>
                 <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
                 <div class="uk-navbar-dropdown uk-nav-changes">
@@ -46,21 +56,18 @@ $header = '
                         <li><a href="category-overview.php">Rubrieken</a></li>';
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>
+                <li><a href="profile.php">Mijn Profiel</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
 $header .= '
-
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="profile.php">Mijn Profiel</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="algemeneVoorwaarden.php">Algemene Voorwaarden</a></li>
-                        <li><a href="#">Over EenmaalAndermaal</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="algemene-voorwaarden.php">Algemene Voorwaarden</a></li>
                     </ul>
                 </div>
             </li>
+        
         </ul>
     </div>
 </nav>
@@ -77,26 +84,21 @@ $header .= '
             <li><div>
             <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
             <div style="background-color: white" class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                <form class="uk-search uk-search-navbar uk-width-1-1" action="SearchResults.php" method="post">
+                <form class="uk-search uk-search-navbar uk-width-1-1" action="search-results.php" method="post">
                     <input class="uk-search-input" type="search" name="Searching" placeholder="Search..." autofocus>
                 </form>
             </div>
-            </div>
+            </div></li>
             <li><a href="index.php">Home</a></li>
             <li><a href="category-overview.php">Rubrieken</a></li>';
 //check of ingelogd is
 if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="logout.php">Uitloggen</a></li>';
+    $header .= '<li><a href="logout.php">Uitloggen</a></li>
+                <li><a href="Profile.php">Mijn Profiel</a></li>';
 } else {
     $header .= '<li><a href="login.php">Inloggen</a></li>';
 }
-$header .= '
-            <li><a href="">Contact</a></li>
-        ';
 
-if (isset($_SESSION['username'])) {
-    $header .= '<li><a href="Profile.php">Mijn Profiel</a></li>';
-}
 
 echo '</ul>';
 
@@ -111,7 +113,7 @@ $header .= '
     </div>
 </nav>
 
-<nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar="">
+<nav class=" responsive-laptop uk-navbar uk-navbar2" uk-navbar>
     <div class="uk-navbar-center">
         <ul class="category-bar uk-navbar-nav uk-grid-medium uk-navbar-nav2 uk-visible@m">
             <li><a href="category-overview.php">Alle Rubrieken</a></li>';

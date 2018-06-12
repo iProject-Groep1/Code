@@ -14,10 +14,10 @@ if (isset($_SESSION['fillEverything2']) && !empty($_SESSION['fillEverything2']))
 }
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    //haal alle informatie van een gebruiker op
+    //Haalt de status van een gebruiker op (verkoper of geen verkoper).
     $data = "";
     try {
-        $stmt = $dbh->prepare("SELECT  g.gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper, rating FROM gebruiker g LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker LEFT JOIN verkoper v on g.gebruikersnaam = v.gebruikersnaam WHERE g.gebruikersnaam like :gebruikersnaam  ORDER BY volgnr");
+        $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetch();
@@ -36,9 +36,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a>
                         </li>
-                        <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens
+                        <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens
                                 wijzigen</a></li>
-                        <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn
+                        <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn
                                 Biedingen</a></li>
                         <?php
                         if ($data['verkoper'] == 0) {
@@ -48,9 +48,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <?php
                         } else {
                             ?>
-                            <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn
+                            <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn
                                     Veilingen</a></li>
-                            <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus"
+                            <li><a class="uk-button uk-button-primary" href="search-rubriek.php"><span uk-icon="plus"
                                                                                                        class="uk-margin-small-right"></span>Plaats
                                     Advertentie</a>
                             </li>
@@ -62,14 +62,17 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </ul>
         </div>
 
-        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-margin-auto uk-flex uk-flex-column uk-flex-wrap-around uk-margin-medium-top uk-margin-large-bottom">
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-2@m uk-margin-auto uk-flex uk-flex-column uk-flex-wrap-around uk-margin-medium-top uk-margin-large-bottom">
             <div class="uk-overflow-auto">
                 <!-- gebruikersinformatie -->
                 <form class="uk-form-horizontal uk-margin-large" action="<?php echo $_SERVER['PHP_SELF']; ?>"
                       method="post">
                     <div class="uk-margin">
+                        <p class="uk-text-primary">Typ de rubriek in waar u uw product in wil plaatsen.</p>
                         <label class="uk-form-label" for="form-horizontal-text">Zoek uw rubriek</label>
+
                         <div class="uk-form-controls">
+
                             <input class="uk-input" id="form-horizontal-text" type="text"
                                    placeholder="Rubrieknaam" name="search">
                         </div>
@@ -83,6 +86,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                     <?php
                     require_once('scripts/search-rubriek-functions.php');
                     if (isset($_POST['search']) && !empty($_POST['search'])) {
+                        echo '<p class="uk-form-label-font">Klik op uw rubriek.</p>';
                         searchRubriek($dbh, '' . $_POST['search'] . '');
                     }
                     ?>

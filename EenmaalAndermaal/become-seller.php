@@ -11,7 +11,6 @@ if (!isset($_SESSION)) {
 }
 
 if (!isset($_SESSION['username'])) {
-    //TODO: melding werkend maken
     $_SESSION['logMelding'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om deze pagina te bezoeken.\', status: \'danger\'})</script>';
     header('Location: login.php');
 }
@@ -46,8 +45,8 @@ try {
                 <a href="#">EenmaalAndermaal</a>
                 <ul class="uk-nav-sub" aria-hidden="false">
                     <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                    <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                    <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                    <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                    <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
                     <?php
                     if ($data['verkoper'] == 0) {
                         ?>
@@ -55,7 +54,7 @@ try {
                         <?php
                     } else {
                         ?>
-                        <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                        <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
                         <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
                         </li>
                         <?php
@@ -75,7 +74,6 @@ if (!isset($_GET['verification'])) {
             de volgende gebruikersnaam: "<?= $_SESSION['username'] ?>"</p>
 
         <form method="POST" action="scripts/become-seller-functions.php">
-            <!-- TODO: maxlengths -->
             <div class="uk-margin uk-form-horizontal">
                 <label class="uk-form-label uk-width-1-3 uk-margin-small-bottom" for="paymentMethod">Verificatiemethode
                     : <span uk-icon="question"></span>

@@ -7,7 +7,7 @@ include('scripts/database-connect.php');
 include('scripts/bid-functions.php');
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    //haal alle informatie van een gebruiker op
+    //Haalt de status van een gebruiker op (verkoper of geen verkoper).
     $data = "";
     try {
         $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
@@ -23,13 +23,13 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">
 
         <div class="profile-sidebar uk-align-center@m">
-            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav>
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
                         <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                        <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                        <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                        <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
                         <?php
                         if ($data['verkoper'] == 0) {
                             ?>
@@ -37,7 +37,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <?php
                         } else {
                             ?>
-                            <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                            <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
                             <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
                             </li>
                             <?php
@@ -103,7 +103,7 @@ function getMyAuctions($dbh, $query, $bindvalue, $open)
         $count = $stmt->rowCount();
         if ($count == 0) {
             if (!$open) {
-                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft geen actieve veilingen.</h2><p>Ga naar <a href="search-Rubriek.php">deze</a> pagina om een veiling aan te maken.</p></div>';
+                echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft geen actieve veilingen.</h2><p>Ga naar <a href="search-rubriek.php">deze</a> pagina om een veiling aan te maken.</p></div>';
             } else {
                 echo '<div class="uk-alert-warning uk-margin-remove-left"><h2 class="uk-alert-warning">U heeft nog geen afgelopen veilingen.</h2><p>Kijk over een tijdje opnieuw.</p></div>';
             }

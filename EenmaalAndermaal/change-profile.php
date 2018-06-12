@@ -2,7 +2,7 @@
 $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
-include('scripts/country.php');
+include('scripts/option-lists.php');
 
 if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
     echo $_SESSION['noChance'];
@@ -12,7 +12,6 @@ if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
     //haal bijna alle informatie van een gebruiker op
-//TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
     $data = "";
     try {
         $stmt = $dbh->prepare("SELECT gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");
@@ -35,8 +34,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <a href="#">EenmaalAndermaal</a>
                 <ul class="uk-nav-sub" aria-hidden="false">
                     <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                    <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                    <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                    <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
+                    <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
                     <?php
                     if ($data['verkoper'] == 0) {
                         ?>
@@ -44,7 +43,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <?php
                     } else {
                         ?>
-                        <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
+                        <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
                         <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
                         </li>
                         <?php
@@ -73,7 +72,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Voornaam: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" name="firstname" id="form-horizontal-text" type="text"
-                                           value="<?= $data['voornaam'] ?>" required>
+                                           value="<?= $data['voornaam'] ?>" maxlength="25" required>
                                 </div>
                             </div>
 
@@ -81,14 +80,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Achternaam: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" name="lastname" id="form-horizontal-text" type="text"
-                                           value="<?= $data['achternaam'] ?>" required>
+                                           value="<?= $data['achternaam'] ?>" maxlength="30" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Geboortedatum: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" name="birthday" id="form-horizontal-text" type="date" value="<?= $data['geboortedag'] ?>" required>
+                                    <input class="uk-input" name="birthday" id="form-horizontal-text" type="date" value="<?= $data['geboortedag'] ?>" max="<?=date('Y-m-d', strtotime("-18 year", time()))?>" required>
                                 </div>
                             </div>
 
@@ -96,7 +95,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Eerste adres: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="text"
-                                           value="<?= $data['adresregel1'] ?>" name="adres1" required>
+                                           value="<?= $data['adresregel1'] ?>" name="adres1" maxlength="30" required>
                                 </div>
                             </div>
 
@@ -104,7 +103,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Postcode: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="text"
-                                           value="<?= $data['postcode'] ?>" name="postalCode" required>
+                                           value="<?= $data['postcode'] ?>" name="postalCode" maxlength="7" required>
                                 </div>
                             </div>
 
@@ -112,19 +111,21 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 <label class="uk-form-label" for="form-horizontal-text">Plaatsnaam: </label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="form-horizontal-text" type="text"
-                                           value="<?= $data['plaatsnaam'] ?>" name="placeName" required>
+                                           value="<?= $data['plaatsnaam'] ?>" name="placeName" maxlength="40" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Land: </label>
                                 <div class="uk-form-controls">
-                                    <select class="uk-select" name="country"required >
+                                    <select class="uk-select" name="country" required >
                                         <option value="<?= $data['land'] ?>"><?= $data['land'] ?></option>
                                         <?= Get_country($dbh) ?>
                                     </select>
                                 </div>
                             </div>
+                        </fieldset>
+                </form>
 
                             <hr class="uk-divider-icon">
 
@@ -135,10 +136,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                            value="Opslaan">
                 </div>
 
-                </fieldset>
-                </form>
 
-                </p>
+
             </div>
         </div>
 

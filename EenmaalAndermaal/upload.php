@@ -3,17 +3,14 @@
 $pageTitle = "Mijn Profiel";
 require('scripts/header.php');
 include('scripts/database-connect.php');
-require('scripts/paymentOptions.php');
+require('scripts/option-lists.php');
 
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
-
-
-    //haal bijna alle informatie van een gebruiker op
-//TODO query aanpassen zodat gemiddelde feedback en telefoonnummers mee wordt genomen.
+    //Haalt de status van een gebruiker op (verkoper of geen verkoper).
     $data = "";
     try {
-        $stmt = $dbh->prepare("SELECT gebruikersnaam, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");
+        $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetch();
@@ -30,42 +27,49 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
     
     <h2 class="uk-center-upload">Plaats Advertentie</h2>
     <p class=" uk-center-upload ">' . $Rubrieknaam . '</p>
-    <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">'?>
+    <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">' ?>
 
-<div class="profile-sidebar uk-align-center@m">
-    <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
-        <li class="uk-parent uk-open">
-            <a href="#">EenmaalAndermaal</a>
-            <ul class="uk-nav-sub" aria-hidden="false">
-                <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                <li><a href="changeProfile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                <li><a href="showBids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
-                <?php
-                if ($data['verkoper'] == 0) {
-                    ?>
-                    <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
-                    <?php
-                } else {
-                    ?>
-                    <li><a href="myAuctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
-                    <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+    <div class="profile-sidebar uk-align-center@m">
+        <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
+            <li class="uk-parent uk-open">
+                <a href="#">EenmaalAndermaal</a>
+                <ul class="uk-nav-sub" aria-hidden="false">
+                    <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a>
+                    </li>
+                    <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens
+                            wijzigen</a></li>
+                    <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a>
                     </li>
                     <?php
-                } ?>
+                    if ($data['verkoper'] == 0) {
+                        ?>
+                        <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper
+                                worden</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn
+                                Veilingen</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus"
+                                                                                                   class="uk-margin-small-right"></span>Plaats
+                                Advertentie</a>
+                        </li>
+                        <?php
+                    } ?>
 
-            </ul>
-        </li>
-    </ul>
-</div>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-<?php
-echo '
+    <?php
+    echo '
     <div class="uk-width-1-1\@s" uk-grid>
         <div class="uk-card-refactor auctions-reset-margin uk-display-inline-block">
             <img class="uk-display-block" src="images/placeholde-img.png" alt="placeholder" width="300">
         </div>
         <div class="uk-display-inline-block uk-width-1-1@s uk-width-1-2@m uk-responsive-maken">
-            <form class="uk-form-horizontal uk-margin-large" action="scripts/placeItem.php" method="post" enctype="multipart/form-data">
+            <form class="uk-form-horizontal uk-margin-large" action="scripts/place-item.php" method="post" enctype="multipart/form-data">
             <!-- hidden meegestuurde waarde voor het Rubrieknr -->
             <input class="uk-input" id="form-horizontal-text" type="text" value="' . $Rubrieknr . '"
                                name="Rubrieknr" hidden>
@@ -93,7 +97,6 @@ echo '
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-horizontal-text">Betalingswijze</label>
                     <div class="uk-form-controls">
-                    <!-- TODO: Haal alle betaalwijze uit de database en laad deze in een <ul> -->
                                    <select class="uk-select" name="Betalingswijze" required>
        ' .
         Get_payment($dbh)

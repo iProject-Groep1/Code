@@ -6,11 +6,11 @@ $password = htmlentities($_POST['password'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 $newMail = htmlentities($_POST['newMail'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
 if (empty($password) || empty($newMail)) {
-    header('Location: ../changeProfile.php?');
+    header('Location: ../change-profile.php?');
     $_SESSION['noChance'] = '
     <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Er zijn geen gegevens veranderd.\', status: \'danger\'})</script>';
 } else if(!filter_var("$newMail", FILTER_VALIDATE_EMAIL)) {
-    header('Location: ../changeProfile.php?');
+    header('Location: ../change-profile.php?');
     $_SESSION['noChance'] = '
     <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Geen geldig e-mailadres.\', status: \'danger\'})</script>';
 }else{
@@ -26,7 +26,7 @@ if (empty($password) || empty($newMail)) {
     if (!password_verify($password, $row['wachtwoord'])) {
         $_SESSION['noChance'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoord is incorrect.\', status: \'danger\'})</script>';
-        header('Location: ../changeProfile.php?');
+        header('Location: ../change-profile.php?');
     }else{
         try{
             $stmt = $dbh->prepare("UPDATE Gebruiker SET mail_adres = :mail_adres WHERE gebruikersnaam = :gebruikersnaam");

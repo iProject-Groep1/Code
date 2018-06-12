@@ -227,6 +227,3 @@ function createMyBids($productName, $timeOfEnding, $image, $hoogsteBod, $id, $db
     return $itemCard;
 
 }
-
-
-?>
