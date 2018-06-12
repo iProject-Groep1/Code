@@ -3,7 +3,6 @@ include('database-connect.php');
 include('homepage-functions.php');
 include('auction-item.php');
 
-
 function searchItems($dbh)
 {
     $search = "";
@@ -18,7 +17,6 @@ FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpIn
     $bindValue = '%' . $search . '%';
 
     $searchItems .= getSearchItems($dbh, $queries['search'], $bindValue);
-
 
     echo $searchItems;
 }
@@ -134,5 +132,4 @@ $_POST['searchterm'] = htmlentities($_POST['searchterm'], ENT_QUOTES | ENT_IGNOR
     }
     return $itemCards;
 }
-
 ?>

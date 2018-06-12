@@ -12,5 +12,4 @@ function CheckLogin ()
         return false;
     }
 }
-
 ?>

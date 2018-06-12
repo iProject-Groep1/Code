@@ -5,7 +5,6 @@ include('bid-functions.php');
 include('homepage-functions.php');
 include('login-functions.php');
 
-
 $Login = CheckLogin ();
 if ($Login == false) {
     $_SESSION['LogMelding'] = '
@@ -48,7 +47,7 @@ function setMinBid($dbh, $id)
 
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
+        header('Location: ../errorpage.php?err=500');
     }
 
 }

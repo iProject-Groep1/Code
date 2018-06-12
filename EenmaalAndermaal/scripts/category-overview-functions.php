@@ -168,28 +168,6 @@ function getClosingTags($previousCategoryKind, $currentCategoryKind)
 
     return $closingTags;
 }
-
-/* function getHomepageCategoryOverview($databasehandler, $overviewSize)
-{
-    $homepageCategoryOverview = "";
-    $mainCategoriesData = $databasehandler->query("SELECT TOP" . $overviewSize . " rubrieknummer, rubrieknaam  FROM Rubriek r WHERE rubrieknummer IN (SELECT count(*), rubrieknummer FROM Voorwerp_in_Rubriek GROUP BY rubrieknummers ORDER BY count(*)))");
-    while ($mainCategoryRow = $mainCategoriesData->fetch()) {
-        $homepageCategoryOverview .= '<a href="iets.php?categoryID=' . $mainCategoryRow['rubrieknummer'] . '">' . $mainCategoryRow['rubrieknaam'] . '</a>';
-    }
-    return $homepageCategoryOverview;
-}
-
-function getAlphabetList()
-{
-    $alphabet = range('A', 'Z');
-    $alphabetList = '<ul class="uk-pagination">';
-    foreach ($alphabet as $letter) {
-        $alphabetList .= '<li><a href="#' . $letter . '">' . $letter . '</a></li>';
-    }
-    $alphabetList .= '</ul>';
-    return $alphabetList;
-}
-*/
 ?>
 
 
