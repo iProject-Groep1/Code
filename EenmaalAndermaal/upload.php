@@ -23,8 +23,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
     $Rubrieknr = $_GET['Rubrieknr'];
 
 
-    echo '
-    
+    echo '    
     <h2 class="uk-center-upload">Plaats Advertentie</h2>
     <p class=" uk-center-upload ">' . $Rubrieknaam . '</p>
     <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">' ?>
@@ -119,7 +118,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
             <div class="uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
                     <div uk-form-custom>
-                        <input type="file" name="Image" multiple>
+                        <input type="file" name="Image[]" multiple>
                         <span class="uk-link">Selecteer een foto</span>
                     </div>
             </div>
