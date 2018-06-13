@@ -9,10 +9,6 @@ if (isset($_POST['submit'])) {
 //voegt veiling toe.
 function insertItem($dbh)
 {
-//    echo '<pre>';
-//    print_r($_FILES);
-//    echo '</pre>';
-    die();
     //haal plaatsnaam en land op.
     try {
         $stmt = $dbh->prepare("SELECT plaatsnaam, land FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");

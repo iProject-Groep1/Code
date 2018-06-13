@@ -59,9 +59,7 @@ function getProductInfo($dbh)
                     $productInformation .= '<span uk-icon="star" class="rating-star"></span>';
                 }
                 for ($i = 0; $i < 5 - $numberOfStars; $i++) {
-
                     $productInformation .= '<span uk-icon="star"></span>';
-
                 }
             }
             $productInformation .= '</p></div></div>';

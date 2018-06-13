@@ -123,8 +123,8 @@ function placeItem($dbh, $id)
         ';
 
     foreach ($image as $key) {
-        $imageScript .= '    <li class="uk-width-3-4 " >
-                                <img class="uk-flex-center uk-align-center uk-height" src="' . $key . '" style="background-image: url(' . $key . ');" alt="' . $key . '" >
+        $imageScript .= '    <li class="uk-width-3-4 detail-page-li-img" >
+                                <img class="uk-flex-center uk-align-center uk-height detailpage-img" src="' . $key . '" style="background-image: url(' . $key . '); background-repeat: norepeat; background-size: cover;" alt="' . $key . '" >
                              </li >';
     }
     echo $imageScript;

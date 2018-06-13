@@ -97,8 +97,6 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                     </div>';
 
     }
-
-
     $itemCard .= '
                         </div> 
                     </div>
