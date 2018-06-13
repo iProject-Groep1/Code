@@ -13,7 +13,7 @@ function getServerTime($dbh)
         return $row;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
+        header('Location: ../errorpage.php?err=500');
     }
 }
 
@@ -30,7 +30,7 @@ function getAuctionEnd($dbh, $id)
         return $row;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
+        header('Location: ../errorpage.php?err=500');
     }
 
 }
@@ -51,11 +51,12 @@ function getAuctionFilename($dbh, $id)
         return $array;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
+        header('Location: ../errorpage.php?err=500');
 
     }
 }
 
+//maak itemCards voor een bepaalde aandachtsstrekker
 function getHomepageCards($dbh, $query)
 {
     $itemCards = "";
@@ -63,7 +64,6 @@ function getHomepageCards($dbh, $query)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($results = $stmt->fetch()) {
-
             $price = $results['hoogsteBod'];
             if(is_null($price)){
                 $price = getStartPrice($dbh, $results['voorwerpnummer']);
@@ -72,8 +72,7 @@ function getHomepageCards($dbh, $query)
         }
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        die();
-        header('Location: errorpage.php?err=500');
+        header('Location: ../errorpage.php?err=500');
     }
     return $itemCards;
 }

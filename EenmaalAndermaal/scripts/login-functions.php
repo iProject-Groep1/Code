@@ -1,9 +1,9 @@
 <?php
 include('database-connect.php');
 
-
 /*  Deze functie checkt of je nog in de session bent.
    Dit gebeurd op iedere pagina opnieuw zodat hij weet ofdat de user nog in de session zit.*/
+//TODO: Controleer of de gebruikersnaam wel in de database voorkomt.
 function CheckLogin ()
 {
     if (isset($_SESSION['username'])) {

@@ -6,10 +6,14 @@ if(isset($_POST['submit'])){
     insertItem($dbh);
 }
 
+//voegt veiling toe.
 function insertItem($dbh)
 {
+    //print_r($_FILES);
+    //die();
+    //haal plaatsnaam en land op.
     try {
-        $stmt = $dbh->prepare("SELECT gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper FROM gebruiker LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam ORDER BY volgnr");
+        $stmt = $dbh->prepare("SELECT plaatsnaam, land FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetch();
@@ -18,7 +22,7 @@ function insertItem($dbh)
         header('Location: errorpage.php?err=500');
     }
 
-
+    //schoon alle invoer op.
     $rubrieknr = htmlentities($_POST['Rubrieknr'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     $titel = htmlentities($_POST['Titel'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     $startprijs = htmlentities($_POST['Startprijs'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
@@ -31,20 +35,21 @@ function insertItem($dbh)
     $verkoper = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
     try {
-        $sql = "SET NOCOUNT ON; insert into
- voorwerp(  [titel]
-           ,[beschrijving]
-           ,[startprijs]
-           ,[betalingswijze]
-           ,[betalingsinstructie]
-           ,[plaatsnaam]
-           ,[land]
-           ,[looptijd]
-           ,[verzendkosten]
-           ,[verzendinstructies]
-           ,[verkoper])
-        values (?,?,?,?,?,?,?,?,?,?,?); select scope_identity() as lastid";
-
+        $sql = "SET NOCOUNT ON; 
+        INSERT INTO voorwerp(   
+                        [titel],
+                        [beschrijving],
+                        [startprijs],
+                        [betalingswijze],
+                        [betalingsinstructie],
+                        [plaatsnaam],
+                        [land],
+                        [looptijd],
+                        [verzendkosten],
+                        [verzendinstructies],
+                        [verkoper])
+        VALUES (?,?,?,?,?,?,?,?,?,?,?); 
+        SELECT scope_identity() AS lastid";
         $query = $dbh->prepare($sql);
         $query->execute(array($titel, $beschrijving, $startprijs, $betalingswijze,'Na betaling wordt het product verzonden.', $plaatsnaam, $land, $veilingtijd, $verzendkosten, 'test', $verkoper));
         while ($results = $query->fetch()){
@@ -53,10 +58,10 @@ function insertItem($dbh)
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
         $_SESSION['fillEverything'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'danger\'})</script>';
+        <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'danger\'})</script>';
         header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
     }
-
+    //TODO: meerdere foto's
     uploadPicture ($lastid, $dbh, $rubrieknr, $titel);
 }
 
@@ -66,6 +71,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+    //controleer of het wel een foto is.
     if(isset($_POST["submit"])) {
         $check = getimagesize($_FILES["Image"]["tmp_name"]);
         if($check !== false) {
@@ -77,46 +83,34 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
         }
     }
 
-    /*
-// Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-    */
-
+    //controleer of bestandsnaam te groot is.
     if (strlen($_FILES["Image"]["name"]) > 500) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, uw plaatjesnaam is te groot.. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
-
-// Check file size
+    // Check file size
     if ($_FILES["Image"]["size"] > 10000000) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Sorry, uw plaatje is te groot.. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
-// Allow certain file formats
+    // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" ) {
         $_SESSION['fillEverything2'] .= '
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span> Sorry, wij accepteren alleen JPG, JPEG, PNG en GIF files. \', status: \'danger\'})</script>';
         header('Location: ../search-Rubriek.php');
         $uploadOk = 0;
     }
-// Check if $uploadOk is set to 0 by an error
+    // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-// if everything is ok, try to upload file
+    // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["Image"]["tmp_name"], $target_file)) {
-
-
             try {
-                $sql = "insert into VoorwerpInRubriek ([voorwerp],[rubriek_op_laagste_Niveau])
-        values (?,?)";
-
+                $sql = "INSERT INTO VoorwerpInRubriek ([voorwerp],[rubriek_op_laagste_Niveau]) VALUES (?,?)";
                 $query = $dbh->prepare($sql);
                 $query->execute(array($lastid, $rubrieknr));
             } catch (PDOException $e) {
@@ -125,11 +119,8 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
                 <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Vul aub alle gegevens in! \', status: \'danger\'})</script>';
                 header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
             }
-
             try {
-                $sql = "insert into Bestand ([filenaam],[voorwerp])
-        values (?,?)";
-
+                $sql = "INSERT INTO Bestand ([filenaam],[voorwerp]) VALUES (?,?)";
                 $query = $dbh->prepare($sql);
                 $query->execute(array('http://iproject1.icasites.nl/upload/'.$_FILES["Image"]["name"].'',$lastid));
             } catch (PDOException $e) {
@@ -143,7 +134,7 @@ function uploadPicture ($lastid, $dbh, $rubrieknr, $titel){
         } else {
             echo "Sorry, there was an error uploading your file.";
             $_SESSION['fillEverything2'] = '
-                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'danger\'})</script>';
+            <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  Dit plaatje voldoet helaas niet aan de eisen. \', status: \'danger\'})</script>';
             header('Location: ../search-Rubriek.php');
         }
     }

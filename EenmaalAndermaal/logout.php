@@ -18,8 +18,8 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 
 session_unset();
 session_destroy();
-echo 'Als je niet automatisch doorgestuurd wordt, klik dan op <a href="'.$lastVisited.'">deze link</a>' ;
-header('Location: '.$lastVisited);
+echo 'Als je niet automatisch doorgestuurd wordt, klik dan op <a href="' . $lastVisited . '">deze link</a>';
+header('Location: ' . $lastVisited);
 
 ?>
 </body>

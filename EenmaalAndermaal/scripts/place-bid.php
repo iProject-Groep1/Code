@@ -5,46 +5,39 @@ include('bid-functions.php');
 include('homepage-functions.php');
 include('login-functions.php');
 
-$Login = CheckLogin ();
-if ($Login == false) {
+//controleer login
+if (!CheckLogin()) {
     $_SESSION['LogMelding'] = '
-    <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om een bod te plaatsen.\', status: \'danger\'})</script>
-    ';
-
+    <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> U moet inloggen om een bod te plaatsen.\', status: \'danger\'})</script>';
     header("Location: ../login.php");
-
-
 } else {
+    //controleer of niet op eigen veiling geboden wordt.
     if (getSeller($dbh, $_GET['id']) == $_SESSION['username']) {
         $_SESSION['bodMelding'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> U mag niet up uw eigen veiling bieden!\', status: \'danger\'})</script>
-';
-        header('Location:../detailpage.php?id=' . $_GET['id']);
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> U mag niet up uw eigen veiling bieden!\', status: \'danger\'})</script>';
+        header('Location: ../detailpage.php?id=' . $_GET['id']);
     } else {
-
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             // Verify data
             $id = $_GET['id']; // Set email variable
-            setMinBid($dbh, $id);
+            insertMinBid($dbh, $id);
         }
     }
 }
 
-function setMinBid($dbh, $id)
+//slaat het bod op.
+function insertMinBid($dbh, $id)
 {
     $bodbedrag = calcMinBid($dbh, $id);
     $gebruiker = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     $bodtijd = getServerTime($dbh);
-
     try {
         $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?, ?,?,?)"; /* prepared statement */
         $query = $dbh->prepare($sql);
         $query->execute(array($id, $bodbedrag, $gebruiker, $bodtijd));
         $_SESSION['bodMelding'] = '
-            <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: check"></span> Uw bod van €' . $bodbedrag . ' is geplaatst.\', status: \'success\'})</script>
-';
+            <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: check"></span> Uw bod van €' . $bodbedrag . ' is geplaatst.\', status: \'success\'})</script>';
         header('Location:../detailpage.php?id=' . $id . '');
-
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
         header('Location: ../errorpage.php?err=500');

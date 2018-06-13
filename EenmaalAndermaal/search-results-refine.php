@@ -12,9 +12,7 @@ if (isset($_POST['submit'])) {
                 <h3 class="uk-display-block uk-align-left uk-text-center">Zoekresultaten </h3>
                 <p>
                 <div class="uk-breadcrumb2 uk-grid uk-align-left uk-width-medium-1-4 uk-flex uk-flex-left auctions-reset-margin">
-                    <?php $echo = getVerfijn($dbh);
-                    echo $echo;
-                    ?>
+                    <?= getVerfijn($dbh) ?>
                 </div>
             </div>
         </div>

@@ -10,12 +10,15 @@ $postalCode = htmlentities($_POST['postalCode'], ENT_QUOTES | ENT_IGNORE, "UTF-8
 $placeName = htmlentities($_POST['placeName'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 $country = htmlentities($_POST['country'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
+//controleer of wel iets is ingevuld.
 if (empty(trim($firstname)) || empty(trim($lastname)) || empty(trim($birthday)) || empty(trim($adres1)) || empty(trim($postalCode)) || empty(trim($placeName)) || empty(trim($country))) {
     $_SESSION['noChance'] = '
     <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Er zijn geen gegevens veranderd.\', status: \'danger\'})</script>';
     header('Location: ../profile.php?');
 } else {
+    //ingevuld: sla data op in de database.
     try{
+        //TODO: array gebruiken ipv 8 keer bindValue();
         $stmt = $dbh->prepare("UPDATE Gebruiker SET voornaam = :voornaam, achternaam= :achternaam, geboortedag = :geboortedag, adresregel1 = :adres1, postcode = :postcode, plaatsnaam = :plaatsnaam, land = :land WHERE gebruikersnaam = :gebruikersnaam");
         $stmt->bindValue(":voornaam", $firstname, PDO::PARAM_STR);
         $stmt->bindValue(":achternaam", $lastname, PDO::PARAM_STR);

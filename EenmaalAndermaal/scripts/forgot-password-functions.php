@@ -17,6 +17,7 @@ if (isset($_POST['username'])) {
     header('Location ../forgot-password.php');
 }
 
+//controleer of antwoord is ingevuld.
 if (isset($_POST['questionAnswer'])) {
     try {
         //controleert of de combinatie gebruikersnaam en antwoordtekst overeen komt
@@ -35,9 +36,9 @@ if (isset($_POST['questionAnswer'])) {
                     $stmt->bindValue(":username", $_POST['hiddenUsername'], PDO::PARAM_STR);
                     $stmt->execute();
                     sendNewPassword($results['mail_adres'], $newPassword);
-                    
+
                     $_SESSION['passwordResetNotification'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Uw nieuwe wachtwoord is gemaild.\', status: \'success\'})</script>';
+                    <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Uw nieuwe wachtwoord is gemaild.\', status: \'success\'})</script>';
                     header('Location: ../login.php?username=' . $_POST['hiddenUsername']);
                 } catch (PDOException $e) {
                     echo "Fout" . $e->getMessage();
@@ -45,12 +46,12 @@ if (isset($_POST['questionAnswer'])) {
                 }
             } else {
                 $_SESSION['questionNotification'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
+                <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
                 header('Location: ../forgot-password.php?username=' . $_POST['hiddenUsername']);
             }
         } else {
             $_SESSION['questionNotification'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
+            <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit antwoord is fout.\', status: \'danger\'})</script>';
             header('Location: ../forgot-password.php?username=' . $_POST['hiddenUsername']);
         }
     } catch (PDOException $e) {
@@ -73,7 +74,7 @@ function usernameValid($username, $dbh)
                 return true;
             } else {
                 $_SESSION['forgotPasswordNotification'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: user"></span> Deze gebruikersnaam bestaat niet.\', status: \'danger\'})</script>';
+                <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: user"></span> Deze gebruikersnaam bestaat niet.\', status: \'danger\'})</script>';
                 return false;
             }
         }
@@ -90,30 +91,26 @@ function sendNewPassword($email, $newPassword)
     $to = $email; // Send email to our user
     $subject = 'Herstel Uw Wachtwoord | EenmaalAndermaal | I-Project Groep 1'; // Give the email a subject
     $message = '
- <!DOCTYPE HTML>
- <html lang="nl">
- <head>
- <meta charset="UTF-8">
-</head>
-<body>
-<h1>Uw nieuwe wachtwoord.</h1>
-<div>
-<p>U heeft zojuist een nieuw wachtwoord aangevraagd.</p>
-<p>Uw nieuwe wachtwoord is: <span>' . $newPassword . '</span></p>
- </div>
+    <!DOCTYPE HTML>
+        <html lang="nl">
+            <head>
+                <meta charset="UTF-8">
+            </head>
+            <body>
+                <h1>Uw nieuwe wachtwoord.</h1>
+                <div>
+                    <p>U heeft zojuist een nieuw wachtwoord aangevraagd.</p>
+                    <p>Uw nieuwe wachtwoord is: <span>' . $newPassword . '</span></p>
+                </div>
 
-<div>
-<p>U kunt hiermee inloggen via <a href="iproject1.icasites.nl/login.php">deze</a> link</p>
-<p>Heeft u dit wachtwoord niet aangevraagd? Neem dan zo snel mogelijk contact op met onze klantenservice.</p>
-
-<p>I-Project Groep 1</p>
-</div>
-
-
-</body>
-</html>
+                <div>
+                    <p>U kunt hiermee inloggen via <a href="iproject1.icasites.nl/login.php">deze</a> link</p>
+                    <p>Heeft u dit wachtwoord niet aangevraagd? Neem dan zo snel mogelijk contact op met onze klantenservice.</p>
+                    <p>I-Project Groep 1</p>
+                </div>
+            </body>
+        </html>
 '; // Our message above including the link
-
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
@@ -133,4 +130,3 @@ function randomPassword($length)
     }
     return implode($pass); //turn the array into a string
 }
-?>

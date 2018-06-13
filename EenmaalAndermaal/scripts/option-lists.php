@@ -1,11 +1,12 @@
 <?php
 include('database-connect.php');
 
-function Get_payment($dbh)
+//haal een optielijst van betaalwijzen op.
+function getPaymentMethodList($dbh)
 {
     $return = '';
     try {
-        $stmt = $dbh->prepare("select betaalwijze from Betaalwijze"); /* prepared statement */
+        $stmt = $dbh->prepare("SELECT betaalwijze FROM Betaalwijze"); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($row = $stmt->fetch()) {
             $return .= '<option value="' . $row['betaalwijze'] . '"> ' . $row['betaalwijze'] . '</option>';
@@ -16,10 +17,11 @@ function Get_payment($dbh)
     return $return;
 }
 
-function Get_question($dbh){
+//haal een optielijst met geheime vragen op.
+function getRecoveryQuesionList($dbh){
     $return = '';
     try {
-        $stmt = $dbh->prepare("select [vraagnummer], [vraagtekst] from Vraag"); /* prepared statement */
+        $stmt = $dbh->prepare("SELECT [vraagnummer], [vraagtekst] FROM Vraag"); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($row = $stmt->fetch()){
             $return .= '<option value="'. $row ['vraagnummer'] .'"> '.$row['vraagtekst'].'</option>';
@@ -32,11 +34,12 @@ function Get_question($dbh){
     return $return;
 }
 
-function Get_country($dbh)
+//haal een optielijst met landen op.
+function getCountryList($dbh)
 {
     $return = '';
     try {
-        $stmt = $dbh->prepare("select land from land"); /* prepared statement */
+        $stmt = $dbh->prepare("SELECT land FROM land"); /* prepared statement */
         $stmt->execute(); /* stuurt alles naar de server */
         while ($row = $stmt->fetch()) {
             $return .= '<option value="' . $row['land'] . '"> ' . $row['land'] . '</option>';

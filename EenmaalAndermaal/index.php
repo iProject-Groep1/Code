@@ -23,18 +23,15 @@ $queries['Laatste kans'] = "select top 4 v.voorwerpnummer, v.titel, v.looptijdEi
 $attentionSeekers = "";
 foreach($queries as $soort => $query){
     $attentionSeekers .=  '<div class="uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body">
-    <a href="relevantpage.php?Titel='. $soort .'">
-    <h3 class="uk-display-block uk-align-center uk-text-center">'.$soort.'</h3>
-    </a>
-    <p>
-    <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getHomepageCards($dbh, $query).'</div>
-    </p>
-    </div>
-    <hr>';
+                                <a href="relevantpage.php?Titel='. $soort .'"><h3 class="uk-display-block uk-align-center uk-text-center">'.$soort.'</h3></a>
+                                <p>
+                                    <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getHomepageCards($dbh, $query).'</div>
+                                </p>
+                            </div> 
+                            <hr>';
 }
 
 echo $attentionSeekers;
-
 require_once('scripts/footer.php');
 ?>
 

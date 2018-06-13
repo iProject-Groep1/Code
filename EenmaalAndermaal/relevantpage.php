@@ -21,20 +21,18 @@ if(isset($_GET['Titel']) && !empty($_GET['Titel'])) {
     header('Location: errorpage.php?err=404');
 }
 
+//maak itemcards van de resultaten van de opgegeven query
 function sorteerFunction($dbh, $query, $titel)
 {
-
     $attentionSeekers = "";
-        $attentionSeekers .= '<div class="uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body">
-    <h3 class="uk-display-block uk-align-center uk-text-center">' . $titel . '</h3>
-    <p>
-    <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">' . getHomepageCards($dbh, $query) . '</div>
-    </p>
-    </div>
-    <hr>';
-
+        $attentionSeekers .= '    <div class="uk-card auctions-reset-margin uk-card-default no-shadow uk-card-body">
+                                    <h3 class="uk-display-block uk-align-center uk-text-center">' . $titel . '</h3>
+                                    <p>
+                                        <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">' . getHomepageCards($dbh, $query) . '</div>
+                                    </p>
+                                  </div>
+                                  <hr>';
     echo $attentionSeekers;
 }
-
 require_once('scripts/footer.php');
 ?>

@@ -12,7 +12,8 @@ $passwordHash = "";
 $pogingen = 3 - $_SESSION['Pogingen'];
 echo $_SESSION['Pogingen'];
 
-if($_SESSION['Pogingen'] >= 3) {
+//controleer of wachtwoord wijzigen nog niet te vaak is geprobeerd.
+if ($_SESSION['Pogingen'] >= 3) {
     session_unset();
     session_destroy();
     header('Location: ../login.php?');
@@ -22,8 +23,9 @@ if($_SESSION['Pogingen'] >= 3) {
     die();
 }
 
-if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    //controleer of wachtwoord veranderd is.
     if (empty(trim($currentPassword)) || empty(trim($newPassword)) || empty(trim($confirmPassword))) {
         $_SESSION['noChance'] = '
     <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw wachtwoord is niet gewijzigd.\', status: \'danger\'})</script>';
@@ -52,7 +54,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             echo "Fout" . $e->getMessage();
             header('Location: errorpage.php?err=500');
         }
-
+//wachtwoorden correct: sla ze op in de database.
         if ($passwordConfirmCorrect & $passwordCorrect) {
             $stmt = $dbh->prepare("UPDATE Gebruiker SET wachtwoord = :wachtwoord WHERE gebruikersnaam = :gebruikersnaam");
             $stmt->bindValue(":wachtwoord", $passwordhash, PDO::PARAM_STR);
@@ -64,20 +66,19 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         } else if (!$passwordConfirmCorrect & !$passwordCorrect) {
             header('Location: ../change-password.php?');
             $_SESSION['noChance'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect en wachtwoorden komen niet overeen. U kan nog '. $pogingen .' keer proberen\', status: \'danger\'})</script>';
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect en wachtwoorden komen niet overeen. U kan nog ' . $pogingen . ' keer proberen\', status: \'danger\'})</script>';
         } else if (!$passwordCorrect) {
             header('Location: ../change-password.php?');
-            $_SESSION['Pogingen'] ++;
+            $_SESSION['Pogingen']++;
             $_SESSION['noChance'] = '
-        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect , u kan nog '. $pogingen .' keer proberen\', status: \'danger\'})</script>';
+        <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Uw huidige wachtwoord is incorrect , u kan nog ' . $pogingen . ' keer proberen\', status: \'danger\'})</script>';
         } else if (!$passwordConfirmCorrect) {
             header('Location: ../change-password.php?');
-            $_SESSION['Pogingen'] ++;
+            $_SESSION['Pogingen']++;
             $_SESSION['noChance'] = '
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoorden komen niet overeen\', status: \'danger\'})</script>';
         }
-
     }
-}else{
+} else {
     header('Location: errorpage.php?err=404');
 }

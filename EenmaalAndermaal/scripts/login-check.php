@@ -11,6 +11,7 @@ if (isset($_SESSION['lastVisited'])) {
     $redirect = "../index.php";
 }
 
+//controleer of gebruikersnaam is ingevuld.
 if (isset($_POST['username'])) {
     if (empty(trim($_POST['username'])) || empty(trim($_POST['password']))) {
         if (empty(trim($_POST['username'])) && !empty(trim($_POST['password']))) {
@@ -22,6 +23,7 @@ if (isset($_POST['username'])) {
         }
     } else {
         require_once('database-connect.php');
+        //controleer of wachtwoord klopt
         try {
             $stmt = $dbh->prepare("SELECT wachtwoord FROM Gebruiker WHERE gebruikersnaam = :gebruikersnaam");
             $stmt->bindValue(":gebruikersnaam", $_POST['username'], PDO::PARAM_STR);
@@ -37,6 +39,5 @@ if (isset($_POST['username'])) {
             echo "Fout" . $e->getMessage();
             header('Location: errorpage.php?err=500');
         }
-
     }
 }

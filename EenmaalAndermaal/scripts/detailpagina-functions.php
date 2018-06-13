@@ -1,4 +1,6 @@
 <?php
+
+//maakt itemcards van relevante items
 function setRelevantItems($dbh, $rubriek_op_laagste_Niveau, $voorwerp)
 {
     $relevantItems = '';
@@ -17,7 +19,8 @@ function setRelevantItems($dbh, $rubriek_op_laagste_Niveau, $voorwerp)
     }
 }
 
-function getRelevantItems($dbh, $voorwerp)
+//haal relevante rubrieken op.
+function getRelatedCategories($dbh, $voorwerp)
 {
     try {
         $stmt = $dbh->prepare("SELECT rubriek_op_laagste_Niveau FROM VoorwerpInRubriek V WHERE V.voorwerp = :voorwerp"); /* prepared statement */
@@ -32,6 +35,7 @@ function getRelevantItems($dbh, $voorwerp)
     }
 }
 
+//haal alle productinformatie op en zet deze in een HTML structuur voor op detailpage.php
 function getProductInfo($dbh)
 {
     $objectNumber = $_GET['id'];
@@ -69,6 +73,7 @@ function getProductInfo($dbh)
     }
 }
 
+//haal de status van de veiling op: open/gesloten
 function getAuctionStatus($dbh)
 {
     $objectNumber = $_GET['id'];

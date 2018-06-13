@@ -3,6 +3,7 @@
 //bouwt html structuur voor de rubriekenboompagina
 function getCategoryOverview($databasehandler)
 {
+    //geef de site wat meer tijd om te laden.
     set_time_limit(30);
     //variabelen om bij te houden wat het vorige rubrieknummer is.
     $previousMainCategoryNumber = 0;
@@ -15,6 +16,7 @@ function getCategoryOverview($databasehandler)
     //$alphabet = range('A', 'Z');
     $categoryOverview = "";
     $referenceSite = "category.php?categoryID="; //url voor rubriekpagina, waar elke rubriek naar toe linkt
+    //haal alle rubrieken op
     $query = "SELECT
                 HoofdrubriekNr=h.Rubrieknummer,
                 HoofdrubriekNaam=h.Rubrieknaam,
