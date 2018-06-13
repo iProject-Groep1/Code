@@ -105,11 +105,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                     <label class="uk-form-label" for="form-horizontal-select">Veilingtijd</label>
                     <div class="uk-form-controls">
                         <select class="uk-select" id="form-horizontal-select" name="Veilingtijd" required>
-                            <option>1</option>
-                            <option>3</option>
-                            <option>5</option>
-                            <option selected>7</option>
-                            <option>10</option>
+                            '.getAuctionLengths($dbh).'
                         </select>
                     </div>
                 </div>

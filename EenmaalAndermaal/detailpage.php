@@ -121,11 +121,15 @@ function placeItem($dbh, $id)
                     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider="center: true">
                          <ul class="uk-slider-items uk-grid uk-grid-match" uk-height-viewport="offset-top: true; offset-bottom: 30">
         ';
-
+$i = 0;
     foreach ($image as $key) {
+        $i++;
         $imageScript .= '    <li class="uk-width-3-4 detail-page-li-img" >
                                 <img class="uk-flex-center uk-align-center uk-height detailpage-img" src="' . $key . '" style="background-image: url(' . $key . '); background-repeat: norepeat; background-size: cover;" alt="' . $key . '" >
                              </li >';
+        if($i > 3){
+            break;
+        }
     }
     echo $imageScript;
     echo '
