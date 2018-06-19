@@ -1,3 +1,4 @@
+<!-- FOOTER -->
 </body>
 <div class="responsive-laptop uk-navbar uk-navbar1 footer" uk-navbar>
 <nav class=" uk-navbar uk-navbar1 uk-width-1" uk-navbar>

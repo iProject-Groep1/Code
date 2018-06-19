@@ -12,7 +12,6 @@ require_once('scripts/header.php');
         <p>EenmaalAndermaal kan persoonsgegevens over u verwerken, doordat u gebruik maakt
             van de diensten van EenmaalAndermaal, en/of omdat u deze zelf bij het invullen van een
             contactformulier op de website aan EenmaalAndermaal verstrekt.</p>
-
         <h2>Persoonsgegevens die worden verwerkt</h2>
         <p>EenmaalAndermaal kan de volgende persoonsgegevens verwerken:</p>
         <ul>
@@ -36,19 +35,21 @@ require_once('scripts/header.php');
 
         <h2>Waarom EenmaalAndermaal gegevens nodig heeft</h2>
         <p>EenmaalAndermaal verwerkt uw persoonsgegevens om per e-mail contact met u op te kunnen nemen.
-            Indien nodig kan EenmaalAndermaal de verkoper uw adresgegevens te geven wanneer u een veiling gewonnen heeft. Om op de site
+            Indien nodig kan EenmaalAndermaal de verkoper uw adresgegevens te geven wanneer u een veiling gewonnen
+            heeft. Om op de site
             aan te geven dat u een bod heeft gedaan zal een bodbedrag en een tijdsvermelding.</p>
         <h2>Uw gegevens inzien, wijzigen en verwijderen</h2>
         <p>U heeft het recht om uw persoonsgegevens in te zien, te corrigeren of te verwijderen. U kunt uw gegevens
             inzien op uw profielpagina. Hier kunt u deze gegevens ook wijzigen, en indien gewenst uw account
             verwijderen.</p>
         <h2>Hoe lang EenmaalAndermaal uw gegevens bewaart</h2>
-        <p>EenmaalAndermaal bewaart uw gegevens indefinitief, zodat deze informatie altijd opgehaald kan worden waar dit gevraagd wordt.
+        <p>EenmaalAndermaal bewaart uw gegevens indefinitief, zodat deze informatie altijd opgehaald kan worden waar dit
+            gevraagd wordt.
             Als u echter uw account verwijdert, zullen al uw bijbehorende gegevens ook verwijderd worden.</p>
         <h2>Beveiliging</h2>
         <p>EenmaalAndermaal neemt betrouwbaarheid erg serieus en neemt passende
-         maatregelen om misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en
-         ongeoorloofde wijziging van gegevens tegen te gaan.</p>
+            maatregelen om misbruik, verlies, onbevoegde toegang, ongewenste openbaarmaking en
+            ongeoorloofde wijziging van gegevens tegen te gaan.</p>
         <p></p>
     </div>
 <?php

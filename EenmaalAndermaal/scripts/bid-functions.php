@@ -1,5 +1,5 @@
 <?php
-
+//rekent het minimale bod uit.
 function calcMinBid($dbh, $id)
 {
     $minBod = 0;
@@ -30,14 +30,14 @@ function calcMinBid($dbh, $id)
     return $minBod;
 }
 
-
+//sla het bod op.
 function setOwnBid($dbh, $id, $bod, $voorwerp)
 {
     $bodbedrag = $bod;
     $gebruiker = $_SESSION['username'];
     $bodtijd = getServerTime($dbh);
 
-    if ($bodbedrag > setMinBid($dbh, $id)) {
+    if ($bodbedrag > insertMinBid($dbh, $id)) {
         try {
             $sql = "INSERT INTO Bod(voorwerp, bodbedrag, gebruiker, bodtijd) VALUES(?,?,?,?)"; /* prepared statement */
             $query = $dbh->prepare($sql);
@@ -52,7 +52,7 @@ function setOwnBid($dbh, $id, $bod, $voorwerp)
 
 }
 
-
+//haal het hoogste bod op
 function getHighestBid($dbh, $id)
 {
     try {
@@ -70,7 +70,7 @@ function getHighestBid($dbh, $id)
 
 }
 
-
+//haal de verkoper op.
 function getSeller($dbh, $id)
 {
     try {
@@ -88,9 +88,7 @@ function getSeller($dbh, $id)
 
 }
 
-
-
-
+//haal de bieder op die het hoogste bod geplaatst heeft.
 function getHighestBidder($dbh, $id)
 {
     try {
@@ -108,7 +106,7 @@ function getHighestBidder($dbh, $id)
 
 }
 
-
+//haal de startprijs van een voorwerp op.
 function getStartPrice($dbh, $id){
     try{
         $stmt = $dbh->prepare("SELECT startprijs FROM voorwerp where voorwerpnummer = :voorwerpnummer");
@@ -124,6 +122,7 @@ function getStartPrice($dbh, $id){
     }
 }
 
+//haal een lijst op met alle biedingen.
 function getBids($dbh, $aantal = 5)
 {
     $bid = "";

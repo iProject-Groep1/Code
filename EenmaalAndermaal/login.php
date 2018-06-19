@@ -26,16 +26,10 @@ if (isset($_SESSION['LogMelding']) && !empty($_SESSION['LogMelding'])) {
     $_SESSION['logMelding'] = "";
 }
 
-if (isset($_SESSION['overBidMelding']) && !empty($_SESSION['overBidMelding'])) {
-    echo $_SESSION['overBidMelding'];
-    $_SESSION['overBidMelding'] = "";
-}
-
 if (isset($_SESSION['passwordResetNotification']) && !empty($_SESSION['passwordResetNotification'])) {
     echo $_SESSION['passwordResetNotification'];
     $_SESSION['passwordResetNotification'] = "";
 }
-
 
 if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
     $_SESSION['lastVisited'] = $_SERVER['HTTP_REFERER'];
@@ -46,10 +40,7 @@ if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
  * 2 = allebei niet.
  * 3 = combinatie gebruikersnaam/wachtwoord bestaat niet
  */
-
-
 ?>
-
     <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-margin-auto uk-margin-xlarge-top uk-margin-xlarge-bottom">
         <h3 class="uk-card-title uk-text-center uk-margin-bottom">Inloggen bij EenmaalAndermaal</h3>
         <?php
@@ -72,7 +63,6 @@ if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
         ?>
 
         <form method="POST" action="scripts/login-check.php">
-
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
@@ -84,11 +74,8 @@ if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
                            value="<?php if (isset($_GET['username'])) {
                                echo $_GET['username'];
                            } ?>" required>
-
-
                 </div>
             </div>
-
 
             <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
@@ -123,5 +110,4 @@ if (isset($_SERVER['HTTP_REFERER']) && !isset($_GET['notify'])) {
 
 <?php
 include('scripts/footer.php')
-
 ?>

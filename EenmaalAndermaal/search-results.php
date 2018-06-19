@@ -27,8 +27,6 @@ $searchTerm = htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8"
             <label for="Rubrieken">Gevonden in de rubrieken</label> <br>
             <?php getRubrieken($dbh, $searchTerm); ?>
             <input type="submit" name="submit" value="verfijn zoekopdracht">
-
-
         </form>
     </div>
 </div>

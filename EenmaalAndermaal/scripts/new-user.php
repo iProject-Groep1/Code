@@ -10,7 +10,6 @@ function registerUser($dbh)
     $passwordCorrect = false;
     $passwordContainsNumbers = false;
     $usernameCorrect = false;
-
     $firstname = $_POST['Voornaam'];
     $lastname = $_POST['Achternaam'];
     $firstAddress = $_POST['EersteAdres'];
@@ -18,7 +17,7 @@ function registerUser($dbh)
     $postcode = $_POST['Postcode'];
     $plaatsnaam = $_POST['Plaatsnaam'];
     $country = $_POST['Land'];
-    //TODO: kan er een foutieve datum worden ingevuld???
+    //TODO: controleer of er een foutieve datum wordt ingevuld
     $birthDate = $_POST['Datum'];
     $username = $_POST['Gebruikersnaam'];
     $password = "";
@@ -57,10 +56,9 @@ function registerUser($dbh)
         header('Location: errorpage.php?err=500');
     }
 
-
+//insert alle gegevens.
     if ($passwordCorrect && $usernameCorrect) {
         sanitizing_input($username, $firstname, $lastname, $firstAddress, $secondAddress, $postcode, $plaatsnaam, $securityQuestionAnswer, $email, $dbh);
-
         try {
             $sql = "insert into Gebruiker ([gebruikersnaam], [voornaam], [achternaam], [adresregel1], [adresregel2], [postcode], [plaatsnaam], [land], [geboortedag], [mail_adres], [wachtwoord], [vraag], [antwoordtekst])
         values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
@@ -83,10 +81,8 @@ function registerUser($dbh)
         $_SESSION['regMelding'] = '
     <script>UIkit.notification({message: \'Bedankt voor de registratie ' . $username . '!\', status: \'success\'})</script>
     ';
-
         //TODO: METEEN INLOGGEN
         header('Location: ../login.php?username='.$username);
-
     } else {
         $headerURL = "Location: ../verification.php?email=" . $_POST['email'] . "&hash=" . $_POST['hash'] . '&firstname=' . $firstname . '&lastname=' . $lastname . '&firstAddress=' . $firstAddress . '&secondAddress=' . $secondAddress . '&postalCode=' . $postcode . '&city=' . $plaatsnaam . '&birthDate=' . $birthDate . '&username=' . $username . '&securityQuestionAnswer=' . $securityQuestionAnswer;
         if (!$usernameCorrect) {
@@ -99,6 +95,7 @@ function registerUser($dbh)
     }
 }
 
+//haal maakt input schoon voor databaseinvoer.
 function sanitizing_input($username, $firstname, $lastname, $eersteAdres, $tweedeAdres, $postcode, $plaatsnaam, $antwoord, $email, $dbh)
 {
     $username = htmlspecialchars($username);

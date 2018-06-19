@@ -3,7 +3,7 @@ include('database-connect.php');
 include('homepage-functions.php');
 include('auction-item.php');
 
-
+//bepaal zoekquery en maak itemCards van de resultaten.
 function searchItems($dbh)
 {
     $search = "";
@@ -11,18 +11,18 @@ function searchItems($dbh)
         $search = htmlentities($_POST['Searching'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     }
     $searchItems = "";
-
     $queries['search'] = 'SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
-FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
- WHERE titel like :bindValue and veilinggesloten = 0  GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs'; /* prepared statement */
+                          FROM Voorwerp v 
+                          LEFT JOIN Bod b ON v.voorwerpnummer = b.voorwerp 
+                          JOIN VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
+                          WHERE titel LIKE :bindValue AND veilinggesloten = 0  
+                          GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs'; /* prepared statement */
     $bindValue = '%' . $search . '%';
-
     $searchItems .= getSearchItems($dbh, $queries['search'], $bindValue);
-
-
     echo $searchItems;
 }
 
+//creeër itemcards
 function getSearchItems($dbh, $query, $bindValue)
 {
     $itemCards = "";
@@ -30,13 +30,10 @@ function getSearchItems($dbh, $query, $bindValue)
         $stmt = $dbh->prepare($query); /* prepared statement */
         $stmt->bindValue(":bindValue", $bindValue, PDO::PARAM_STR); /* helpt tegen SQL injection */
         $stmt->execute(); /* stuurt alles naar de server */
-
         $count = $stmt->rowCount();
-
         if ($count == 0) {
             return 'Er zijn geen Items gevonden. ';
         }
-
         while ($results = $stmt->fetch()) {
             $price = $results['hoogsteBod'];
             if (is_null($price)) {
@@ -51,16 +48,17 @@ function getSearchItems($dbh, $query, $bindValue)
     return $itemCards;
 }
 
+//haal een lijst op met rubrieken waar de voorwerpen van de zoekopdracht zich in bevinden.
 function getRubrieken($dbh, $searchTerm)
 {
     $search = $searchTerm;
     $bindValue = '%' . $search . '%';
-
-
-    $queries = ' select COUNT (vr.voorwerp) as aantal, rubrieknaam
-              from Rubriek r join VoorwerpInRubriek vr on r.rubrieknummer = vr.rubriek_op_laagste_Niveau
-  				                   join Voorwerp v on vr.voorwerp = v.voorwerpnummer
-    	        where  titel like :bindValue and veilinggesloten = 0 group by  rubrieknaam ';
+    $queries = '  SELECT COUNT (vr.voorwerp) AS aantal, rubrieknaam
+                  FROM Rubriek r 
+                  JOIN VoorwerpInRubriek vr ON r.rubrieknummer = vr.rubriek_op_laagste_Niveau
+  				  JOIN Voorwerp v ON vr.voorwerp = v.voorwerpnummer
+    	          WHERE  titel LIKE :bindValue AND veilinggesloten = 0 
+    	          GROUP BY rubrieknaam ';
     $return = '';
     try {
         $stmt = $dbh->prepare($queries); /* prepared statement */
@@ -74,40 +72,36 @@ function getRubrieken($dbh, $searchTerm)
         }
 
         while ($row = $stmt->fetch()) {
-            /* <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>*/
-
             $return .= '<input type="radio" name="rubriek" value="' . $row['rubrieknaam'] . '"> ' . $row['rubrieknaam'] . ' (' . $row['aantal'] . ')<br>';
-
         }
         echo $return;
     } catch (PDOException $e) {
         echo "Fout" . $e->getMessage();
-        //  header('Location: ../errorpage.php?err=500');
+        header('Location: ../errorpage.php?err=500');
     }
-
 }
 
+//haal verfijnde zoekresultaten op (rubriek is geselecteerd.
 function getVerfijn($dbh)
 {
     if (isset($_POST['rubriek'])) {
         $bindValue2 = $_POST['rubriek'];
     } else return '.   .         Geen rubriek geslecteerd.';
     if (isset($_POST['searchterm'])) {
-$_POST['searchterm'] = htmlentities($_POST['searchterm'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+        $_POST['searchterm'] = htmlentities($_POST['searchterm'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
         $bindValue = '%' . $_POST['searchterm'] . '%';
-
-      } else {
-              return ' Geen zoekterm opgegeven ';
-          }
-
-    $query = "SELECT  v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp)
-          AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
-         FROM Voorwerp v left join Bod b ON v.voorwerpnummer = b.voorwerp
-                         join VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
-         WHERE titel like ? and veilinggesloten = 0 and voorwerpnummer in
-         (select voorwerp from VoorwerpInRubriek vr join Rubriek r on r.rubrieknummer = vr.rubriek_op_laagste_Niveau where rubrieknaam = ? )
-           GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs"; /* prepared statement */
-
+    } else {
+        return ' Geen zoekterm opgegeven ';
+    }
+    $query = "SELECT v.voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod, CURRENT_TIMESTAMP AS serverTijd,startprijs
+              FROM Voorwerp v 
+              LEFT JOIN Bod b ON v.voorwerpnummer = b.voorwerp
+              JOIN VoorwerpInRubriek r ON v.voorwerpnummer = r.voorwerp
+              WHERE titel LIKE ? AND veilinggesloten = 0 AND voorwerpnummer IN (SELECT voorwerp 
+                                                                                FROM VoorwerpInRubriek vr 
+                                                                                JOIN Rubriek r ON r.rubrieknummer = vr.rubriek_op_laagste_Niveau 
+                                                                                WHERE rubrieknaam = ? )
+              GROUP BY Voorwerpnummer, titel, looptijdEindmoment,startprijs"; /* prepared statement */
 
     $itemCards = "";
     try {
@@ -121,7 +115,6 @@ $_POST['searchterm'] = htmlentities($_POST['searchterm'], ENT_QUOTES | ENT_IGNOR
             return 'Er zijn geen Items gevonden. ';
         }
         while ($results = $stmt->fetch()) {
-
             $price = $results['hoogsteBod'];
             if (is_null($price)) {
                 $price = $results['startprijs'];
@@ -134,5 +127,4 @@ $_POST['searchterm'] = htmlentities($_POST['searchterm'], ENT_QUOTES | ENT_IGNOR
     }
     return $itemCards;
 }
-
 ?>

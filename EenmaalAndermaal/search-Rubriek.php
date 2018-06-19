@@ -56,7 +56,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             </li>
                             <?php
                         } ?>
-
                     </ul>
                 </li>
             </ul>
@@ -72,7 +71,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <label class="uk-form-label" for="form-horizontal-text">Zoek uw rubriek</label>
 
                         <div class="uk-form-controls">
-
                             <input class="uk-input" id="form-horizontal-text" type="text"
                                    placeholder="Rubrieknaam" name="search">
                         </div>
@@ -82,7 +80,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                type="submit"
                                placeholder="Zoek" name="submit">
                     </div>
-
                     <?php
                     require_once('scripts/search-rubriek-functions.php');
                     if (isset($_POST['search']) && !empty($_POST['search'])) {

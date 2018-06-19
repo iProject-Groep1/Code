@@ -4,7 +4,7 @@ require('scripts/header.php');
 include('scripts/database-connect.php');
 include('scripts/option-lists.php');
 
-if(isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
+if (isset($_SESSION['noChance']) && !empty($_SESSION['noChance'])) {
     echo $_SESSION['noChance'];
     $_SESSION['noChance'] = "";
 }
@@ -33,18 +33,25 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             <li class="uk-parent uk-open">
                 <a href="#">EenmaalAndermaal</a>
                 <ul class="uk-nav-sub" aria-hidden="false">
-                    <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                    <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                    <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                    <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a>
+                    </li>
+                    <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens
+                            wijzigen</a></li>
+                    <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a>
+                    </li>
                     <?php
                     if ($data['verkoper'] == 0) {
                         ?>
-                        <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
+                        <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper
+                                worden</a></li>
                         <?php
                     } else {
                         ?>
-                        <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
-                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+                        <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn
+                                Veilingen</a></li>
+                        <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus"
+                                                                                                   class="uk-margin-small-right"></span>Plaats
+                                Advertentie</a>
                         </li>
                         <?php
                     } ?>
@@ -54,17 +61,17 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         </ul>
     </div>
     <div class="uk-grid uk-align-center uk-card-refactor2 uk-flex uk-flex-center auctions-reset-margin">
-    <div class="uk-grid uk-flex uk-grid flex-space-evenly">
-        <div class="uk-align-card uk-card uk-card-default uk-card-body uk-width-1-1@s uk-width-2-3@m uk-width-1-2@l uk-width-2-5@xl uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block uk-a">
-            <div class="uk-card-header">
-                <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                    <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center ">Persoonlijke gegevens</h3>
+        <div class="uk-grid uk-flex uk-grid flex-space-evenly">
+            <div class="uk-align-card uk-card uk-card-default uk-card-body uk-width-1-1@s uk-width-2-3@m uk-width-1-2@l uk-width-2-5@xl uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block uk-a">
+                <div class="uk-card-header">
+                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                        <div class="uk-width-expand">
+                            <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center ">Persoonlijke gegevens</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="uk-card-body">
-                <p>
+                <div class="uk-card-body">
+                    <p>
                     <form method="POST" action="scripts/change-personal-information.php">
                         <fieldset class="uk-fieldset">
 
@@ -87,7 +94,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Geboortedatum: </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" name="birthday" id="form-horizontal-text" type="date" value="<?= $data['geboortedag'] ?>" max="<?=date('Y-m-d', strtotime("-18 year", time()))?>" required>
+                                    <input class="uk-input" name="birthday" id="form-horizontal-text" type="date"
+                                           value="<?= $data['geboortedag'] ?>"
+                                           max="<?= date('Y-m-d', strtotime("-18 year", time())) ?>" required>
                                 </div>
                             </div>
 
@@ -118,39 +127,38 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">Land: </label>
                                 <div class="uk-form-controls">
-                                    <select class="uk-select" name="country" required >
+                                    <select class="uk-select" name="country" required>
                                         <option value="<?= $data['land'] ?>"><?= $data['land'] ?></option>
-                                        <?= Get_country($dbh) ?>
+                                        <?= getCountryList($dbh) ?>
                                     </select>
                                 </div>
                             </div>
                         </fieldset>
-                </form>
+                    </form>
 
-                            <hr class="uk-divider-icon">
+                    <hr class="uk-divider-icon">
 
-                <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
+                    <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
 
-                <div class="uk-inline uk-align-right uk-width-1-3">
-                    <input class="uk-input uk-button-primary" type="submit" name="submit " id="loginSubmit"
-                           value="Opslaan">
+                    <div class="uk-inline uk-align-right uk-width-1-3">
+                        <input class="uk-input uk-button-primary" type="submit" name="submit " id="loginSubmit"
+                               value="Opslaan">
+                    </div>
+
+
                 </div>
-
-
-
             </div>
-        </div>
 
-        <div class="uk-card uk-card-default uk-card-body uk-width-1-1@s uk-width-2-3@m uk-width-1-2@l uk-width-2-5@xl uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block">
-            <div class="uk-card-header">
-                <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                    <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center ">E-mailadres</h3>
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-1@s uk-width-2-3@m uk-width-1-2@l uk-width-2-5@xl uk-margin-medium-top uk-margin-large-bottom uk-display-inline-block">
+                <div class="uk-card-header">
+                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                        <div class="uk-width-expand">
+                            <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center ">E-mailadres</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="uk-card-body">
-                <p>
+                <div class="uk-card-body">
+                    <p>
                     <form method="POST" action="scripts/change-e-mail.php">
                         <fieldset class="uk-fieldset">
                             <h4>Uw huidige e-mailadres is <?= $data['mail_adres'] ?></h4>
@@ -169,31 +177,25 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                            placeholder="Nieuw e-mailadres" name="newMail" required>
                                 </div>
                             </div>
+                        </fieldset>
+                    </form>
+                    </p>
 
+                    <hr class="uk-divider-icon">
 
-                            <hr class="uk-divider-icon">
+                    <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
 
-                <p class="uk-text-left uk-display-inline">*Verplicht veld</p>
-
-                <div class="uk-inline uk-align-right uk-width-1-3">
-                    <input class="uk-input uk-button-primary" type="submit" name="submit " id="loginSubmit"
-                           value="Opslaan">
+                    <div class="uk-inline uk-align-right uk-width-1-3">
+                        <input class="uk-input uk-button-primary" type="submit" name="submit " id="loginSubmit"
+                               value="Opslaan">
+                    </div>
                 </div>
-
-
-                </fieldset>
-                </form>
-
-                </p>
             </div>
         </div>
-    </div>
     </div>
     <?php
 
 } else {
     header('Location: login.php?');
 }
-
-
 include('scripts/footer.php');

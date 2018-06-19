@@ -49,6 +49,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
         $difference = $difference - $sec; // difference - seconds
     }
 
+    //creeërt een itemCard met plaatje, titel, tijd, prijs en "Bekijk nu" knop.
     $itemCard = '
     <div class="uk-auction-margin">
 
@@ -70,6 +71,7 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                 
                 <div class=" uk-align-right uk-display-inline-block">
                 ';
+    //Berekent of de volledige tijd of bijv. 3 dagen/2 uur getoond moet worden.
     if ($days >= 1) {
         $itemCard .= '<div class="uk-countdown-number uk-countdown-days uk-text-center"> ' . $days . ' Dagen  </div>';
     } else if ($days < 1 && $hours >= 1) {
@@ -95,11 +97,9 @@ function createItemScript($productName, $timeOfEnding, $image, $hoogsteBod, $id,
                     </div>';
 
     }
-
-
     $itemCard .= '
-</div> 
-</div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,6 +157,7 @@ function createMyBids($productName, $timeOfEnding, $image, $hoogsteBod, $id, $db
         $difference = $difference - $sec; // difference - seconds
     }
 
+    //creeërt een itemCard met plaatje, titel, tijd, prijs en "Bekijk nu" knop. Wanneer een gebruiker overgeboden is wordt de prijs rood.
     $itemCard = '
     <div class="uk-auction-margin">
 
@@ -184,6 +185,7 @@ function createMyBids($productName, $timeOfEnding, $image, $hoogsteBod, $id, $db
                 <div class="">
                   <div class=" uk-align-right uk-display-inline-block">
                 ';
+    //Berekent of de volledige tijd of bijv. 3 dagen/2 uur getoond moet worden.
     if ($days >= 1) {
         $itemCard .= '<div class="uk-countdown-number uk-countdown-days uk-text-center"> ' . $days . ' Dagen  </div>';
     } else if ($days < 1 && $hours >= 1) {
@@ -214,11 +216,9 @@ function createMyBids($productName, $timeOfEnding, $image, $hoogsteBod, $id, $db
 
 
     }
-
-
     $itemCard .= '
-</div> 
-</div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>

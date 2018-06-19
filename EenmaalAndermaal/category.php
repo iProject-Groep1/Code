@@ -29,21 +29,21 @@ if ($idCorrect) {
     $categoryArray;
         try {
         $stmt = $dbh->prepare("SELECT	P4.rubrieknaam AS Parent4Rubrieknaam,
-		P4.rubrieknummer AS Parent4Rubrieknummer,
-		P3.rubrieknaam AS Parent3Rubrieknaam,
-		P3.rubrieknummer AS Parent3Rubrieknummer,
-		P2.rubrieknaam AS Parent2Rubrieknaam,
-		P2.rubrieknummer AS Parent2Rubrieknummer,
-		P1.rubrieknaam AS Parent1Rubrieknaam,
-		P1.rubrieknummer AS Parent1Rubrieknummer,
-		S.rubrieknaam AS HuidigRubrieknaam, 
-		S.rubrieknummer AS HuidigRubrieknummer		
-FROM	rubriek S
-		LEFT JOIN rubriek P1 ON P1.rubrieknummer = S.parent
-		LEFT JOIN rubriek P2 ON P2.rubrieknummer = P1.parent
-		LEFT JOIN rubriek P3 ON P3.rubrieknummer = P2.parent
-		LEFT JOIN rubriek P4 ON P4.rubrieknummer = P3.parent
-WHERE	S.rubrieknummer = :categoryID");
+		                                        P4.rubrieknummer AS Parent4Rubrieknummer,
+		                                        P3.rubrieknaam AS Parent3Rubrieknaam,
+		                                        P3.rubrieknummer AS Parent3Rubrieknummer,
+		                                        P2.rubrieknaam AS Parent2Rubrieknaam,
+		                                        P2.rubrieknummer AS Parent2Rubrieknummer,
+		                                        P1.rubrieknaam AS Parent1Rubrieknaam,
+		                                        P1.rubrieknummer AS Parent1Rubrieknummer,
+		                                        S.rubrieknaam AS HuidigRubrieknaam, 
+		                                        S.rubrieknummer AS HuidigRubrieknummer		
+                                          FROM	rubriek S
+		                                  LEFT JOIN rubriek P1 ON P1.rubrieknummer = S.parent
+		                                  LEFT JOIN rubriek P2 ON P2.rubrieknummer = P1.parent
+		                                  LEFT JOIN rubriek P3 ON P3.rubrieknummer = P2.parent
+		                                  LEFT JOIN rubriek P4 ON P4.rubrieknummer = P3.parent
+                                          WHERE	S.rubrieknummer = :categoryID");
         $stmt->bindValue(":categoryID", $_GET['categoryID'], PDO::PARAM_STR);
         $stmt->execute();
         if ($row = $stmt->fetch()) { //loopt elke row van de resultaten door
@@ -58,12 +58,11 @@ WHERE	S.rubrieknummer = :categoryID");
         header('Location: errorpage.php?err=500');
     }
 
-
     //breadcrumb
     echo '
-<div class="uk-margin-detail">
-<ul class="uk-breadcrumb uk-width-1-1" >
-    <li><a href="index.php">Home</a></li>';
+            <div class="uk-margin-detail">
+                <ul class="uk-breadcrumb uk-width-1-1" >
+                    <li><a href="index.php">Home</a></li>';
     //loopt door de bovenstaande rubrieken en vult de breadcrumb
     foreach ($categoryArray as $categoryName => $categoryID) {
         if (!empty($categoryID && $categoryID != -1)) {
@@ -74,19 +73,21 @@ WHERE	S.rubrieknummer = :categoryID");
 </div>
 ';
     echo '<div class="uk-card auctions-reset-margin uk-card-default uk-card-body">
-    <h3 class="uk-display-block uk-align-center uk-text-center">'.array_search($_GET['categoryID'], $categoryArray).'</h3>
-    <p>
-<div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getAuctionCards($dbh, $_GET['categoryID']).'</div>
-</p></div>';
+            <h3 class="uk-display-block uk-align-center uk-text-center">'.array_search($_GET['categoryID'], $categoryArray).'</h3>
+            <p>
+                <div class="uk-grid uk-align-center uk-width-medium-1-4 uk-flex uk-flex-center auctions-reset-margin">'.getAuctionCards($dbh, $_GET['categoryID']).'</div>
+            </p>
+          </div>';
 } else {
     header('Location: errorpage.php?err=404');
 }
 
-
+//haalt voorwerpen op die in onderliggende rubrieken staan.
 function getAuctionCards($dbh, $rubrieknummer)
 {
     $itemCards = "";
     try {
+        //QUERY GEMAAKT DOOR ARNOUD.
         $stmt = $dbh->prepare("DECLARE @GekozenRubriek INT = :rubrieknummer
 SELECT TOP 100 v. voorwerpnummer, v.titel, v.looptijdEindmoment, (SELECT TOP 1 filenaam FROM bestand f WHERE v.voorwerpnummer = f.voorwerp) AS bestandsnaam, MAX(Bodbedrag) AS hoogsteBod , CURRENT_TIMESTAMP AS serverTijd, count(b.voorwerp) as aantal 
 FROM Voorwerp v left join bod b on v.voorwerpnummer = b.voorwerp
@@ -121,5 +122,4 @@ ORDER BY LooptijdEindMoment DESC
     }
     return $itemCards;
 }
-
 include('scripts/footer.php');

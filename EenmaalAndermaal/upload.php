@@ -14,7 +14,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
     //Haalt de status van een gebruiker op (verkoper of geen verkoper).
     $data = "";
     try {
-        $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam like :gebruikersnaam");
+        $stmt = $dbh->prepare("SELECT verkoper FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetch();
@@ -27,12 +27,10 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
     $Rubrieknr = $_GET['Rubrieknr'];
 
 
-    echo '
-    
+    echo '    
     <h2 class="uk-center-upload">Plaats Advertentie</h2>
     <p class=" uk-center-upload ">' . $Rubrieknaam . '</p>
     <div class="uk-margin-left@l uk-margin-left@m minimal-height-itempage">' ?>
-
     <div class="profile-sidebar uk-align-center@m">
         <ul class="uk-nav-default uk-nav-parent-icon uk-nav" uk-nav="">
             <li class="uk-parent uk-open">
@@ -60,7 +58,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                         </li>
                         <?php
                     } ?>
-
                 </ul>
             </li>
         </ul>
@@ -103,7 +100,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                     <div class="uk-form-controls">
                                    <select class="uk-select" name="Betalingswijze" required>
        ' .
-        Get_payment($dbh)
+        getPaymentMethodList($dbh)
         . '
     </select>
                     </div>
@@ -112,11 +109,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
                     <label class="uk-form-label" for="form-horizontal-select">Veilingtijd</label>
                     <div class="uk-form-controls">
                         <select class="uk-select" id="form-horizontal-select" name="Veilingtijd" required>
-                            <option>1</option>
-                            <option>3</option>
-                            <option>5</option>
-                            <option selected>7</option>
-                            <option>10</option>
+                            '.getAuctionLengths($dbh).'
                         </select>
                     </div>
                 </div>
@@ -125,8 +118,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
             <div class="uk-placeholder uk-text-center uk-upload-picture">
                 <span uk-icon="icon: cloud-upload"></span>
                     <div uk-form-custom>
-                        <input type="file" name="Image" multiple>
-                        <span class="uk-link">selecteer een foto</span>
+                        <input type="file" name="Image[]" multiple>
+                        <span class="uk-link">Selecteer een foto</span>
                     </div>
             </div>
            
@@ -145,15 +138,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET
     </div>
     </form>
     </div>';
-
-
 } else {
     //TODO netjes naar inlogpagina sturen met melding "u moet inloggen".
     header('Location: errorpage.php?err=404');
-
 }
-
-
 include('scripts/footer.php');
-
 ?>

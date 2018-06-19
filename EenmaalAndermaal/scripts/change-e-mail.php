@@ -5,6 +5,7 @@ $username = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8"
 $password = htmlentities($_POST['password'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 $newMail = htmlentities($_POST['newMail'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
+//stuur terug wanneer niks is ingevuld.
 if (empty($password) || empty($newMail)) {
     header('Location: ../change-profile.php?');
     $_SESSION['noChance'] = '
@@ -14,7 +15,8 @@ if (empty($password) || empty($newMail)) {
     $_SESSION['noChance'] = '
     <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Geen geldig e-mailadres.\', status: \'danger\'})</script>';
 }else{
-   try {
+   //controleer of het wachtwoord kloppend is.
+    try {
        $stmt = $dbh->prepare("SELECT wachtwoord FROM Gebruiker WHERE gebruikersnaam = :gebruikersnaam");
        $stmt->bindValue(":gebruikersnaam", $username, PDO::PARAM_STR);
        $stmt->execute();
@@ -28,6 +30,7 @@ if (empty($password) || empty($newMail)) {
         <script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: sign-in"></span> Wachtwoord is incorrect.\', status: \'danger\'})</script>';
         header('Location: ../change-profile.php?');
     }else{
+        //wachtwoord klopt, update gegevens.
         try{
             $stmt = $dbh->prepare("UPDATE Gebruiker SET mail_adres = :mail_adres WHERE gebruikersnaam = :gebruikersnaam");
             $stmt->bindValue(":mail_adres", $newMail, PDO::PARAM_STR);

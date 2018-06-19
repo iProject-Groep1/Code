@@ -21,7 +21,12 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     //haal alle informatie van een gebruiker op
     $data = "";
     try {
-        $stmt = $dbh->prepare("SELECT  g.gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper, rating FROM gebruiker g LEFT JOIN gebruikerstelefoon on gebruikersnaam = gebruiker LEFT JOIN verkoper v on g.gebruikersnaam = v.gebruikersnaam WHERE g.gebruikersnaam like :gebruikersnaam  ORDER BY volgnr");
+        $stmt = $dbh->prepare("  SELECT  g.gebruikersnaam, telefoon, voornaam, achternaam, adresregel1, adresregel2, postcode, plaatsnaam, land, geboortedag, mail_adres, verkoper, rating 
+                                          FROM gebruiker g 
+                                          LEFT JOIN gebruikerstelefoon ON gebruikersnaam = gebruiker 
+                                          LEFT JOIN verkoper v ON g.gebruikersnaam = v.gebruikersnaam 
+                                          WHERE g.gebruikersnaam LIKE :gebruikersnaam  
+                                          ORDER BY volgnr");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetch();
@@ -38,18 +43,25 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <li class="uk-parent uk-open">
                     <a href="#">EenmaalAndermaal</a>
                     <ul class="uk-nav-sub" aria-hidden="false">
-                        <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a></li>
-                        <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens wijzigen</a></li>
-                        <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn Biedingen</a></li>
+                        <li><a href="profile.php"><span uk-icon="user" class="uk-margin-small-right"></span>Mijn Profiel</a>
+                        </li>
+                        <li><a href="change-profile.php"><span uk-icon="pencil" class="uk-margin-small-right"></span>Gegevens
+                                wijzigen</a></li>
+                        <li><a href="show-bids.php"><span uk-icon="cart" class="uk-margin-small-right"></span>Mijn
+                                Biedingen</a></li>
                         <?php
                         if ($data['verkoper'] == 0) {
                             ?>
-                            <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper worden</a></li>
+                            <li><a href="become-seller.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Verkoper
+                                    worden</a></li>
                             <?php
                         } else {
                             ?>
-                            <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn Veilingen</a></li>
-                            <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus" class="uk-margin-small-right"></span>Plaats Advertentie</a>
+                            <li><a href="my-auctions.php"><span uk-icon="tag" class="uk-margin-small-right"></span>Mijn
+                                    Veilingen</a></li>
+                            <li><a class="uk-button uk-button-primary" href="search-Rubriek.php"><span uk-icon="plus"
+                                                                                                       class="uk-margin-small-right"></span>Plaats
+                                    Advertentie</a>
                             </li>
                             <?php
                         } ?>
@@ -98,7 +110,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                         <span uk-icon="star" class="rating-star"></span>
                                         <?php
                                     }
-                                    for($i = 0; $i < 5-$numberOfStars; $i++){
+                                    for ($i = 0; $i < 5 - $numberOfStars; $i++) {
                                         ?>
                                         <span uk-icon="star"></span>
                                         <?php
@@ -187,12 +199,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
         </div>
     </div>
-
     <?php
-
 } else {
     header('Location: login.php?');
 }
-
-
 include('scripts/footer.php');

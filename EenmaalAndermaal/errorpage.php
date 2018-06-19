@@ -1,11 +1,7 @@
 <?php
 $pageTitle = 'Error!';
 require_once('scripts/header.php');
-
-
 ?>
-
-
     <div class="uk-flex uk-flex-around uk-margin-top uk-margin-bottom uk-margin-auto" uk-grid>
         <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m uk-flex uk-flex-column">
             <h1 class="uk-card-tile uk-text-center uk-margin-bottom">Oeps!</h1>
@@ -32,7 +28,5 @@ require_once('scripts/header.php');
             <p class="uk-text-center">Klik <a href="index.php">hier</a> om terug te gaan naar de homepagina.</p>
         </div>
     </div>
-
-
 <?php
 require_once('scripts/footer.php');

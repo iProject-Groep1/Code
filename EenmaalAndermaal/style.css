@@ -303,6 +303,13 @@ li .uk-button {
     color: yellowgreen;
 }
 
+.detailpage-img{
+    height: auto;
+}
+
+.detail-page-li-img{
+    height: 500px;
+}
 /*	-haalt het marge boven de afbeelding in de detailpagina weg
 	-staat nog niet in de detailpagina
 	-werkt nog niet

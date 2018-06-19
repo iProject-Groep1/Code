@@ -5,8 +5,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+//verificatiecode Post controle
 if (isset($_POST['submitVerification'])) {
     $verificationCodeCorrect = false;
+    //controleer in de database of de match van gebruikersnaam en verificatiecode bestaat.
     try {
         $stmt = $dbh->prepare("SELECT COUNT(gebruikersnaam) AS aantal FROM verkoper WHERE gebruikersnaam LIKE :gebruikersnaam AND verificatiecode LIKE :verificatiecode");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
@@ -23,6 +25,7 @@ if (isset($_POST['submitVerification'])) {
         echo "Fout" . $e->getMessage();
     }
 
+    //verificatiecode klopt: de gebruiker is nu een verkoper en krijgt een melding.
     if ($verificationCodeCorrect) {
         try {
             $stmt = $dbh->prepare("UPDATE Gebruiker SET verkoper = 1 WHERE gebruikersnaam LIKE :gebruikersnaam");
@@ -34,17 +37,18 @@ if (isset($_POST['submitVerification'])) {
             echo "Fout" . $e->getMessage();
             header('Location: ../errorpage.php?err=500');
         }
-
-
+        //verificatiecode klopt niet: gebruiker is geen verkoper en krijgt een melding.
     } else {
         $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Deze code klopt niet.\', status: \'danger\'})</script>';
         header('Location: ../become-seller.php?verification=1');
     }
 }
 
+//verificatiemethode gekozen en gegevens ingevuld.
 if (isset($_POST['submit'])) {
     $passwordCorrect = false;
     $emailAdress = "";
+    //controleer of het wachtwoord klopt, en haal meteen het mailadres op.
     try {
         $stmt = $dbh->prepare("SELECT wachtwoord, mail_adres FROM gebruiker WHERE gebruikersnaam LIKE :gebruikersnaam");
         $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
@@ -52,7 +56,8 @@ if (isset($_POST['submit'])) {
         if ($result = $stmt->fetch()) {
             $emailAdress = $result['mail_adres'];
             $passwordCorrect = password_verify($_POST['password'], $result['wachtwoord']);
-
+            //wachtwoord klopt niet: probeer opnieuw.
+            //TODO ingevulde gegevens onthouden voor gebruikersgemak.
             if (!$passwordCorrect) {
                 $_SESSION['becomeSellerFormNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: close"></span> Dit wachtwoord klopt niet.\', status: \'danger\'})</script>';
                 header('Location: ../become-seller.php');
@@ -62,10 +67,12 @@ if (isset($_POST['submit'])) {
         echo "Fout bij ophalen wachtwoord" . $e->getMessage();
     }
 
+    //wachtwoord klopt
     if ($passwordCorrect) {
         $verificationMethod = $_POST['verificationMethod'];
         $dataCorrect = false;
 
+        //controleer of minimaal creditcardnummer is ingevuld.
         if ($verificationMethod == "Creditcard") {
             if (empty($_POST['creditCardNumber']) || !isset($_POST['creditCardNumber'])) {
                 $dataCorrect = false;
@@ -76,13 +83,14 @@ if (isset($_POST['submit'])) {
             } else if (!empty($_POST['paymentMethod']) && isset($_POST['paymentMethod'])) {
                 $dataCorrect = true;
             }
+            //controleer of minimaal een van de twee betaalmethoden is ingevoerd: bankrekeningnummer en/of creditcardnummer.
         } else if ($verificationMethod = "Post") {
             if ((!empty($_POST['bankAccountNumber']) && isset($_POST['bankAccountNumber'])) || !empty($_POST['creditCardNumber']) && isset($_POST['creditCardNumber'])) {
                 //TODO: check of 1 van beide is ingevuld
                 if (empty($_POST['creditCardNumber'])) {
                     $_POST['creditCardNumber'] = NULL;
                 }
-                if(empty($_POST['bankAccountNumber'])){
+                if (empty($_POST['bankAccountNumber'])) {
                     $_POST['bankAccountNumber'] = NULL;
                 }
                 $dataCorrect = true;
@@ -97,7 +105,7 @@ if (isset($_POST['submit'])) {
             $verificationCode = randomPassword(10);
             //zet alle data in verkopertabel
             try {
-                //TODO: ja dit kan beter een arraytje worden want nu is het wel erg veel regels code terwijl dat eigenlijk niet hoeft doei
+                //TODO: Gebruik hier een array i.p.v. 6 keer bindValue();
                 $stmt = $dbh->prepare("INSERT INTO Verkoper (gebruikersnaam, bank, rekeningnummer, controleOptie, creditcardnummer, verificatiecode, rating) VALUES(:gebruikersnaam, :betaalwijze, :rekeningnummer, :controleOptie, :creditcardnummer, :verificatiecode, 50)");
                 $stmt->bindValue(":gebruikersnaam", $_SESSION['username'], PDO::PARAM_STR);
                 $stmt->bindValue(":betaalwijze", $_POST['paymentMethod'], PDO::PARAM_STR);
@@ -118,12 +126,10 @@ if (isset($_POST['submit'])) {
                     $stmt->execute();
                 } catch (PDOException $e) {
                     echo "Fout" . $e->getMessage();
-                    die();
                     header('Location: ../errorpage.php?err=500');
                 }
             }
             createVerificationMail($emailAdress, $verificationMethod, $verificationCode);
-
             $_SESSION['profileNotification'] = '<script style="border-radius: 25px;">UIkit.notification({message: \'<span uk-icon="icon: mail"></span> Er wordt zo snel mogelijk contact met u opgenomen.\', status: \'success\'})</script>';
             header('Location: ../profile.php');
         } else {
@@ -132,55 +138,36 @@ if (isset($_POST['submit'])) {
     }
 }
 
-function createVerificationMail($email, $verificationMethod, $verificationCode = "kaas")
+//stuur een mail met verificatiecode indien verificatiemethode = Post, of stuur een mail met "Geslaagd" indien verificatiemethode = Creditcard
+function createVerificationMail($email, $verificationMethod, $verificationCode = "none")
 {
-
     $to = $email; // Send email to our user
     $subject = 'Verkoper worden | EenmaalAndermaal | I-Project Groep 1'; // Give the email a subject
     $message = '
- <!DOCTYPE HTML>
- <html lang="nl">
- <head>
- <meta charset="UTF-8">
-</head>
-<body>
-<h1>Bedankt dat u verkoper wil worden op onze veilingsite.</h1>
-<div>';
+    <!DOCTYPE HTML>
+    <html lang="nl">
+        <head>
+            <meta charset="UTF-8">
+        </head>
+        <body>
+            <h1>Bedankt dat u verkoper wil worden op onze veilingsite.</h1>
+            <div>';
     if ($verificationMethod == "Creditcard") {
         $message .= '<p>We hebben uw gegevens geverifiëerd bij uw maatschappij en deze komen overeen.</p>
                     <h2>U bent nu een verkoper!</h2>';
     } else if ($verificationMethod == "Post") {
-        $message .= '<p>Uw verificatiecode is: ' . $verificationCode . ', vul deze in op <a href="http://iproject1.icasites.nl/become-seller.php?verification=1">deze</a> pagina.</p> ';
+        $message .= '<p>Uw verificatiecode is: ' . $verificationCode . ', vul deze code in op <a href="http://iproject1.icasites.nl/become-seller.php?verification=1">deze</a> pagina.</p> ';
     }
-
-
     $message .= '
-<div>
-<p>I-Project Groep 1</p>
-</div>
-</body>
-</html>
+            </div>
+            <div>
+                <p>I-Project Groep 1</p>
+            </div>
+         </body>
+    </html>
 '; // Our message above including the link
-
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= 'From:noreply@EenmaalAndermaal.com' . "\r\n"; // Set from headers
     mail($to, $subject, $message, $headers); // Send our email
-}
-
-
-function getPaymentMethodList($dbh)
-{
-    $paymentMethodList = '';
-    try {
-        $stmt = $dbh->prepare("SELECT Betaalwijze FROM Betaalwijze"); /* prepared statement */
-        $stmt->execute();
-        while ($row = $stmt->fetch()) {
-            $paymentMethodList .= '<option value="' . $row['Betaalwijze'] . '">' . $row['Betaalwijze'] . '</option>';
-        }
-    } catch (PDOException $e) {
-        echo "Fout" . $e->getMessage();
-        header('Location: errorpage.php?err=500');
-    }
-    return $paymentMethodList;
 }
