@@ -30,6 +30,12 @@ function insertItem($dbh)
     $land = htmlentities($data['land'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
     $verkoper = htmlentities($_SESSION['username'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
 
+    if($verzendkosten < 0){
+        $_SESSION['fillEverything2'] = '
+                <script>UIkit.notification({message: \' <span uk-icon="icon: mail"></span>  De verzendkosten mag niet minder dan 0 zijn! \', status: \'danger\'})</script>';
+        header('Location: ../upload.php?Rubriek='. $titel .'&Rubrieknr='.$rubrieknr.'.php');
+    }
+
     try {
         $sql = "SET NOCOUNT ON; insert into
  voorwerp(  [titel]

@@ -5,6 +5,10 @@ require('scripts/header.php');
 include('scripts/database-connect.php');
 require('scripts/option-lists.php');
 
+if(isset($_SESSION['fillEverything2']) && !empty($_SESSION['fillEverything2'])) {
+    echo $_SESSION['fillEverything2'];
+    $_SESSION['fillEverything2'] = "";
+}
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_GET['Rubriek']) && !empty($_GET['Rubriek'])) {
     //Haalt de status van een gebruiker op (verkoper of geen verkoper).
